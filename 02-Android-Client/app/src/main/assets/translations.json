@@ -1,0 +1,6177 @@
+{
+  "Language": {
+    "en": "Language",
+    "ur": "زبان"
+  },
+  "English": {
+    "en": "English",
+    "ur": "انگریزی"
+  },
+  "Urdu": {
+    "en": "Urdu",
+    "ur": "اردو"
+  },
+  "Dashboard": {
+    "en": "Dashboard",
+    "ur": "ہوم"
+  },
+  "Home": {
+    "en": "Home",
+    "ur": "ہوم"
+  },
+  "Workspace": {
+    "en": "Workspace",
+    "ur": "کام کی جگہ"
+  },
+  "Operations": {
+    "en": "Operations",
+    "ur": "روزمرہ کام"
+  },
+  "Management": {
+    "en": "Management",
+    "ur": "انتظام"
+  },
+  "Settings": {
+    "en": "Settings",
+    "ur": "ترتیبات"
+  },
+  "Account Settings": {
+    "en": "Account Settings",
+    "ur": "ترتیبات"
+  },
+  "Cloud": {
+    "en": "Cloud",
+    "ur": "کلاؤڈ"
+  },
+  "Server": {
+    "en": "Cloud",
+    "ur": "کلاؤڈ"
+  },
+  "Online Sync": {
+    "en": "Cloud",
+    "ur": "کلاؤڈ"
+  },
+  "Sync Status": {
+    "en": "Cloud",
+    "ur": "کلاؤڈ"
+  },
+  "Cloud Status": {
+    "en": "Cloud",
+    "ur": "کلاؤڈ"
+  },
+  "Cloud sync": {
+    "en": "Cloud sync",
+    "ur": "کلاؤڈ سنک"
+  },
+  "Sync Now": {
+    "en": "Cloud sync",
+    "ur": "کلاؤڈ سنک"
+  },
+  "Sync": {
+    "en": "Cloud sync",
+    "ur": "کلاؤڈ سنک"
+  },
+  "Retry sync": {
+    "en": "Retry Cloud sync",
+    "ur": "کلاؤڈ سنک دوبارہ کریں"
+  },
+  "Retry Cloud sync": {
+    "en": "Retry Cloud sync",
+    "ur": "کلاؤڈ سنک دوبارہ کریں"
+  },
+  "Syncing…": {
+    "en": "Connecting to Cloud…",
+    "ur": "کلاؤڈ سے رابطہ ہو رہا ہے…"
+  },
+  "Connecting to central ERP…": {
+    "en": "Connecting to Cloud…",
+    "ur": "کلاؤڈ سے رابطہ ہو رہا ہے…"
+  },
+  "Up to date": {
+    "en": "Up to date",
+    "ur": "تازہ ترین"
+  },
+  "Synced": {
+    "en": "Synced",
+    "ur": "تازہ ترین"
+  },
+  "Check connection": {
+    "en": "Check Cloud connection",
+    "ur": "کلاؤڈ رابطہ چیک کریں"
+  },
+  "Connect shop": {
+    "en": "Connect shop",
+    "ur": "دکان کو کلاؤڈ سے جوڑیں"
+  },
+  "Connection and saved changes": {
+    "en": "Connection and saved changes",
+    "ur": "رابطہ اور محفوظ تبدیلیاں"
+  },
+  "Last contact": {
+    "en": "Last Cloud contact",
+    "ur": "آخری کلاؤڈ رابطہ"
+  },
+  "Last successful sync": {
+    "en": "Last Cloud contact",
+    "ur": "آخری کلاؤڈ رابطہ"
+  },
+  "Last Sync": {
+    "en": "Last Cloud contact",
+    "ur": "آخری کلاؤڈ رابطہ"
+  },
+  "Waiting / failed": {
+    "en": "Waiting / failed",
+    "ur": "منتظر / ناکام"
+  },
+  "Pending": {
+    "en": "Pending",
+    "ur": "منتظر"
+  },
+  "Failed": {
+    "en": "Failed",
+    "ur": "ناکام"
+  },
+  "Synced Changes": {
+    "en": "Synced Changes",
+    "ur": "سنک شدہ تبدیلیاں"
+  },
+  "No connection error reported.": {
+    "en": "No connection error reported.",
+    "ur": "رابطے کی کوئی خرابی نہیں۔"
+  },
+  "Not yet connected": {
+    "en": "Not yet connected",
+    "ur": "ابھی رابطہ نہیں ہوا"
+  },
+  "No successful sync yet": {
+    "en": "No successful sync yet",
+    "ur": "ابھی رابطہ نہیں ہوا"
+  },
+  "Saved changes upload when connected.": {
+    "en": "Saved changes upload when connected.",
+    "ur": "رابطہ بحال ہونے پر محفوظ تبدیلیاں اپ لوڈ ہوں گی۔"
+  },
+  "Connection unavailable": {
+    "en": "Connection unavailable",
+    "ur": "کلاؤڈ سے رابطہ نہیں ہو سکا"
+  },
+  "Connection required": {
+    "en": "Connection required",
+    "ur": "کلاؤڈ سے رابطہ ضروری ہے"
+  },
+  "Online connection required": {
+    "en": "Online connection required",
+    "ur": "کلاؤڈ سے رابطہ ضروری ہے"
+  },
+  "Open shop connection details": {
+    "en": "Open shop connection details",
+    "ur": "کلاؤڈ رابطے کی تفصیل کھولیں"
+  },
+  "Open connection details": {
+    "en": "Open connection details",
+    "ur": "کلاؤڈ رابطے کی تفصیل کھولیں"
+  },
+  "Shop": {
+    "en": "Shop",
+    "ur": "دکان"
+  },
+  "Shop Name": {
+    "en": "Shop Name",
+    "ur": "دکان کا نام"
+  },
+  "Shop name": {
+    "en": "Shop name",
+    "ur": "دکان کا نام"
+  },
+  "Shop ID": {
+    "en": "Shop ID",
+    "ur": "دکان کی شناخت"
+  },
+  "Shop Code": {
+    "en": "Shop Code",
+    "ur": "دکان کا کوڈ"
+  },
+  "Shop Profile": {
+    "en": "Shop Profile",
+    "ur": "دکان کی معلومات"
+  },
+  "Shop Address": {
+    "en": "Shop Address",
+    "ur": "دکان کا پتہ"
+  },
+  "Address": {
+    "en": "Address",
+    "ur": "دکان کا پتہ"
+  },
+  "Shop Logo": {
+    "en": "Shop Logo",
+    "ur": "دکان کا لوگو"
+  },
+  "Shop logo": {
+    "en": "Shop logo",
+    "ur": "دکان کا لوگو"
+  },
+  "Shop Owner": {
+    "en": "Shop Owner",
+    "ur": "مالک"
+  },
+  "Owner": {
+    "en": "Owner",
+    "ur": "مالک"
+  },
+  "Owner Name": {
+    "en": "Owner Name",
+    "ur": "مالک کا نام"
+  },
+  "Owner Mobile": {
+    "en": "Owner Mobile",
+    "ur": "مالک کا موبائل"
+  },
+  "Owner mobile": {
+    "en": "Owner mobile",
+    "ur": "مالک کا موبائل"
+  },
+  "Owner Mobile / Username": {
+    "en": "Owner Mobile / Username",
+    "ur": "مالک کا موبائل / ای میل"
+  },
+  "Owner mobile / email": {
+    "en": "Owner mobile / email",
+    "ur": "مالک کا موبائل / ای میل"
+  },
+  "Username / Owner Mobile": {
+    "en": "Username / Owner Mobile",
+    "ur": "مالک کا موبائل / ای میل"
+  },
+  "Full Name": {
+    "en": "Full Name",
+    "ur": "نام"
+  },
+  "Full name": {
+    "en": "Full name",
+    "ur": "نام"
+  },
+  "Name": {
+    "en": "Name",
+    "ur": "نام"
+  },
+  "Mobile Number": {
+    "en": "Mobile Number",
+    "ur": "موبائل نمبر"
+  },
+  "Phone": {
+    "en": "Phone",
+    "ur": "موبائل نمبر"
+  },
+  "Mobile number": {
+    "en": "Mobile number",
+    "ur": "موبائل نمبر"
+  },
+  "Alternate Mobile": {
+    "en": "Alternate Mobile",
+    "ur": "دوسرا موبائل نمبر"
+  },
+  "Email (optional)": {
+    "en": "Email (optional)",
+    "ur": "ای میل"
+  },
+  "Email": {
+    "en": "Email",
+    "ur": "ای میل"
+  },
+  "City": {
+    "en": "City",
+    "ur": "شہر"
+  },
+  "Password": {
+    "en": "Password",
+    "ur": "پاس ورڈ"
+  },
+  "Current Password": {
+    "en": "Current Password",
+    "ur": "موجودہ پاس ورڈ"
+  },
+  "New Password": {
+    "en": "New Password",
+    "ur": "نیا پاس ورڈ"
+  },
+  "Confirm New Password": {
+    "en": "Confirm New Password",
+    "ur": "نیا پاس ورڈ دوبارہ لکھیں"
+  },
+  "Repeat new password": {
+    "en": "Repeat new password",
+    "ur": "نیا پاس ورڈ دوبارہ لکھیں"
+  },
+  "Temporary Password": {
+    "en": "Temporary Password",
+    "ur": "عارضی پاس ورڈ"
+  },
+  "Change Password": {
+    "en": "Change Password",
+    "ur": "پاس ورڈ تبدیل کریں"
+  },
+  "Create Password": {
+    "en": "Create Password",
+    "ur": "پاس ورڈ بنائیں"
+  },
+  "Create New Password": {
+    "en": "Create New Password",
+    "ur": "پاس ورڈ بنائیں"
+  },
+  "Password saved": {
+    "en": "Password saved",
+    "ur": "پاس ورڈ محفوظ ہو گیا"
+  },
+  "Password update failed": {
+    "en": "Password update failed",
+    "ur": "پاس ورڈ تبدیل نہیں ہو سکا"
+  },
+  "Password too short": {
+    "en": "Password too short",
+    "ur": "پاس ورڈ مختصر ہے"
+  },
+  "Passwords do not match": {
+    "en": "Passwords do not match",
+    "ur": "دونوں پاس ورڈ یکساں نہیں ہیں"
+  },
+  "Incorrect password": {
+    "en": "Incorrect password",
+    "ur": "پاس ورڈ درست نہیں"
+  },
+  "At least 12 characters": {
+    "en": "At least 12 characters",
+    "ur": "کم از کم ۱۲ حروف استعمال کریں۔"
+  },
+  "Use at least twelve characters.": {
+    "en": "Use at least twelve characters.",
+    "ur": "کم از کم ۱۲ حروف استعمال کریں۔"
+  },
+  "Password must contain at least 12 characters. This password will be used for the next login.": {
+    "en": "Password must contain at least 12 characters. This password will be used for the next login.",
+    "ur": "کم از کم ۱۲ حروف کا پاس ورڈ بنائیں۔ آئندہ اسی سے لاگ اِن کریں۔"
+  },
+  "Enter the current password.": {
+    "en": "Enter the current password.",
+    "ur": "موجودہ پاس ورڈ لکھیں۔"
+  },
+  "Confirm the same new password.": {
+    "en": "Confirm the same new password.",
+    "ur": "وہی نیا پاس ورڈ دوبارہ لکھیں۔"
+  },
+  "Welcome back": {
+    "en": "Welcome back",
+    "ur": "خوش آمدید"
+  },
+  "Welcome back, {0}": {
+    "en": "Welcome back, {0}",
+    "ur": "خوش آمدید، {0}"
+  },
+  "Sign in": {
+    "en": "Sign in",
+    "ur": "لاگ اِن کریں"
+  },
+  "Login": {
+    "en": "Sign in",
+    "ur": "لاگ اِن کریں"
+  },
+  "Login to Dashboard": {
+    "en": "Sign in",
+    "ur": "لاگ اِن کریں"
+  },
+  "Sign Out": {
+    "en": "Sign Out",
+    "ur": "لاگ آؤٹ"
+  },
+  "Logout": {
+    "en": "Logout",
+    "ur": "لاگ آؤٹ"
+  },
+  "Sign out?": {
+    "en": "Sign out?",
+    "ur": "لاگ آؤٹ کریں؟"
+  },
+  "Logged out": {
+    "en": "Logged out",
+    "ur": "لاگ آؤٹ ہو گیا"
+  },
+  "Signing in…": {
+    "en": "Signing in…",
+    "ur": "دکان کھولی جا رہی ہے…"
+  },
+  "Loading your shop…": {
+    "en": "Loading your shop…",
+    "ur": "دکان کھولی جا رہی ہے…"
+  },
+  "Sign in to your shop.": {
+    "en": "Sign in to your shop.",
+    "ur": "اپنی دکان کے اکاؤنٹ میں لاگ اِن کریں۔"
+  },
+  "Sign in to your shop account.": {
+    "en": "Sign in to your shop account.",
+    "ur": "اپنی دکان کے اکاؤنٹ میں لاگ اِن کریں۔"
+  },
+  "Remember me": {
+    "en": "Remember me",
+    "ur": "مجھے یاد رکھیں"
+  },
+  "Forgot Password?": {
+    "en": "Forgot Password?",
+    "ur": "پاس ورڈ بھول گئے؟"
+  },
+  "Forgot password?": {
+    "en": "Forgot password?",
+    "ur": "پاس ورڈ بھول گئے؟"
+  },
+  "Show or hide password": {
+    "en": "Show or hide password",
+    "ur": "پاس ورڈ دکھائیں یا چھپائیں"
+  },
+  "Toggle password visibility": {
+    "en": "Toggle password visibility",
+    "ur": "پاس ورڈ دکھائیں یا چھپائیں"
+  },
+  "Activate Shop": {
+    "en": "Activate Shop",
+    "ur": "دکان فعال کریں"
+  },
+  "Activate Account": {
+    "en": "Activate Account",
+    "ur": "دکان فعال کریں"
+  },
+  "Activate": {
+    "en": "Activate",
+    "ur": "دکان فعال کریں"
+  },
+  "Activate your shop": {
+    "en": "Activate your shop",
+    "ur": "اپنی دکان فعال کریں"
+  },
+  "Activate your shop account": {
+    "en": "Activate your shop account",
+    "ur": "اپنی دکان فعال کریں"
+  },
+  "Activation Code": {
+    "en": "Activation Code",
+    "ur": "ایکٹیویشن کوڈ"
+  },
+  "Your activation code": {
+    "en": "Your activation code",
+    "ur": "اپنا ایکٹیویشن کوڈ"
+  },
+  "Activation required": {
+    "en": "Activation required",
+    "ur": "ایکٹیویشن ضروری ہے"
+  },
+  "Activation verified": {
+    "en": "Activation verified",
+    "ur": "ایکٹیویشن کی تصدیق ہو گئی"
+  },
+  "Activation failed": {
+    "en": "Activation failed",
+    "ur": "ایکٹیویشن مکمل نہیں ہوئی"
+  },
+  "Activation incomplete": {
+    "en": "Activation incomplete",
+    "ur": "ایکٹیویشن مکمل نہیں ہوئی"
+  },
+  "New shop? Activate account": {
+    "en": "New shop? Activate account",
+    "ur": "نئی دکان؟ اکاؤنٹ فعال کریں"
+  },
+  "Already activated on desktop? Use the same owner number and the password you created.": {
+    "en": "Already activated on desktop? Use the same owner number and the password you created.",
+    "ur": "ڈیسک ٹاپ پر فعال دکان کے لیے وہی مالک کا نمبر اور اپنا بنایا ہوا پاس ورڈ استعمال کریں۔"
+  },
+  "Back to Login": {
+    "en": "Back to Login",
+    "ur": "لاگ اِن پر واپس"
+  },
+  "FIRST TIME SETUP": {
+    "en": "FIRST TIME SETUP",
+    "ur": "پہلی بار ترتیب"
+  },
+  "FIRST ACTIVATION": {
+    "en": "FIRST ACTIVATION",
+    "ur": "پہلی بار ترتیب"
+  },
+  "ACCOUNT SECURITY": {
+    "en": "ACCOUNT SECURITY",
+    "ur": "اکاؤنٹ کی حفاظت"
+  },
+  "SECURE SHOP LOGIN": {
+    "en": "SECURE SHOP LOGIN",
+    "ur": "اکاؤنٹ کی حفاظت"
+  },
+  "SHOP LOGIN": {
+    "en": "SHOP LOGIN",
+    "ur": "دکان کا لاگ اِن"
+  },
+  "SHOP MANAGEMENT": {
+    "en": "SHOP MANAGEMENT",
+    "ur": "دکان کا انتظام"
+  },
+  "Mobile Shop ERP": {
+    "en": "Mobile Shop ERP",
+    "ur": "دکان کا انتظامی نظام"
+  },
+  "Desktop ERP": {
+    "en": "Desktop ERP",
+    "ur": "دکان کا انتظامی نظام"
+  },
+  "Desktop ERP · Mobile Shop": {
+    "en": "Desktop ERP · Mobile Shop",
+    "ur": "دکان کا انتظامی نظام"
+  },
+  "Smart shop operations": {
+    "en": "Smart shop operations",
+    "ur": "دکان کا انتظام"
+  },
+  "Your shop. Wherever you work.": {
+    "en": "Your shop. Wherever you work.",
+    "ur": "آپ کی دکان، آپ جہاں بھی ہوں۔"
+  },
+  "Your shop.\\nWherever you work.": {
+    "en": "Your shop.\\nWherever you work.",
+    "ur": "آپ کی دکان، آپ جہاں بھی ہوں۔"
+  },
+  "Your shop. One connected workspace.": {
+    "en": "Your shop. One connected workspace.",
+    "ur": "آپ کی دکان، ایک مشترک نظام۔"
+  },
+  "Run your shop with": {
+    "en": "Run your shop with",
+    "ur": "اپنی دکان چلائیں"
+  },
+  "better control.": {
+    "en": "better control.",
+    "ur": "بہتر انتظام کے ساتھ۔"
+  },
+  "BUILT FOR MODERN RETAIL": {
+    "en": "BUILT FOR MODERN RETAIL",
+    "ur": "آپ کی دکان کے لیے"
+  },
+  "Your shop, at a glance.": {
+    "en": "Your shop, at a glance.",
+    "ur": "آپ کی دکان ایک نظر میں"
+  },
+  "Sales, stock and accounts in one place.": {
+    "en": "Sales, stock and accounts in one place.",
+    "ur": "فروخت، اسٹاک اور حساب ایک جگہ۔"
+  },
+  "Sales, stock and accounts.": {
+    "en": "Sales, stock and accounts.",
+    "ur": "فروخت، اسٹاک اور حساب ایک جگہ۔"
+  },
+  "Inventory, sales and customers in one place.": {
+    "en": "Inventory, sales and customers in one place.",
+    "ur": "فروخت، اسٹاک اور حساب ایک جگہ۔"
+  },
+  "Powering Your Shop. Growing Your Business.": {
+    "en": "Powering Your Shop. Growing Your Business.",
+    "ur": "آپ کی دکان، آپ کا کاروبار۔"
+  },
+  "Support": {
+    "en": "Support",
+    "ur": "مدد"
+  },
+  "Help Center": {
+    "en": "Help Center",
+    "ur": "مدد"
+  },
+  "Contact Support": {
+    "en": "Contact Support",
+    "ur": "مدد"
+  },
+  "Need help with activation?": {
+    "en": "Need help with activation?",
+    "ur": "ایکٹیویشن میں مدد چاہیے؟"
+  },
+  "Get help and support": {
+    "en": "Get help and support",
+    "ur": "مدد حاصل کریں"
+  },
+  "Cancel": {
+    "en": "Cancel",
+    "ur": "منسوخ"
+  },
+  "Close": {
+    "en": "Close",
+    "ur": "بند کریں"
+  },
+  "Done": {
+    "en": "Done",
+    "ur": "مکمل"
+  },
+  "Back": {
+    "en": "Back",
+    "ur": "واپس"
+  },
+  "Next": {
+    "en": "Next",
+    "ur": "اگلا"
+  },
+  "Confirm": {
+    "en": "Confirm",
+    "ur": "تصدیق"
+  },
+  "Save": {
+    "en": "Save",
+    "ur": "محفوظ کریں"
+  },
+  "Save Changes": {
+    "en": "Save Changes",
+    "ur": "محفوظ کریں"
+  },
+  "Save & Print": {
+    "en": "Save & Print",
+    "ur": "محفوظ اور پرنٹ کریں"
+  },
+  "Edit": {
+    "en": "Edit",
+    "ur": "تبدیل کریں"
+  },
+  "Delete": {
+    "en": "Delete",
+    "ur": "حذف کریں"
+  },
+  "Remove": {
+    "en": "Remove",
+    "ur": "ہٹائیں"
+  },
+  "Restore": {
+    "en": "Restore",
+    "ur": "بحال کریں"
+  },
+  "Restore Data": {
+    "en": "Restore Data",
+    "ur": "بحال کریں"
+  },
+  "Restore data": {
+    "en": "Restore data",
+    "ur": "بحال کریں"
+  },
+  "Refresh": {
+    "en": "Refresh",
+    "ur": "تازہ کریں"
+  },
+  "Retry check": {
+    "en": "Retry check",
+    "ur": "دوبارہ چیک کریں"
+  },
+  "Search": {
+    "en": "Search",
+    "ur": "تلاش"
+  },
+  "Filter": {
+    "en": "Filter",
+    "ur": "فلٹر"
+  },
+  "All": {
+    "en": "All",
+    "ur": "سب"
+  },
+  "View All": {
+    "en": "View All",
+    "ur": "سب"
+  },
+  "View all": {
+    "en": "View all",
+    "ur": "سب"
+  },
+  "View": {
+    "en": "View",
+    "ur": "دیکھیں"
+  },
+  "Export": {
+    "en": "Export",
+    "ur": "برآمد کریں"
+  },
+  "Export CSV": {
+    "en": "Export CSV",
+    "ur": "سی ایس وی برآمد کریں"
+  },
+  "Export Summary": {
+    "en": "Export Summary",
+    "ur": "خلاصہ برآمد کریں"
+  },
+  "Export Ledger": {
+    "en": "Export Ledger",
+    "ur": "کھاتہ برآمد کریں"
+  },
+  "Print": {
+    "en": "Print",
+    "ur": "پرنٹ"
+  },
+  "Thermal": {
+    "en": "Thermal",
+    "ur": "پرنٹ"
+  },
+  "Share": {
+    "en": "Share",
+    "ur": "شیئر کریں"
+  },
+  "Download": {
+    "en": "Download",
+    "ur": "ڈاؤن لوڈ"
+  },
+  "Upload": {
+    "en": "Upload",
+    "ur": "اپ لوڈ"
+  },
+  "Optional": {
+    "en": "Optional",
+    "ur": "اختیاری"
+  },
+  "(optional)": {
+    "en": "(optional)",
+    "ur": "اختیاری"
+  },
+  "Required": {
+    "en": "Required",
+    "ur": "ضروری"
+  },
+  "Loading": {
+    "en": "Loading",
+    "ur": "لوڈ ہو رہا ہے"
+  },
+  "Unknown": {
+    "en": "Unknown",
+    "ur": "نامعلوم"
+  },
+  "Not configured": {
+    "en": "Not configured",
+    "ur": "ترتیب نہیں دی گئی"
+  },
+  "Not linked": {
+    "en": "Not linked",
+    "ur": "منسلک نہیں"
+  },
+  "Not verified": {
+    "en": "Not verified",
+    "ur": "تصدیق نہیں ہوئی"
+  },
+  "Not supplied by server": {
+    "en": "Not supplied by server",
+    "ur": "کلاؤڈ نے معلومات نہیں دیں"
+  },
+  "Active": {
+    "en": "Active",
+    "ur": "فعال"
+  },
+  "Local Active": {
+    "en": "Local Active",
+    "ur": "فعال"
+  },
+  "Inactive": {
+    "en": "Inactive",
+    "ur": "غیر فعال"
+  },
+  "Expired": {
+    "en": "Expired",
+    "ur": "مدت ختم"
+  },
+  "Blocked": {
+    "en": "Blocked",
+    "ur": "بلاک"
+  },
+  "Online": {
+    "en": "Online",
+    "ur": "آن لائن"
+  },
+  "Offline": {
+    "en": "Offline",
+    "ur": "آف لائن"
+  },
+  "Local": {
+    "en": "Local",
+    "ur": "اس ڈیوائس پر"
+  },
+  "On this device": {
+    "en": "On this device",
+    "ur": "اس ڈیوائس پر"
+  },
+  "Linked": {
+    "en": "Linked",
+    "ur": "منسلک"
+  },
+  "Status": {
+    "en": "Status",
+    "ur": "حالت"
+  },
+  "Shop status": {
+    "en": "Shop status",
+    "ur": "حالت"
+  },
+  "Validity": {
+    "en": "Validity",
+    "ur": "مدت"
+  },
+  "Subscription": {
+    "en": "Subscription",
+    "ur": "پلان"
+  },
+  "Plan": {
+    "en": "Plan",
+    "ur": "پلان"
+  },
+  "Theme": {
+    "en": "Theme",
+    "ur": "تھیم"
+  },
+  "Dark": {
+    "en": "Dark",
+    "ur": "گہرا رنگ"
+  },
+  "Dark Mode": {
+    "en": "Dark Mode",
+    "ur": "گہرا رنگ"
+  },
+  "Light": {
+    "en": "Light",
+    "ur": "ہلکا رنگ"
+  },
+  "Dark mode is active.": {
+    "en": "Dark mode is active.",
+    "ur": "گہرا تھیم فعال ہے۔"
+  },
+  "Light mode is active.": {
+    "en": "Light mode is active.",
+    "ur": "ہلکا تھیم فعال ہے۔"
+  },
+  "Light or dark appearance": {
+    "en": "Light or dark appearance",
+    "ur": "ہلکا یا گہرا تھیم"
+  },
+  "Current Appearance": {
+    "en": "Current Appearance",
+    "ur": "موجودہ تھیم"
+  },
+  "Choose a comfortable workspace appearance.": {
+    "en": "Choose a comfortable workspace appearance.",
+    "ur": "اپنی پسند کا تھیم منتخب کریں۔"
+  },
+  "Use a darker interface for low-light workspaces.": {
+    "en": "Use a darker interface for low-light workspaces.",
+    "ur": "کم روشنی میں گہرا تھیم استعمال کریں۔"
+  },
+  "Backup & Restore": {
+    "en": "Backup & Restore",
+    "ur": "بیک اَپ اور بحالی"
+  },
+  "Backup": {
+    "en": "Backup",
+    "ur": "بیک اَپ بنائیں"
+  },
+  "Backup Now": {
+    "en": "Backup Now",
+    "ur": "بیک اَپ بنائیں"
+  },
+  "Create Backup": {
+    "en": "Create Backup",
+    "ur": "بیک اَپ بنائیں"
+  },
+  "Last Backup": {
+    "en": "Last Backup",
+    "ur": "آخری بیک اَپ"
+  },
+  "Backup Reminder": {
+    "en": "Backup Reminder",
+    "ur": "بیک اَپ کی یاددہانی"
+  },
+  "Backup created": {
+    "en": "Backup created",
+    "ur": "بیک اَپ بن گیا"
+  },
+  "Backup restored": {
+    "en": "Backup restored",
+    "ur": "بیک اَپ بحال ہو گیا"
+  },
+  "Secure your data": {
+    "en": "Secure your data",
+    "ur": "اپنا ڈیٹا محفوظ رکھیں"
+  },
+  "Secure your business data": {
+    "en": "Secure your business data",
+    "ur": "اپنا ڈیٹا محفوظ رکھیں"
+  },
+  "Backup downloads a JSON snapshot of the current local data. Keep it in a safe location.": {
+    "en": "Backup downloads a JSON snapshot of the current local data. Keep it in a safe location.",
+    "ur": "بیک اَپ فائل کو محفوظ جگہ رکھیں۔ اس میں اس ڈیوائس کا ڈیٹا شامل ہے۔"
+  },
+  "Restore a previously exported local backup.": {
+    "en": "Restore a previously exported local backup.",
+    "ur": "پہلے محفوظ کیا گیا بیک اَپ بحال کریں۔"
+  },
+  "Create a local backup before closing the day.": {
+    "en": "Create a local backup before closing the day.",
+    "ur": "دن کا کام ختم کرنے سے پہلے بیک اَپ بنائیں۔"
+  },
+  "Create a safe local copy of your ERP data.": {
+    "en": "Create a safe local copy of your ERP data.",
+    "ur": "اپنے ڈیٹا کا محفوظ بیک اَپ بنائیں۔"
+  },
+  "Restore blocked": {
+    "en": "Restore blocked",
+    "ur": "بحالی مکمل نہیں ہوئی"
+  },
+  "Restore failed": {
+    "en": "Restore failed",
+    "ur": "بحالی مکمل نہیں ہوئی"
+  },
+  "Invalid backup": {
+    "en": "Invalid backup",
+    "ur": "فائل درست نہیں"
+  },
+  "Invalid file": {
+    "en": "Invalid file",
+    "ur": "فائل درست نہیں"
+  },
+  "Choose a valid SkyBarech backup JSON file.": {
+    "en": "Choose a valid SkyBarech backup JSON file.",
+    "ur": "درست اسکائی بارچ بیک اَپ فائل منتخب کریں۔"
+  },
+  "Choose a valid backup JSON file.": {
+    "en": "Choose a valid backup JSON file.",
+    "ur": "درست اسکائی بارچ بیک اَپ فائل منتخب کریں۔"
+  },
+  "Reset Local Data": {
+    "en": "Reset Local Data",
+    "ur": "مقامی ڈیٹا ری سیٹ کریں"
+  },
+  "Notifications": {
+    "en": "Notifications",
+    "ur": "اطلاعات"
+  },
+  "Alerts": {
+    "en": "Alerts",
+    "ur": "اطلاعات"
+  },
+  "Profile": {
+    "en": "Profile",
+    "ur": "پروفائل"
+  },
+  "Low Stock": {
+    "en": "Low Stock",
+    "ur": "کم اسٹاک"
+  },
+  "Low Stock Alert": {
+    "en": "Low Stock Alert",
+    "ur": "کم اسٹاک"
+  },
+  "Stock Alerts": {
+    "en": "Stock Alerts",
+    "ur": "کم اسٹاک"
+  },
+  "Low stock alerts": {
+    "en": "Low stock alerts",
+    "ur": "کم اسٹاک"
+  },
+  "Inventory": {
+    "en": "Inventory",
+    "ur": "اسٹاک"
+  },
+  "All Inventory": {
+    "en": "All Inventory",
+    "ur": "اسٹاک"
+  },
+  "Mobile Inventory": {
+    "en": "Mobile Inventory",
+    "ur": "اسٹاک"
+  },
+  "Manage Stock": {
+    "en": "Manage Stock",
+    "ur": "اسٹاک کا انتظام"
+  },
+  "Stock": {
+    "en": "Stock",
+    "ur": "تعداد"
+  },
+  "Stock Quantity": {
+    "en": "Stock Quantity",
+    "ur": "تعداد"
+  },
+  "Stock Units": {
+    "en": "Stock Units",
+    "ur": "تعداد"
+  },
+  "Quantity": {
+    "en": "Quantity",
+    "ur": "تعداد"
+  },
+  "Qty": {
+    "en": "Qty",
+    "ur": "تعداد"
+  },
+  "Total Stock": {
+    "en": "Total Stock",
+    "ur": "کل اسٹاک"
+  },
+  "Product": {
+    "en": "Product",
+    "ur": "آئٹم"
+  },
+  "Item": {
+    "en": "Item",
+    "ur": "آئٹم"
+  },
+  "Products": {
+    "en": "Products",
+    "ur": "آئٹمز"
+  },
+  "Product Name": {
+    "en": "Product Name",
+    "ur": "آئٹم کا نام"
+  },
+  "Part Name": {
+    "en": "Part Name",
+    "ur": "آئٹم کا نام"
+  },
+  "Product Search": {
+    "en": "Product Search",
+    "ur": "آئٹم تلاش کریں"
+  },
+  "Search available products": {
+    "en": "Search available products",
+    "ur": "آئٹم تلاش کریں"
+  },
+  "Product picture": {
+    "en": "Product picture",
+    "ur": "آئٹم کی تصویر"
+  },
+  "Product / Model": {
+    "en": "Product / Model",
+    "ur": "آئٹم / ماڈل"
+  },
+  "Add": {
+    "en": "Add",
+    "ur": "آئٹم شامل کریں"
+  },
+  "Add Product": {
+    "en": "Add Product",
+    "ur": "آئٹم شامل کریں"
+  },
+  "Quick Add Product": {
+    "en": "Quick Add Product",
+    "ur": "آئٹم شامل کریں"
+  },
+  "Edit Product": {
+    "en": "Edit Product",
+    "ur": "آئٹم تبدیل کریں"
+  },
+  "Save Product": {
+    "en": "Save Product",
+    "ur": "آئٹم محفوظ کریں"
+  },
+  "Delete Product": {
+    "en": "Delete Product",
+    "ur": "آئٹم حذف کریں؟"
+  },
+  "Delete product?": {
+    "en": "Delete product?",
+    "ur": "آئٹم حذف کریں؟"
+  },
+  "Product added": {
+    "en": "Product added",
+    "ur": "آئٹم شامل ہو گیا"
+  },
+  "Product updated": {
+    "en": "Product updated",
+    "ur": "آئٹم تبدیل ہو گیا"
+  },
+  "Product restored": {
+    "en": "Product restored",
+    "ur": "آئٹم بحال ہو گیا"
+  },
+  "Added to cart": {
+    "en": "Added to cart",
+    "ur": "بل میں شامل ہو گیا"
+  },
+  "Product found": {
+    "en": "Product found",
+    "ur": "آئٹم مل گیا"
+  },
+  "Stock changed": {
+    "en": "Stock changed",
+    "ur": "اسٹاک تبدیل ہو چکا ہے"
+  },
+  "Out of stock": {
+    "en": "Out of stock",
+    "ur": "اسٹاک ختم"
+  },
+  "Stock limit reached": {
+    "en": "Stock limit reached",
+    "ur": "مزید اسٹاک دستیاب نہیں"
+  },
+  "Only {0} unit(s) are available.": {
+    "en": "Only {0} unit(s) are available.",
+    "ur": "صرف {0} آئٹم دستیاب ہیں۔"
+  },
+  "No additional units are available.": {
+    "en": "No additional units are available.",
+    "ur": "مزید آئٹم دستیاب نہیں۔"
+  },
+  "This product has no available stock.": {
+    "en": "This product has no available stock.",
+    "ur": "اس آئٹم کا اسٹاک ختم ہے۔"
+  },
+  "No matching product": {
+    "en": "No matching product",
+    "ur": "کوئی آئٹم نہیں ملا"
+  },
+  "No matching product found": {
+    "en": "No matching product found",
+    "ur": "کوئی آئٹم نہیں ملا"
+  },
+  "No product was found for that barcode or keyword.": {
+    "en": "No product was found for that barcode or keyword.",
+    "ur": "اس بارکوڈ یا تلاش سے کوئی آئٹم نہیں ملا۔"
+  },
+  "No products match your filters.": {
+    "en": "No products match your filters.",
+    "ur": "ان فلٹرز کے مطابق کوئی آئٹم نہیں۔"
+  },
+  "Category": {
+    "en": "Category",
+    "ur": "قسم"
+  },
+  "All Categories": {
+    "en": "All Categories",
+    "ur": "قسم"
+  },
+  "Brand": {
+    "en": "Brand",
+    "ur": "برانڈ"
+  },
+  "Mobile Brand": {
+    "en": "Mobile Brand",
+    "ur": "برانڈ"
+  },
+  "Model": {
+    "en": "Model",
+    "ur": "ماڈل"
+  },
+  "Mobile Model": {
+    "en": "Mobile Model",
+    "ur": "ماڈل"
+  },
+  "Brand / Model": {
+    "en": "Brand / Model",
+    "ur": "برانڈ / ماڈل"
+  },
+  "Select Brand": {
+    "en": "Select Brand",
+    "ur": "برانڈ منتخب کریں"
+  },
+  "Select brand": {
+    "en": "Select brand",
+    "ur": "برانڈ منتخب کریں"
+  },
+  "Select/type model": {
+    "en": "Select/type model",
+    "ur": "ماڈل منتخب کریں"
+  },
+  "Select model": {
+    "en": "Select model",
+    "ur": "ماڈل منتخب کریں"
+  },
+  "Other Model": {
+    "en": "Other Model",
+    "ur": "دیگر ماڈل"
+  },
+  "Type / Variant": {
+    "en": "Type / Variant",
+    "ur": "قسم / ویریئنٹ"
+  },
+  "Variant": {
+    "en": "Variant",
+    "ur": "قسم / ویریئنٹ"
+  },
+  "Manual type / variant": {
+    "en": "Manual type / variant",
+    "ur": "قسم خود لکھیں"
+  },
+  "Color": {
+    "en": "Color",
+    "ur": "رنگ"
+  },
+  "Quality": {
+    "en": "Quality",
+    "ur": "معیار"
+  },
+  "Purchase Price": {
+    "en": "Purchase Price",
+    "ur": "خرید قیمت"
+  },
+  "Cost": {
+    "en": "Cost",
+    "ur": "خرید قیمت"
+  },
+  "Sale Price": {
+    "en": "Sale Price",
+    "ur": "فروخت قیمت"
+  },
+  "Price": {
+    "en": "Price",
+    "ur": "فروخت قیمت"
+  },
+  "Wholesale Price": {
+    "en": "Wholesale Price",
+    "ur": "تھوک قیمت"
+  },
+  "Expected Sale Price": {
+    "en": "Expected Sale Price",
+    "ur": "متوقع فروخت قیمت"
+  },
+  "Min Stock Alert": {
+    "en": "Min Stock Alert",
+    "ur": "کم اسٹاک کی حد"
+  },
+  "Minimum Stock Alert": {
+    "en": "Minimum Stock Alert",
+    "ur": "کم اسٹاک کی حد"
+  },
+  "Rack": {
+    "en": "Rack",
+    "ur": "ریک / شیلف"
+  },
+  "Rack / Shelf": {
+    "en": "Rack / Shelf",
+    "ur": "ریک / شیلف"
+  },
+  "Barcode": {
+    "en": "Barcode",
+    "ur": "بارکوڈ / ایس کے یو"
+  },
+  "Barcode / SKU": {
+    "en": "Barcode / SKU",
+    "ur": "بارکوڈ / ایس کے یو"
+  },
+  "Scan Barcode": {
+    "en": "Scan Barcode",
+    "ur": "بارکوڈ اسکین"
+  },
+  "Barcode Scan": {
+    "en": "Barcode Scan",
+    "ur": "بارکوڈ اسکین"
+  },
+  "Scan or type barcode / SKU": {
+    "en": "Scan or type barcode / SKU",
+    "ur": "بارکوڈ اسکین کریں یا لکھیں"
+  },
+  "Enter IMEI / serial number": {
+    "en": "Enter IMEI / serial number",
+    "ur": "آئی ایم ای آئی / سیریل نمبر لکھیں"
+  },
+  "Enter IMEI or laptop serial": {
+    "en": "Enter IMEI or laptop serial",
+    "ur": "آئی ایم ای آئی / سیریل نمبر لکھیں"
+  },
+  "IMEI / Serial": {
+    "en": "IMEI / Serial",
+    "ur": "آئی ایم ای آئی / سیریل"
+  },
+  "IMEI 1 / Serial": {
+    "en": "IMEI 1 / Serial",
+    "ur": "آئی ایم ای آئی / سیریل"
+  },
+  "IMEI 2": {
+    "en": "IMEI 2",
+    "ur": "دوسرا آئی ایم ای آئی"
+  },
+  "IMEI / Barcode Scan": {
+    "en": "IMEI / Barcode Scan",
+    "ur": "آئی ایم ای آئی / بارکوڈ اسکین"
+  },
+  "IMEI Search": {
+    "en": "IMEI Search",
+    "ur": "آئی ایم ای آئی تلاش"
+  },
+  "Scan or Manual IMEI": {
+    "en": "Scan or Manual IMEI",
+    "ur": "آئی ایم ای آئی اسکین یا درج کریں"
+  },
+  "Add IMEI": {
+    "en": "Add IMEI",
+    "ur": "آئی ایم ای آئی شامل کریں"
+  },
+  "Duplicate IMEI": {
+    "en": "Duplicate IMEI",
+    "ur": "یہ آئی ایم ای آئی پہلے سے موجود ہے"
+  },
+  "Duplicate IMEI found": {
+    "en": "Duplicate IMEI found",
+    "ur": "یہ آئی ایم ای آئی پہلے سے موجود ہے"
+  },
+  "Invalid IMEI": {
+    "en": "Invalid IMEI",
+    "ur": "آئی ایم ای آئی درست نہیں"
+  },
+  "IMEI missing": {
+    "en": "IMEI missing",
+    "ur": "آئی ایم ای آئی درج نہیں"
+  },
+  "IMEI not found": {
+    "en": "IMEI not found",
+    "ur": "آئی ایم ای آئی نہیں ملا"
+  },
+  "IMEI Found": {
+    "en": "IMEI Found",
+    "ur": "آئی ایم ای آئی مل گیا"
+  },
+  "IMEI added": {
+    "en": "IMEI added",
+    "ur": "آئی ایم ای آئی شامل ہو گیا"
+  },
+  "IMEI removed": {
+    "en": "IMEI removed",
+    "ur": "آئی ایم ای آئی ہٹا دیا گیا"
+  },
+  "No IMEI added yet.": {
+    "en": "No IMEI added yet.",
+    "ur": "ابھی کوئی آئی ایم ای آئی شامل نہیں۔"
+  },
+  "This IMEI is already in the list.": {
+    "en": "This IMEI is already in the list.",
+    "ur": "یہ آئی ایم ای آئی پہلے سے فہرست میں ہے۔"
+  },
+  "IMEI / serial must be 10 to 18 digits.": {
+    "en": "IMEI / serial must be 10 to 18 digits.",
+    "ur": "آئی ایم ای آئی / سیریل ۱۰ سے ۱۸ ہندسوں کا ہونا چاہیے۔"
+  },
+  "Auto": {
+    "en": "Auto",
+    "ur": "خودکار"
+  },
+  "Auto if blank": {
+    "en": "Auto if blank",
+    "ur": "خودکار"
+  },
+  "Auto generate if blank": {
+    "en": "Auto generate if blank",
+    "ur": "خودکار"
+  },
+  "Auto generated if blank": {
+    "en": "Auto generated if blank",
+    "ur": "خودکار"
+  },
+  "Auto filled from first IMEI": {
+    "en": "Auto filled from first IMEI",
+    "ur": "پہلے آئی ایم ای آئی سے خودکار"
+  },
+  "Auto filled from second IMEI": {
+    "en": "Auto filled from second IMEI",
+    "ur": "دوسرے آئی ایم ای آئی سے خودکار"
+  },
+  "Stock quantity will match the IMEI count.": {
+    "en": "Stock quantity will match the IMEI count.",
+    "ur": "اسٹاک کی تعداد آئی ایم ای آئی کی تعداد کے برابر ہو گی۔"
+  },
+  "SKU generated": {
+    "en": "SKU generated",
+    "ur": "ایس کے یو بن گیا"
+  },
+  "Manual": {
+    "en": "Manual",
+    "ur": "خود درج کریں"
+  },
+  "Scanner ready": {
+    "en": "Scanner ready",
+    "ur": "اسکینر تیار ہے"
+  },
+  "Use an external scanner or enter a barcode manually.": {
+    "en": "Use an external scanner or enter a barcode manually.",
+    "ur": "اسکینر استعمال کریں یا بارکوڈ لکھیں۔"
+  },
+  "Use a barcode/IMEI scanner or type the number manually.": {
+    "en": "Use a barcode/IMEI scanner or type the number manually.",
+    "ur": "اسکینر استعمال کریں یا نمبر لکھیں۔"
+  },
+  "Scan the barcode or type IMEI manually.": {
+    "en": "Scan the barcode or type IMEI manually.",
+    "ur": "بارکوڈ اسکین کریں یا آئی ایم ای آئی لکھیں۔"
+  },
+  "Scan with a barcode scanner or type the IMEI manually": {
+    "en": "Scan with a barcode scanner or type the IMEI manually",
+    "ur": "اسکینر استعمال کریں یا آئی ایم ای آئی لکھیں"
+  },
+  "Search by name, brand, model or SKU": {
+    "en": "Search by name, brand, model or SKU",
+    "ur": "نام، برانڈ، ماڈل یا ایس کے یو تلاش کریں"
+  },
+  "Search product, brand, model or SKU": {
+    "en": "Search product, brand, model or SKU",
+    "ur": "نام، برانڈ، ماڈل یا ایس کے یو تلاش کریں"
+  },
+  "Search products, customers…": {
+    "en": "Search products, customers…",
+    "ur": "آئٹم یا گاہک تلاش کریں…"
+  },
+  "Search name, category, brand, model, SKU or rack": {
+    "en": "Search name, category, brand, model, SKU or rack",
+    "ur": "نام، قسم، ماڈل یا ریک تلاش کریں"
+  },
+  "Search part, category, brand, model, SKU or rack": {
+    "en": "Search part, category, brand, model, SKU or rack",
+    "ur": "نام، قسم، ماڈل یا ریک تلاش کریں"
+  },
+  "Search laptop brand, model, specs or SKU": {
+    "en": "Search laptop brand, model, specs or SKU",
+    "ur": "لیپ ٹاپ کا برانڈ، ماڈل یا تفصیل تلاش کریں"
+  },
+  "Mobile": {
+    "en": "Mobile",
+    "ur": "موبائل"
+  },
+  "Smartphone": {
+    "en": "Smartphone",
+    "ur": "موبائل"
+  },
+  "Smartphones": {
+    "en": "Smartphones",
+    "ur": "موبائل"
+  },
+  "Tablet": {
+    "en": "Tablet",
+    "ur": "ٹیبلٹ"
+  },
+  "Tablets": {
+    "en": "Tablets",
+    "ur": "ٹیبلٹ"
+  },
+  "Mobile Accessories": {
+    "en": "Mobile Accessories",
+    "ur": "موبائل لوازمات"
+  },
+  "Accessories": {
+    "en": "Accessories",
+    "ur": "موبائل لوازمات"
+  },
+  "Accessory": {
+    "en": "Accessory",
+    "ur": "لوازمات"
+  },
+  "Spare Parts": {
+    "en": "Spare Parts",
+    "ur": "اسپیئر پارٹس"
+  },
+  "Mobile Spare Parts": {
+    "en": "Mobile Spare Parts",
+    "ur": "اسپیئر پارٹس"
+  },
+  "Repair Part": {
+    "en": "Repair Part",
+    "ur": "اسپیئر پارٹس"
+  },
+  "Repair part": {
+    "en": "Repair part",
+    "ur": "اسپیئر پارٹس"
+  },
+  "SparePart": {
+    "en": "SparePart",
+    "ur": "اسپیئر پارٹس"
+  },
+  "Laptop": {
+    "en": "Laptop",
+    "ur": "لیپ ٹاپ"
+  },
+  "Add Accessory": {
+    "en": "Add Accessory",
+    "ur": "لوازمات شامل کریں"
+  },
+  "Add Mobile Accessory": {
+    "en": "Add Mobile Accessory",
+    "ur": "لوازمات شامل کریں"
+  },
+  "Edit Accessory": {
+    "en": "Edit Accessory",
+    "ur": "لوازمات تبدیل کریں"
+  },
+  "Add Spare Part": {
+    "en": "Add Spare Part",
+    "ur": "پارٹ شامل کریں"
+  },
+  "Spare Parts Fast Add": {
+    "en": "Spare Parts Fast Add",
+    "ur": "پارٹ شامل کریں"
+  },
+  "Edit Spare Part": {
+    "en": "Edit Spare Part",
+    "ur": "پارٹ تبدیل کریں"
+  },
+  "Save Part": {
+    "en": "Save Part",
+    "ur": "پارٹ محفوظ کریں"
+  },
+  "Add Laptop": {
+    "en": "Add Laptop",
+    "ur": "لیپ ٹاپ شامل کریں"
+  },
+  "Edit Laptop": {
+    "en": "Edit Laptop",
+    "ur": "لیپ ٹاپ تبدیل کریں"
+  },
+  "Laptop Units": {
+    "en": "Laptop Units",
+    "ur": "لیپ ٹاپ کی تعداد"
+  },
+  "Total laptop items": {
+    "en": "Total laptop items",
+    "ur": "لیپ ٹاپ کی تعداد"
+  },
+  "Laptop Models": {
+    "en": "Laptop Models",
+    "ur": "لیپ ٹاپ ماڈلز"
+  },
+  "Laptop Stock Value": {
+    "en": "Laptop Stock Value",
+    "ur": "لیپ ٹاپ اسٹاک کی مالیت"
+  },
+  "Accessory Items": {
+    "en": "Accessory Items",
+    "ur": "لوازمات کے ماڈلز"
+  },
+  "Total accessory models": {
+    "en": "Total accessory models",
+    "ur": "لوازمات کے ماڈلز"
+  },
+  "Accessory Units": {
+    "en": "Accessory Units",
+    "ur": "لوازمات کی تعداد"
+  },
+  "Accessory Value": {
+    "en": "Accessory Value",
+    "ur": "لوازمات کی مالیت"
+  },
+  "Part Items": {
+    "en": "Part Items",
+    "ur": "پارٹس کے ماڈلز"
+  },
+  "Total spare part models": {
+    "en": "Total spare part models",
+    "ur": "پارٹس کے ماڈلز"
+  },
+  "Part Units": {
+    "en": "Part Units",
+    "ur": "پارٹس کی تعداد"
+  },
+  "Parts Value": {
+    "en": "Parts Value",
+    "ur": "پارٹس کی مالیت"
+  },
+  "Part Category": {
+    "en": "Part Category",
+    "ur": "پارٹ کی قسم"
+  },
+  "Specs": {
+    "en": "Specs",
+    "ur": "تفصیلات"
+  },
+  "Storage": {
+    "en": "Storage",
+    "ur": "اسٹوریج"
+  },
+  "Compatible Models": {
+    "en": "Compatible Models",
+    "ur": "مطابقت رکھنے والے ماڈلز"
+  },
+  "Warranty": {
+    "en": "Warranty",
+    "ur": "وارنٹی"
+  },
+  "No Warranty": {
+    "en": "No Warranty",
+    "ur": "وارنٹی نہیں"
+  },
+  "Supplier / compatibility / warranty notes": {
+    "en": "Supplier / compatibility / warranty notes",
+    "ur": "سپلائر، مطابقت یا وارنٹی کی تفصیل"
+  },
+  "Note": {
+    "en": "Note",
+    "ur": "نوٹس"
+  },
+  "Notes": {
+    "en": "Notes",
+    "ur": "نوٹس"
+  },
+  "Optional note": {
+    "en": "Optional note",
+    "ur": "نوٹس"
+  },
+  "Optional notes": {
+    "en": "Optional notes",
+    "ur": "نوٹس"
+  },
+  "Payment": {
+    "en": "Payment",
+    "ur": "ادائیگی"
+  },
+  "POS Billing": {
+    "en": "POS Billing",
+    "ur": "بل بنائیں"
+  },
+  "Quick Billing": {
+    "en": "Quick Billing",
+    "ur": "بل بنائیں"
+  },
+  "Start Billing": {
+    "en": "Start Billing",
+    "ur": "بل بنائیں"
+  },
+  "Open POS Billing": {
+    "en": "Open POS Billing",
+    "ur": "بل بنائیں"
+  },
+  "New Sale": {
+    "en": "New Sale",
+    "ur": "نئی فروخت"
+  },
+  "Mobile Sale": {
+    "en": "Mobile Sale",
+    "ur": "موبائل فروخت"
+  },
+  "Mobile Purchase": {
+    "en": "Mobile Purchase",
+    "ur": "موبائل خرید"
+  },
+  "Purchase": {
+    "en": "Purchase",
+    "ur": "خریداری"
+  },
+  "Purchases": {
+    "en": "Purchases",
+    "ur": "خریداری"
+  },
+  "Sales": {
+    "en": "Sales",
+    "ur": "فروخت"
+  },
+  "Sale": {
+    "en": "Sale",
+    "ur": "فروخت"
+  },
+  "Sale Details": {
+    "en": "Sale Details",
+    "ur": "فروخت کی تفصیل"
+  },
+  "Purchase Details": {
+    "en": "Purchase Details",
+    "ur": "خریداری کی تفصیل"
+  },
+  "Purchase Invoice": {
+    "en": "Purchase Invoice",
+    "ur": "خریداری بل"
+  },
+  "Purchase saved": {
+    "en": "Purchase saved",
+    "ur": "خریداری محفوظ ہو گئی"
+  },
+  "Save Purchase": {
+    "en": "Save Purchase",
+    "ur": "خریداری محفوظ کریں"
+  },
+  "Save Closing": {
+    "en": "Save Closing",
+    "ur": "کیش اختتام محفوظ کریں"
+  },
+  "Generate Invoice": {
+    "en": "Generate Invoice",
+    "ur": "بل بنائیں"
+  },
+  "Invoice": {
+    "en": "Invoice",
+    "ur": "بل"
+  },
+  "Sales Receipt": {
+    "en": "Sales Receipt",
+    "ur": "بل"
+  },
+  "Receipt": {
+    "en": "Receipt",
+    "ur": "بل"
+  },
+  "SALE INVOICE": {
+    "en": "SALE INVOICE",
+    "ur": "بل"
+  },
+  "Invoice Prefix": {
+    "en": "Invoice Prefix",
+    "ur": "بل کا سابقہ"
+  },
+  "Invoice Preview": {
+    "en": "Invoice Preview",
+    "ur": "بل کا پیش منظر"
+  },
+  "Invoice created": {
+    "en": "Invoice created",
+    "ur": "بل بن گیا"
+  },
+  "View invoice": {
+    "en": "View invoice",
+    "ur": "بل دیکھیں"
+  },
+  "Cart & Payment": {
+    "en": "Cart & Payment",
+    "ur": "بل اور ادائیگی"
+  },
+  "Clear cart": {
+    "en": "Clear cart",
+    "ur": "بل خالی کریں"
+  },
+  "Cart is empty": {
+    "en": "Cart is empty",
+    "ur": "بل خالی ہے۔"
+  },
+  "The current sale cart is empty.": {
+    "en": "The current sale cart is empty.",
+    "ur": "بل خالی ہے۔"
+  },
+  "Cart cleared": {
+    "en": "Cart cleared",
+    "ur": "بل خالی کر دیا گیا"
+  },
+  "Add a product to begin a sale": {
+    "en": "Add a product to begin a sale",
+    "ur": "فروخت شروع کرنے کے لیے آئٹم شامل کریں"
+  },
+  "Add one or more products before collecting payment.": {
+    "en": "Add one or more products before collecting payment.",
+    "ur": "ادائیگی سے پہلے آئٹم شامل کریں۔"
+  },
+  "Choose a product": {
+    "en": "Choose a product",
+    "ur": "آئٹم منتخب کریں"
+  },
+  "Choose products from the search panel.": {
+    "en": "Choose products from the search panel.",
+    "ur": "تلاش سے آئٹم منتخب کریں۔"
+  },
+  "Review cart quantities before collecting payment.": {
+    "en": "Review cart quantities before collecting payment.",
+    "ur": "ادائیگی سے پہلے تعداد چیک کریں۔"
+  },
+  "Sale Type": {
+    "en": "Sale Type",
+    "ur": "فروخت کی قسم"
+  },
+  "Cash Sale": {
+    "en": "Cash Sale",
+    "ur": "نقد فروخت"
+  },
+  "Credit Sale": {
+    "en": "Credit Sale",
+    "ur": "ادھار فروخت"
+  },
+  "Cash": {
+    "en": "Cash",
+    "ur": "نقد"
+  },
+  "CASH": {
+    "en": "CASH",
+    "ur": "نقد"
+  },
+  "Card": {
+    "en": "Card",
+    "ur": "کارڈ"
+  },
+  "Credit Card": {
+    "en": "Credit Card",
+    "ur": "کارڈ"
+  },
+  "Bank Transfer": {
+    "en": "Bank Transfer",
+    "ur": "بینک ٹرانسفر"
+  },
+  "Credit": {
+    "en": "Credit",
+    "ur": "ادھار"
+  },
+  "Discount": {
+    "en": "Discount",
+    "ur": "رعایت"
+  },
+  "Tax (optional)": {
+    "en": "Tax (optional)",
+    "ur": "ٹیکس (اختیاری)"
+  },
+  "Subtotal": {
+    "en": "Subtotal",
+    "ur": "ذیلی کل"
+  },
+  "Total": {
+    "en": "Total",
+    "ur": "کل رقم"
+  },
+  "Total Price": {
+    "en": "Total Price",
+    "ur": "کل رقم"
+  },
+  "Paid": {
+    "en": "Paid",
+    "ur": "ادا شدہ"
+  },
+  "Paid Amount": {
+    "en": "Paid Amount",
+    "ur": "ادا شدہ"
+  },
+  "Due Amount": {
+    "en": "Due Amount",
+    "ur": "باقی رقم"
+  },
+  "Amount to settle": {
+    "en": "Amount to settle",
+    "ur": "باقی رقم"
+  },
+  "Amount": {
+    "en": "Amount",
+    "ur": "رقم"
+  },
+  "Payment Method": {
+    "en": "Payment Method",
+    "ur": "ادائیگی کا طریقہ"
+  },
+  "Select payment method": {
+    "en": "Select payment method",
+    "ur": "ادائیگی کا طریقہ منتخب کریں"
+  },
+  "Payment Details": {
+    "en": "Payment Details",
+    "ur": "ادائیگی کی تفصیل"
+  },
+  "Payment Date": {
+    "en": "Payment Date",
+    "ur": "ادائیگی کی تاریخ"
+  },
+  "Collect Payment": {
+    "en": "Collect Payment",
+    "ur": "ادائیگی وصول کریں"
+  },
+  "Receive Payment": {
+    "en": "Receive Payment",
+    "ur": "ادائیگی وصول کریں"
+  },
+  "Receive payment": {
+    "en": "Receive payment",
+    "ur": "ادائیگی وصول کریں"
+  },
+  "Payment collected": {
+    "en": "Payment collected",
+    "ur": "ادائیگی وصول ہو گئی"
+  },
+  "Payment received": {
+    "en": "Payment received",
+    "ur": "ادائیگی وصول ہو گئی"
+  },
+  "Payment incomplete": {
+    "en": "Payment incomplete",
+    "ur": "ادائیگی نامکمل ہے"
+  },
+  "Enter agreed price": {
+    "en": "Enter agreed price",
+    "ur": "طے شدہ قیمت لکھیں"
+  },
+  "Enter sale price": {
+    "en": "Enter sale price",
+    "ur": "فروخت قیمت لکھیں"
+  },
+  "Customer": {
+    "en": "Customer",
+    "ur": "گاہک"
+  },
+  "Customer / Party": {
+    "en": "Customer / Party",
+    "ur": "گاہک"
+  },
+  "Customers": {
+    "en": "Customers",
+    "ur": "گاہک"
+  },
+  "Add Customer": {
+    "en": "Add Customer",
+    "ur": "گاہک شامل کریں"
+  },
+  "Save Customer": {
+    "en": "Save Customer",
+    "ur": "گاہک محفوظ کریں"
+  },
+  "Customer Name": {
+    "en": "Customer Name",
+    "ur": "گاہک کا نام"
+  },
+  "Customer Details": {
+    "en": "Customer Details",
+    "ur": "گاہک کی تفصیل"
+  },
+  "Customer added": {
+    "en": "Customer added",
+    "ur": "گاہک شامل ہو گیا"
+  },
+  "Customer details missing": {
+    "en": "Customer details missing",
+    "ur": "گاہک کی تفصیل درکار ہے"
+  },
+  "Total Customers": {
+    "en": "Total Customers",
+    "ur": "کل گاہک"
+  },
+  "Customer Ledger": {
+    "en": "Customer Ledger",
+    "ur": "کھاتہ"
+  },
+  "Ledger": {
+    "en": "Ledger",
+    "ur": "کھاتہ"
+  },
+  "Ledgers": {
+    "en": "Ledgers",
+    "ur": "کھاتہ"
+  },
+  "Customer Credit": {
+    "en": "Customer Credit",
+    "ur": "گاہک کا ادھار"
+  },
+  "Customer Receivable": {
+    "en": "Customer Receivable",
+    "ur": "قابل وصول رقم"
+  },
+  "Receivable balance": {
+    "en": "Receivable balance",
+    "ur": "قابل وصول رقم"
+  },
+  "Receivable balances": {
+    "en": "Receivable balances",
+    "ur": "قابل وصول رقم"
+  },
+  "Collect from customers": {
+    "en": "Collect from customers",
+    "ur": "گاہکوں سے وصولی"
+  },
+  "Walk-in Customer": {
+    "en": "Walk-in Customer",
+    "ur": "عام گاہک"
+  },
+  "Supplier": {
+    "en": "Supplier",
+    "ur": "سپلائر"
+  },
+  "Suppliers": {
+    "en": "Suppliers",
+    "ur": "سپلائرز"
+  },
+  "Supplier Name": {
+    "en": "Supplier Name",
+    "ur": "سپلائر کا نام"
+  },
+  "Supplier or company name": {
+    "en": "Supplier or company name",
+    "ur": "سپلائر یا کمپنی کا نام"
+  },
+  "Add Supplier": {
+    "en": "Add Supplier",
+    "ur": "سپلائر شامل کریں"
+  },
+  "Save Supplier": {
+    "en": "Save Supplier",
+    "ur": "سپلائر محفوظ کریں"
+  },
+  "Supplier added": {
+    "en": "Supplier added",
+    "ur": "سپلائر شامل ہو گیا"
+  },
+  "Supplier details missing": {
+    "en": "Supplier details missing",
+    "ur": "سپلائر کی تفصیل درکار ہے"
+  },
+  "Total Suppliers": {
+    "en": "Total Suppliers",
+    "ur": "کل سپلائرز"
+  },
+  "Supplier Ledger": {
+    "en": "Supplier Ledger",
+    "ur": "سپلائر کا کھاتہ"
+  },
+  "Supplier Payable": {
+    "en": "Supplier Payable",
+    "ur": "قابل ادائیگی رقم"
+  },
+  "Supplier Payables": {
+    "en": "Supplier Payables",
+    "ur": "قابل ادائیگی رقم"
+  },
+  "Payable": {
+    "en": "Payable",
+    "ur": "قابل ادائیگی رقم"
+  },
+  "Payable balances": {
+    "en": "Payable balances",
+    "ur": "قابل ادائیگی رقم"
+  },
+  "Top Payables": {
+    "en": "Top Payables",
+    "ur": "بڑی ادائیگیاں"
+  },
+  "Total Payable": {
+    "en": "Total Payable",
+    "ur": "کل قابل ادائیگی"
+  },
+  "Opening Payable": {
+    "en": "Opening Payable",
+    "ur": "ابتدائی قابل ادائیگی"
+  },
+  "Balance": {
+    "en": "Balance",
+    "ur": "بیلنس"
+  },
+  "Opening Balance": {
+    "en": "Opening Balance",
+    "ur": "ابتدائی بیلنس"
+  },
+  "Search customer name or mobile": {
+    "en": "Search customer name or mobile",
+    "ur": "گاہک کا نام یا موبائل تلاش کریں"
+  },
+  "Search supplier, phone or city": {
+    "en": "Search supplier, phone or city",
+    "ur": "سپلائر، موبائل یا شہر تلاش کریں"
+  },
+  "Enter customer name and mobile number.": {
+    "en": "Enter customer name and mobile number.",
+    "ur": "گاہک کا نام اور موبائل لکھیں۔"
+  },
+  "Enter supplier name and mobile number.": {
+    "en": "Enter supplier name and mobile number.",
+    "ur": "سپلائر کا نام اور موبائل لکھیں۔"
+  },
+  "Cash Ledger": {
+    "en": "Cash Ledger",
+    "ur": "نقد کھاتہ"
+  },
+  "Cash Closing": {
+    "en": "Cash Closing",
+    "ur": "کیش کا اختتام"
+  },
+  "New Cash Closing": {
+    "en": "New Cash Closing",
+    "ur": "کیش کا اختتام"
+  },
+  "Cash Sessions": {
+    "en": "Cash Sessions",
+    "ur": "کیش سیشنز"
+  },
+  "Opened By": {
+    "en": "Opened By",
+    "ur": "شروع کرنے والا"
+  },
+  "Opening": {
+    "en": "Opening",
+    "ur": "ابتدائی نقد"
+  },
+  "Opening Cash": {
+    "en": "Opening Cash",
+    "ur": "ابتدائی نقد"
+  },
+  "Sales Cash": {
+    "en": "Sales Cash",
+    "ur": "فروخت کی نقد رقم"
+  },
+  "Closing": {
+    "en": "Closing",
+    "ur": "اختتامی نقد"
+  },
+  "Closing Cash": {
+    "en": "Closing Cash",
+    "ur": "اختتامی نقد"
+  },
+  "Cash closing saved": {
+    "en": "Cash closing saved",
+    "ur": "کیش اختتام محفوظ ہو گیا"
+  },
+  "Enter opening cash.": {
+    "en": "Enter opening cash.",
+    "ur": "ابتدائی نقد لکھیں۔"
+  },
+  "Opening cash missing": {
+    "en": "Opening cash missing",
+    "ur": "ابتدائی نقد لکھیں۔"
+  },
+  "Expenses": {
+    "en": "Expenses",
+    "ur": "اخراجات"
+  },
+  "Expense List": {
+    "en": "Expense List",
+    "ur": "اخراجات"
+  },
+  "Expense Records": {
+    "en": "Expense Records",
+    "ur": "اخراجات"
+  },
+  "Add Expense": {
+    "en": "Add Expense",
+    "ur": "خرچ شامل کریں"
+  },
+  "Save Expense": {
+    "en": "Save Expense",
+    "ur": "خرچ محفوظ کریں"
+  },
+  "Expense saved": {
+    "en": "Expense saved",
+    "ur": "خرچ محفوظ ہو گیا"
+  },
+  "Expense missing": {
+    "en": "Expense missing",
+    "ur": "خرچ نہیں ملا"
+  },
+  "Total Expenses": {
+    "en": "Total Expenses",
+    "ur": "کل اخراجات"
+  },
+  "Recorded Expenses": {
+    "en": "Recorded Expenses",
+    "ur": "کل اخراجات"
+  },
+  "Today Expense": {
+    "en": "Today Expense",
+    "ur": "آج کا خرچ"
+  },
+  "Category and amount are required.": {
+    "en": "Category and amount are required.",
+    "ur": "قسم اور رقم ضروری ہیں۔"
+  },
+  "Rent": {
+    "en": "Rent",
+    "ur": "کرایہ"
+  },
+  "Salary": {
+    "en": "Salary",
+    "ur": "تنخواہ"
+  },
+  "Utility": {
+    "en": "Utility",
+    "ur": "یوٹیلیٹی بل"
+  },
+  "Transport": {
+    "en": "Transport",
+    "ur": "ٹرانسپورٹ"
+  },
+  "Other": {
+    "en": "Other",
+    "ur": "دیگر"
+  },
+  "General": {
+    "en": "General",
+    "ur": "عمومی"
+  },
+  "Reports": {
+    "en": "Reports",
+    "ur": "رپورٹس"
+  },
+  "Report": {
+    "en": "Report",
+    "ur": "رپورٹس"
+  },
+  "Report period": {
+    "en": "Report period",
+    "ur": "رپورٹ کی مدت"
+  },
+  "This Month": {
+    "en": "This Month",
+    "ur": "اس ماہ"
+  },
+  "Last Month": {
+    "en": "Last Month",
+    "ur": "گزشتہ ماہ"
+  },
+  "This Year": {
+    "en": "This Year",
+    "ur": "اس سال"
+  },
+  "Last 7 days": {
+    "en": "Last 7 days",
+    "ur": "گزشتہ ۷ دن"
+  },
+  "Period Sales": {
+    "en": "Period Sales",
+    "ur": "منتخب مدت کی فروخت"
+  },
+  "Period Invoices": {
+    "en": "Period Invoices",
+    "ur": "منتخب مدت کے بل"
+  },
+  "Recorded Invoices": {
+    "en": "Recorded Invoices",
+    "ur": "کل بل"
+  },
+  "Today Sales": {
+    "en": "Today Sales",
+    "ur": "آج کی فروخت"
+  },
+  "Total Sales Record": {
+    "en": "Total Sales Record",
+    "ur": "کل فروخت"
+  },
+  "Recorded today": {
+    "en": "Recorded today",
+    "ur": "آج درج شدہ"
+  },
+  "Recorded sales over the last seven days": {
+    "en": "Recorded sales over the last seven days",
+    "ur": "گزشتہ سات دن کی فروخت"
+  },
+  "Recent Sales": {
+    "en": "Recent Sales",
+    "ur": "حالیہ فروخت"
+  },
+  "Latest completed invoices": {
+    "en": "Latest completed invoices",
+    "ur": "حالیہ مکمل بل"
+  },
+  "Sales in selected period": {
+    "en": "Sales in selected period",
+    "ur": "منتخب مدت کی فروخت"
+  },
+  "No sales in this period.": {
+    "en": "No sales in this period.",
+    "ur": "اس مدت میں کوئی فروخت نہیں۔"
+  },
+  "Sales Intelligence": {
+    "en": "Sales Intelligence",
+    "ur": "فروخت کا جائزہ"
+  },
+  "Business Health": {
+    "en": "Business Health",
+    "ur": "کاروبار کی صورتحال"
+  },
+  "Current shop position": {
+    "en": "Current shop position",
+    "ur": "دکان کی صورتحال"
+  },
+  "Projected stock margin": {
+    "en": "Projected stock margin",
+    "ur": "اسٹاک کا متوقع منافع"
+  },
+  "Sale value in stock": {
+    "en": "Sale value in stock",
+    "ur": "اسٹاک کی فروخت مالیت"
+  },
+  "View full reports": {
+    "en": "View full reports",
+    "ur": "مکمل رپورٹس دیکھیں"
+  },
+  "Report exported": {
+    "en": "Report exported",
+    "ur": "رپورٹ برآمد ہو گئی"
+  },
+  "Report range updated": {
+    "en": "Report range updated",
+    "ur": "رپورٹ کی مدت بدل گئی"
+  },
+  "Installment": {
+    "en": "Installment",
+    "ur": "اقساط"
+  },
+  "Installments": {
+    "en": "Installments",
+    "ur": "اقساط"
+  },
+  "Add Installment": {
+    "en": "Add Installment",
+    "ur": "قسط بنائیں"
+  },
+  "Create Installment": {
+    "en": "Create Installment",
+    "ur": "قسط بنائیں"
+  },
+  "Installment created": {
+    "en": "Installment created",
+    "ur": "قسط بن گئی"
+  },
+  "Advance Payment": {
+    "en": "Advance Payment",
+    "ur": "پیشگی ادائیگی"
+  },
+  "Down Payment": {
+    "en": "Down Payment",
+    "ur": "پیشگی ادائیگی"
+  },
+  "Months": {
+    "en": "Months",
+    "ur": "مہینے"
+  },
+  "6 Months": {
+    "en": "6 Months",
+    "ur": "۶ ماہ"
+  },
+  "9 Months": {
+    "en": "9 Months",
+    "ur": "۹ ماہ"
+  },
+  "12 Months": {
+    "en": "12 Months",
+    "ur": "۱۲ ماہ"
+  },
+  "First Due Date": {
+    "en": "First Due Date",
+    "ur": "پہلی قسط کی تاریخ"
+  },
+  "Installment Due": {
+    "en": "Installment Due",
+    "ur": "واجب الادا قسط"
+  },
+  "Installment due amount": {
+    "en": "Installment due amount",
+    "ur": "واجب الادا قسط"
+  },
+  "Due Installments": {
+    "en": "Due Installments",
+    "ur": "آنے والی اقساط"
+  },
+  "Upcoming Dues": {
+    "en": "Upcoming Dues",
+    "ur": "آنے والی اقساط"
+  },
+  "Installment Collection": {
+    "en": "Installment Collection",
+    "ur": "قسط وصول کریں"
+  },
+  "Receive Monthly Payment": {
+    "en": "Receive Monthly Payment",
+    "ur": "قسط وصول کریں"
+  },
+  "Installments overview": {
+    "en": "Installments overview",
+    "ur": "اقساط کا جائزہ"
+  },
+  "Installment Collection Insight": {
+    "en": "Installment Collection Insight",
+    "ur": "اقساط کا جائزہ"
+  },
+  "Due Today": {
+    "en": "Due Today",
+    "ur": "آج واجب الادا"
+  },
+  "Payments due today": {
+    "en": "Payments due today",
+    "ur": "آج واجب الادا"
+  },
+  "Due in 3 Days": {
+    "en": "Due in 3 Days",
+    "ur": "۳ دن میں واجب الادا"
+  },
+  "Overdue": {
+    "en": "Overdue",
+    "ur": "تاخیر شدہ"
+  },
+  "Next scheduled payments": {
+    "en": "Next scheduled payments",
+    "ur": "اگلی ادائیگیاں"
+  },
+  "No installment found": {
+    "en": "No installment found",
+    "ur": "کوئی قسط نہیں ملی"
+  },
+  "Installment not found": {
+    "en": "Installment not found",
+    "ur": "کوئی قسط نہیں ملی"
+  },
+  "No overdue customers.": {
+    "en": "No overdue customers.",
+    "ur": "کوئی تاخیر شدہ ادائیگی نہیں۔"
+  },
+  "Follow up on overdue payments.": {
+    "en": "Follow up on overdue payments.",
+    "ur": "تاخیر شدہ ادائیگیوں کی یاددہانی کریں۔"
+  },
+  "Repair": {
+    "en": "Repair",
+    "ur": "مرمت"
+  },
+  "Repair Job": {
+    "en": "Repair Job",
+    "ur": "مرمت"
+  },
+  "Repair Jobs": {
+    "en": "Repair Jobs",
+    "ur": "مرمت"
+  },
+  "Add Repair Job": {
+    "en": "Add Repair Job",
+    "ur": "مرمت شامل کریں"
+  },
+  "Save Repair Job": {
+    "en": "Save Repair Job",
+    "ur": "مرمت محفوظ کریں"
+  },
+  "Edit Job": {
+    "en": "Edit Job",
+    "ur": "مرمت تبدیل کریں"
+  },
+  "Update Repair Job": {
+    "en": "Update Repair Job",
+    "ur": "مرمت تبدیل کریں"
+  },
+  "Repair Job Details": {
+    "en": "Repair Job Details",
+    "ur": "مرمت کی تفصیل"
+  },
+  "Device": {
+    "en": "Device",
+    "ur": "ڈیوائس / ماڈل"
+  },
+  "Device / Model": {
+    "en": "Device / Model",
+    "ur": "ڈیوائس / ماڈل"
+  },
+  "Device Details": {
+    "en": "Device Details",
+    "ur": "ڈیوائس کی تفصیل"
+  },
+  "Problem": {
+    "en": "Problem",
+    "ur": "خرابی"
+  },
+  "Problem Type": {
+    "en": "Problem Type",
+    "ur": "خرابی"
+  },
+  "Estimated Cost": {
+    "en": "Estimated Cost",
+    "ur": "تخمینی خرچ"
+  },
+  "Repair Charges": {
+    "en": "Repair Charges",
+    "ur": "مرمت کی رقم"
+  },
+  "Expected Delivery": {
+    "en": "Expected Delivery",
+    "ur": "متوقع واپسی"
+  },
+  "Technician": {
+    "en": "Technician",
+    "ur": "کاریگر"
+  },
+  "Technician name (optional)": {
+    "en": "Technician name (optional)",
+    "ur": "کاریگر کا نام (اختیاری)"
+  },
+  "In Progress": {
+    "en": "In Progress",
+    "ur": "کام جاری"
+  },
+  "Ready": {
+    "en": "Ready",
+    "ur": "واپسی کے لیے تیار"
+  },
+  "Ready for Delivery": {
+    "en": "Ready for Delivery",
+    "ur": "واپسی کے لیے تیار"
+  },
+  "Repair Ready": {
+    "en": "Repair Ready",
+    "ur": "واپسی کے لیے تیار"
+  },
+  "Delivered": {
+    "en": "Delivered",
+    "ur": "واپس دے دیا"
+  },
+  "Closed": {
+    "en": "Closed",
+    "ur": "مکمل"
+  },
+  "Job Done": {
+    "en": "Job Done",
+    "ur": "مکمل"
+  },
+  "Pending Repairs": {
+    "en": "Pending Repairs",
+    "ur": "زیر التوا مرمت"
+  },
+  "Open repair": {
+    "en": "Open repair",
+    "ur": "زیر التوا مرمت"
+  },
+  "Repair jobs open": {
+    "en": "Repair jobs open",
+    "ur": "زیر التوا مرمت"
+  },
+  "Total Repairs": {
+    "en": "Total Repairs",
+    "ur": "کل مرمت"
+  },
+  "Repair Workflow": {
+    "en": "Repair Workflow",
+    "ur": "مرمت کی پیش رفت"
+  },
+  "Repair filters": {
+    "en": "Repair filters",
+    "ur": "مرمت کے فلٹرز"
+  },
+  "Repair job created": {
+    "en": "Repair job created",
+    "ur": "مرمت درج ہو گئی"
+  },
+  "Repair updated": {
+    "en": "Repair updated",
+    "ur": "مرمت تبدیل ہو گئی"
+  },
+  "No repair jobs found": {
+    "en": "No repair jobs found",
+    "ur": "مرمت کا ریکارڈ نہیں ملا"
+  },
+  "Repair not found": {
+    "en": "Repair not found",
+    "ur": "مرمت کا ریکارڈ دستیاب نہیں"
+  },
+  "Search customer, phone, device or repair ID": {
+    "en": "Search customer, phone, device or repair ID",
+    "ur": "گاہک، موبائل، ڈیوائس یا مرمت نمبر تلاش کریں"
+  },
+  "Update each job when status changes.": {
+    "en": "Update each job when status changes.",
+    "ur": "حالت بدلنے پر مرمت کا ریکارڈ تازہ کریں۔"
+  },
+  "Wallet": {
+    "en": "Wallet",
+    "ur": "والٹ"
+  },
+  "Wallet In": {
+    "en": "Wallet In",
+    "ur": "والٹ وصولی"
+  },
+  "Wallet Out": {
+    "en": "Wallet Out",
+    "ur": "والٹ ادائیگی"
+  },
+  "Wallet Entry": {
+    "en": "Wallet Entry",
+    "ur": "والٹ اندراج"
+  },
+  "Quick Entry": {
+    "en": "Quick Entry",
+    "ur": "والٹ اندراج"
+  },
+  "EasyPaisa Balance": {
+    "en": "EasyPaisa Balance",
+    "ur": "ایزی پیسہ بیلنس"
+  },
+  "JazzCash Balance": {
+    "en": "JazzCash Balance",
+    "ur": "جاز کیش بیلنس"
+  },
+  "EasyPaisa In": {
+    "en": "EasyPaisa In",
+    "ur": "ایزی پیسہ وصولی"
+  },
+  "EasyPaisa Out": {
+    "en": "EasyPaisa Out",
+    "ur": "ایزی پیسہ ادائیگی"
+  },
+  "JazzCash In": {
+    "en": "JazzCash In",
+    "ur": "جاز کیش وصولی"
+  },
+  "JazzCash Out": {
+    "en": "JazzCash Out",
+    "ur": "جاز کیش ادائیگی"
+  },
+  "EasyPaisa / JazzCash In-Out": {
+    "en": "EasyPaisa / JazzCash In-Out",
+    "ur": "ایزی پیسہ / جاز کیش"
+  },
+  "EasyPaisa / JazzCash Ledger": {
+    "en": "EasyPaisa / JazzCash Ledger",
+    "ur": "ایزی پیسہ / جاز کیش"
+  },
+  "Easypaisa/Jazz": {
+    "en": "Easypaisa/Jazz",
+    "ur": "ایزی پیسہ / جاز کیش"
+  },
+  "EasyPaisa In / Out": {
+    "en": "EasyPaisa In / Out",
+    "ur": "ایزی پیسہ وصولی / ادائیگی"
+  },
+  "JazzCash In / Out": {
+    "en": "JazzCash In / Out",
+    "ur": "جاز کیش وصولی / ادائیگی"
+  },
+  "In": {
+    "en": "In",
+    "ur": "وصولی"
+  },
+  "Out": {
+    "en": "Out",
+    "ur": "ادائیگی"
+  },
+  "Today In": {
+    "en": "Today In",
+    "ur": "آج کی وصولی"
+  },
+  "Today Out": {
+    "en": "Today Out",
+    "ur": "آج کی ادائیگی"
+  },
+  "Fee": {
+    "en": "Fee",
+    "ur": "فیس"
+  },
+  "Fee / Charges": {
+    "en": "Fee / Charges",
+    "ur": "فیس"
+  },
+  "Type": {
+    "en": "Type",
+    "ur": "قسم"
+  },
+  "Party": {
+    "en": "Party",
+    "ur": "فریق"
+  },
+  "Reference": {
+    "en": "Reference",
+    "ur": "حوالہ"
+  },
+  "Transaction ID or note": {
+    "en": "Transaction ID or note",
+    "ur": "ٹرانزیکشن حوالہ یا نوٹ"
+  },
+  "Purpose / reference": {
+    "en": "Purpose / reference",
+    "ur": "ٹرانزیکشن حوالہ یا نوٹ"
+  },
+  "Transactions": {
+    "en": "Transactions",
+    "ur": "لین دین"
+  },
+  "Wallet transaction saved": {
+    "en": "Wallet transaction saved",
+    "ur": "والٹ کا اندراج محفوظ ہو گیا"
+  },
+  "Wallet transaction recorded.": {
+    "en": "Wallet transaction recorded.",
+    "ur": "والٹ کا اندراج محفوظ ہو گیا"
+  },
+  "No wallet ledger found": {
+    "en": "No wallet ledger found",
+    "ur": "والٹ کا ریکارڈ نہیں ملا"
+  },
+  "No wallet transaction found": {
+    "en": "No wallet transaction found",
+    "ur": "والٹ کا ریکارڈ نہیں ملا"
+  },
+  "Enter a valid wallet transaction amount.": {
+    "en": "Enter a valid wallet transaction amount.",
+    "ur": "والٹ کی درست رقم لکھیں۔"
+  },
+  "Select wallet and type, then save.": {
+    "en": "Select wallet and type, then save.",
+    "ur": "والٹ اور قسم منتخب کر کے محفوظ کریں۔"
+  },
+  "Staff & Permissions": {
+    "en": "Staff & Permissions",
+    "ur": "عملہ اور اجازتیں"
+  },
+  "Staff Users": {
+    "en": "Staff Users",
+    "ur": "عملہ اور اجازتیں"
+  },
+  "User Management": {
+    "en": "User Management",
+    "ur": "عملہ اور اجازتیں"
+  },
+  "Staff User": {
+    "en": "Staff User",
+    "ur": "عملے کا اکاؤنٹ"
+  },
+  "Add User": {
+    "en": "Add User",
+    "ur": "عملہ شامل کریں"
+  },
+  "Add Staff": {
+    "en": "Add Staff",
+    "ur": "عملہ شامل کریں"
+  },
+  "Total Staff": {
+    "en": "Total Staff",
+    "ur": "کل عملہ"
+  },
+  "No staff added": {
+    "en": "No staff added",
+    "ur": "ابھی عملہ شامل نہیں"
+  },
+  "User added": {
+    "en": "User added",
+    "ur": "اکاؤنٹ شامل ہو گیا"
+  },
+  "User save failed": {
+    "en": "User save failed",
+    "ur": "اکاؤنٹ محفوظ نہیں ہوا"
+  },
+  "Role": {
+    "en": "Role",
+    "ur": "کردار"
+  },
+  "Owner / Super Admin": {
+    "en": "Owner / Super Admin",
+    "ur": "مالک / مرکزی منتظم"
+  },
+  "Manager": {
+    "en": "Manager",
+    "ur": "منیجر"
+  },
+  "Branch Manager": {
+    "en": "Branch Manager",
+    "ur": "منیجر"
+  },
+  "Cashier": {
+    "en": "Cashier",
+    "ur": "کیشیئر"
+  },
+  "Accountant": {
+    "en": "Accountant",
+    "ur": "اکاؤنٹنٹ"
+  },
+  "Branch": {
+    "en": "Branch",
+    "ur": "برانچ"
+  },
+  "Select branch": {
+    "en": "Select branch",
+    "ur": "برانچ منتخب کریں"
+  },
+  "Branch required": {
+    "en": "Branch required",
+    "ur": "برانچ ضروری ہے"
+  },
+  "Permission Summary": {
+    "en": "Permission Summary",
+    "ur": "اجازتوں کا خلاصہ"
+  },
+  "Owner allowed": {
+    "en": "Owner allowed",
+    "ur": "مالک کو اجازت ہے"
+  },
+  "Limited": {
+    "en": "Limited",
+    "ur": "محدود"
+  },
+  "Audit / Deleted": {
+    "en": "Audit / Deleted",
+    "ur": "حذف شدہ ریکارڈ"
+  },
+  "Audit / Deleted Records": {
+    "en": "Audit / Deleted Records",
+    "ur": "حذف شدہ ریکارڈ"
+  },
+  "Deleted Records": {
+    "en": "Deleted Records",
+    "ur": "حذف شدہ ریکارڈ"
+  },
+  "Audit Mode": {
+    "en": "Audit Mode",
+    "ur": "آڈٹ"
+  },
+  "Audit Safe": {
+    "en": "Audit Safe",
+    "ur": "آڈٹ"
+  },
+  "Audit": {
+    "en": "Audit",
+    "ur": "آڈٹ"
+  },
+  "Deleted By": {
+    "en": "Deleted By",
+    "ur": "حذف کرنے والا"
+  },
+  "Record": {
+    "en": "Record",
+    "ur": "ریکارڈ"
+  },
+  "Action": {
+    "en": "Action",
+    "ur": "عمل"
+  },
+  "Date": {
+    "en": "Date",
+    "ur": "تاریخ"
+  },
+  "By": {
+    "en": "By",
+    "ur": "از"
+  },
+  "No deleted record": {
+    "en": "No deleted record",
+    "ur": "کوئی حذف شدہ ریکارڈ نہیں"
+  },
+  "No stock movement": {
+    "en": "No stock movement",
+    "ur": "اسٹاک کی کوئی نقل و حرکت نہیں"
+  },
+  "Stock Movement": {
+    "en": "Stock Movement",
+    "ur": "اسٹاک کی نقل و حرکت"
+  },
+  "Stock Movements": {
+    "en": "Stock Movements",
+    "ur": "اسٹاک کی نقل و حرکت"
+  },
+  "Stock Health": {
+    "en": "Stock Health",
+    "ur": "اسٹاک کی صورتحال"
+  },
+  "Soft Delete": {
+    "en": "Soft Delete",
+    "ur": "عارضی حذف"
+  },
+  "Record soft deleted": {
+    "en": "Record soft deleted",
+    "ur": "ریکارڈ حذف شدہ فہرست میں منتقل ہو گیا"
+  },
+  "Product moved to Deleted Records": {
+    "en": "Product moved to Deleted Records",
+    "ur": "ریکارڈ حذف شدہ فہرست میں منتقل ہو گیا"
+  },
+  "It can be restored from Audit / Deleted Records.": {
+    "en": "It can be restored from Audit / Deleted Records.",
+    "ur": "اسے حذف شدہ ریکارڈ سے بحال کیا جا سکتا ہے۔"
+  },
+  "Receipt Printing": {
+    "en": "Receipt Printing",
+    "ur": "بل کی پرنٹنگ"
+  },
+  "Thermal Invoice (80mm)": {
+    "en": "Thermal Invoice (80mm)",
+    "ur": "تھرمل بل (۸۰ ملی میٹر)"
+  },
+  "Print (80mm)": {
+    "en": "Print (80mm)",
+    "ur": "تھرمل بل (۸۰ ملی میٹر)"
+  },
+  "Customer Copy": {
+    "en": "Customer Copy",
+    "ur": "گاہک کی کاپی"
+  },
+  "Office Copy": {
+    "en": "Office Copy",
+    "ur": "دفتر کی کاپی"
+  },
+  "Customer Sign": {
+    "en": "Customer Sign",
+    "ur": "گاہک کے دستخط"
+  },
+  "Shop Sign": {
+    "en": "Shop Sign",
+    "ur": "دکان کے دستخط"
+  },
+  "REPAIR RECEIPT": {
+    "en": "REPAIR RECEIPT",
+    "ur": "مرمت کی رسید"
+  },
+  "Print Job Receipt": {
+    "en": "Print Job Receipt",
+    "ur": "مرمت کی رسید"
+  },
+  "Print job receipt": {
+    "en": "Print job receipt",
+    "ur": "مرمت کی رسید پرنٹ کریں"
+  },
+  "Repair Job Thermal Receipt (80mm)": {
+    "en": "Repair Job Thermal Receipt (80mm)",
+    "ur": "مرمت کی تھرمل رسید (۸۰ ملی میٹر)"
+  },
+  "Wallet Receipt": {
+    "en": "Wallet Receipt",
+    "ur": "والٹ رسید"
+  },
+  "Wallet Thermal Receipt (80mm)": {
+    "en": "Wallet Thermal Receipt (80mm)",
+    "ur": "والٹ تھرمل رسید (۸۰ ملی میٹر)"
+  },
+  "Thank you": {
+    "en": "Thank you",
+    "ur": "شکریہ"
+  },
+  "Warranty only on mentioned repair work.": {
+    "en": "Warranty only on mentioned repair work.",
+    "ur": "وارنٹی صرف درج شدہ مرمت پر ہے۔"
+  },
+  "Exchange / warranty according to shop policy.": {
+    "en": "Exchange / warranty according to shop policy.",
+    "ur": "تبدیلی اور وارنٹی دکان کی پالیسی کے مطابق۔"
+  },
+  "Device received by customer": {
+    "en": "Device received by customer",
+    "ur": "گاہک نے ڈیوائس وصول کر لی"
+  },
+  "Receipt unavailable": {
+    "en": "Receipt unavailable",
+    "ur": "رسید دستیاب نہیں"
+  },
+  "Receipt exported": {
+    "en": "Receipt exported",
+    "ur": "رسید برآمد ہو گئی"
+  },
+  "Print window opened": {
+    "en": "Print window opened",
+    "ur": "پرنٹ ونڈو کھل گئی"
+  },
+  "Open an invoice first.": {
+    "en": "Open an invoice first.",
+    "ur": "پہلے بل کھولیں۔"
+  },
+  "Support history": {
+    "en": "Support history",
+    "ur": "پچھلی درخواستیں"
+  },
+  "Previous Requests": {
+    "en": "Previous Requests",
+    "ur": "پچھلی درخواستیں"
+  },
+  "Send us a Request": {
+    "en": "Send us a Request",
+    "ur": "مدد کی درخواست"
+  },
+  "Send Request": {
+    "en": "Send Request",
+    "ur": "درخواست بھیجیں"
+  },
+  "Issue Type": {
+    "en": "Issue Type",
+    "ur": "مسئلے کی قسم"
+  },
+  "Select issue type": {
+    "en": "Select issue type",
+    "ur": "مسئلے کی قسم منتخب کریں"
+  },
+  "Priority": {
+    "en": "Priority",
+    "ur": "ترجیح"
+  },
+  "Select priority": {
+    "en": "Select priority",
+    "ur": "ترجیح منتخب کریں"
+  },
+  "High": {
+    "en": "High",
+    "ur": "زیادہ"
+  },
+  "Medium": {
+    "en": "Medium",
+    "ur": "درمیانی"
+  },
+  "Low": {
+    "en": "Low",
+    "ur": "کم"
+  },
+  "Complaint / Message": {
+    "en": "Complaint / Message",
+    "ur": "شکایت / پیغام"
+  },
+  "Describe your issue in detail…": {
+    "en": "Describe your issue in detail…",
+    "ur": "اپنا مسئلہ لکھیں…"
+  },
+  "Support request sent": {
+    "en": "Support request sent",
+    "ur": "درخواست بھیج دی گئی"
+  },
+  "Request incomplete": {
+    "en": "Request incomplete",
+    "ur": "درخواست نامکمل ہے"
+  },
+  "Your request has been added to the help center.": {
+    "en": "Your request has been added to the help center.",
+    "ur": "آپ کی درخواست درج ہو گئی ہے۔"
+  },
+  "Open": {
+    "en": "Open",
+    "ur": "کھلا"
+  },
+  "Safe": {
+    "en": "Safe",
+    "ur": "محفوظ"
+  },
+  "Privacy": {
+    "en": "Privacy",
+    "ur": "رازداری"
+  },
+  "Required fields missing": {
+    "en": "Required fields missing",
+    "ur": "ضروری معلومات درج کریں"
+  },
+  "Required details missing": {
+    "en": "Required details missing",
+    "ur": "ضروری معلومات درج کریں"
+  },
+  "Invalid amount": {
+    "en": "Invalid amount",
+    "ur": "درست رقم درج کریں"
+  },
+  "Amount required": {
+    "en": "Amount required",
+    "ur": "درست رقم درج کریں"
+  },
+  "File error": {
+    "en": "File error",
+    "ur": "فائل نہیں پڑھی جا سکی"
+  },
+  "File read error": {
+    "en": "File read error",
+    "ur": "فائل نہیں پڑھی جا سکی"
+  },
+  "Image error": {
+    "en": "Image error",
+    "ur": "تصویر درست نہیں"
+  },
+  "Invalid image": {
+    "en": "Invalid image",
+    "ur": "تصویر درست نہیں"
+  },
+  "Image too large": {
+    "en": "Image too large",
+    "ur": "فائل بہت بڑی ہے"
+  },
+  "File too large": {
+    "en": "File too large",
+    "ur": "فائل بہت بڑی ہے"
+  },
+  "No file selected": {
+    "en": "No file selected",
+    "ur": "کوئی فائل منتخب نہیں"
+  },
+  "No picture": {
+    "en": "No picture",
+    "ur": "تصویر نہیں"
+  },
+  "Photo": {
+    "en": "Photo",
+    "ur": "تصویر"
+  },
+  "Photo optional": {
+    "en": "Photo optional",
+    "ur": "تصویر"
+  },
+  "Choose Logo": {
+    "en": "Choose Logo",
+    "ur": "لوگو منتخب کریں"
+  },
+  "Remove Logo": {
+    "en": "Remove Logo",
+    "ur": "لوگو ہٹائیں"
+  },
+  "Choose Product Picture": {
+    "en": "Choose Product Picture",
+    "ur": "آئٹم کی تصویر منتخب کریں"
+  },
+  "Remove Picture": {
+    "en": "Remove Picture",
+    "ur": "تصویر ہٹائیں"
+  },
+  "Logo ready": {
+    "en": "Logo ready",
+    "ur": "تصویر تیار ہے"
+  },
+  "Picture added": {
+    "en": "Picture added",
+    "ur": "تصویر تیار ہے"
+  },
+  "Logo removed": {
+    "en": "Logo removed",
+    "ur": "تصویر ہٹا دی گئی"
+  },
+  "Picture removed": {
+    "en": "Picture removed",
+    "ur": "تصویر ہٹا دی گئی"
+  },
+  "Documents": {
+    "en": "Documents",
+    "ur": "دستاویزات"
+  },
+  "Document": {
+    "en": "Document",
+    "ur": "دستاویزات"
+  },
+  "CNIC (Optional)": {
+    "en": "CNIC (Optional)",
+    "ur": "شناختی کارڈ (اختیاری)"
+  },
+  "CNIC Front": {
+    "en": "CNIC Front",
+    "ur": "شناختی کارڈ کا سامنے والا رخ"
+  },
+  "CNIC Back": {
+    "en": "CNIC Back",
+    "ur": "شناختی کارڈ کا پچھلا رخ"
+  },
+  "Optional second number": {
+    "en": "Optional second number",
+    "ur": "دوسرا نمبر (اختیاری)"
+  },
+  "Complete market / road / city address": {
+    "en": "Complete market / road / city address",
+    "ur": "مکمل بازار، سڑک اور شہر کا پتہ"
+  },
+  "Enter temporary password": {
+    "en": "Enter temporary password",
+    "ur": "عارضی پاس ورڈ لکھیں"
+  },
+  "Enter your secure password": {
+    "en": "Enter your secure password",
+    "ur": "اپنا پاس ورڈ لکھیں"
+  },
+  "Enter your owner mobile and password.": {
+    "en": "Enter your owner mobile and password.",
+    "ur": "مالک کا موبائل اور پاس ورڈ لکھیں۔"
+  },
+  "Enter your mobile number or email.": {
+    "en": "Enter your mobile number or email.",
+    "ur": "اپنا موبائل نمبر یا ای میل لکھیں۔"
+  },
+  "Enter your password.": {
+    "en": "Enter your password.",
+    "ur": "اپنا پاس ورڈ لکھیں۔"
+  },
+  "Toggle sidebar": {
+    "en": "Toggle sidebar",
+    "ur": "سائیڈ مینو کھولیں یا بند کریں"
+  },
+  "Toggle theme": {
+    "en": "Toggle theme",
+    "ur": "تھیم بدلیں"
+  },
+  "Main navigation": {
+    "en": "Main navigation",
+    "ur": "مرکزی مینو"
+  },
+  "Rs.": {
+    "en": "Rs.",
+    "ur": "روپے"
+  },
+  "Rs. {0}": {
+    "en": "Rs. {0}",
+    "ur": "{0} روپے"
+  },
+  "Rs. 0": {
+    "en": "Rs. 0",
+    "ur": "۰ روپے"
+  },
+  "1 Month": {
+    "en": "1 Month",
+    "ur": "۱ ماہ"
+  },
+  "3 Months": {
+    "en": "3 Months",
+    "ur": "۳ ماہ"
+  },
+  "7 Days": {
+    "en": "7 Days",
+    "ur": "۷ دن"
+  },
+  "15 Days": {
+    "en": "15 Days",
+    "ur": "۱۵ دن"
+  },
+  "Today": {
+    "en": "Today",
+    "ur": "آج"
+  },
+  "Now": {
+    "en": "Now",
+    "ur": "ابھی"
+  },
+  "Last 30 days": {
+    "en": "Last 30 days",
+    "ur": "گزشتہ ۳۰ دن"
+  },
+  "All recorded": {
+    "en": "All recorded",
+    "ur": "تمام ریکارڈ"
+  },
+  "All screens": {
+    "en": "All screens",
+    "ur": "تمام اسکرینز"
+  },
+  "Actual Cash Count": {
+    "en": "Actual Cash Count",
+    "ur": "گنی گئی نقد رقم"
+  },
+  "Actual closing cash enter karein.": {
+    "en": "Enter the actual closing cash.",
+    "ur": "اصل اختتامی نقد لکھیں۔"
+  },
+  "Expected Cash": {
+    "en": "Expected Cash",
+    "ur": "متوقع نقد"
+  },
+  "Expected Closing": {
+    "en": "Expected Closing",
+    "ur": "متوقع نقد"
+  },
+  "Expected {0} · Actual {1}": {
+    "en": "Expected {0} · Actual {1}",
+    "ur": "متوقع {0} · اصل {1}"
+  },
+  "Cash Impact": {
+    "en": "Cash Impact",
+    "ur": "نقد پر اثر"
+  },
+  "Cash Sales": {
+    "en": "Cash Sales",
+    "ur": "نقد فروخت"
+  },
+  "Cash & Wallet Ledger": {
+    "en": "Cash & Wallet Ledger",
+    "ur": "نقد اور والٹ کھاتہ"
+  },
+  "Closing History": {
+    "en": "Closing History",
+    "ur": "کیش اختتام کی تاریخ"
+  },
+  "Close Today": {
+    "en": "Close Today",
+    "ur": "آج کا کیش بند کریں"
+  },
+  "Save Cash Closing": {
+    "en": "Save Cash Closing",
+    "ur": "کیش اختتام محفوظ کریں"
+  },
+  "Cash closing saved. Difference: {0}": {
+    "en": "Cash closing saved. Difference: {0}",
+    "ur": "کیش اختتام محفوظ ہو گیا۔ فرق: {0}"
+  },
+  "Bill Summary": {
+    "en": "Bill Summary",
+    "ur": "بل کا خلاصہ"
+  },
+  "Save Bill": {
+    "en": "Save Bill",
+    "ur": "بل محفوظ کریں"
+  },
+  "Save Invoice": {
+    "en": "Save Invoice",
+    "ur": "بل محفوظ کریں"
+  },
+  "Review Payment": {
+    "en": "Review Payment",
+    "ur": "ادائیگی کا جائزہ"
+  },
+  "Review payment, then save invoice": {
+    "en": "Review payment, then save invoice",
+    "ur": "ادائیگی چیک کر کے بل محفوظ کریں"
+  },
+  "Save Password & Open Dashboard": {
+    "en": "Save Password & Open Dashboard",
+    "ur": "پاس ورڈ محفوظ کریں اور دکان کھولیں"
+  },
+  "Find Product": {
+    "en": "Find Product",
+    "ur": "آئٹم تلاش کریں"
+  },
+  "Add at least one product before collecting payment.": {
+    "en": "Add at least one product before collecting payment.",
+    "ur": "ادائیگی سے پہلے کم از کم ایک آئٹم شامل کریں۔"
+  },
+  "Clear cart?": {
+    "en": "Clear cart?",
+    "ur": "بل خالی کریں؟"
+  },
+  "All items in this bill will be removed.": {
+    "en": "All items in this bill will be removed.",
+    "ur": "اس بل کے تمام آئٹمز ہٹا دیے جائیں گے۔"
+  },
+  "Cart cleared.": {
+    "en": "Cart cleared.",
+    "ur": "بل خالی کر دیا گیا۔"
+  },
+  "Clear search": {
+    "en": "Clear search",
+    "ur": "تلاش صاف کریں"
+  },
+  "Increase quantity": {
+    "en": "Increase quantity",
+    "ur": "تعداد بڑھائیں"
+  },
+  "Decrease quantity": {
+    "en": "Decrease quantity",
+    "ur": "تعداد کم کریں"
+  },
+  "Enter whole numbers only.": {
+    "en": "Enter whole numbers only.",
+    "ur": "صرف صحیح اعداد لکھیں۔"
+  },
+  "Enter valid price values.": {
+    "en": "Enter valid price values.",
+    "ur": "درست قیمتیں لکھیں۔"
+  },
+  "Enter a valid total price.": {
+    "en": "Enter a valid total price.",
+    "ur": "درست کل قیمت لکھیں۔"
+  },
+  "Enter a valid estimated cost.": {
+    "en": "Enter a valid estimated cost.",
+    "ur": "درست تخمینی خرچ لکھیں۔"
+  },
+  "Enter a valid received amount.": {
+    "en": "Enter a valid received amount.",
+    "ur": "درست وصول شدہ رقم لکھیں۔"
+  },
+  "Enter a valid non-negative fee.": {
+    "en": "Enter a valid non-negative fee.",
+    "ur": "فیس صفر یا اس سے زیادہ لکھیں۔"
+  },
+  "Enter a valid wallet amount.": {
+    "en": "Enter a valid wallet amount.",
+    "ur": "والٹ کی درست رقم لکھیں۔"
+  },
+  "Enter valid purchase price, sale price and stock quantity.": {
+    "en": "Enter valid purchase price, sale price and stock quantity.",
+    "ur": "درست خرید قیمت، فروخت قیمت اور تعداد لکھیں۔"
+  },
+  "Advance (Optional)": {
+    "en": "Advance (Optional)",
+    "ur": "پیشگی ادائیگی (اختیاری)"
+  },
+  "Advance must be less than the total price.": {
+    "en": "Advance must be less than the total price.",
+    "ur": "پیشگی رقم کل قیمت سے کم ہونی چاہیے۔"
+  },
+  "Choose a valid number of months.": {
+    "en": "Choose a valid number of months.",
+    "ur": "مہینوں کی درست تعداد منتخب کریں۔"
+  },
+  "Remaining amount must divide evenly across the selected months. Adjust advance or months.": {
+    "en": "Remaining amount must divide evenly across the selected months. Adjust advance or months.",
+    "ur": "باقی رقم منتخب مہینوں میں برابر تقسیم ہونی چاہیے۔ پیشگی رقم یا مہینے بدلیں۔"
+  },
+  "Remaining After This Payment": {
+    "en": "Remaining After This Payment",
+    "ur": "اس ادائیگی کے بعد باقی"
+  },
+  "Enter the scheduled monthly amount: {0}.": {
+    "en": "Enter the scheduled monthly amount: {0}.",
+    "ur": "طے شدہ ماہانہ رقم لکھیں: {0}۔"
+  },
+  "Enter first due date as YYYY-MM-DD.": {
+    "en": "Enter first due date as YYYY-MM-DD.",
+    "ur": "پہلی قسط کی تاریخ سال-مہینہ-دن میں لکھیں۔"
+  },
+  "Enter the complete payable amount.": {
+    "en": "Enter the complete payable amount.",
+    "ur": "مکمل واجب الادا رقم لکھیں۔"
+  },
+  "Installment payment": {
+    "en": "Installment payment",
+    "ur": "قسط کی ادائیگی"
+  },
+  "Installment plan created successfully.": {
+    "en": "Installment plan created successfully.",
+    "ur": "اقساط کا پلان بن گیا۔"
+  },
+  "This plan is already paid.": {
+    "en": "This plan is already paid.",
+    "ur": "اس پلان کی مکمل ادائیگی ہو چکی ہے۔"
+  },
+  "Scheduled Dues": {
+    "en": "Scheduled Dues",
+    "ur": "طے شدہ اقساط"
+  },
+  "Receive": {
+    "en": "Receive",
+    "ur": "وصول کریں"
+  },
+  "Payment recorded": {
+    "en": "Payment recorded",
+    "ur": "ادائیگی درج ہو گئی"
+  },
+  "Payment {0} of {1}": {
+    "en": "Payment {0} of {1}",
+    "ur": "ادائیگی {0} از {1}"
+  },
+  "Received on {0}": {
+    "en": "Received on {0}",
+    "ur": "وصولی کی تاریخ: {0}"
+  },
+  "Open Installments": {
+    "en": "Open Installments",
+    "ur": "اقساط کھولیں"
+  },
+  "Open Installments and tap Receive on the correct customer.": {
+    "en": "Open Installments and tap Receive on the correct customer.",
+    "ur": "اقساط میں متعلقہ گاہک کی وصولی منتخب کریں۔"
+  },
+  "Due / Overdue": {
+    "en": "Due / Overdue",
+    "ur": "واجب الادا / تاخیر شدہ"
+  },
+  "New purchase": {
+    "en": "New purchase",
+    "ur": "نئی خریداری"
+  },
+  "Purchase saved. You can print the saved receipt below.": {
+    "en": "Purchase saved. You can print the saved receipt below.",
+    "ur": "خریداری محفوظ ہو گئی۔ نیچے رسید پرنٹ کر سکتے ہیں۔"
+  },
+  "Print last saved purchase": {
+    "en": "Print last saved purchase",
+    "ur": "آخری خریداری کی رسید پرنٹ کریں"
+  },
+  "Print last saved payment": {
+    "en": "Print last saved payment",
+    "ur": "آخری ادائیگی کی رسید پرنٹ کریں"
+  },
+  "Save a purchase first.": {
+    "en": "Save a purchase first.",
+    "ur": "پہلے خریداری محفوظ کریں۔"
+  },
+  "Save a wallet transaction first.": {
+    "en": "Save a wallet transaction first.",
+    "ur": "پہلے والٹ کا اندراج محفوظ کریں۔"
+  },
+  "Save the invoice before printing a paid receipt.": {
+    "en": "Save the invoice before printing a paid receipt.",
+    "ur": "ادا شدہ رسید پرنٹ کرنے سے پہلے بل محفوظ کریں۔"
+  },
+  "Save the invoice before sharing a paid receipt.": {
+    "en": "Save the invoice before sharing a paid receipt.",
+    "ur": "ادا شدہ رسید شیئر کرنے سے پہلے بل محفوظ کریں۔"
+  },
+  "Invoice saved. Print or share your receipt.": {
+    "en": "Invoice saved. Print or share your receipt.",
+    "ur": "بل محفوظ ہو گیا۔ رسید پرنٹ یا شیئر کریں۔"
+  },
+  "Share invoice": {
+    "en": "Share invoice",
+    "ur": "بل شیئر کریں"
+  },
+  "Print Thermal Receipt": {
+    "en": "Print Thermal Receipt",
+    "ur": "تھرمل رسید پرنٹ کریں"
+  },
+  "Receipt printing issue": {
+    "en": "Receipt printing issue",
+    "ur": "رسید کی پرنٹنگ کا مسئلہ"
+  },
+  "Invoice #": {
+    "en": "Invoice #",
+    "ur": "بل نمبر"
+  },
+  "Invoices": {
+    "en": "Invoices",
+    "ur": "بل"
+  },
+  "Invoice {0}": {
+    "en": "Invoice {0}",
+    "ur": "بل {0}"
+  },
+  "Invoice: {0}": {
+    "en": "Invoice: {0}",
+    "ur": "بل: {0}"
+  },
+  "Date: {0}": {
+    "en": "Date: {0}",
+    "ur": "تاریخ: {0}"
+  },
+  "Payment: {0}": {
+    "en": "Payment: {0}",
+    "ur": "ادائیگی: {0}"
+  },
+  "Total: {0}": {
+    "en": "Total: {0}",
+    "ur": "کل: {0}"
+  },
+  "Stock: {0}": {
+    "en": "Stock: {0}",
+    "ur": "اسٹاک: {0}"
+  },
+  "Stock {0}": {
+    "en": "Stock {0}",
+    "ur": "اسٹاک: {0}"
+  },
+  "Plan: {0}": {
+    "en": "Plan: {0}",
+    "ur": "پلان: {0}"
+  },
+  "Plan: {0} · {1}": {
+    "en": "Plan: {0} · {1}",
+    "ur": "پلان: {0} · {1}"
+  },
+  "Status: {0}": {
+    "en": "Status: {0}",
+    "ur": "حالت: {0}"
+  },
+  "Validity: {0}": {
+    "en": "Validity: {0}",
+    "ur": "مدت: {0}"
+  },
+  "PAID RECEIPT": {
+    "en": "PAID RECEIPT",
+    "ur": "ادا شدہ رسید"
+  },
+  "PAYMENT PREVIEW": {
+    "en": "PAYMENT PREVIEW",
+    "ur": "ادائیگی کا پیش منظر"
+  },
+  "Thank you for your purchase!": {
+    "en": "Thank you for your purchase!",
+    "ur": "خریداری کا شکریہ!"
+  },
+  "Tax (0%)": {
+    "en": "Tax (0%)",
+    "ur": "ٹیکس (۰٪)"
+  },
+  "Total Items": {
+    "en": "Total Items",
+    "ur": "کل آئٹمز"
+  },
+  "Sales Count": {
+    "en": "Sales Count",
+    "ur": "فروخت کی تعداد"
+  },
+  "Sales period": {
+    "en": "Sales period",
+    "ur": "فروخت کی مدت"
+  },
+  "Sales · last 7 days": {
+    "en": "Sales · last 7 days",
+    "ur": "فروخت · گزشتہ ۷ دن"
+  },
+  "Recorded Sales": {
+    "en": "Recorded Sales",
+    "ur": "درج شدہ فروخت"
+  },
+  "Recorded sales: {0}": {
+    "en": "Recorded sales: {0}",
+    "ur": "درج شدہ فروخت: {0}"
+  },
+  "Recorded activity on this device.": {
+    "en": "Recorded activity on this device.",
+    "ur": "اس ڈیوائس پر درج شدہ سرگرمی۔"
+  },
+  "From records on this device": {
+    "en": "From records on this device",
+    "ur": "اس ڈیوائس کے ریکارڈ کے مطابق"
+  },
+  "Totals from records currently available on this device.": {
+    "en": "Totals from records currently available on this device.",
+    "ur": "اس ڈیوائس پر دستیاب ریکارڈ کا مجموعہ۔"
+  },
+  "Stock, expenses and dues below cover all locally recorded data. Older records without a valid date are included only in All recorded.": {
+    "en": "Stock, expenses and dues below cover all locally recorded data. Older records without a valid date are included only in All recorded.",
+    "ur": "اسٹاک، اخراجات اور اقساط مقامی ریکارڈ کے مطابق ہیں۔ بغیر تاریخ کے ریکارڈ صرف «تمام ریکارڈ» میں شامل ہیں۔"
+  },
+  "Business Overview": {
+    "en": "Business Overview",
+    "ur": "کاروبار کا جائزہ"
+  },
+  "Shop Activity": {
+    "en": "Shop Activity",
+    "ur": "دکان کی سرگرمی"
+  },
+  "Staff Activity": {
+    "en": "Staff Activity",
+    "ur": "دکان کی سرگرمی"
+  },
+  "Quick Actions": {
+    "en": "Quick Actions",
+    "ur": "فوری کام"
+  },
+  "Quick Add (Manual)": {
+    "en": "Quick Add (Manual)",
+    "ur": "فوری اندراج"
+  },
+  "Quick Add Expense": {
+    "en": "Quick Add Expense",
+    "ur": "فوری اندراج"
+  },
+  "No sales yet": {
+    "en": "No sales yet",
+    "ur": "ابھی کوئی فروخت نہیں"
+  },
+  "No sales in this period": {
+    "en": "No sales in this period",
+    "ur": "ابھی کوئی فروخت نہیں"
+  },
+  "No accessories": {
+    "en": "No accessories",
+    "ur": "کوئی لوازمات نہیں"
+  },
+  "No inventory items": {
+    "en": "No inventory items",
+    "ur": "کوئی آئٹم نہیں"
+  },
+  "No products found": {
+    "en": "No products found",
+    "ur": "کوئی آئٹم نہیں"
+  },
+  "No laptops": {
+    "en": "No laptops",
+    "ur": "کوئی لیپ ٹاپ نہیں"
+  },
+  "No spare parts": {
+    "en": "No spare parts",
+    "ur": "کوئی پارٹ نہیں"
+  },
+  "No customers found": {
+    "en": "No customers found",
+    "ur": "کوئی گاہک نہیں ملا"
+  },
+  "No suppliers found": {
+    "en": "No suppliers found",
+    "ur": "کوئی سپلائر نہیں ملا"
+  },
+  "No unpaid installments": {
+    "en": "No unpaid installments",
+    "ur": "کوئی غیر ادا شدہ قسط نہیں"
+  },
+  "No wallet entry": {
+    "en": "No wallet entry",
+    "ur": "والٹ کا اندراج نہیں"
+  },
+  "No active cart. Go back to POS Billing to create an invoice.": {
+    "en": "No active cart. Go back to POS Billing to create an invoice.",
+    "ur": "بل خالی ہے۔ بلنگ میں جا کر نیا بل بنائیں۔"
+  },
+  "No product is below the alert limit right now.": {
+    "en": "No product is below the alert limit right now.",
+    "ur": "ابھی کوئی آئٹم کم اسٹاک کی حد سے نیچے نہیں۔"
+  },
+  "Stock healthy": {
+    "en": "Stock healthy",
+    "ur": "اسٹاک مناسب ہے"
+  },
+  "Items needing attention": {
+    "en": "Items needing attention",
+    "ur": "توجہ طلب آئٹمز"
+  },
+  "Stock count mismatch": {
+    "en": "Stock count mismatch",
+    "ur": "اسٹاک کی تعداد یکساں نہیں"
+  },
+  "Accessory name and brand are required.": {
+    "en": "Accessory name and brand are required.",
+    "ur": "لوازمات کا نام اور برانڈ ضروری ہیں۔"
+  },
+  "Product name and category are required.": {
+    "en": "Product name and category are required.",
+    "ur": "آئٹم کا نام اور قسم ضروری ہیں۔"
+  },
+  "Brand, model and supplier are required.": {
+    "en": "Brand, model and supplier are required.",
+    "ur": "برانڈ، ماڈل اور سپلائر ضروری ہیں۔"
+  },
+  "Customer name and mobile are required.": {
+    "en": "Customer name and mobile are required.",
+    "ur": "گاہک کا نام اور موبائل ضروری ہیں۔"
+  },
+  "Customer, mobile and product are required.": {
+    "en": "Customer, mobile and product are required.",
+    "ur": "گاہک، موبائل اور آئٹم ضروری ہیں۔"
+  },
+  "Customer, phone, device and problem type are required.": {
+    "en": "Customer, phone, device and problem type are required.",
+    "ur": "گاہک، موبائل، ڈیوائس اور خرابی کی قسم ضروری ہیں۔"
+  },
+  "Customer added successfully.": {
+    "en": "Customer added successfully.",
+    "ur": "گاہک شامل ہو گیا۔"
+  },
+  "Repair job saved successfully.": {
+    "en": "Repair job saved successfully.",
+    "ur": "مرمت محفوظ ہو گئی۔"
+  },
+  "Expense saved and cash ledger updated.": {
+    "en": "Expense saved and cash ledger updated.",
+    "ur": "خرچ محفوظ اور نقد کھاتہ تازہ ہو گیا۔"
+  },
+  "Expense title": {
+    "en": "Expense title",
+    "ur": "خرچ کا عنوان"
+  },
+  "Expense title aur valid amount enter karein.": {
+    "en": "Enter the expense title and a valid amount.",
+    "ur": "خرچ کا عنوان اور درست رقم لکھیں۔"
+  },
+  "Recent Expenses": {
+    "en": "Recent Expenses",
+    "ur": "حالیہ اخراجات"
+  },
+  "Utilities": {
+    "en": "Utilities",
+    "ur": "یوٹیلیٹی بل"
+  },
+  "Wallet Summary": {
+    "en": "Wallet Summary",
+    "ur": "والٹ کا خلاصہ"
+  },
+  "Saved Wallet Ledger": {
+    "en": "Saved Wallet Ledger",
+    "ur": "محفوظ والٹ کھاتہ"
+  },
+  "Save Wallet Entry": {
+    "en": "Save Wallet Entry",
+    "ur": "والٹ کا اندراج محفوظ کریں"
+  },
+  "Note / Reference": {
+    "en": "Note / Reference",
+    "ur": "نوٹ / حوالہ"
+  },
+  "Select EasyPaisa or JazzCash.": {
+    "en": "Select EasyPaisa or JazzCash.",
+    "ur": "ایزی پیسہ یا جاز کیش منتخب کریں۔"
+  },
+  "Select In or Out.": {
+    "en": "Select In or Out.",
+    "ur": "وصولی یا ادائیگی منتخب کریں۔"
+  },
+  "In {0} · Out {1}": {
+    "en": "In {0} · Out {1}",
+    "ur": "وصولی {0} · ادائیگی {1}"
+  },
+  "Condition": {
+    "en": "Condition",
+    "ur": "حالت"
+  },
+  "New": {
+    "en": "New",
+    "ur": "نیا"
+  },
+  "Used": {
+    "en": "Used",
+    "ur": "استعمال شدہ"
+  },
+  "Refurbished": {
+    "en": "Refurbished",
+    "ur": "مرمت شدہ"
+  },
+  "Open Box": {
+    "en": "Open Box",
+    "ur": "کھلا ڈبہ"
+  },
+  "Normal": {
+    "en": "Normal",
+    "ur": "عام"
+  },
+  "Original": {
+    "en": "Original",
+    "ur": "اصلی"
+  },
+  "A Quality": {
+    "en": "A Quality",
+    "ur": "اے کوالٹی"
+  },
+  "Master Copy": {
+    "en": "Master Copy",
+    "ur": "ماسٹر کاپی"
+  },
+  "China": {
+    "en": "China",
+    "ur": "چائنا"
+  },
+  "Standard": {
+    "en": "Standard",
+    "ur": "معیاری"
+  },
+  "Fancy": {
+    "en": "Fancy",
+    "ur": "فینسی"
+  },
+  "Simple": {
+    "en": "Simple",
+    "ur": "سادہ"
+  },
+  "Transparent": {
+    "en": "Transparent",
+    "ur": "شفاف"
+  },
+  "Black": {
+    "en": "Black",
+    "ur": "سیاہ"
+  },
+  "Blue": {
+    "en": "Blue",
+    "ur": "نیلا"
+  },
+  "Red": {
+    "en": "Red",
+    "ur": "سرخ"
+  },
+  "White": {
+    "en": "White",
+    "ur": "سفید"
+  },
+  "Silicon": {
+    "en": "Silicon",
+    "ur": "سلیکون"
+  },
+  "Leather": {
+    "en": "Leather",
+    "ur": "چمڑا"
+  },
+  "Hard": {
+    "en": "Hard",
+    "ur": "سخت"
+  },
+  "Matte": {
+    "en": "Matte",
+    "ur": "میٹ"
+  },
+  "Mix": {
+    "en": "Mix",
+    "ur": "مختلف"
+  },
+  "Universal": {
+    "en": "Universal",
+    "ur": "تمام ماڈلز"
+  },
+  "Any model": {
+    "en": "Any model",
+    "ur": "تمام ماڈلز"
+  },
+  "Wired": {
+    "en": "Wired",
+    "ur": "تار والا"
+  },
+  "Wireless": {
+    "en": "Wireless",
+    "ur": "وائرلیس"
+  },
+  "Bluetooth": {
+    "en": "Bluetooth",
+    "ur": "بلوٹوتھ"
+  },
+  "Charger": {
+    "en": "Charger",
+    "ur": "چارجر"
+  },
+  "Fast Charger": {
+    "en": "Fast Charger",
+    "ur": "فاسٹ چارجر"
+  },
+  "Cable": {
+    "en": "Cable",
+    "ur": "کیبل"
+  },
+  "Handsfree": {
+    "en": "Handsfree",
+    "ur": "ہینڈز فری"
+  },
+  "Earbuds": {
+    "en": "Earbuds",
+    "ur": "ایئر بڈز"
+  },
+  "Cover": {
+    "en": "Cover",
+    "ur": "بیک کور"
+  },
+  "Back Cover": {
+    "en": "Back Cover",
+    "ur": "بیک کور"
+  },
+  "Glass / Protector": {
+    "en": "Glass / Protector",
+    "ur": "گلاس / پروٹیکٹر"
+  },
+  "Battery": {
+    "en": "Battery",
+    "ur": "بیٹری"
+  },
+  "Power Bank": {
+    "en": "Power Bank",
+    "ur": "پاور بینک"
+  },
+  "Smart Watch": {
+    "en": "Smart Watch",
+    "ur": "اسمارٹ واچ"
+  },
+  "Memory Card": {
+    "en": "Memory Card",
+    "ur": "میموری کارڈ"
+  },
+  "Mobile Holder": {
+    "en": "Mobile Holder",
+    "ur": "موبائل ہولڈر"
+  },
+  "Connector": {
+    "en": "Connector",
+    "ur": "کنیکٹر"
+  },
+  "OTG / Connector": {
+    "en": "OTG / Connector",
+    "ur": "کنیکٹر"
+  },
+  "Display / LCD": {
+    "en": "Display / LCD",
+    "ur": "ڈسپلے / ایل سی ڈی"
+  },
+  "Panel": {
+    "en": "Panel",
+    "ur": "ڈسپلے / ایل سی ڈی"
+  },
+  "Touch Panel": {
+    "en": "Touch Panel",
+    "ur": "ٹچ پینل"
+  },
+  "Charging Board": {
+    "en": "Charging Board",
+    "ur": "چارجنگ بورڈ"
+  },
+  "Charging Strip": {
+    "en": "Charging Strip",
+    "ur": "چارجنگ پٹی"
+  },
+  "Front Camera": {
+    "en": "Front Camera",
+    "ur": "فرنٹ کیمرا"
+  },
+  "Back Camera": {
+    "en": "Back Camera",
+    "ur": "بیک کیمرا"
+  },
+  "Camera": {
+    "en": "Camera",
+    "ur": "کیمرا"
+  },
+  "Mic": {
+    "en": "Mic",
+    "ur": "مائیک"
+  },
+  "Speaker": {
+    "en": "Speaker",
+    "ur": "اسپیکر / رنگر"
+  },
+  "Speaker / Ringer": {
+    "en": "Speaker / Ringer",
+    "ur": "اسپیکر / رنگر"
+  },
+  "Power Button Flex": {
+    "en": "Power Button Flex",
+    "ur": "پاور بٹن فلیکس"
+  },
+  "Volume Button Flex": {
+    "en": "Volume Button Flex",
+    "ur": "والیوم بٹن فلیکس"
+  },
+  "Fingerprint": {
+    "en": "Fingerprint",
+    "ur": "فنگر پرنٹ"
+  },
+  "Frame / Body": {
+    "en": "Frame / Body",
+    "ur": "فریم / باڈی"
+  },
+  "SIM Jacket": {
+    "en": "SIM Jacket",
+    "ur": "سم جیکٹ"
+  },
+  "IC / Board Part": {
+    "en": "IC / Board Part",
+    "ur": "آئی سی / بورڈ پارٹ"
+  },
+  "Other Part": {
+    "en": "Other Part",
+    "ur": "دیگر پارٹ"
+  },
+  "Display Issue": {
+    "en": "Display Issue",
+    "ur": "ڈسپلے کی خرابی"
+  },
+  "Battery Drain": {
+    "en": "Battery Drain",
+    "ur": "بیٹری جلد ختم ہونا"
+  },
+  "Charging Port Issue": {
+    "en": "Charging Port Issue",
+    "ur": "چارجنگ پورٹ کی خرابی"
+  },
+  "Back Panel Damage": {
+    "en": "Back Panel Damage",
+    "ur": "بیک پینل کا نقصان"
+  },
+  "Speaker Not Working": {
+    "en": "Speaker Not Working",
+    "ur": "اسپیکر کام نہیں کر رہا"
+  },
+  "Software Issue": {
+    "en": "Software Issue",
+    "ur": "سافٹ ویئر کا مسئلہ"
+  },
+  "Repairs": {
+    "en": "Repairs",
+    "ur": "مرمت کے پارٹس"
+  },
+  "Repair Parts": {
+    "en": "Repair Parts",
+    "ur": "مرمت کے پارٹس"
+  },
+  "Parts": {
+    "en": "Parts",
+    "ur": "مرمت کے پارٹس"
+  },
+  "Laptops": {
+    "en": "Laptops",
+    "ur": "لیپ ٹاپ"
+  },
+  "Laptop Name": {
+    "en": "Laptop Name",
+    "ur": "لیپ ٹاپ کا نام"
+  },
+  "Save Laptop": {
+    "en": "Save Laptop",
+    "ur": "لیپ ٹاپ محفوظ کریں"
+  },
+  "Save Spare Part": {
+    "en": "Save Spare Part",
+    "ur": "پارٹ محفوظ کریں"
+  },
+  "Battery health / warranty / supplier notes": {
+    "en": "Battery health / warranty / supplier notes",
+    "ur": "بیٹری، وارنٹی یا سپلائر کی تفصیل"
+  },
+  "More Details Optional": {
+    "en": "More Details Optional",
+    "ur": "مزید تفصیل (اختیاری)"
+  },
+  "Hide Optional Details": {
+    "en": "Hide Optional Details",
+    "ur": "اختیاری تفصیل چھپائیں"
+  },
+  "Manual / Add New": {
+    "en": "Manual / Add New",
+    "ur": "ماڈل خود لکھیں"
+  },
+  "Manual Model": {
+    "en": "Manual Model",
+    "ur": "ماڈل خود لکھیں"
+  },
+  "Select": {
+    "en": "Select",
+    "ur": "منتخب کریں"
+  },
+  "Select a payment plan": {
+    "en": "Select a payment plan",
+    "ur": "ادائیگی کا پلان منتخب کریں"
+  },
+  "Number": {
+    "en": "Number",
+    "ur": "نمبر"
+  },
+  "Min Stock": {
+    "en": "Min Stock",
+    "ur": "کم از کم اسٹاک"
+  },
+  "Update Models From Internet": {
+    "en": "Update Models From Internet",
+    "ur": "ماڈلز تازہ کریں"
+  },
+  "Search Results": {
+    "en": "Search Results",
+    "ur": "تلاش کے نتائج"
+  },
+  "Search by customer, phone or IMEI": {
+    "en": "Search by customer, phone or IMEI",
+    "ur": "گاہک، موبائل یا آئی ایم ای آئی تلاش کریں"
+  },
+  "Search customer or mobile": {
+    "en": "Search customer or mobile",
+    "ur": "گاہک تلاش کریں"
+  },
+  "Search customers": {
+    "en": "Search customers",
+    "ur": "گاہک تلاش کریں"
+  },
+  "Search suppliers": {
+    "en": "Search suppliers",
+    "ur": "سپلائر تلاش کریں"
+  },
+  "Search laptop, brand, model, specs, SKU or rack": {
+    "en": "Search laptop, brand, model, specs, SKU or rack",
+    "ur": "لیپ ٹاپ، ماڈل یا ریک تلاش کریں"
+  },
+  "Scan SKU or IMEI": {
+    "en": "Scan SKU or IMEI",
+    "ur": "ایس کے یو یا آئی ایم ای آئی اسکین کریں"
+  },
+  "Scan barcode or search product": {
+    "en": "Scan barcode or search product",
+    "ur": "بارکوڈ اسکین کریں یا آئٹم تلاش کریں"
+  },
+  "IMEI (Optional)": {
+    "en": "IMEI (Optional)",
+    "ur": "آئی ایم ای آئی"
+  },
+  "IMEI / Barcode": {
+    "en": "IMEI / Barcode",
+    "ur": "آئی ایم ای آئی"
+  },
+  "Enter IMEI": {
+    "en": "Enter IMEI",
+    "ur": "آئی ایم ای آئی"
+  },
+  "Scan / Manual IMEI": {
+    "en": "Scan / Manual IMEI",
+    "ur": "آئی ایم ای آئی اسکین یا درج کریں"
+  },
+  "IMEI added.": {
+    "en": "IMEI added.",
+    "ur": "آئی ایم ای آئی شامل ہو گیا۔"
+  },
+  "Each IMEI must contain exactly 15 digits.": {
+    "en": "Each IMEI must contain exactly 15 digits.",
+    "ur": "ہر آئی ایم ای آئی میں ۱۵ ہندسے ہونے چاہئیں۔"
+  },
+  "IMEI must contain exactly 15 digits.": {
+    "en": "IMEI must contain exactly 15 digits.",
+    "ur": "ہر آئی ایم ای آئی میں ۱۵ ہندسے ہونے چاہئیں۔"
+  },
+  "Duplicate IMEI found: {0} already exists in stock.": {
+    "en": "Duplicate IMEI found: {0} already exists in stock.",
+    "ur": "یہ آئی ایم ای آئی پہلے سے اسٹاک میں ہے: {0}۔"
+  },
+  "This IMEI is already added.": {
+    "en": "This IMEI is already added.",
+    "ur": "یہ آئی ایم ای آئی پہلے سے شامل ہے۔"
+  },
+  "IMEI: {0} · Supplier: {1}": {
+    "en": "IMEI: {0} · Supplier: {1}",
+    "ur": "آئی ایم ای آئی: {0} · سپلائر: {1}"
+  },
+  "Camera could not open. Enter the code manually.": {
+    "en": "Camera could not open. Enter the code manually.",
+    "ur": "کیمرا نہیں کھل سکا۔ کوڈ خود لکھیں۔"
+  },
+  "Scan cancelled or camera permission denied. You can enter the code manually.": {
+    "en": "Scan cancelled or camera permission denied. You can enter the code manually.",
+    "ur": "اسکین مکمل نہیں ہوا یا کیمرے کی اجازت نہیں۔ کوڈ خود لکھ سکتے ہیں۔"
+  },
+  "Scan the IMEI barcode or enter it manually. A Bluetooth/USB scanner can type directly into the focused field.": {
+    "en": "Scan the IMEI barcode or enter it manually. A Bluetooth/USB scanner can type directly into the focused field.",
+    "ur": "آئی ایم ای آئی اسکین کریں یا خود لکھیں۔ بیرونی اسکینر بھی استعمال کر سکتے ہیں۔"
+  },
+  "Choose a PNG or JPEG image.": {
+    "en": "Choose a PNG or JPEG image.",
+    "ur": "پی این جی یا جے پی ای جی تصویر منتخب کریں۔"
+  },
+  "Image must be 2 MB or smaller.": {
+    "en": "Image must be 2 MB or smaller.",
+    "ur": "تصویر ۲ ایم بی یا اس سے کم ہونی چاہیے۔"
+  },
+  "Image upload failed.": {
+    "en": "Image upload failed.",
+    "ur": "تصویر اپ لوڈ نہیں ہوئی۔"
+  },
+  "The selected image could not be opened.": {
+    "en": "The selected image could not be opened.",
+    "ur": "تصویر نہیں کھل سکی۔ درست تصویر منتخب کریں۔"
+  },
+  "This file is not a valid image.": {
+    "en": "This file is not a valid image.",
+    "ur": "تصویر نہیں کھل سکی۔ درست تصویر منتخب کریں۔"
+  },
+  "Upload Image": {
+    "en": "Upload Image",
+    "ur": "تصویر اپ لوڈ کریں"
+  },
+  "CNIC images stay on this device; they are not included in cloud sync or JSON backups.": {
+    "en": "CNIC images stay on this device; they are not included in cloud sync or JSON backups.",
+    "ur": "شناختی کارڈ کی تصاویر صرف اس ڈیوائس پر رہتی ہیں؛ کلاؤڈ سنک یا بیک اَپ میں شامل نہیں ہوتیں۔"
+  },
+  "Front selected": {
+    "en": "Front selected",
+    "ur": "سامنے والا رخ منتخب"
+  },
+  "Back selected": {
+    "en": "Back selected",
+    "ur": "پچھلا رخ منتخب"
+  },
+  "Backup file created successfully.": {
+    "en": "Backup file created successfully.",
+    "ur": "بیک اَپ فائل بن گئی۔"
+  },
+  "Backup restored successfully.": {
+    "en": "Backup restored successfully.",
+    "ur": "بیک اَپ بحال ہو گیا۔"
+  },
+  "Backup create nahi hua: {0}": {
+    "en": "Backup failed: {0}",
+    "ur": "بیک اَپ نہیں بن سکا: {0}"
+  },
+  "Backup read nahi hua: {0}": {
+    "en": "Backup could not be read: {0}",
+    "ur": "بیک اَپ نہیں پڑھا جا سکا: {0}"
+  },
+  "Invalid ya unsupported SkyBarech backup file.": {
+    "en": "Invalid or unsupported SkyBarech backup file.",
+    "ur": "یہ اسکائی بارچ بیک اَپ فائل درست یا معاون نہیں۔"
+  },
+  "Encrypted cloud sync ke baghair JSON backup apne safe folder/drive mein rakhein. Restore current local records replace karega.": {
+    "en": "Keep the backup in a safe place. Restoring replaces current local records.",
+    "ur": "بیک اَپ محفوظ جگہ رکھیں۔ بحالی موجودہ مقامی ریکارڈ بدل دے گی۔"
+  },
+  "Access removed": {
+    "en": "Access removed",
+    "ur": "دکان کی رسائی بند ہے"
+  },
+  "Shop access stopped": {
+    "en": "Shop access stopped",
+    "ur": "دکان کی رسائی بند ہے"
+  },
+  "Shop access was removed.": {
+    "en": "Shop access was removed.",
+    "ur": "دکان کی رسائی بند ہے"
+  },
+  "This device is blocked": {
+    "en": "This device is blocked",
+    "ur": "مرکزی منتظم نے یہ ڈیوائس بلاک کی ہے۔"
+  },
+  "This device is blocked by Super Admin.": {
+    "en": "This device is blocked by Super Admin.",
+    "ur": "مرکزی منتظم نے یہ ڈیوائس بلاک کی ہے۔"
+  },
+  "Session expired": {
+    "en": "Session expired",
+    "ur": "سیشن ختم یا رسائی بند ہو گئی"
+  },
+  "Online session expired or access was revoked": {
+    "en": "Online session expired or access was revoked",
+    "ur": "سیشن ختم یا رسائی بند ہو گئی"
+  },
+  "Session refresh failed": {
+    "en": "Session refresh failed",
+    "ur": "سیشن تازہ نہیں ہوا"
+  },
+  "Online login required": {
+    "en": "Online login required",
+    "ur": "آن لائن لاگ اِن ضروری ہے"
+  },
+  "Sign in required": {
+    "en": "Sign in required",
+    "ur": "آن لائن لاگ اِن ضروری ہے"
+  },
+  "Online login failed": {
+    "en": "Online login failed",
+    "ur": "لاگ اِن کی تصدیق نہیں ہوئی"
+  },
+  "Online login failed.": {
+    "en": "Online login failed.",
+    "ur": "لاگ اِن کی تصدیق نہیں ہوئی"
+  },
+  "Online verification failed": {
+    "en": "Online verification failed",
+    "ur": "لاگ اِن کی تصدیق نہیں ہوئی"
+  },
+  "Sign-in failed": {
+    "en": "Sign-in failed",
+    "ur": "لاگ اِن کی تصدیق نہیں ہوئی"
+  },
+  "Online access verified": {
+    "en": "Online access verified",
+    "ur": "آن لائن رسائی کی تصدیق ہو گئی"
+  },
+  "Welcome back. Online access verified.": {
+    "en": "Welcome back. Online access verified.",
+    "ur": "آن لائن رسائی کی تصدیق ہو گئی"
+  },
+  "Online access verified · sync connected": {
+    "en": "Online access verified · sync connected",
+    "ur": "کلاؤڈ سے منسلک"
+  },
+  "Online sync connected": {
+    "en": "Online sync connected",
+    "ur": "کلاؤڈ سے منسلک"
+  },
+  "Cloud Linked": {
+    "en": "Cloud Linked",
+    "ur": "کلاؤڈ سے منسلک"
+  },
+  "Local Linked": {
+    "en": "Local Linked",
+    "ur": "کلاؤڈ سے منسلک"
+  },
+  "Linked Local Mode": {
+    "en": "Linked Local Mode",
+    "ur": "کلاؤڈ سے منسلک"
+  },
+  "Local storage active": {
+    "en": "Local storage active",
+    "ur": "ڈیٹا اس ڈیوائس پر محفوظ ہے"
+  },
+  "Local Mode": {
+    "en": "Local Mode",
+    "ur": "ڈیٹا اس ڈیوائس پر محفوظ ہے"
+  },
+  "Offline mode · local data ready": {
+    "en": "Offline mode · local data ready",
+    "ur": "آف لائن · مقامی ڈیٹا دستیاب ہے"
+  },
+  "Local-first ready · {0} pending": {
+    "en": "Saved · {0} changes waiting for Cloud",
+    "ur": "محفوظ · {0} تبدیلیاں کلاؤڈ کے لیے منتظر"
+  },
+  "Saved on device · {0} pending": {
+    "en": "Saved · {0} changes waiting for Cloud",
+    "ur": "محفوظ · {0} تبدیلیاں کلاؤڈ کے لیے منتظر"
+  },
+  "Saved locally · {0} queued for sync": {
+    "en": "Saved · {0} changes waiting for Cloud",
+    "ur": "محفوظ · {0} تبدیلیاں کلاؤڈ کے لیے منتظر"
+  },
+  "Last sync: {0} · {1} pending": {
+    "en": "Last sync: {0} · {1} pending",
+    "ur": "آخری کلاؤڈ رابطہ: {0} · {1} منتظر"
+  },
+  "{0} waiting": {
+    "en": "{0} waiting",
+    "ur": "{0} منتظر"
+  },
+  "Checking server…": {
+    "en": "Checking Cloud…",
+    "ur": "کلاؤڈ رابطہ چیک ہو رہا ہے…"
+  },
+  "Server connection": {
+    "en": "Cloud connection",
+    "ur": "کلاؤڈ رابطہ"
+  },
+  "Connected. Server and database are available.": {
+    "en": "Connected to Cloud.",
+    "ur": "کلاؤڈ اور ڈیٹابیس سے رابطہ قائم ہے۔"
+  },
+  "Connection check failed.": {
+    "en": "Connection check failed.",
+    "ur": "کلاؤڈ رابطے کی جانچ ناکام ہوئی۔"
+  },
+  "Connection interrupted. Your saved changes will retry.": {
+    "en": "Connection interrupted. Your saved changes will retry.",
+    "ur": "رابطہ ٹوٹ گیا۔ محفوظ تبدیلیاں دوبارہ بھیجی جائیں گی۔"
+  },
+  "Cannot find the server. Check Wi-Fi/mobile data or Private DNS, then retry.": {
+    "en": "Cannot find the server. Check Wi-Fi/mobile data or Private DNS, then retry.",
+    "ur": "کلاؤڈ کا پتہ نہیں مل رہا۔ انٹرنیٹ یا پرائیویٹ ڈی این ایس چیک کر کے دوبارہ کوشش کریں۔"
+  },
+  "The server took too long. Your saved changes will retry.": {
+    "en": "The server took too long. Your saved changes will retry.",
+    "ur": "کلاؤڈ کے جواب میں تاخیر ہے۔ محفوظ تبدیلیاں دوبارہ بھیجی جائیں گی۔"
+  },
+  "Secure connection failed. Check phone date/time and the server certificate.": {
+    "en": "Secure connection failed. Check phone date/time and the server certificate.",
+    "ur": "محفوظ رابطہ ناکام ہوا۔ فون کی تاریخ، وقت اور کلاؤڈ سرٹیفکیٹ چیک کریں۔"
+  },
+  "Some changes are waiting to upload. Open sync details before closing this device.": {
+    "en": "Some changes are waiting to upload. Open sync details before closing this device.",
+    "ur": "کچھ تبدیلیاں اپ لوڈ کی منتظر ہیں۔ ڈیوائس بند کرنے سے پہلے کلاؤڈ کی تفصیل دیکھیں۔"
+  },
+  "Server updated. Sign in again to reconnect your shop.": {
+    "en": "Server updated. Sign in again to reconnect your shop.",
+    "ur": "کلاؤڈ پتہ بدل گیا ہے۔ دوبارہ لاگ اِن کریں۔"
+  },
+  "The app server address is invalid. Install the build configured by your administrator.": {
+    "en": "The app server address is invalid. Install the build configured by your administrator.",
+    "ur": "ایپ کا کلاؤڈ پتہ درست نہیں۔ منتظم کی درست ترتیب والی اپ ڈیٹ نصب کریں۔"
+  },
+  "The server responded, but the database is not ready.": {
+    "en": "The server responded, but the database is not ready.",
+    "ur": "کلاؤڈ کا جواب آیا، لیکن ڈیٹابیس تیار نہیں۔"
+  },
+  "Server replied HTTP {0}. Ask your administrator to check the API deployment.": {
+    "en": "Server replied HTTP {0}. Ask your administrator to check the API deployment.",
+    "ur": "کلاؤڈ کا جواب: HTTP {0}۔ منتظم سے کلاؤڈ کی ترتیب چیک کروائیں۔"
+  },
+  "Server shop does not match this installation. Sign in again.": {
+    "en": "Server shop does not match this installation. Sign in again.",
+    "ur": "کلاؤڈ اور اس ڈیوائس کی دکان مختلف ہے۔ دوبارہ لاگ اِن کریں۔"
+  },
+  "Server sync cursor did not advance": {
+    "en": "Server sync cursor did not advance",
+    "ur": "کلاؤڈ سے درست ڈیٹا نہیں ملا"
+  },
+  "Invalid server data response": {
+    "en": "Invalid server data response",
+    "ur": "کلاؤڈ سے درست ڈیٹا نہیں ملا"
+  },
+  "Server did not acknowledge operation": {
+    "en": "Server did not acknowledge operation",
+    "ur": "کلاؤڈ نے تبدیلی کی تصدیق نہیں کی"
+  },
+  "Server rejected operation": {
+    "en": "Server rejected operation",
+    "ur": "کلاؤڈ نے تبدیلی قبول نہیں کی"
+  },
+  "Sync request failed": {
+    "en": "Sync request failed",
+    "ur": "کلاؤڈ سنک ناکام ہوا"
+  },
+  "Sync requested. The status updates when the server responds.": {
+    "en": "Sync requested. The status updates when the server responds.",
+    "ur": "کلاؤڈ سنک کی درخواست بھیج دی۔ جواب آنے پر حالت بدل جائے گی۔"
+  },
+  "If this address is old, install the administrator's updated build. Your shop records remain on this device.": {
+    "en": "If this address is old, install the administrator's updated build. Your shop records remain on this device.",
+    "ur": "پتہ پرانا ہو تو منتظم کی نئی ایپ نصب کریں۔ دکان کا ریکارڈ اس ڈیوائس پر محفوظ رہے گا۔"
+  },
+  "This installation belongs to another shop. Use a separate Android profile/device to protect unsynced records.": {
+    "en": "This installation belongs to another shop. Use a separate Android profile/device to protect unsynced records.",
+    "ur": "یہ ایپ دوسری دکان کی ہے۔ اس کے محفوظ ریکارڈ بچانے کے لیے الگ پروفائل یا ڈیوائس استعمال کریں۔"
+  },
+  "Use a separate device/profile for another shop; existing local data is protected.": {
+    "en": "Use a separate device/profile for another shop; existing local data is protected.",
+    "ur": "دوسری دکان کے لیے الگ ڈیوائس یا پروفائل استعمال کریں۔ موجودہ ڈیٹا محفوظ ہے۔"
+  },
+  "Unsent data exists on this device. Export a backup before changing its shop.": {
+    "en": "Unsent data exists on this device. Export a backup before changing its shop.",
+    "ur": "اس ڈیوائس پر غیر ارسال شدہ ڈیٹا ہے۔ دکان بدلنے سے پہلے بیک اَپ بنائیں۔"
+  },
+  "This offline app currently requires a shop owner account. Staff cache isolation is not yet available.": {
+    "en": "This offline app currently requires a shop owner account. Staff cache isolation is not yet available.",
+    "ur": "اس ایپ میں فی الحال مالک کا اکاؤنٹ ضروری ہے۔ عملے کا الگ مقامی ڈیٹا معاون نہیں۔"
+  },
+  "This app supports the shop owner account. Staff accounts are managed by the platform administrator; separate staff device access is not available in this version.": {
+    "en": "This app supports the shop owner account. Staff accounts are managed by the platform administrator; separate staff device access is not available in this version.",
+    "ur": "اس ورژن میں مالک کا لاگ اِن معاون ہے۔ عملے کی رسائی مرکزی منتظم سنبھالتا ہے۔"
+  },
+  "No expiry set": {
+    "en": "No expiry set",
+    "ur": "مدت مقرر نہیں"
+  },
+  "Administrator temporary password": {
+    "en": "Administrator temporary password",
+    "ur": "منتظم کا دیا ہوا عارضی پاس ورڈ"
+  },
+  "Complete activation code, owner mobile and temporary password.": {
+    "en": "Complete activation code, owner mobile and temporary password.",
+    "ur": "ایکٹیویشن کوڈ، مالک کا موبائل اور عارضی پاس ورڈ لکھیں۔"
+  },
+  "Configure the HTTPS server before activation.": {
+    "en": "Configure the HTTPS server before activation.",
+    "ur": "پہلے درست محفوظ کلاؤڈ پتہ ترتیب دیں۔"
+  },
+  "HTTPS API is not configured": {
+    "en": "HTTPS API is not configured",
+    "ur": "پہلے درست محفوظ کلاؤڈ پتہ ترتیب دیں۔"
+  },
+  "Activation complete nahi ho saki.": {
+    "en": "Activation could not be verified.",
+    "ur": "ایکٹیویشن کی تصدیق نہیں ہوئی۔"
+  },
+  "Activation verify nahi ho saki.": {
+    "en": "Activation could not be verified.",
+    "ur": "ایکٹیویشن کی تصدیق نہیں ہوئی۔"
+  },
+  "Activation complete. Local-first sync ready hai.": {
+    "en": "Activation complete. Cloud sync is ready.",
+    "ur": "ایکٹیویشن مکمل ہے۔ کلاؤڈ سنک تیار ہے۔"
+  },
+  "Cloud se activation verify ho rahi hai…": {
+    "en": "Verifying activation with Cloud…",
+    "ur": "کلاؤڈ سے ایکٹیویشن چیک ہو رہی ہے…"
+  },
+  "Activation verified. Ab kam az kam 12-character password banayein.": {
+    "en": "Verified. Create a password with at least 12 characters.",
+    "ur": "تصدیق ہو گئی۔ کم از کم ۱۲ حروف کا پاس ورڈ بنائیں۔"
+  },
+  "Shop activated. Ab apna new password banayein.": {
+    "en": "Shop activated. Create your password.",
+    "ur": "دکان فعال ہو گئی۔ اب اپنا پاس ورڈ بنائیں۔"
+  },
+  "Activation ke baad new password banayein. Shop profile platform administrator se manage hota hai.": {
+    "en": "Create your password after activation. The administrator manages shop details.",
+    "ur": "ایکٹیویشن کے بعد اپنا پاس ورڈ بنائیں۔ دکان کی معلومات منتظم سنبھالتا ہے۔"
+  },
+  "Temporary password kam az kam 8 characters hona chahiye.": {
+    "en": "Temporary password must have at least 8 characters.",
+    "ur": "عارضی پاس ورڈ کم از کم ۸ حروف کا ہونا چاہیے۔"
+  },
+  "First activation complete": {
+    "en": "First activation complete",
+    "ur": "پہلی ایکٹیویشن مکمل"
+  },
+  "For your security, please": {
+    "en": "For your security, please",
+    "ur": "اپنے اکاؤنٹ کی حفاظت کے لیے"
+  },
+  "change your password": {
+    "en": "change your password",
+    "ur": "پاس ورڈ تبدیل کریں"
+  },
+  "Update Password": {
+    "en": "Update Password",
+    "ur": "پاس ورڈ تبدیل کریں"
+  },
+  "create your own password": {
+    "en": "create your own password",
+    "ur": "اپنا پاس ورڈ بنائیں"
+  },
+  "Fill in new password and confirmation.": {
+    "en": "Fill in new password and confirmation.",
+    "ur": "نیا پاس ورڈ اور تصدیق لکھیں۔"
+  },
+  "New password and confirmation do not match.": {
+    "en": "New password and confirmation do not match.",
+    "ur": "نیا پاس ورڈ اور تصدیق یکساں نہیں۔"
+  },
+  "Password must be at least 12 characters.": {
+    "en": "Password must be at least 12 characters.",
+    "ur": "پاس ورڈ کم از کم ۱۲ حروف کا ہونا چاہیے۔"
+  },
+  "Password must have at least 12 characters.": {
+    "en": "Password must have at least 12 characters.",
+    "ur": "پاس ورڈ کم از کم ۱۲ حروف کا ہونا چاہیے۔"
+  },
+  "Current password is incorrect.": {
+    "en": "Current password is incorrect.",
+    "ur": "موجودہ پاس ورڈ درست نہیں۔"
+  },
+  "Enter current password.": {
+    "en": "Enter current password.",
+    "ur": "موجودہ پاس ورڈ لکھیں۔"
+  },
+  "Enter current password and matching new password (12–200 characters).": {
+    "en": "Enter current password and matching new password (12–200 characters).",
+    "ur": "موجودہ پاس ورڈ اور یکساں نیا پاس ورڈ لکھیں (۱۲ تا ۲۰۰ حروف)۔"
+  },
+  "Password saved. Dashboard ready.": {
+    "en": "Password saved. Dashboard ready.",
+    "ur": "پاس ورڈ محفوظ ہو گیا۔ دکان تیار ہے۔"
+  },
+  "Password update failed; local password unchanged.": {
+    "en": "Password update failed; local password unchanged.",
+    "ur": "پاس ورڈ نہیں بدلا۔ مقامی پاس ورڈ وہی ہے۔"
+  },
+  "Password updated on server and this device. Sign in again on other devices.": {
+    "en": "Password updated on server and this device. Sign in again on other devices.",
+    "ur": "کلاؤڈ اور اس ڈیوائس پر پاس ورڈ بدل گیا۔ دوسری ڈیوائسز پر دوبارہ لاگ اِن کریں۔"
+  },
+  "Owner mobile ya password incorrect hai. New shop ho to Activate use karein.": {
+    "en": "Incorrect owner mobile or password. Activate first if this is a new shop.",
+    "ur": "موبائل یا پاس ورڈ درست نہیں۔ نئی دکان کے لیے ایکٹیویشن کریں۔"
+  },
+  "Internet unavailable. Local data offline mode mein ready hai.": {
+    "en": "Internet unavailable. Local data is available offline.",
+    "ur": "انٹرنیٹ دستیاب نہیں۔ مقامی ڈیٹا آف لائن دستیاب ہے۔"
+  },
+  "Shop access Super Admin ne stop kar di hai. Internet verification required hai.": {
+    "en": "The administrator stopped shop access. Online verification is required.",
+    "ur": "مرکزی منتظم نے دکان کی رسائی بند کی ہے۔ آن لائن تصدیق ضروری ہے۔"
+  },
+  "{0} New activation credentials ke baghair login allowed nahi hai.": {
+    "en": "{0} New activation credentials are required to sign in.",
+    "ur": "{0} نئے ایکٹیویشن کوائف کے بغیر لاگ اِن نہیں ہو سکتا۔"
+  },
+  "{0} Super Admin se device unblock karwa kar dobara login karein.": {
+    "en": "{0} Ask the administrator to unblock this device, then sign in.",
+    "ur": "{0} منتظم سے ڈیوائس کھلوا کر دوبارہ لاگ اِن کریں۔"
+  },
+  "Owner mobile: {0} Shop identity is managed by your platform administrator.": {
+    "en": "Owner mobile: {0} Shop identity is managed by your platform administrator.",
+    "ur": "مالک کا موبائل: {0}۔ دکان کی معلومات مرکزی منتظم سنبھالتا ہے۔"
+  },
+  "Signed out successfully.": {
+    "en": "Signed out successfully.",
+    "ur": "لاگ آؤٹ ہو گیا۔"
+  },
+  "You have safely signed out.": {
+    "en": "You have safely signed out.",
+    "ur": "لاگ آؤٹ ہو گیا۔"
+  },
+  "You can sign in again with your owner mobile and password.": {
+    "en": "You can sign in again with your owner mobile and password.",
+    "ur": "مالک کے موبائل اور پاس ورڈ سے دوبارہ لاگ اِن کر سکتے ہیں۔"
+  },
+  "Sign in first or ask the administrator to reset your activation.": {
+    "en": "Sign in first or ask the administrator to reset your activation.",
+    "ur": "پہلے لاگ اِن کریں یا منتظم سے ایکٹیویشن ری سیٹ کروائیں۔"
+  },
+  "Securely end this shop session": {
+    "en": "Securely end this shop session",
+    "ur": "دکان کا سیشن بند کریں"
+  },
+  "Choose an issue type, priority and write at least 10 characters.": {
+    "en": "Choose an issue type, priority and write at least 10 characters.",
+    "ur": "مسئلہ، ترجیح اور کم از کم ۱۰ حروف کا پیغام لکھیں۔"
+  },
+  "Describe your issue in detail...": {
+    "en": "Describe your issue in detail...",
+    "ur": "اپنا مسئلہ لکھیں…"
+  },
+  "Support request saved locally.": {
+    "en": "Support request saved locally.",
+    "ur": "مدد کی درخواست مقامی طور پر محفوظ ہو گئی۔"
+  },
+  "App not syncing data": {
+    "en": "App not syncing data",
+    "ur": "کلاؤڈ سنک نہیں ہو رہا"
+  },
+  "Urgent": {
+    "en": "Urgent",
+    "ur": "فوری"
+  },
+  "Help": {
+    "en": "Help",
+    "ur": "مدد"
+  },
+  "Navigation": {
+    "en": "Navigation",
+    "ur": "مینو"
+  },
+  "to get started": {
+    "en": "to get started",
+    "ur": "شروع کرنے کے لیے"
+  },
+  "Available stock sirf {0} hai.": {
+    "en": "Only {0} units are available.",
+    "ur": "صرف {0} اسٹاک دستیاب ہے۔"
+  },
+  "{0} ka stock change ho gaya. Cart quantity check karein.": {
+    "en": "Stock changed for {0}. Check the cart quantity.",
+    "ur": "{0} کا اسٹاک بدل گیا۔ بل کی تعداد چیک کریں۔"
+  },
+  "{0} out of stock hai.": {
+    "en": "{0} is out of stock.",
+    "ur": "{0} کا اسٹاک ختم ہے۔"
+  },
+  "{0} received by {1}.": {
+    "en": "{0} received by {1}.",
+    "ur": "{1} سے {0} وصول ہوئے۔"
+  },
+  "{0} recorded": {
+    "en": "{0} recorded",
+    "ur": "{0} درج شدہ"
+  },
+  "{0} total": {
+    "en": "{0} total",
+    "ur": "کل {0}"
+  },
+  "{0} invoices · {1} repair jobs": {
+    "en": "{0} invoices · {1} repair jobs",
+    "ur": "{0} بل · {1} مرمت"
+  },
+  "{0} / {1} Months": {
+    "en": "{0} / {1} Months",
+    "ur": "{0} / {1} ماہ"
+  },
+  "{0} · Purchase {1}": {
+    "en": "{0} · Purchase {1}",
+    "ur": "{0} · خریداری {1}"
+  },
+  "{0} {1} saved.": {
+    "en": "{0} {1} saved.",
+    "ur": "{0} {1} محفوظ ہو گیا۔"
+  },
+  "{0} added to Mobile Accessories.": {
+    "en": "{0} added to Mobile Accessories.",
+    "ur": "{0} لوازمات میں شامل ہو گیا۔"
+  },
+  "{0} added to accessories.": {
+    "en": "{0} added to accessories.",
+    "ur": "{0} لوازمات میں شامل ہو گیا۔"
+  },
+  "{0} added to cart.": {
+    "en": "{0} added to cart.",
+    "ur": "{0} بل میں شامل ہو گیا۔"
+  },
+  "Fast entry: sirf zaroori fields bharo, baqi optional hain.": {
+    "en": "Complete required fields; the rest are optional.",
+    "ur": "ضروری خانے پُر کریں؛ باقی اختیاری ہیں۔"
+  },
+  "Shopkeeper fast add: Name, Category, Purchase, Sale, Quantity. Baqi More Details mein hain.": {
+    "en": "Enter name, category, purchase price, sale price and quantity.",
+    "ur": "نام، قسم، خرید قیمت، فروخت قیمت اور تعداد درج کریں۔"
+  },
+  "Required: Part Name, Category, Purchase, Sale and Quantity. shop_id auto attach hoga.": {
+    "en": "Part name, category, purchase price, sale price and quantity are required.",
+    "ur": "پارٹ کا نام، قسم، خرید، فروخت اور تعداد ضروری ہیں۔"
+  },
+  "shop_id current login shop se auto attach hoga. User ko shop select nahi karni.": {
+    "en": "Saved to your current shop.",
+    "ur": "اندراج موجودہ دکان میں محفوظ ہو گا۔"
+  },
+  "Models synced safely. Internet mode mein latest models database mein save honge; missing model manually add kar sakte hain.": {
+    "en": "Models updated. Enter a missing model manually.",
+    "ur": "ماڈلز تازہ ہو گئے۔ فہرست میں نہ ہو تو ماڈل خود لکھیں۔"
+  },
+  "Pehle saved models show honge. Search na mile to Manual Model likh kar save karein.": {
+    "en": "Enter the model manually if it is not listed.",
+    "ur": "فہرست میں ماڈل نہ ملے تو خود لکھ کر محفوظ کریں۔"
+  },
+  "Account": {
+    "en": "Account",
+    "ur": "اکاؤنٹ"
+  },
+  "Clear Form": {
+    "en": "Clear Form",
+    "ur": "فارم صاف کریں"
+  },
+  "ACCESSORY STOCK DESK": {
+    "en": "ACCESSORY STOCK DESK",
+    "ur": "لوازمات کا اسٹاک"
+  },
+  "LAPTOP STOCK DESK": {
+    "en": "LAPTOP STOCK DESK",
+    "ur": "لیپ ٹاپ کا اسٹاک"
+  },
+  "SPARE PARTS STOCK": {
+    "en": "SPARE PARTS STOCK",
+    "ur": "اسپیئر پارٹس کا اسٹاک"
+  },
+  "SKYBARECH ERP • SHOP WORKSPACE": {
+    "en": "SKYBARECH ERP • SHOP WORKSPACE",
+    "ur": "اسکائی بارچ • دکان کا نظام"
+  },
+  "POS Ready": {
+    "en": "POS Ready",
+    "ur": "بلنگ کے لیے تیار"
+  },
+  "Part": {
+    "en": "Part",
+    "ur": "پارٹ"
+  },
+  "Accessories show in POS": {
+    "en": "Accessories show in POS",
+    "ur": "بلنگ میں بھی دستیاب"
+  },
+  "Laptops also show in POS": {
+    "en": "Laptops also show in POS",
+    "ur": "بلنگ میں بھی دستیاب"
+  },
+  "Use parts with repair jobs": {
+    "en": "Use parts with repair jobs",
+    "ur": "مرمت میں پارٹس استعمال کریں"
+  },
+  "Active local users": {
+    "en": "Active local users",
+    "ur": "فعال مقامی صارفین"
+  },
+  "All active vendors": {
+    "en": "All active vendors",
+    "ur": "تمام فعال سپلائرز"
+  },
+  "Client-friendly overview": {
+    "en": "Client-friendly overview",
+    "ur": "کاروبار کا جائزہ"
+  },
+  "Credit Reminder": {
+    "en": "Credit Reminder",
+    "ur": "ادھار کی یاددہانی"
+  },
+  "Customers scheduled for collection": {
+    "en": "Customers scheduled for collection",
+    "ur": "وصولی کے منتظر گاہک"
+  },
+  "Need attention today": {
+    "en": "Need attention today",
+    "ur": "آج توجہ درکار ہے"
+  },
+  "Notify customers": {
+    "en": "Notify customers",
+    "ur": "گاہکوں کو اطلاع دیں"
+  },
+  "Highest amount due first.": {
+    "en": "Highest amount due first.",
+    "ur": "زیادہ واجب الادا رقم پہلے۔"
+  },
+  "Daily cash counter records": {
+    "en": "Daily cash counter records",
+    "ur": "روزانہ کیش کاؤنٹر کا ریکارڈ"
+  },
+  "Daily rent, utility, salary and shop spending records": {
+    "en": "Daily rent, utility, salary and shop spending records",
+    "ur": "کرایہ، بل، تنخواہ اور دکان کے اخراجات"
+  },
+  "All Easypaisa and JazzCash entries.": {
+    "en": "All Easypaisa and JazzCash entries.",
+    "ur": "ایزی پیسہ اور جاز کیش کے تمام اندراجات"
+  },
+  "In and out wallet transaction history.": {
+    "en": "In and out wallet transaction history.",
+    "ur": "والٹ وصولی اور ادائیگی کا ریکارڈ"
+  },
+  "No cash session found": {
+    "en": "No cash session found",
+    "ur": "کیش سیشن نہیں ملا"
+  },
+  "No expense record found": {
+    "en": "No expense record found",
+    "ur": "کوئی خرچ درج نہیں"
+  },
+  "Local Mode Active": {
+    "en": "Local Mode Active",
+    "ur": "مقامی ڈیٹا دستیاب ہے"
+  },
+  "Fast offline operation • Cloud sync pending": {
+    "en": "Fast offline operation • Cloud sync pending",
+    "ur": "آف لائن کام • کلاؤڈ سنک منتظر"
+  },
+  "Manage shop information": {
+    "en": "Manage shop information",
+    "ur": "دکان کی معلومات بدلیں"
+  },
+  "Manage your plan": {
+    "en": "Manage your plan",
+    "ur": "پلان کا انتظام"
+  },
+  "Manage app users and roles": {
+    "en": "Manage app users and roles",
+    "ur": "صارفین اور اجازتوں کا انتظام"
+  },
+  "Manage staff users": {
+    "en": "Manage staff users",
+    "ur": "عملے کا انتظام"
+  },
+  "Manage stock / price": {
+    "en": "Manage stock / price",
+    "ur": "اسٹاک اور قیمت بدلیں"
+  },
+  "Create POS sale": {
+    "en": "Create POS sale",
+    "ur": "بل بنائیں"
+  },
+  "Delete old invoice": {
+    "en": "Delete old invoice",
+    "ur": "پرانا بل حذف کریں"
+  },
+  "Refund / return sale": {
+    "en": "Refund / return sale",
+    "ur": "فروخت واپس کریں"
+  },
+  "Cashier, manager and owner access control": {
+    "en": "Cashier, manager and owner access control",
+    "ur": "مالک، منیجر اور کیشیئر کی اجازتیں"
+  },
+  "Owner/manager/cashier controls": {
+    "en": "Owner/manager/cashier controls",
+    "ur": "مالک، منیجر اور کیشیئر کی اجازتیں"
+  },
+  "Overview of today’s shop performance": {
+    "en": "Overview of today’s shop performance",
+    "ur": "آج کی دکان کا جائزہ"
+  },
+  "Create a fast walk-in sale and collect payment": {
+    "en": "Create a fast walk-in sale and collect payment",
+    "ur": "بل بنائیں اور ادائیگی وصول کریں"
+  },
+  "Create an invoice for direct sales or installments": {
+    "en": "Create an invoice for direct sales or installments",
+    "ur": "نقد یا اقساط کی فروخت کا بل بنائیں"
+  },
+  "Create and review support requests": {
+    "en": "Create and review support requests",
+    "ur": "مدد کی درخواستیں بھیجیں اور دیکھیں"
+  },
+  "Manage products, stock, prices and barcodes": {
+    "en": "Manage products, stock, prices and barcodes",
+    "ur": "آئٹمز، اسٹاک اور قیمتوں کا انتظام"
+  },
+  "Manage customer credit, purchase history and ledger": {
+    "en": "Manage customer credit, purchase history and ledger",
+    "ur": "گاہک کا ادھار اور کھاتہ"
+  },
+  "Manage supplier payables and purchase records": {
+    "en": "Manage supplier payables and purchase records",
+    "ur": "سپلائر کا حساب اور خریداری"
+  },
+  "Manage your shop, backup, users and subscription": {
+    "en": "Manage your shop, backup, users and subscription",
+    "ur": "دکان، بیک اَپ، صارفین اور پلان"
+  },
+  "Open and close daily cash sessions with expected balance": {
+    "en": "Open and close daily cash sessions with expected balance",
+    "ur": "روزانہ کیش کا آغاز اور اختتام"
+  },
+  "Customer receivable, supplier payable and payment history": {
+    "en": "Customer receivable, supplier payable and payment history",
+    "ur": "وصولیاں، ادائیگیاں اور ان کی تاریخ"
+  },
+  "Record rent, utilities, salary and daily shop spending": {
+    "en": "Record rent, utilities, salary and daily shop spending",
+    "ur": "دکان کے اخراجات درج کریں"
+  },
+  "Record stock purchases with complete device details": {
+    "en": "Record stock purchases with complete device details",
+    "ur": "خریداری اور ڈیوائس کی تفصیل درج کریں"
+  },
+  "Review sales, profit, stock, expenses and business trends": {
+    "en": "Review sales, profit, stock, expenses and business trends",
+    "ur": "فروخت، منافع، اسٹاک اور اخراجات دیکھیں"
+  },
+  "Repair parts stock, rack, supplier cost, sale price and low stock alerts": {
+    "en": "Repair parts stock, rack, supplier cost, sale price and low stock alerts",
+    "ur": "پارٹس کا اسٹاک، قیمت اور ریک"
+  },
+  "Separate accessory stock, prices, barcodes and quick actions": {
+    "en": "Separate accessory stock, prices, barcodes and quick actions",
+    "ur": "لوازمات کا اسٹاک اور قیمتیں"
+  },
+  "Separate laptop stock, specs, prices and quick actions": {
+    "en": "Separate laptop stock, specs, prices and quick actions",
+    "ur": "لیپ ٹاپ کا اسٹاک، تفصیل اور قیمتیں"
+  },
+  "Separate mobile accessories tab.": {
+    "en": "Separate mobile accessories tab.",
+    "ur": "موبائل لوازمات کا الگ اسٹاک"
+  },
+  "Manage repair parts separately.": {
+    "en": "Manage repair parts separately.",
+    "ur": "مرمت کے پارٹس کا الگ اسٹاک"
+  },
+  "Manage chargers, handsfree, tempered glass, covers, cables and AirPods cases separately from mobile inventory.": {
+    "en": "Manage chargers, handsfree, tempered glass, covers, cables and AirPods cases separately from mobile inventory.",
+    "ur": "چارجر، ہینڈز فری، گلاس، کور اور کیبل کا الگ اسٹاک"
+  },
+  "Track HP, Dell, Lenovo, Apple, Asus and used/import laptops separately with specs, stock, cost, sale price and SKU.": {
+    "en": "Track HP, Dell, Lenovo, Apple, Asus and used/import laptops separately with specs, stock, cost, sale price and SKU.",
+    "ur": "لیپ ٹاپ کی تفصیل، اسٹاک اور قیمتیں درج کریں۔"
+  },
+  "Track LCD, battery, charging board, camera, flex, speaker and repair parts with rack, SKU, brand/model and low-stock alerts.": {
+    "en": "Track LCD, battery, charging board, camera, flex, speaker and repair parts with rack, SKU, brand/model and low-stock alerts.",
+    "ur": "مرمت کے پارٹس، ریک، قیمت اور کم اسٹاک چیک کریں۔"
+  },
+  "Laptop stock for premium clients.": {
+    "en": "Laptop stock for premium clients.",
+    "ur": "لیپ ٹاپ کا اسٹاک"
+  },
+  "No laptops added yet. Click Add Laptop to create laptop stock.": {
+    "en": "No laptops added yet. Click Add Laptop to create laptop stock.",
+    "ur": "ابھی لیپ ٹاپ نہیں۔ لیپ ٹاپ شامل کریں۔"
+  },
+  "No mobile accessories added yet. Click Add Accessory to create accessory stock.": {
+    "en": "No mobile accessories added yet. Click Add Accessory to create accessory stock.",
+    "ur": "ابھی لوازمات نہیں۔ لوازمات شامل کریں۔"
+  },
+  "No spare parts added yet. Click Add Spare Part to create repair stock.": {
+    "en": "No spare parts added yet. Click Add Spare Part to create repair stock.",
+    "ur": "ابھی پارٹس نہیں۔ پارٹ شامل کریں۔"
+  },
+  "Track current support progress.": {
+    "en": "Track current support progress.",
+    "ur": "مدد کی درخواست کی پیش رفت دیکھیں۔"
+  },
+  "Track due amounts and receive monthly payments": {
+    "en": "Track due amounts and receive monthly payments",
+    "ur": "واجب الادا اقساط دیکھیں اور وصول کریں"
+  },
+  "Track repair workflow, technician and delivery status": {
+    "en": "Track repair workflow, technician and delivery status",
+    "ur": "مرمت، کاریگر اور واپسی کی حالت دیکھیں"
+  },
+  "Simple Easypaisa and JazzCash in-out entries": {
+    "en": "Simple Easypaisa and JazzCash in-out entries",
+    "ur": "ایزی پیسہ اور جاز کیش کی وصولی اور ادائیگی"
+  },
+  "Wallet payments, withdrawals and transfers with thermal receipt.": {
+    "en": "Wallet payments, withdrawals and transfers with thermal receipt.",
+    "ur": "والٹ کی وصولی، ادائیگی اور رسید"
+  },
+  "After saving the logo, shop branding will appear on the sidebar and invoices.": {
+    "en": "After saving the logo, shop branding will appear on the sidebar and invoices.",
+    "ur": "محفوظ لوگو مینو اور بلوں پر نظر آئے گا۔"
+  },
+  "Update shop name, logo and invoice details.": {
+    "en": "Update shop name, logo and invoice details.",
+    "ur": "دکان کا نام، لوگو اور بل کی معلومات بدلیں۔"
+  },
+  "Type the model manually if it is not listed.": {
+    "en": "Type the model manually if it is not listed.",
+    "ur": "ماڈل فہرست میں نہ ہو تو خود لکھیں۔"
+  },
+  "Press Enter from the scanner to add IMEI automatically.": {
+    "en": "Press Enter from the scanner to add IMEI automatically.",
+    "ur": "آئی ایم ای آئی شامل کرنے کے لیے انٹر دبائیں۔"
+  },
+  "Saved/online-safe models": {
+    "en": "Saved/online-safe models",
+    "ur": "محفوظ ماڈلز"
+  },
+  "Sale, purchase and adjustment history": {
+    "en": "Sale, purchase and adjustment history",
+    "ur": "فروخت، خریداری اور تبدیلیوں کا ریکارڈ"
+  },
+  "Soft-delete history with safe restore": {
+    "en": "Soft-delete history with safe restore",
+    "ur": "حذف شدہ ریکارڈ اور بحالی"
+  },
+  "Soft-delete history, activity log and restore safety": {
+    "en": "Soft-delete history, activity log and restore safety",
+    "ur": "حذف شدہ ریکارڈ اور بحالی"
+  },
+  "Sales use the selected period. Other totals cover records currently on this device; sync before comparing devices. Legacy undated sales are excluded from period totals.": {
+    "en": "Sales use the selected period. Other totals cover records currently on this device; sync before comparing devices. Legacy undated sales are excluded from period totals.",
+    "ur": "فروخت منتخب مدت کے مطابق ہے۔ باقی مجموعے اس ڈیوائس کے ریکارڈ سے ہیں؛ موازنہ کرنے سے پہلے کلاؤڈ سنک کریں۔ بغیر تاریخ کے بل مدت کی فروخت میں شامل نہیں۔"
+  },
+  "Server staff accounts. Offline desktop and Android sign-in currently require the shop owner.": {
+    "en": "Server staff accounts. Offline desktop and Android sign-in currently require the shop owner.",
+    "ur": "یہ کلاؤڈ عملے کے اکاؤنٹس ہیں۔ ڈیسک ٹاپ اور اینڈرائیڈ پر فی الحال مالک کا لاگ اِن ضروری ہے۔"
+  },
+  "Describe the issue and our support team can review it.": {
+    "en": "Describe the issue and our support team can review it.",
+    "ur": "مدد کے لیے اپنا مسئلہ لکھیں۔"
+  },
+  "Monthly Sales Target": {
+    "en": "Monthly Sales Target",
+    "ur": "ماہانہ فروخت کا ہدف"
+  },
+  "Gross Profit Target": {
+    "en": "Gross Profit Target",
+    "ur": "مجموعی منافع کا ہدف"
+  },
+  "Progress Snapshot": {
+    "en": "Progress Snapshot",
+    "ur": "پیش رفت کا جائزہ"
+  },
+  "Review scheduled payments and outstanding balances.": {
+    "en": "Review scheduled payments and outstanding balances.",
+    "ur": "طے شدہ ادائیگیاں اور باقی رقم چیک کریں۔"
+  },
+  "Showing {0}–{1} of {2} products": {
+    "en": "Showing {0}–{1} of {2} products",
+    "ur": "{2} میں سے {0} تا {1} آئٹمز"
+  },
+  "{0} stock units · {1} repairs open": {
+    "en": "{0} stock units · {1} repairs open",
+    "ur": "{0} اسٹاک · {1} زیر التوا مرمت"
+  },
+  "{0} items low in stock": {
+    "en": "{0} items low in stock",
+    "ur": "{0} آئٹمز کا اسٹاک کم"
+  },
+  "{0} low stock": {
+    "en": "{0} low stock",
+    "ur": "{0} آئٹمز کا اسٹاک کم"
+  },
+  "{0} jobs": {
+    "en": "{0} jobs",
+    "ur": "{0} مرمت"
+  },
+  "{0} due": {
+    "en": "{0} due",
+    "ur": "{0} واجب الادا"
+  },
+  "Recorded sales in last seven days: {0}": {
+    "en": "Recorded sales in last seven days: {0}",
+    "ur": "گزشتہ سات دن کی فروخت: {0}"
+  },
+  "Mon": {
+    "en": "Mon",
+    "ur": "پیر"
+  },
+  "Tue": {
+    "en": "Tue",
+    "ur": "منگل"
+  },
+  "Wed": {
+    "en": "Wed",
+    "ur": "بدھ"
+  },
+  "Thu": {
+    "en": "Thu",
+    "ur": "جمعرات"
+  },
+  "Fri": {
+    "en": "Fri",
+    "ur": "جمعہ"
+  },
+  "Sat": {
+    "en": "Sat",
+    "ur": "ہفتہ"
+  },
+  "Sun": {
+    "en": "Sun",
+    "ur": "اتوار"
+  },
+  "Sync Issue": {
+    "en": "Sync Issue",
+    "ur": "کلاؤڈ سنک کا مسئلہ"
+  },
+  "Sync incomplete": {
+    "en": "Sync incomplete",
+    "ur": "کلاؤڈ سنک نامکمل ہے"
+  },
+  "Sync settings failed": {
+    "en": "Sync settings failed",
+    "ur": "کلاؤڈ کی ترتیب محفوظ نہیں ہوئی"
+  },
+  "Sync settings saved": {
+    "en": "Sync settings saved",
+    "ur": "کلاؤڈ کی ترتیب محفوظ ہو گئی"
+  },
+  "Login required": {
+    "en": "Login required",
+    "ur": "لاگ اِن ضروری ہے"
+  },
+  "Shop data unavailable": {
+    "en": "Shop data unavailable",
+    "ur": "دکان کا ڈیٹا دستیاب نہیں"
+  },
+  "Your shop data is loaded.": {
+    "en": "Your shop data is loaded.",
+    "ur": "آپ کی دکان کا ڈیٹا کھل گیا۔"
+  },
+  "Your shop data could not be loaded.": {
+    "en": "Your shop data could not be loaded.",
+    "ur": "دکان کا ڈیٹا نہیں کھل سکا۔"
+  },
+  "Could not load your shop.": {
+    "en": "Could not load your shop.",
+    "ur": "دکان کا ڈیٹا نہیں کھل سکا۔"
+  },
+  "Sign in again to reconnect sync.": {
+    "en": "Sign in again to reconnect sync.",
+    "ur": "کلاؤڈ سے رابطے کے لیے دوبارہ لاگ اِن کریں۔"
+  },
+  "Sign in online to connect your shop.": {
+    "en": "Sign in online to connect your shop.",
+    "ur": "دکان کو کلاؤڈ سے جوڑنے کے لیے آن لائن لاگ اِن کریں۔"
+  },
+  "Sign in online to refresh your connection. Credentials are managed automatically.": {
+    "en": "Sign in online to refresh your connection. Credentials are managed automatically.",
+    "ur": "کلاؤڈ رابطہ بحال کرنے کے لیے آن لائن لاگ اِن کریں۔"
+  },
+  "Sign in online to create a server staff account.": {
+    "en": "Sign in online to create a server staff account.",
+    "ur": "عملے کا اکاؤنٹ بنانے کے لیے آن لائن لاگ اِن کریں۔"
+  },
+  "Cloud se branches reload ho gayi hain. Add User dobara open karein.": {
+    "en": "Branches updated from Cloud. Open Add User again.",
+    "ur": "کلاؤڈ سے برانچیں تازہ ہو گئیں۔ عملہ شامل کرنے کا فارم دوبارہ کھولیں۔"
+  },
+  "Cloud staff user create nahi ho saka.": {
+    "en": "Could not create the Cloud staff account.",
+    "ur": "عملے کا کلاؤڈ اکاؤنٹ نہیں بن سکا۔"
+  },
+  "{0} ka Cloud staff login create ho gaya.": {
+    "en": "Cloud staff account created for {0}.",
+    "ur": "{0} کا کلاؤڈ اکاؤنٹ بن گیا۔"
+  },
+  "Internet milne ke baad revoked shop offline login nahi kar sakti.": {
+    "en": "A shop with confirmed revoked access cannot sign in offline.",
+    "ur": "رسائی بند ہونے کی تصدیق کے بعد دکان آف لائن لاگ اِن نہیں کر سکتی۔"
+  },
+  "Activation Code is required.": {
+    "en": "Activation Code is required.",
+    "ur": "ایکٹیویشن کوڈ ضروری ہے"
+  },
+  "Activation Code required": {
+    "en": "Activation Code required",
+    "ur": "ایکٹیویشن کوڈ ضروری ہے"
+  },
+  "Owner mobile number is required.": {
+    "en": "Owner mobile number is required.",
+    "ur": "مالک کا موبائل ضروری ہے"
+  },
+  "Owner Mobile required": {
+    "en": "Owner Mobile required",
+    "ur": "مالک کا موبائل ضروری ہے"
+  },
+  "Temporary password is required.": {
+    "en": "Temporary password is required.",
+    "ur": "عارضی پاس ورڈ ضروری ہے"
+  },
+  "Temporary Password required": {
+    "en": "Temporary Password required",
+    "ur": "عارضی پاس ورڈ ضروری ہے"
+  },
+  "Activation file could not be read.": {
+    "en": "Activation file could not be read.",
+    "ur": "ایکٹیویشن فائل نہیں پڑھی جا سکی۔"
+  },
+  "Cloud activation could not be completed.": {
+    "en": "Cloud activation could not be completed.",
+    "ur": "کلاؤڈ ایکٹیویشن مکمل نہیں ہوئی۔"
+  },
+  "Configure the HTTPS API before activating a production shop.": {
+    "en": "Configure the HTTPS API before activating a production shop.",
+    "ur": "دکان فعال کرنے سے پہلے محفوظ کلاؤڈ پتہ ترتیب دیں۔"
+  },
+  "Connect to the internet for the first sign-in on this device.": {
+    "en": "Connect to the internet for the first sign-in on this device.",
+    "ur": "اس ڈیوائس پر پہلی بار لاگ اِن کے لیے انٹرنیٹ ضروری ہے۔"
+  },
+  "Complete online activation first.": {
+    "en": "Complete online activation first.",
+    "ur": "پہلے آن لائن ایکٹیویشن مکمل کریں۔"
+  },
+  "Ask the administrator to reset your activation if you forgot your password.": {
+    "en": "Ask the administrator to reset your activation if you forgot your password.",
+    "ur": "پاس ورڈ بھولنے پر منتظم سے ایکٹیویشن ری سیٹ کروائیں۔"
+  },
+  "Enter your account details to activate this desktop device.": {
+    "en": "Enter your account details to activate this desktop device.",
+    "ur": "اس کمپیوٹر کو فعال کرنے کے لیے اپنے اکاؤنٹ کی تفصیل لکھیں۔"
+  },
+  "Owner mobile must be at least 10 digits. Example: 03001234567": {
+    "en": "Owner mobile must be at least 10 digits. Example: 03001234567",
+    "ur": "مالک کا موبائل کم از کم ۱۰ ہندسوں کا ہونا چاہیے، مثلاً 03001234567۔"
+  },
+  "Verify online activation again before setting a password.": {
+    "en": "Verify online activation again before setting a password.",
+    "ur": "پاس ورڈ بنانے سے پہلے آن لائن ایکٹیویشن دوبارہ چیک کریں۔"
+  },
+  "Temporary password verified. Create a permanent owner password.": {
+    "en": "Temporary password verified. Create a permanent owner password.",
+    "ur": "عارضی پاس ورڈ درست ہے۔ مالک کا مستقل پاس ورڈ بنائیں۔"
+  },
+  "Use a secure new password to protect your shop data.": {
+    "en": "Use a secure new password to protect your shop data.",
+    "ur": "دکان کے ڈیٹا کے لیے محفوظ نیا پاس ورڈ بنائیں۔"
+  },
+  "Open the Activate Shop screen again and retry.": {
+    "en": "Open the Activate Shop screen again and retry.",
+    "ur": "دکان فعال کرنے کی اسکرین کھول کر دوبارہ کوشش کریں۔"
+  },
+  "Activation form not found": {
+    "en": "Activation form not found",
+    "ur": "ایکٹیویشن فارم نہیں کھل سکا"
+  },
+  "Activation system error": {
+    "en": "Activation system error",
+    "ur": "ایکٹیویشن فارم نہیں کھل سکا"
+  },
+  "Delete failed": {
+    "en": "Delete failed",
+    "ur": "حذف نہیں ہو سکا"
+  },
+  "A product with the same ID or SKU already exists.": {
+    "en": "A product with the same ID or SKU already exists.",
+    "ur": "اس شناخت یا ایس کے یو کا آئٹم پہلے سے موجود ہے۔"
+  },
+  "Required: Product name, category, purchase price, sale price and quantity.": {
+    "en": "Required: Product name, category, purchase price, sale price and quantity.",
+    "ur": "نام، قسم، خرید قیمت، فروخت قیمت اور تعداد ضروری ہیں۔"
+  },
+  "Product name, category, purchase price, sale price and quantity are required.": {
+    "en": "Product name, category, purchase price, sale price and quantity are required.",
+    "ur": "نام، قسم، خرید قیمت، فروخت قیمت اور تعداد ضروری ہیں۔"
+  },
+  "Complete brand, model, purchase price and sale price.": {
+    "en": "Complete brand, model, purchase price and sale price.",
+    "ur": "برانڈ، ماڈل، خرید اور فروخت قیمت لکھیں۔"
+  },
+  "Complete the customer, device, issue and estimated cost.": {
+    "en": "Complete the customer, device, issue and estimated cost.",
+    "ur": "گاہک، ڈیوائس، خرابی اور تخمینی خرچ لکھیں۔"
+  },
+  "Select an available product before generating invoice.": {
+    "en": "Select an available product before generating invoice.",
+    "ur": "بل بنانے سے پہلے دستیاب آئٹم منتخب کریں۔"
+  },
+  "Enter the complete payable amount. Create scheduled dues from Installments.": {
+    "en": "Enter the complete payable amount. Create scheduled dues from Installments.",
+    "ur": "مکمل واجب الادا رقم لکھیں۔ طے شدہ ادائیگیوں کے لیے اقساط استعمال کریں۔"
+  },
+  "Enter an amount up to {0}.": {
+    "en": "Enter an amount up to {0}.",
+    "ur": "زیادہ سے زیادہ {0} رقم لکھیں۔"
+  },
+  "Collect the pending amount from {0}.": {
+    "en": "Collect the pending amount from {0}.",
+    "ur": "{0} سے باقی رقم وصول کریں۔"
+  },
+  "Create an installment record first.": {
+    "en": "Create an installment record first.",
+    "ur": "پہلے قسط کا ریکارڈ بنائیں۔"
+  },
+  "Create a customer record for sales, credit and ledger tracking.": {
+    "en": "Create a customer record for sales, credit and ledger tracking.",
+    "ur": "گاہک کا نام اور رابطہ درج کریں۔"
+  },
+  "Create a supplier record for purchase bills and payable ledger.": {
+    "en": "Create a supplier record for purchase bills and payable ledger.",
+    "ur": "سپلائر کا نام اور رابطہ درج کریں۔"
+  },
+  "Create a structured monthly payment plan for a customer.": {
+    "en": "Create a structured monthly payment plan for a customer.",
+    "ur": "گاہک کے لیے ماہانہ اقساط بنائیں۔"
+  },
+  "Record a device repair with estimate and expected delivery.": {
+    "en": "Record a device repair with estimate and expected delivery.",
+    "ur": "مرمت، تخمینہ اور واپسی کی تاریخ درج کریں۔"
+  },
+  "Record daily shop expense.": {
+    "en": "Record daily shop expense.",
+    "ur": "دکان کا خرچ درج کریں۔"
+  },
+  "Record wallet cash-in, cash-out, supplier payment or customer receipt.": {
+    "en": "Record wallet cash-in, cash-out, supplier payment or customer receipt.",
+    "ur": "والٹ کی وصولی یا ادائیگی درج کریں۔"
+  },
+  "Close daily counter cash.": {
+    "en": "Close daily counter cash.",
+    "ur": "روزانہ کیش کا حساب بند کریں۔"
+  },
+  "Update the repair status, cost or technician assignment.": {
+    "en": "Update the repair status, cost or technician assignment.",
+    "ur": "مرمت کی حالت، رقم یا کاریگر بدلیں۔"
+  },
+  "Print customer or office copy.": {
+    "en": "Print customer or office copy.",
+    "ur": "گاہک یا دفتر کی کاپی پرنٹ کریں۔"
+  },
+  "Print customer copy when the job is done or delivered.": {
+    "en": "Print customer copy when the job is done or delivered.",
+    "ur": "مرمت مکمل ہونے یا واپس دینے پر گاہک کی کاپی پرنٹ کریں۔"
+  },
+  "Preview, print or share the completed sale receipt.": {
+    "en": "Preview, print or share the completed sale receipt.",
+    "ur": "فروخت کی رسید دیکھیں، پرنٹ یا شیئر کریں۔"
+  },
+  "This repair job is not available.": {
+    "en": "This repair job is not available.",
+    "ur": "مرمت کا ریکارڈ دستیاب نہیں"
+  },
+  "This record is no longer available.": {
+    "en": "This record is no longer available.",
+    "ur": "یہ ریکارڈ دستیاب نہیں۔"
+  },
+  "Product record was not found.": {
+    "en": "Product record was not found.",
+    "ur": "یہ ریکارڈ دستیاب نہیں۔"
+  },
+  "Restorable record was not found.": {
+    "en": "Restorable record was not found.",
+    "ur": "بحال کرنے والا ریکارڈ نہیں ملا۔"
+  },
+  "This is the current recorded balance. Transaction history is not available in this view.": {
+    "en": "This is the current recorded balance. Transaction history is not available in this view.",
+    "ur": "یہ موجودہ درج شدہ بیلنس ہے۔ اس جگہ لین دین کی تاریخ دستیاب نہیں۔"
+  },
+  "This will remove the product from inventory. This action cannot be undone.": {
+    "en": "This will remove the product from inventory. This action cannot be undone.",
+    "ur": "یہ آئٹم اسٹاک سے حذف ہو جائے گا۔ تصدیق کے بعد اسے واپس نہیں لایا جا سکتا۔"
+  },
+  "This shop was deleted, blocked, or expired in Super Admin.": {
+    "en": "This shop was deleted, blocked, or expired in Super Admin.",
+    "ur": "مرکزی منتظم کے مطابق دکان حذف، بلاک یا ختم المیعاد ہے۔"
+  },
+  "Choose a JPG, PNG, WebP or PDF document.": {
+    "en": "Choose a JPG, PNG, WebP or PDF document.",
+    "ur": "تصویر یا پی ڈی ایف دستاویز منتخب کریں۔"
+  },
+  "Choose a document under 4 MB for local storage.": {
+    "en": "Choose a document under 4 MB for local storage.",
+    "ur": "۴ ایم بی سے چھوٹی دستاویز منتخب کریں۔"
+  },
+  "Please choose a JPG, PNG or WebP product picture.": {
+    "en": "Please choose a JPG, PNG or WebP product picture.",
+    "ur": "آئٹم کی جے پی جی، پی این جی یا ویب پی تصویر منتخب کریں۔"
+  },
+  "Please choose an image under 5 MB. It will be compressed for local storage.": {
+    "en": "Please choose an image under 5 MB. It will be compressed for local storage.",
+    "ur": "۵ ایم بی سے چھوٹی تصویر منتخب کریں۔"
+  },
+  "This picture could not be loaded.": {
+    "en": "This picture could not be loaded.",
+    "ur": "تصویر نہیں پڑھی جا سکی۔"
+  },
+  "This picture could not be read.": {
+    "en": "This picture could not be read.",
+    "ur": "تصویر نہیں پڑھی جا سکی۔"
+  },
+  "This document could not be read.": {
+    "en": "This document could not be read.",
+    "ur": "دستاویز نہیں پڑھی جا سکی۔"
+  },
+  "Image will be auto-compressed for local storage.": {
+    "en": "Image will be auto-compressed for local storage.",
+    "ur": "تصویر محفوظ کرنے کے لیے خودکار طور پر چھوٹی ہو جائے گی۔"
+  },
+  "Save product to keep this change.": {
+    "en": "Save product to keep this change.",
+    "ur": "یہ تبدیلی رکھنے کے لیے آئٹم محفوظ کریں۔"
+  },
+  "Save changes to apply.": {
+    "en": "Save changes to apply.",
+    "ur": "تبدیلیاں محفوظ کریں۔"
+  },
+  "Product photo is ready. Press Save Product to store it locally.": {
+    "en": "Product photo is ready. Press Save Product to store it locally.",
+    "ur": "تصویر تیار ہے۔ آئٹم محفوظ کریں۔"
+  },
+  "Document is ready. Press Save Purchase to store it locally.": {
+    "en": "Document is ready. Press Save Purchase to store it locally.",
+    "ur": "دستاویز تیار ہے۔ خریداری محفوظ کریں۔"
+  },
+  "Press Save Changes to update branding and invoices.": {
+    "en": "Press Save Changes to update branding and invoices.",
+    "ur": "لوگو اور بل کی معلومات بدلنے کے لیے محفوظ کریں۔"
+  },
+  "Updated shop details will appear on thermal receipts, sidebar and invoices.": {
+    "en": "Updated shop details will appear on thermal receipts, sidebar and invoices.",
+    "ur": "نئی معلومات مینو اور رسیدوں پر نظر آئیں گی۔"
+  },
+  "Choose issue type, priority and write your message.": {
+    "en": "Choose issue type, priority and write your message.",
+    "ur": "مسئلہ، ترجیح اور پیغام لکھیں۔"
+  },
+  "All saved requests are shown on this page.": {
+    "en": "All saved requests are shown on this page.",
+    "ur": "تمام محفوظ درخواستیں یہاں موجود ہیں۔"
+  },
+  "Call or WhatsApp the support team at 0333-7776614 and share your shop activation code.": {
+    "en": "Call or WhatsApp the support team at 0333-7776614 and share your shop activation code.",
+    "ur": "مدد کے لیے 0333-7776614 پر کال یا واٹس ایپ کریں اور دکان کا ایکٹیویشن کوڈ بتائیں۔"
+  },
+  "Attach the downloaded receipt to your message.": {
+    "en": "Attach the downloaded receipt to your message.",
+    "ur": "ڈاؤن لوڈ شدہ رسید اپنے پیغام کے ساتھ لگائیں۔"
+  },
+  "Thermal receipt is available when the job is marked Done or Delivered.": {
+    "en": "Thermal receipt is available when the job is marked Done or Delivered.",
+    "ur": "مرمت مکمل یا واپس ہونے پر تھرمل رسید دستیاب ہوتی ہے۔"
+  },
+  "Repair job receipt is ready for 80mm thermal printer.": {
+    "en": "Repair job receipt is ready for 80mm thermal printer.",
+    "ur": "مرمت کی رسید ۸۰ ملی میٹر پرنٹر کے لیے تیار ہے۔"
+  },
+  "Wallet receipt is ready for 80mm thermal printer.": {
+    "en": "Wallet receipt is ready for 80mm thermal printer.",
+    "ur": "والٹ کی رسید ۸۰ ملی میٹر پرنٹر کے لیے تیار ہے۔"
+  },
+  "The sales report was downloaded as a CSV file.": {
+    "en": "The sales report was downloaded as a CSV file.",
+    "ur": "فروخت کی رپورٹ سی ایس وی فائل میں ڈاؤن لوڈ ہو گئی۔"
+  },
+  "Validated versioned backup downloaded as JSON.": {
+    "en": "Validated versioned backup downloaded as JSON.",
+    "ur": "بیک اَپ فائل ڈاؤن لوڈ ہو گئی۔"
+  },
+  "Local data has been restored successfully.": {
+    "en": "Local data has been restored successfully.",
+    "ur": "مقامی ڈیٹا بحال ہو گیا۔"
+  },
+  "Local data reset": {
+    "en": "Local data reset",
+    "ur": "مقامی ڈیٹا ری سیٹ ہو گیا"
+  },
+  "Local saved data was cleared. Try login again.": {
+    "en": "Local saved data was cleared. Try login again.",
+    "ur": "مقامی ڈیٹا صاف ہو گیا۔ دوبارہ لاگ اِن کریں۔"
+  },
+  "Invalid data structure": {
+    "en": "Invalid data structure",
+    "ur": "ڈیٹا کی ساخت درست نہیں"
+  },
+  "Local stock record": {
+    "en": "Local stock record",
+    "ur": "مقامی اسٹاک کا ریکارڈ"
+  },
+  "Not recorded yet — create a backup before major changes.": {
+    "en": "Not recorded yet — create a backup before major changes.",
+    "ur": "ابھی درج نہیں۔ بڑی تبدیلی سے پہلے بیک اَپ بنائیں۔"
+  },
+  "Last verified shop information. Sync to check for updates.": {
+    "en": "Last verified shop information. Sync to check for updates.",
+    "ur": "آخری تصدیق شدہ معلومات۔ تازہ معلومات کے لیے کلاؤڈ سنک کریں۔"
+  },
+  "Changes are saved on this device and queued for upload.": {
+    "en": "Changes are saved on this device and queued for upload.",
+    "ur": "تبدیلیاں اس ڈیوائس پر محفوظ اور کلاؤڈ کے لیے منتظر ہیں۔"
+  },
+  "Server checked": {
+    "en": "Server checked",
+    "ur": "کلاؤڈ چیک ہو گیا"
+  },
+  "Server configuration required": {
+    "en": "Server configuration required",
+    "ur": "کلاؤڈ کی ترتیب ضروری ہے"
+  },
+  "Check the HTTPS API URL.": {
+    "en": "Check the HTTPS API URL.",
+    "ur": "محفوظ کلاؤڈ پتہ چیک کریں۔"
+  },
+  "Real Cloud-linked owner and staff access.": {
+    "en": "Real Cloud-linked owner and staff access.",
+    "ur": "مالک اور عملے کی کلاؤڈ رسائی"
+  },
+  "Create a real Cloud staff login linked to one branch.": {
+    "en": "Create a real Cloud staff login linked to one branch.",
+    "ur": "برانچ کے لیے عملے کا کلاؤڈ اکاؤنٹ بنائیں۔"
+  },
+  "{0} uploaded · {1} downloaded.": {
+    "en": "{0} uploaded · {1} downloaded.",
+    "ur": "{0} اپ لوڈ · {1} ڈاؤن لوڈ"
+  },
+  "{0} received from {1}.": {
+    "en": "{0} received from {1}.",
+    "ur": "{1} سے {0} وصول ہوئے۔"
+  },
+  "{0} sale has been completed.": {
+    "en": "{0} sale has been completed.",
+    "ur": "{0} کی فروخت مکمل ہو گئی۔"
+  },
+  "{0} expense recorded.": {
+    "en": "{0} expense recorded.",
+    "ur": "{0} خرچ درج ہو گیا۔"
+  },
+  "{0} closing balance recorded.": {
+    "en": "{0} closing balance recorded.",
+    "ur": "{0} اختتامی بیلنس درج ہو گیا۔"
+  },
+  "{0} has a monthly due of {1}.": {
+    "en": "{0} has a monthly due of {1}.",
+    "ur": "{0} کی ماہانہ قسط {1} ہے۔"
+  },
+  "{0} is now in your customer list.": {
+    "en": "{0} is now in your customer list.",
+    "ur": "{0} گاہکوں میں شامل ہو گیا۔"
+  },
+  "{0} is now in your supplier list.": {
+    "en": "{0} is now in your supplier list.",
+    "ur": "{0} سپلائرز میں شامل ہو گیا۔"
+  },
+  "{0} is now {1}.": {
+    "en": "{0} is now {1}.",
+    "ur": "{0} کی حالت اب {1} ہے۔"
+  },
+  "{0} is back in inventory.": {
+    "en": "{0} is back in inventory.",
+    "ur": "{0} اسٹاک میں واپس آ گیا۔"
+  },
+  "{0} is not available in local stock.": {
+    "en": "{0} is not available in local stock.",
+    "ur": "{0} مقامی اسٹاک میں دستیاب نہیں۔"
+  },
+  "{0} already exists in stock.": {
+    "en": "{0} already exists in stock.",
+    "ur": "{0} پہلے سے اسٹاک میں ہے۔"
+  },
+  "{0} added to the purchase list.": {
+    "en": "{0} added to the purchase list.",
+    "ur": "{0} خریداری کی فہرست میں شامل ہو گیا۔"
+  },
+  "{0} removed from purchase list.": {
+    "en": "{0} removed from purchase list.",
+    "ur": "{0} خریداری کی فہرست سے ہٹا دیا گیا۔"
+  },
+  "{0} was added to current sale.": {
+    "en": "{0} was added to current sale.",
+    "ur": "{0} بل میں شامل ہو گیا۔"
+  },
+  "{0} was added to the cart.": {
+    "en": "{0} was added to the cart.",
+    "ur": "{0} بل میں شامل ہو گیا۔"
+  },
+  "{0} was created successfully.": {
+    "en": "{0} was created successfully.",
+    "ur": "{0} بن گیا۔"
+  },
+  "{0} saved in audit/deleted records.": {
+    "en": "{0} saved in audit/deleted records.",
+    "ur": "{0} حذف شدہ ریکارڈ میں محفوظ ہو گیا۔"
+  },
+  "{0} activated. Create your new password.": {
+    "en": "{0} activated. Create your new password.",
+    "ur": "{0} فعال ہو گیا۔ اپنا پاس ورڈ بنائیں۔"
+  },
+  "{0} verified. Create a secure new password.": {
+    "en": "{0} verified. Create a secure new password.",
+    "ur": "{0} کی تصدیق ہو گئی۔ نیا پاس ورڈ بنائیں۔"
+  },
+  "{0} dashboard is ready.": {
+    "en": "{0} dashboard is ready.",
+    "ur": "{0} کی دکان تیار ہے۔"
+  },
+  "{0} dashboard is ready. Next login will use mobile number and new password.": {
+    "en": "{0} dashboard is ready. Next login will use mobile number and new password.",
+    "ur": "{0} کی دکان تیار ہے۔ آئندہ موبائل اور نئے پاس ورڈ سے لاگ اِن کریں۔"
+  },
+  "{0} payment(s) are due for collection today.": {
+    "en": "{0} payment(s) are due for collection today.",
+    "ur": "آج {0} ادائیگیاں واجب الادا ہیں۔"
+  },
+  "{0} product(s) at or below their reorder level.": {
+    "en": "{0} product(s) at or below their reorder level.",
+    "ur": "{0} آئٹمز کم اسٹاک کی حد پر یا اس سے نیچے ہیں۔"
+  },
+  "{0} product{1} in current cart": {
+    "en": "{0} product{1} in current cart",
+    "ur": "موجودہ بل میں {0} آئٹمز{1}"
+  },
+  "{0} each": {
+    "en": "{0} each",
+    "ur": "فی آئٹم {0}"
+  },
+  "{0}/{1} · Stock: {2}": {
+    "en": "{0}/{1} · Stock: {2}",
+    "ur": "{0}/{1} · اسٹاک: {2}"
+  },
+  "{0} · {1} · {2} priority": {
+    "en": "{0} · {1} · {2} priority",
+    "ur": "{0} · {1} · ترجیح {2}"
+  },
+  "· {0} IMEI saved": {
+    "en": "· {0} IMEI saved",
+    "ur": "· {0} آئی ایم ای آئی محفوظ"
+  },
+  "Mobile / Product": {
+    "en": "Mobile / Product",
+    "ur": "موبائل / آئٹم"
+  },
+  "Welcome back,": {
+    "en": "Welcome back,",
+    "ur": "خوش آمدید،"
+  },
+  "View pending changes and retry": {
+    "en": "View pending changes and retry",
+    "ur": "منتظر تبدیلیاں دیکھیں اور دوبارہ کوشش کریں"
+  },
+  "Activation failed (HTTP {0})": {
+    "en": "Activation failed (HTTP {0})",
+    "ur": "ایکٹیویشن ناکام ہوئی (HTTP {0})"
+  },
+  "Add LCD, battery, charging board, camera, flex or speaker parts here.": {
+    "en": "Add LCD, battery, charging board, camera, flex or speaker parts here.",
+    "ur": "ایل سی ڈی، بیٹری، کیمرا اور مرمت کے پارٹس شامل کریں۔"
+  },
+  "Add a new customer to create an account ledger.": {
+    "en": "Add a new customer to create an account ledger.",
+    "ur": "کھاتہ بنانے کے لیے گاہک شامل کریں۔"
+  },
+  "Add a new product or remove the filters.": {
+    "en": "Add a new product or remove the filters.",
+    "ur": "آئٹم شامل کریں یا فلٹر ہٹائیں۔"
+  },
+  "Add covers, chargers, handsfree, cables or glass here.": {
+    "en": "Add covers, chargers, handsfree, cables or glass here.",
+    "ur": "کور، چارجر، ہینڈز فری، کیبل یا گلاس شامل کریں۔"
+  },
+  "Add laptop stock separately here, so it does not mix with mobile inventory.": {
+    "en": "Add laptop stock separately here, so it does not mix with mobile inventory.",
+    "ur": "لیپ ٹاپ کا اسٹاک یہاں الگ شامل کریں۔"
+  },
+  "Cash, EasyPaisa and JazzCash in-out control with thermal receipt.": {
+    "en": "Cash, EasyPaisa and JazzCash in-out control with thermal receipt.",
+    "ur": "نقد، ایزی پیسہ اور جاز کیش کا حساب اور رسید۔"
+  },
+  "Collect a monthly installment and issue a receipt.": {
+    "en": "Collect a monthly installment and issue a receipt.",
+    "ur": "ماہانہ قسط وصول کریں اور رسید دیں۔"
+  },
+  "Complete a sale or choose a different period.": {
+    "en": "Complete a sale or choose a different period.",
+    "ur": "فروخت درج کریں یا دوسری مدت منتخب کریں۔"
+  },
+  "Control your shop account and app preferences.": {
+    "en": "Control your shop account and app preferences.",
+    "ur": "دکان اور ایپ کی ترتیبات۔"
+  },
+  "Covers, chargers, tempered glass, cables and handsfree stock.": {
+    "en": "Covers, chargers, tempered glass, cables and handsfree stock.",
+    "ur": "کور، چارجر، گلاس، کیبل اور ہینڈز فری کا اسٹاک۔"
+  },
+  "Create a new installment plan to start tracking dues.": {
+    "en": "Create a new installment plan to start tracking dues.",
+    "ur": "واجب الادا رقم کے لیے اقساط بنائیں۔"
+  },
+  "Create a simple, trackable payment plan.": {
+    "en": "Create a simple, trackable payment plan.",
+    "ur": "ادائیگی کا پلان بنائیں۔"
+  },
+  "Create your first sale from POS Billing.": {
+    "en": "Create your first sale from POS Billing.",
+    "ur": "بلنگ سے پہلی فروخت درج کریں۔"
+  },
+  "Fast laptop entry for shop stock.": {
+    "en": "Fast laptop entry for shop stock.",
+    "ur": "لیپ ٹاپ کا اندراج۔"
+  },
+  "LCD, battery, charging board, flex, camera and repair part stock.": {
+    "en": "LCD, battery, charging board, flex, camera and repair part stock.",
+    "ur": "ایل سی ڈی، بیٹری، کیمرا اور مرمت کے پارٹس۔"
+  },
+  "Laptop stock, purchase price, sale price, specs and rack details.": {
+    "en": "Laptop stock, purchase price, sale price, specs and rack details.",
+    "ur": "لیپ ٹاپ، قیمتیں اور ریک کی تفصیل۔"
+  },
+  "Low stock, out of stock and reorder reminders.": {
+    "en": "Low stock, out of stock and reorder reminders.",
+    "ur": "کم یا ختم اسٹاک کی یاددہانی۔"
+  },
+  "Record shop spending for local cash closing.": {
+    "en": "Record shop spending for local cash closing.",
+    "ur": "کیش کے حساب کے لیے اخراجات درج کریں۔"
+  },
+  "Repair parts fast entry for mobile shops.": {
+    "en": "Repair parts fast entry for mobile shops.",
+    "ur": "مرمت کے پارٹس کا اندراج۔"
+  },
+  "Save EasyPaisa or JazzCash In/Out to build the ledger.": {
+    "en": "Save EasyPaisa or JazzCash In/Out to build the ledger.",
+    "ur": "کھاتے کے لیے ایزی پیسہ یا جاز کیش کا اندراج کریں۔"
+  },
+  "Save complete device, supplier and IMEI details.": {
+    "en": "Save complete device, supplier and IMEI details.",
+    "ur": "ڈیوائس، سپلائر اور آئی ایم ای آئی کی تفصیل محفوظ کریں۔"
+  },
+  "Search also matches purchase IMEIs.": {
+    "en": "Search also matches purchase IMEIs.",
+    "ur": "خریداری کے آئی ایم ای آئی بھی تلاش ہوتے ہیں۔"
+  },
+  "Send a support request and track its progress.": {
+    "en": "Send a support request and track its progress.",
+    "ur": "مدد کی درخواست بھیجیں اور پیش رفت دیکھیں۔"
+  },
+  "Simple wallet in and out entries with thermal receipt.": {
+    "en": "Simple wallet in and out entries with thermal receipt.",
+    "ur": "والٹ کی وصولی، ادائیگی اور رسید۔"
+  },
+  "Supplier ledger opened with payable balances and purchase history.": {
+    "en": "Supplier ledger opened with payable balances and purchase history.",
+    "ur": "سپلائر کا کھاتہ، باقی رقم اور خریداری کھل گئی۔"
+  },
+  "Track every device from intake to delivery.": {
+    "en": "Track every device from intake to delivery.",
+    "ur": "مرمت سے واپسی تک ڈیوائس کا ریکارڈ رکھیں۔"
+  },
+  "Try a different product name, model or SKU.": {
+    "en": "Try a different product name, model or SKU.",
+    "ur": "دوسرا نام، ماڈل یا ایس کے یو تلاش کریں۔"
+  },
+  "Try a supplier name or mobile number.": {
+    "en": "Try a supplier name or mobile number.",
+    "ur": "سپلائر کا نام یا موبائل تلاش کریں۔"
+  },
+  "Try another status or create a new repair job.": {
+    "en": "Try another status or create a new repair job.",
+    "ur": "دوسری حالت منتخب کریں یا مرمت شامل کریں۔"
+  },
+  "Try scanning a SKU or use another keyword.": {
+    "en": "Try scanning a SKU or use another keyword.",
+    "ur": "ایس کے یو اسکین کریں یا دوسرا لفظ تلاش کریں۔"
+  },
+  "Invalid encrypted token": {
+    "en": "Invalid encrypted token",
+    "ur": "محفوظ سیشن درست نہیں؛ دوبارہ لاگ اِن کریں"
+  },
+  "Unencrypted token rejected": {
+    "en": "Unencrypted token rejected",
+    "ur": "محفوظ سیشن درست نہیں؛ دوبارہ لاگ اِن کریں"
+  },
+  "Refresh token is missing": {
+    "en": "Refresh token is missing",
+    "ur": "محفوظ سیشن نہیں مل سکا؛ دوبارہ لاگ اِن کریں"
+  },
+  "Secure refresh token could not be read": {
+    "en": "Secure refresh token could not be read",
+    "ur": "محفوظ سیشن نہیں مل سکا؛ دوبارہ لاگ اِن کریں"
+  },
+  "Secure sync token could not be read": {
+    "en": "Secure sync token could not be read",
+    "ur": "محفوظ سیشن نہیں مل سکا؛ دوبارہ لاگ اِن کریں"
+  },
+  "Server returned incomplete refresh credentials": {
+    "en": "Server returned incomplete refresh credentials",
+    "ur": "محفوظ سیشن نہیں مل سکا؛ دوبارہ لاگ اِن کریں"
+  },
+  "Server returned invalid refresh credentials": {
+    "en": "Server returned invalid refresh credentials",
+    "ur": "محفوظ سیشن نہیں مل سکا؛ دوبارہ لاگ اِن کریں"
+  },
+  "Shop bootstrap failed": {
+    "en": "Shop bootstrap failed",
+    "ur": "کلاؤڈ سے دکان کی معلومات نہیں ملیں"
+  },
+  "Sync API must use HTTPS": {
+    "en": "Sync API must use HTTPS",
+    "ur": "کلاؤڈ کا درست محفوظ پتہ ضروری ہے"
+  },
+  "Valid Cloud HTTPS API URL is required.": {
+    "en": "Valid Cloud HTTPS API URL is required.",
+    "ur": "کلاؤڈ کا درست محفوظ پتہ ضروری ہے"
+  },
+  "Offline — showing data saved on this device. Updates resume when connected.": {
+    "en": "Offline — showing data saved on this device. Updates resume when connected.",
+    "ur": "آف لائن: اس ڈیوائس کا محفوظ ڈیٹا دکھایا جا رہا ہے۔ رابطہ بحال ہونے پر اپ ڈیٹ ہو گا۔"
+  },
+  "{0} (HTTP {1})": {
+    "en": "{0} (HTTP {1})",
+    "ur": "{0} (HTTP {1})"
+  },
+  "by SkyBarech Technology": {
+    "en": "by SkyBarech Technology",
+    "ur": "اسکائی بارچ ٹیکنالوجی"
+  },
+  "Powered by SkyBarech Technology": {
+    "en": "Powered by SkyBarech Technology",
+    "ur": "اسکائی بارچ ٹیکنالوجی"
+  },
+  "Mobile Shop {0}": {
+    "en": "Mobile Shop {0}",
+    "ur": "موبائل شاپ {0}"
+  },
+  "80mm thermal invoice ready.": {
+    "en": "80mm thermal invoice ready.",
+    "ur": "۸۰ ملی میٹر کی تھرمل رسید تیار ہے۔"
+  },
+  "{0} Installment payment {1} Customer: {2} Plan: {3} Payment: {4}/{5} Received: {6} Method: {7}": {
+    "en": "{0} Installment payment {1} Customer: {2} Plan: {3} Payment: {4}/{5} Received: {6} Method: {7}",
+    "ur": "{0} قسط کی ادائیگی {1} گاہک: {2} پلان: {3} ادائیگی: {4}/{5} وصولی: {6} طریقہ: {7}"
+  },
+  "{0} {1} Purchase {2} {3} Supplier: {4} {5} IMEI: {6} Quantity: {7} Unit cost: {8} Total: {9}": {
+    "en": "{0} {1} Purchase {2} {3} Supplier: {4} {5} IMEI: {6} Quantity: {7} Unit cost: {8} Total: {9}",
+    "ur": "{0} {1} خریداری {2} {3} سپلائر: {4} {5} آئی ایم ای آئی: {6} تعداد: {7} فی آئٹم قیمت: {8} کل: {9}"
+  },
+  "{0} {1} {2} {3} {4} {5} Amount: {6} Fee: {7} Reference: {8}": {
+    "en": "{0} {1} {2} {3} {4} {5} Amount: {6} Fee: {7} Reference: {8}",
+    "ur": "{0} {1} {2} {3} {4} {5} رقم: {6} فیس: {7} حوالہ: {8}"
+  },
+  "Unit cost": {
+    "en": "Unit cost",
+    "ur": "فی آئٹم قیمت"
+  },
+  "Received": {
+    "en": "Received",
+    "ur": "وصولی"
+  },
+  "Method": {
+    "en": "Method",
+    "ur": "طریقہ"
+  },
+  "Create a normal mobile/tablet inventory item.": {
+    "en": "Create a normal mobile/tablet inventory item.",
+    "ur": "موبائل یا ٹیبلٹ کا آئٹم شامل کریں۔"
+  },
+  "Saved models are shown first. Use Sync to refresh; type manually if the model is missing.": {
+    "en": "Saved models are shown first. Use Sync to refresh; type manually if the model is missing.",
+    "ur": "محفوظ ماڈلز پہلے دکھائے جاتے ہیں۔ تازہ کریں یا ماڈل خود لکھیں۔"
+  },
+  "Saved models for {0}": {
+    "en": "Saved models for {0}",
+    "ur": "{0} کے محفوظ ماڈلز"
+  },
+  "Select a brand from the dropdown. The model list will refresh automatically.": {
+    "en": "Select a brand from the dropdown. The model list will refresh automatically.",
+    "ur": "برانڈ منتخب کریں۔ متعلقہ ماڈلز دکھائی دیں گے۔"
+  },
+  "e.g. 0300 1234567": {
+    "en": "e.g. 0300 1234567",
+    "ur": "مثلاً 0300 1234567"
+  },
+  "e.g. Ali Mobile Accessories": {
+    "en": "e.g. Ali Mobile Accessories",
+    "ur": "مثلاً علی موبائل"
+  },
+  "e.g. A14 Glass / 25W Charger / Type-C Cable": {
+    "en": "e.g. A14 Glass / 25W Charger / Type-C Cable",
+    "ur": "مثلاً A14 گلاس یا چارجر"
+  },
+  "e.g. Samsung A14 LCD / iPhone 11 Battery": {
+    "en": "e.g. Samsung A14 LCD / iPhone 11 Battery",
+    "ur": "مثلاً سام سنگ ایل سی ڈی یا آئی فون بیٹری"
+  },
+  "e.g. Display Issue": {
+    "en": "e.g. Display Issue",
+    "ur": "مثلاً ڈسپلے کی خرابی"
+  },
+  "e.g. SB-2026-ACTIVE": {
+    "en": "e.g. SB-2026-ACTIVE",
+    "ur": "مثلاً SB-2026-ACTIVE"
+  },
+  "Laptop stock is saved only in the laptop tab.": {
+    "en": "Laptop stock is saved only in the laptop tab.",
+    "ur": "لیپ ٹاپ کا اسٹاک الگ حصے میں محفوظ ہوتا ہے۔"
+  },
+  "Workspace themes": {
+    "en": "Workspace themes",
+    "ur": "ورک اسپیس کے تھیم"
+  },
+  "Choose your workspace colors": {
+    "en": "Choose your workspace colors",
+    "ur": "ورک اسپیس کے رنگ منتخب کریں"
+  },
+  "Classic Blue": {
+    "en": "Classic Blue",
+    "ur": "کلاسک نیلا"
+  },
+  "Bright and familiar": {
+    "en": "Bright and familiar",
+    "ur": "روشن اور مانوس"
+  },
+  "Midnight": {
+    "en": "Midnight",
+    "ur": "نیم شب"
+  },
+  "Comfortable after hours": {
+    "en": "Comfortable after hours",
+    "ur": "رات کے کام کے لیے آرام دہ"
+  },
+  "Emerald": {
+    "en": "Emerald",
+    "ur": "زمردی"
+  },
+  "Calm green accents": {
+    "en": "Calm green accents",
+    "ur": "پرسکون سبز رنگ"
+  },
+  "Amethyst": {
+    "en": "Amethyst",
+    "ur": "بنفشی"
+  },
+  "Soft violet accents": {
+    "en": "Soft violet accents",
+    "ur": "نرم بنفشی رنگ"
+  },
+  "Slate": {
+    "en": "Slate",
+    "ur": "سلیٹی"
+  },
+  "Quiet and focused": {
+    "en": "Quiet and focused",
+    "ur": "سادہ اور یکسو"
+  },
+  "Warm Sand": {
+    "en": "Warm Sand",
+    "ur": "ریتلا"
+  },
+  "Warm neutral tones": {
+    "en": "Warm neutral tones",
+    "ur": "گرم اور ہلکے رنگ"
+  },
+  "Saved on this device. Your shop data stays the same.": {
+    "en": "Saved on this device. Your shop data stays the same.",
+    "ur": "انتخاب اس ڈیوائس پر محفوظ ہے۔ دکان کا ڈیٹا تبدیل نہیں ہوتا۔"
+  },
+  "PIN / password": {
+    "en": "PIN / password",
+    "ur": "پن / پاس ورڈ"
+  },
+  "Enter your PIN or existing password": {
+    "en": "Enter your PIN or existing password",
+    "ur": "اپنا پن یا موجودہ پاس ورڈ درج کریں"
+  },
+  "Create PIN": {
+    "en": "Create PIN",
+    "ur": "پن بنائیں"
+  },
+  "Change PIN": {
+    "en": "Change PIN",
+    "ur": "پن تبدیل کریں"
+  },
+  "Choose a PIN for your shop.": {
+    "en": "Choose a PIN for your shop.",
+    "ur": "اپنی دکان کے لیے پن منتخب کریں۔"
+  },
+  "Use the same PIN on desktop and Android.": {
+    "en": "Use the same PIN on desktop and Android.",
+    "ur": "ڈیسک ٹاپ اور اینڈرائیڈ پر یہی پن استعمال کریں۔"
+  },
+  "Current PIN / password": {
+    "en": "Current PIN / password",
+    "ur": "موجودہ پن / پاس ورڈ"
+  },
+  "PIN length": {
+    "en": "PIN length",
+    "ur": "پن کے ہندسے"
+  },
+  "4 digits": {
+    "en": "4 digits",
+    "ur": "۴ ہندسے"
+  },
+  "6 digits": {
+    "en": "6 digits",
+    "ur": "۶ ہندسے"
+  },
+  "New PIN": {
+    "en": "New PIN",
+    "ur": "نیا پن"
+  },
+  "Enter new PIN": {
+    "en": "Enter new PIN",
+    "ur": "نیا پن درج کریں"
+  },
+  "Confirm PIN": {
+    "en": "Confirm PIN",
+    "ur": "پن کی تصدیق"
+  },
+  "Repeat PIN": {
+    "en": "Repeat PIN",
+    "ur": "پن دوبارہ درج کریں"
+  },
+  "Save PIN & Open Dashboard": {
+    "en": "Save PIN & Open Dashboard",
+    "ur": "پن محفوظ کریں اور ڈیش بورڈ کھولیں"
+  },
+  "Invalid PIN": {
+    "en": "Invalid PIN",
+    "ur": "غلط پن"
+  },
+  "Enter exactly the selected number of digits.": {
+    "en": "Enter exactly the selected number of digits.",
+    "ur": "منتخب کردہ تعداد کے مطابق ہندسے درج کریں۔"
+  },
+  "Enter your owner mobile and PIN.": {
+    "en": "Enter your owner mobile and PIN.",
+    "ur": "مالک کا موبائل نمبر اور پن درج کریں۔"
+  },
+  "Try again later": {
+    "en": "Try again later",
+    "ur": "کچھ دیر بعد دوبارہ کوشش کریں"
+  },
+  "Too many failed PIN attempts. Try again in 15 minutes.": {
+    "en": "Too many failed PIN attempts. Try again in 15 minutes.",
+    "ur": "پن کی بہت زیادہ غلط کوششیں ہو چکی ہیں۔ ۱۵ منٹ بعد دوبارہ کوشش کریں۔"
+  },
+  "Colors are managed by Super Admin.": {
+    "en": "Colors are managed by Super Admin.",
+    "ur": "رنگ سپر ایڈمن کے ذریعے تبدیل ہوتے ہیں۔"
+  },
+  "Products above minimum stock": {
+    "en": "Products above minimum stock",
+    "ur": "کم از کم حد سے زیادہ اسٹاک والی مصنوعات"
+  },
+  "Completed repairs": {
+    "en": "Completed repairs",
+    "ur": "مکمل شدہ مرمتیں"
+  },
+  "Needs attention": {
+    "en": "Needs attention",
+    "ur": "توجہ درکار ہے"
+  },
+  "Waiting for connection": {
+    "en": "Waiting for connection",
+    "ur": "کنکشن کا انتظار ہے"
+  },
+  "Shop PIN": {
+    "en": "Shop PIN",
+    "ur": "دکان کا پن"
+  },
+  "Enter your PIN.": {
+    "en": "Enter your PIN.",
+    "ur": "اپنا پن درج کریں۔"
+  },
+  "Use PIN": {
+    "en": "Use PIN",
+    "ur": "پن استعمال کریں"
+  },
+  "Use password": {
+    "en": "Use password",
+    "ur": "پاس ورڈ استعمال کریں"
+  },
+  "Need help?": {
+    "en": "Need help?",
+    "ur": "مدد چاہیے؟"
+  },
+  "Unlock with fingerprint": {
+    "en": "Unlock with fingerprint",
+    "ur": "فنگر پرنٹ سے کھولیں"
+  },
+  "Enable fingerprint?": {
+    "en": "Enable fingerprint?",
+    "ur": "فنگر پرنٹ فعال کریں؟"
+  },
+  "Enable fingerprint": {
+    "en": "Enable fingerprint",
+    "ur": "فنگر پرنٹ فعال کریں"
+  },
+  "Unlock this shop on this phone without entering your PIN each time.": {
+    "en": "Unlock this shop on this phone without entering your PIN each time.",
+    "ur": "اس فون پر ہر بار پن درج کیے بغیر اپنی دکان کھولیں۔"
+  },
+  "Not now": {
+    "en": "Not now",
+    "ur": "ابھی نہیں"
+  },
+  "Fingerprint unlock": {
+    "en": "Fingerprint unlock",
+    "ur": "فنگر پرنٹ سے رسائی"
+  },
+  "Fingerprint enabled on this device.": {
+    "en": "Fingerprint enabled on this device.",
+    "ur": "اس فون پر فنگر پرنٹ فعال ہو گیا ہے۔"
+  },
+  "Shop access stopped. Sign in online with your PIN.": {
+    "en": "Shop access stopped. Sign in online with your PIN.",
+    "ur": "دکان کی رسائی بند ہے۔ انٹرنیٹ کے ساتھ پن سے سائن ان کریں۔"
+  },
+  "Sign in with your PIN to reconnect this device.": {
+    "en": "Sign in with your PIN to reconnect this device.",
+    "ur": "اس فون کو دوبارہ جوڑنے کے لیے پن سے سائن ان کریں۔"
+  },
+  "Enter your current PIN or password and matching new 4 or 6 digit PIN.": {
+    "en": "Enter your current PIN or password and matching new 4 or 6 digit PIN.",
+    "ur": "موجودہ پن یا پاس ورڈ اور نیا ۴ یا ۶ ہندسوں کا پن تصدیق کے ساتھ درج کریں۔"
+  },
+  "Choose a 4 or 6 digit PIN.": {
+    "en": "Choose a 4 or 6 digit PIN.",
+    "ur": "۴ یا ۶ ہندسوں کا پن منتخب کریں۔"
+  },
+  "Change your shop PIN": {
+    "en": "Change your shop PIN",
+    "ur": "اپنی دکان کا پن تبدیل کریں"
+  },
+  "Update PIN": {
+    "en": "Update PIN",
+    "ur": "پن تبدیل کریں"
+  },
+  "After verification, choose a 4 or 6 digit PIN.": {
+    "en": "After verification, choose a 4 or 6 digit PIN.",
+    "ur": "تصدیق کے بعد ۴ یا ۶ ہندسوں کا پن منتخب کریں۔"
+  },
+  "Set up fingerprint in Android settings, then try again.": {
+    "en": "Set up fingerprint in Android settings, then try again.",
+    "ur": "اینڈرائیڈ سیٹنگز میں فنگر پرنٹ درج کریں، پھر دوبارہ کوشش کریں۔"
+  },
+  "Sign in with your PIN to enable fingerprint.": {
+    "en": "Sign in with your PIN to enable fingerprint.",
+    "ur": "فنگر پرنٹ فعال کرنے کے لیے پہلے پن سے سائن ان کریں۔"
+  },
+  "Fingerprint changed. Sign in with your PIN and enable it again.": {
+    "en": "Fingerprint changed. Sign in with your PIN and enable it again.",
+    "ur": "فنگر پرنٹ تبدیل ہو گیا ہے۔ پن سے سائن ان کریں اور اسے دوبارہ فعال کریں۔"
+  },
+  "Fingerprint unavailable. Sign in with your PIN and enable it again.": {
+    "en": "Fingerprint unavailable. Sign in with your PIN and enable it again.",
+    "ur": "فنگر پرنٹ دستیاب نہیں۔ پن سے سائن ان کریں اور اسے دوبارہ فعال کریں۔"
+  },
+  "Unlock your shop": {
+    "en": "Unlock your shop",
+    "ur": "اپنی دکان کھولیں"
+  },
+  "Verify with your device fingerprint": {
+    "en": "Verify with your device fingerprint",
+    "ur": "اپنے فون کے فنگر پرنٹ سے تصدیق کریں"
+  },
+  "Forgot PIN?": {
+    "en": "Forgot PIN?",
+    "ur": "پن بھول گئے؟"
+  },
+  "PINs do not match": {
+    "en": "PINs do not match",
+    "ur": "پن ایک جیسے نہیں ہیں"
+  },
+  "Enter the same PIN again.": {
+    "en": "Enter the same PIN again.",
+    "ur": "وہی پن دوبارہ درج کریں۔"
+  },
+  "PIN saved": {
+    "en": "PIN saved",
+    "ur": "پن محفوظ ہو گیا"
+  },
+  "{0} verified. Choose a 4 or 6 digit PIN.": {
+    "en": "{0} verified. Choose a 4 or 6 digit PIN.",
+    "ur": "{0} کی تصدیق ہو گئی۔ ۴ یا ۶ ہندسوں کا پن منتخب کریں۔"
+  },
+  "PIN updated. Use the new PIN on your other device.": {
+    "en": "PIN updated. Use the new PIN on your other device.",
+    "ur": "پن تبدیل ہو گیا۔ دوسرے ڈیوائس پر نیا پن استعمال کریں۔"
+  },
+  "Enter the PIN and confirm it.": {
+    "en": "Enter the PIN and confirm it.",
+    "ur": "پن درج کریں اور اس کی تصدیق کریں۔"
+  },
+  "PINs do not match.": {
+    "en": "PINs do not match.",
+    "ur": "پن ایک جیسے نہیں ہیں۔"
+  },
+  "PIN saved. Dashboard ready.": {
+    "en": "PIN saved. Dashboard ready.",
+    "ur": "پن محفوظ ہو گیا۔ ڈیش بورڈ تیار ہے۔"
+  },
+  "Your connected shop workspace": {"en":"Your connected shop workspace","ur":"آپ کی منسلک دکان کی ورک اسپیس"},
+  "SECURE SHOP LOGIN": {"en":"SECURE SHOP LOGIN","ur":"دکان کا محفوظ لاگ اِن"},
+  "Cloud ready": {"en":"Cloud ready","ur":"کلاؤڈ تیار ہے"},
+  "Shop PIN": {"en":"Shop PIN","ur":"دکان کا پن"},
+  "Enter your 4 or 6 digit shop PIN": {"en":"Enter your 4 or 6 digit shop PIN","ur":"دکان کا ۴ یا ۶ ہندسوں کا پن درج کریں"},
+  "Enter exactly 4 digits": {"en":"Enter exactly 4 digits","ur":"بالکل ۴ ہندسے درج کریں"},
+  "Enter exactly 6 digits": {"en":"Enter exactly 6 digits","ur":"بالکل ۶ ہندسے درج کریں"},
+  "Use password": {"en":"Use password","ur":"پاس ورڈ استعمال کریں"},
+  "Use PIN": {"en":"Use PIN","ur":"پن استعمال کریں"},
+  "Enter your password.": {"en":"Enter your password.","ur":"اپنا پاس ورڈ درج کریں۔"},
+  "Protected Cloud connection": {"en":"Protected Cloud connection","ur":"محفوظ کلاؤڈ کنکشن"}
+}

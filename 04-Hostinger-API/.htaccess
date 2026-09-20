@@ -1,0 +1,16 @@
+Options -Indexes
+RewriteEngine On
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+RewriteRule ^(?:config|database|src|tools)(?:/|$) - [F,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^(.*)$ index.php?_route=$1 [QSA,L]
+
+<FilesMatch "(^\.|\.(?:sql|log|ini|example)$)">
+    Require all denied
+</FilesMatch>

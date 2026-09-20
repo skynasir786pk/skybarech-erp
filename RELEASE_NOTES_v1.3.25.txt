@@ -1,0 +1,5 @@
+SkyBarech ERP v1.3.25
+
+- Premium plans can create up to 5 active staff accounts; non-Premium plans are blocked by the Hostinger API.
+- Mobile Purchase supports Walk-in Customer alongside saved suppliers, with the correct mobile-number label.
+- Android and Desktop retain the shared Hostinger API configuration, premium UI, POS receipt and named application icon assets.

@@ -1,0 +1,20 @@
+BUILD APK WITHOUT YOUR PC GRADLE
+
+Use this when Windows shows “Unable to establish loopback connection”. GitHub builds
+the APK online, so your PC's Java/Gradle problem is bypassed.
+
+1. Go to https://github.com and sign in or create a free account.
+2. Click the + icon, then New repository.
+3. Repository name: skybarech-erp. Keep it Private. Click Create repository.
+4. Extract SkyBarech_ERP_v1.3.23_POS_Bluetooth_Cloud_Source.zip.
+5. Open the extracted SkyBarech_ERP_v1.3.23 folder. Select all files and folders
+   inside it, including the hidden .github folder.
+6. On your new GitHub repository, click Add file > Upload files. Drag all selected
+   files there and click Commit changes.
+7. Open the Actions tab. Select “Build SkyBarech Android APK”, then Run workflow.
+8. Wait for the green tick (normally a few minutes). Open that completed run.
+9. Under Artifacts, download SkyBarech-ERP-debug-APK.
+10. Extract it and install app-debug.apk on the Android phone.
+
+GitHub keeps the repository private. Do not upload keystore passwords or any private
+Hostinger/database password to GitHub. This workflow creates a debug APK for testing.

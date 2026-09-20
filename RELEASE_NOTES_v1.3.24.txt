@@ -1,0 +1,6 @@
+SkyBarech ERP v1.3.24
+
+- Desktop activation has a production Hostinger API fallback.
+- Android uses one Compose splash only; the duplicate Android 12+ native splash is removed.
+- Product, architecture, rules, design, tasks and project memory documents are included.
+- The source keeps the compact scanner, mobile POS, Bluetooth thermal print and GitHub cloud APK workflow from v1.3.23.

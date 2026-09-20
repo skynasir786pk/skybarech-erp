@@ -1,0 +1,16 @@
+SKYBARECH ERP v1.3.23 — ANDROID AND DESKTOP UPDATE
+
+1. ZIP extract karein.
+2. Android Studio mein 02-Android-Client folder open karein.
+3. Gradle sync complete hone dein.
+4. Existing app update ke liye same signing key ke sath Release APK/AAB build karein.
+5. Phone mein install kar ke test karein:
+   - POS Billing > Scan barcode: SkyBarech ERP ka chhota scanner window khulna chahiye.
+   - Mobile Purchase > IMEI scan: scan value IMEI field mein aani chahiye.
+   - PIN se login karke app close/open karein: dashboard seedha khulna chahiye.
+   - Sign out ke baad PIN login phir zaroor aaye ga.
+   - Invoice save ke baad Bluetooth Print dabayein, phone Settings mein paired thermal printer select karein.
+
+Desktop installer build karne se pehle sirf administrator 01-Desktop-ERP/src/config.js mein Hostinger ka wohi API URL dale jo Android build property SKYBARECH_API_BASE_URL mein use hota hai. Customer login screen par URL nahi aayega.
+
+APK build mein "Unable to establish loopback connection" aaye to Windows restart karein. Agar phir aaye, PowerShell ko Run as Administrator mein khol kar `netsh winsock reset` chalayein, Windows restart karein, phir BUILD_ANDROID_APK.bat run karein.

@@ -1,0 +1,9 @@
+SkyBarech ERP v1.3.22
+
+Android
+- IMEI and barcode scan now opens inside a compact SkyBarech ERP camera window, in portrait, with an on-screen scan box.
+- POS Billing is arranged in two labeled mobile sections: Select products and Current bill.
+- A successful login is remembered. After closing and reopening the app, the dashboard opens directly; Sign out still requires PIN login.
+
+Desktop
+- Source package version updated to 1.3.22.

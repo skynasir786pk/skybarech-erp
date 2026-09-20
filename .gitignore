@@ -1,0 +1,9 @@
+.gradle/
+**/.gradle/
+**/build/
+**/dist/
+**/node_modules/
+**/local.properties
+02-Android-Client/BUILD_LOGS/
+02-Android-Client/APK_OUTPUT/
+*.apk

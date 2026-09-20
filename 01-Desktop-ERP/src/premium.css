@@ -1,0 +1,37 @@
+/* Reference-inspired SkyBarech premium design. */
+:root{--premium-blue:#006aff;--premium-navy:#00132e}
+button,a,input,select,textarea{transition:background .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+button:focus-visible,a:focus-visible{outline:3px solid #31a6ff;outline-offset:3px}
+button:not(:disabled):active{transform:translateY(1px) scale(.985)}
+.auth-shell,.login-view{background:radial-gradient(ellipse at 15% 90%,#0863ab 0,transparent 42%),linear-gradient(135deg,#000a20,#123a62);min-height:100vh}
+.auth-side,.login-brand-panel{background:radial-gradient(ellipse at 80% 20%,#05338e,transparent 55%),linear-gradient(155deg,#000823,#002251 65%,#00091f);overflow:hidden;position:relative}
+.auth-side:after,.login-brand-panel:after{content:"";position:absolute;width:140%;height:160px;left:-20%;bottom:8%;border-radius:50%;border-top:3px solid #05b5ff;box-shadow:0 -13px 25px #0066ff66,0 -26px 0 #0064ff22;transform:rotate(-15deg);pointer-events:none;animation:wave-drift 8s ease-in-out infinite alternate}
+.auth-side-inner,.login-brand-copy,.login-logo{position:relative;z-index:1}
+.auth-panel,.login-form-panel{background:linear-gradient(125deg,#fff,#eaf3ff);color:#101c3d}
+.auth-card,.login-card{animation:panel-arrive .5s ease both}
+.auth-card{border-radius:24px;box-shadow:0 22px 65px #001a4420}
+.auth-card h2,.login-form-panel h2{color:#071643;letter-spacing:-1px}
+.auth-login-button,.login-submit{background:linear-gradient(100deg,#064bff,#0099ff)!important;border:0!important;border-radius:14px!important;box-shadow:0 8px 22px #006aff33}
+.auth-login-button:hover,.login-submit:hover{box-shadow:0 10px 30px #006aff55;filter:brightness(1.08)}
+.pin-code-boxes{gap:12px;justify-content:center}.pin-code-box{border-radius:12px;background:#fff;border:1px solid #abc6f4;min-height:54px;flex:1}
+.pin-code-box.active{border-color:#087bff;box-shadow:0 0 0 4px #007aff18}.pin-code-box.filled{color:#075bda;background:#edf5ff}
+.pin-only-note{color:#49678f;font-size:12px}
+.sidebar{background:linear-gradient(175deg,#00112b,#062343)!important;color:#e2eeff;box-shadow:6px 0 30px #011b3612}
+.sidebar .nav-item{color:#c5d4ec;border-radius:9px}.sidebar .nav-item:hover{background:#143b64;color:#fff}
+.sidebar .nav-item.active{background:linear-gradient(100deg,#075fff,#043983)!important;color:#fff!important;box-shadow:0 4px 16px #0066ff30}
+.sidebar .brand-name,.sidebar-brand strong{color:#fff}.sidebar .brand-sub,.sidebar .nav-label{color:#9cb2d2}
+.metric-card{border-radius:16px;border:1px solid #dce8f8;box-shadow:0 3px 9px #082c6510;animation:panel-arrive .4s ease both;transition:transform .2s,box-shadow .2s}
+.metric-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #082c6520}
+.metric-card:nth-child(4n+1){border-top:3px solid #0078ff}.metric-card:nth-child(4n+2){border-top:3px solid #00a174}.metric-card:nth-child(4n+3){border-top:3px solid #8850ff}.metric-card:nth-child(4n){border-top:3px solid #ff506d}
+.card,.panel{border-radius:16px}.topbar{box-shadow:0 3px 15px #10366b09}
+tbody tr:hover{background:#007aff08}.page-content{animation:panel-arrive .3s ease}
+#loginPassword{letter-spacing:14px;font-size:24px;font-weight:700;min-width:0}
+.login-security-note{border-radius:12px;background:#e8f3ff;color:#31547e}
+@keyframes panel-arrive{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wave-drift{to{transform:translateY(16px) rotate(-10deg)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:760px){.auth-card{border-radius:18px}.pin-code-boxes{gap:8px}.login-card{margin:16px}.login-form-panel{padding:28px 22px}.metric-card:hover{transform:none}}
+
+.sky-logo,.brand-mark{background:transparent!important;border:0!important;box-shadow:none!important}.sky-logo img,.brand-mark img{width:100%;height:100%;object-fit:contain}
+.premium-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}.pos-layout [data-action="pos-pay"]{background:linear-gradient(100deg,#008c59,#00ad79);color:#fff;border-color:transparent}.pos-layout .card{box-shadow:0 8px 24px #0027580d}.pos-product:hover{border-color:#79b8ff;background:#007aff08}
+@media(max-width:1000px){.premium-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}

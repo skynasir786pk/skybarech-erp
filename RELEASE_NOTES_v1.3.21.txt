@@ -1,0 +1,17 @@
+SkyBarech ERP v1.3.21
+
+Android
+- IMEI and barcode camera scanner is locked to portrait orientation with a clear scan-box prompt.
+- Mobile Purchase now records supplier mobile number.
+- Front and back purchase/CNIC images can be captured directly with the camera or selected from the gallery.
+- After a front image is saved, the app asks for the back image; success messages display at the top.
+- POS Billing has a compact mobile search-and-scan row.
+- 80mm Android thermal receipt has a branded premium header, shop name, address/phone area and customer-friendly footer.
+
+Desktop
+- Login shows a configurable HTTPS Cloud Server URL. Enter the exact API URL used by Android, normally https://YOUR-DOMAIN/api.
+- The desktop remembers a successfully entered server URL for later logins.
+- Notifications are compact at the top-right rather than overlaying POS controls.
+- Thermal receipts always show an uploaded shop logo, or a generated SkyBarech shop mark if no logo has been uploaded.
+
+No server migration is required for this client update. Build/install the new Android APK and Desktop installer after updating source.

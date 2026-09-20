@@ -1,0 +1,34 @@
+SKYBARECH HOSTINGER API - INSTALLATION
+
+Requirements: PHP 8.1+, PDO MySQL, MySQL 8+, Apache mod_rewrite, HTTPS.
+
+1. Create a MySQL database and user in Hostinger hPanel.
+2. Import database/schema.sql in phpMyAdmin.
+3. Copy config/config.example.php to config/config.php.
+4. Enter the database values and exact allowed web origin in config.php.
+5. Upload this folder as public_html/api (keep .htaccess).
+6. Confirm HTTPS, then open https://YOUR-DOMAIN/api/health.
+7. Create/reset the central Super Admin through Hostinger SSH/Terminal:
+   php tools/create_platform_admin.php
+   The command creates admin@skybarech.com and prints a new random password.
+   Save that password immediately. Running the command again resets it.
+   Optional custom account:
+   php tools/create_platform_admin.php "SkyBarech Admin" admin@example.com "StrongPassword12!"
+8. In 03-Super-Admin-Web/config.js set the same HTTPS API URL, then upload that
+   folder to your admin subdomain (for example https://admin.example.com).
+9. Sign in to Super Admin and create each shop. Save the one-time activation code
+   and temporary password shown after creation.
+10. Build Android with:
+    ./gradlew assembleRelease -PSKYBARECH_API_BASE_URL=https://YOUR-DOMAIN/api
+11. Desktop users can enter the same HTTPS API URL and tokens in Settings >
+    Online Sync. OS secure storage encrypts those tokens; SQLite stores the local
+    snapshot and durable pending-operation queue.
+
+Shop-owner API login remains POST /api/v1/auth/login using mobile/email and
+password. Central Super Admin login is POST /api/v1/platform/auth/login.
+
+Never commit or share config/config.php. Do not put database credentials in
+Desktop, Android, or browser source. Before production, schedule database
+backups and configure allowed_origins with the real Super Admin HTTPS domain.
+Use PHP 8.1+ and MySQL 8.0+. Turn on Hostinger daily backups. Never expose the
+config, src, tools, or database folders as downloadable files.

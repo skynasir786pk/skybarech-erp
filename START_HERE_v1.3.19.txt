@@ -1,0 +1,35 @@
+SKYBARECH ERP v1.3.19 — PREMIUM LOGIN AUR PIN BOXES
+
+Yeh update Desktop aur Android login ko premium design deta hai. PIN ka har digit
+alag visual box mein nazar aata hai. v1.3.18 ka safe shop-switch fix bhi included
+hai. Hostinger API aur database dobara upload/import karne ki zaroorat nahin hai.
+
+1. 01-Desktop-ERP/BUILD_WINDOWS_INSTALLER.bat Windows PC par chalayein.
+2. Output: 01-Desktop-ERP/dist/SkyBarech-ERP-Setup-1.3.19.exe
+3. Existing app par setup install karein. Windows AppData manually delete na karein.
+4. Desktop app mein default PIN mode use karein. Purana password account ho to
+   "Use existing password" select karein.
+5. Agar PC mein purani shop ho to "Switch shop on this computer?" dialog khulega.
+6. Current shop ID, saved records aur unsynced count check karein.
+7. "Back up & switch shop" sirf tab press karein jab isi PC ko nayi shop ke liye
+   use karna ho. App pehle protected recovery JSON banati hai, phir old local cache
+   aur old Cloud tokens remove karti hai. Purani shop ka Hostinger Cloud data delete
+   nahin hota.
+8. Nayi shop ka 4 ya 6 digit PIN set karein. Har digit alag box mein nazar aayega.
+9. Android ke liye 02-Android-Client/BUILD_ANDROID_APK.bat chalayein. Existing
+   production app update ke liye wahi signing key use karein.
+
+Backup location app ke Windows user-data folder ke andar:
+  shop-switch-backups\<old-shop>-<date>.json
+
+IMPORTANT:
+- "Keep current shop" se kuch delete/change nahin hota.
+- Switch permission sirf successful activation verify ke baad 5 minutes valid hai.
+- Backup write fail ho to cache reset nahin hota aur user ko error milta hai.
+- Ek Windows profile mein ek waqt mein ek shop cache supported hai. Do shops ko
+  parallel offline chalana ho to separate Windows profile/device use karein.
+- Real customer rollout se pehle test shop par product add, sync, restart aur
+  desktop/mobile cross-check zaroor karein.
+
+Package clean rakha gaya hai: development audit, screenshots, test scripts aur
+purani release documentation is distribution mein shamil nahin hain.

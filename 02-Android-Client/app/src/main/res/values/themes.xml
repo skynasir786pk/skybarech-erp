@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.SkyBarechMobileShopERP" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/brand_blue</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+    <style name="Theme.SkyBarech.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/brand_blue</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_skybarech</item>
+        <item name="postSplashScreenTheme">@style/Theme.SkyBarechMobileShopERP</item>
+    </style>
+</resources>

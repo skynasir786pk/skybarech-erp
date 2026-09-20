@@ -1,0 +1,25 @@
+SkyBarech ERP v1.3.19
+
+- Redesigned Desktop login as a complete premium branded experience.
+- Restored the animated shop overview and benefit cards on the Desktop hero panel.
+- Added separate visual boxes for every PIN digit on Desktop login and PIN setup.
+- Added separate PIN and legacy-password login modes without changing credentials.
+- Redesigned Android login with a branded header, secure status, elevated card and clearer fingerprint action.
+- Added separate visual PIN boxes to Android login, Create PIN and Change PIN.
+- PIN fields accept typing, paste and backspace while preserving leading zeroes.
+- 4 and 6 digit PINs remain supported; existing password users can switch to Password mode.
+- Added matching English and Urdu labels and responsive sizing.
+
+The v1.3.18 safe shop-switch protection remains included.
+
+- Replaced the activation shop-mismatch hard failure with an explicit shop-switch dialog.
+- Shows the existing shop ID, local record count and unsynced-change count.
+- Requires a one-time, five-minute switch token issued only after valid server activation verification.
+- Writes an OS-user protected recovery JSON before clearing the old local cache.
+- Keeps an additional recovery copy in the local SQLite recovery table.
+- Removes old access/refresh tokens and resets the Cloud cursor before binding the new shop.
+- Does not delete the previous shop's Hostinger/Cloud data.
+- Cancel and backup-failure paths leave the existing cache unchanged.
+- Added English and Urdu labels for the switch flow.
+
+No Hostinger API/database migration is required for v1.3.19.

@@ -1,0 +1,3 @@
+SkyBarech ERP 1.3.21
+Read UPGRADE_1.3.20.md first for the 4-digit PIN deployment steps.
+Then read RELEASE_NOTES_v1.3.21.txt for the Android camera/POS/receipt and Desktop server URL updates.

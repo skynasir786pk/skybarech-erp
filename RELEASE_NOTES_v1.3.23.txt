@@ -1,0 +1,11 @@
+SkyBarech ERP v1.3.23
+
+Android POS
+- Product list now receives the full usable screen area, with product count, larger product cards and a persistent Current Bill summary.
+- Added products are shown in the Current Bill summary before Review & Save Bill.
+- After saving an invoice, the receipt can print through Android's printer dialog or a paired Bluetooth ESC/POS thermal printer.
+
+Cloud and Desktop
+- Desktop customers only enter owner mobile/username and 4-digit PIN; the production API URL is not displayed on the login screen.
+- The administrator sets the Hostinger API URL once in 01-Desktop-ERP/src/config.js before building the installer.
+- When Android and Desktop use the same production API URL and same owner account, each device syncs its saved products, sales and stock through the cloud.

@@ -1,0 +1,32 @@
+name: Build SkyBarech Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "02-Android-Client/**"
+      - ".github/workflows/android-debug-apk.yml"
+
+jobs:
+  build-debug-apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 02-Android-Client
+    steps:
+      - name: Get source
+        uses: actions/checkout@v4
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+      - name: Build debug APK
+        run: ./gradlew --no-daemon :app:assembleDebug
+      - name: Upload installable APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: SkyBarech-ERP-debug-APK
+          path: 02-Android-Client/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
