@@ -21,7 +21,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="unspecified"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.SkyBarech.Starting">
             <intent-filter>

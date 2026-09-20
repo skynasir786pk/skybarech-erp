@@ -12,10 +12,10 @@
     ['emerald', 'Emerald', 'Calm green accents'], ['violet', 'Amethyst', 'Soft violet accents'],
     ['slate', 'Slate', 'Quiet and focused'], ['sand', 'Warm Sand', 'Warm neutral tones']
   ];
-  function savedTheme(fallback = 'light') {
+  function savedTheme(fallback = 'dark') {
     let value = fallback;
     try { value = localStorage.getItem('skybarech-desktop-theme') || fallback; } catch {}
-    return workspaceThemes.some(([key]) => key === value) ? value : 'light';
+    return workspaceThemes.some(([key]) => key === value) ? value : 'dark';
   }
   function applyWorkspaceTheme(value) {
     if (state.shop?.appearance?.desktop?.enabled) return;
@@ -568,7 +568,7 @@
         mobileMenuOpen: false
       };
     } catch {
-      return { ...defaults, products: [], customers: [], suppliers: [], repairs: [], installments: [], invoices: [], supportRequests: [], expenses: [], cashSessions: [], ewallets: [], staff: [], stockMovements: [], deletedRecords: [], notifications: [], shop: normalizeShopProfile(defaults.shop), session: defaults.session, activePage: 'dashboard', theme: savedTheme(), isLoggedIn: false, authMode: 'login', posCart: [], posPayment: 'Cash', inventorySearch: '', inventorySort: 'name', inventoryPage: 1, inventoryLow: false, laptopSearch: '', accessorySearch: '', sparePartSearch: '', repairStatus: 'All', reportRange: 'This Month', settingsTab: 'profile', sidebarCollapsed: false, mobileMenuOpen: false };
+      return { ...defaults, products: [], customers: [], suppliers: [], repairs: [], installments: [], invoices: [], supportRequests: [], expenses: [], cashSessions: [], ewallets: [], staff: [], stockMovements: [], deletedRecords: [], notifications: [], shop: normalizeShopProfile(defaults.shop), session: defaults.session, activePage: 'dashboard', theme: savedTheme('dark'), isLoggedIn: false, authMode: 'login', posCart: [], posPayment: 'Cash', inventorySearch: '', inventorySort: 'name', inventoryPage: 1, inventoryLow: false, laptopSearch: '', accessorySearch: '', sparePartSearch: '', repairStatus: 'All', reportRange: 'This Month', settingsTab: 'profile', sidebarCollapsed: false, mobileMenuOpen: false };
     }
   }
 

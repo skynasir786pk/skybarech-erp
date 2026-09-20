@@ -1252,7 +1252,7 @@ html[lang=ur] .brand-name,html[lang=ur] .auth-card-brand strong{font-family:Aria
 .pin-code-shell { position:relative; min-width:0; border-radius:16px; }
 .pin-code-input { position:absolute; z-index:2; inset:0; width:100%; height:100%; margin:0; padding:0; border:0; opacity:.01; cursor:text; color:transparent; caret-color:transparent; }
 .pin-code-input:focus-visible { outline:0; }
-.pin-code-boxes { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:9px; direction:ltr; }
+.pin-code-boxes { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:9px; direction:ltr; }
 .pin-code-box { position:relative; display:grid; place-items:center; aspect-ratio:1/1; min-width:0; max-height:58px; border:1.5px solid #d6e0f3; border-radius:14px; background:#f8faff; color:#12357f; font-size:29px; font-weight:900; line-height:1; box-shadow:inset 0 1px 0 #fff; transition:border-color .18s,box-shadow .18s,transform .18s,background .18s; }
 .pin-code-box.active { border-color:#387cff; background:#fff; box-shadow:0 0 0 4px rgba(56,124,255,.10),0 8px 22px rgba(32,87,184,.10); transform:translateY(-1px); }
 .pin-code-box.filled { border-color:#8cb2ff; background:linear-gradient(180deg,#fff,#eef4ff); }
