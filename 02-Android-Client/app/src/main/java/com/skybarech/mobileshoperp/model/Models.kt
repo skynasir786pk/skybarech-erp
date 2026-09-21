@@ -5,6 +5,7 @@ enum class AppScreen(val title: String) {
     ONBOARDING("Welcome to SkyBarech ERP"),
     ACTIVATION("Activate Account"),
     LOGIN("Login"),
+    WELCOME("Welcome"),
     CHANGE_PASSWORD("Change Password"),
     DASHBOARD("SkyBarech Mobile Shop ERP"),
     POS("POS Billing"),

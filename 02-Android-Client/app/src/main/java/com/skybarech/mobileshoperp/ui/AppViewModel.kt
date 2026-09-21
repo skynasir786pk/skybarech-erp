@@ -399,7 +399,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         loggedIn = true
         storageStatus = if (online) "Online access verified · sync connected" else "Offline mode · local data ready"
         showMessage(if (online) "Welcome back. Online access verified." else "Internet unavailable. Local data offline mode mein ready hai.")
-        navigateRoot(AppScreen.DASHBOARD)
+        navigateRoot(AppScreen.WELCOME)
     }
 
     fun resumeSavedSession(): Boolean {

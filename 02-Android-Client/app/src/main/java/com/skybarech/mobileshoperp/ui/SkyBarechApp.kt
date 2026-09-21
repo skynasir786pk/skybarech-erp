@@ -68,7 +68,7 @@ private fun SkyBarechAppContent(vm: AppViewModel) {
         }
     }
 
-    val authScreens = setOf(AppScreen.SPLASH, AppScreen.ONBOARDING, AppScreen.ACTIVATION, AppScreen.LOGIN, AppScreen.CHANGE_PASSWORD)
+    val authScreens = setOf(AppScreen.SPLASH, AppScreen.ONBOARDING, AppScreen.ACTIVATION, AppScreen.LOGIN, AppScreen.WELCOME, AppScreen.CHANGE_PASSWORD)
     val showAuthShell = vm.screen in authScreens || (vm.screen == AppScreen.HELP && !vm.loggedIn)
     SideEffect { com.skybarech.mobileshoperp.ui.theme.UiAppearance.authLight = showAuthShell && vm.screen != AppScreen.SPLASH }
     if (showAuthShell) {
@@ -78,6 +78,7 @@ private fun SkyBarechAppContent(vm: AppViewModel) {
                 AppScreen.ONBOARDING -> OnboardingScreen(vm)
                 AppScreen.ACTIVATION -> ActivationScreen(vm)
                 AppScreen.LOGIN -> LoginScreen(vm)
+                AppScreen.WELCOME -> WelcomeScreen(vm)
                 AppScreen.CHANGE_PASSWORD -> ChangePasswordScreen(vm)
                 AppScreen.HELP -> HelpCenterScreen(vm, Modifier.fillMaxSize())
                 else -> Unit

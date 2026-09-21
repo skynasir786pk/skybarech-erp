@@ -110,7 +110,12 @@ fun OnboardingScreen(vm: AppViewModel) {
         SoftCard(Modifier.fillMaxWidth().shadow(20.dp, RoundedCornerShape(26.dp)), contentPadding = 20.dp) {
             Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Box(Modifier.size(68.dp).clip(RoundedCornerShape(22.dp)).background(BrandBlueSoft), contentAlignment = Alignment.Center) { Icon(icons[step], null, tint = BrandBlue, modifier = Modifier.size(36.dp)) }
-                UiText("${step + 1} of ${titles.size}", color = BrandBlue, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    titles.indices.forEach { index ->
+                        Box(Modifier.width(if (index == step) 28.dp else 8.dp).height(6.dp).clip(RoundedCornerShape(50)).background(if (index == step) BrandBlue else BrandBlueSoft))
+                    }
+                }
+                UiText("STEP ${step + 1} OF ${titles.size}", color = BrandBlue, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                 UiText(titles[step], color = Ink, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold, textAlign = TextAlign.Center)
                 UiText(bodies[step], color = MutedInk, fontSize = 14.sp, lineHeight = 21.sp, textAlign = TextAlign.Center)
                 if (step == 0) {
@@ -128,6 +133,28 @@ fun OnboardingScreen(vm: AppViewModel) {
         }
         TextButton(onClick = { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) }) { UiText("Skip instructions", color = MutedInk, fontSize = 12.sp) }
     }
+    }
+}
+
+@Composable
+fun WelcomeScreen(vm: AppViewModel) {
+    var visible by remember { mutableStateOf(false) }
+    val scale by animateFloatAsState(if (visible) 1f else .72f, tween(700), label = "welcome scale")
+    val alpha by animateFloatAsState(if (visible) 1f else 0f, tween(500), label = "welcome alpha")
+    LaunchedEffect(Unit) { visible = true; delay(1800); vm.navigateRoot(AppScreen.DASHBOARD) }
+    AuroraBackdrop {
+        Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(28.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+            Box(Modifier.graphicsLayer { scaleX = scale; scaleY = scale; this.alpha = alpha }.shadow(28.dp, RoundedCornerShape(34.dp)).clip(RoundedCornerShape(34.dp)).background(Brush.linearGradient(listOf(Color(0xFF0CE39A), Color(0xFF3A2AA8), Color(0xFFFC0987)))).padding(3.dp)) {
+                Box(Modifier.size(138.dp).clip(RoundedCornerShape(31.dp)).background(Color(0xFF071B42)), contentAlignment = Alignment.Center) { BrandMark(92.dp, light = true) }
+            }
+            Spacer(Modifier.height(28.dp))
+            UiText("Welcome back", color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.ExtraBold)
+            UiText(vm.shopName.ifBlank { "SkyBarech ERP" }, translate = false, color = Color(0xFF9DD8FF), fontSize = 17.sp, fontWeight = FontWeight.Bold)
+            Spacer(Modifier.height(12.dp))
+            UiText("Your secure workspace is ready", color = Color(0xFFD7E6FF), fontSize = 13.sp)
+            Spacer(Modifier.height(26.dp))
+            LinearProgressIndicator(progress = { if (visible) 1f else 0f }, modifier = Modifier.width(190.dp).clip(RoundedCornerShape(50)), color = Color(0xFF0CE39A), trackColor = Color.White.copy(alpha = .14f))
+        }
     }
 }
 
