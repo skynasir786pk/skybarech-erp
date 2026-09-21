@@ -20,6 +20,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -99,36 +100,44 @@ private fun variantOptions(category: String) = when (category) {
 fun PosScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
     var search by rememberSaveable { mutableStateOf("") }
     val visible = vm.products.filter { it.name.contains(search, true) || it.sku.contains(search, true) || it.notes.contains(search, true) }
-    Column(modifier = modifier.padding(ScreenPadding)) {
-        PageTitle("POS Billing", "Choose products first, then save and print the bill.")
-        Spacer(Modifier.height(8.dp))
-        SoftCard(Modifier.fillMaxWidth(), contentPadding = 10.dp) {
-            AdaptiveRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                SearchBox(search, { search = it }, "Search product or barcode", Modifier.weight(1.4f))
-                BarcodeScanButton(Modifier.weight(.9f), onScan = { search = it }, onError = vm::showMessage)
-            }
-        }
-        Spacer(Modifier.height(10.dp))
-        SectionLabel("1. Products · ${visible.size} available")
-        Spacer(Modifier.height(7.dp))
-        LazyColumn(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(9.dp)) {
-            items(visible, key = { it.id }) { product -> ProductPosRow(product, onAdd = { vm.addToCart(product) }) }
-            if (visible.isEmpty()) item { ListEmpty("No matching product", "Try a different product name, model or SKU.") }
-        }
-        Spacer(Modifier.height(8.dp))
-        SoftCard(modifier = Modifier.fillMaxWidth(), contentPadding = 11.dp) {
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
-                    UiText("2. Current bill · ${vm.cart.sumOf { it.quantity }} item(s)", color = Ink, fontWeight = FontWeight.Bold, fontSize = 13.sp)
-                    UiText(vm.formatMoney(vm.cartTotal()), color = BrandBlue, fontWeight = FontWeight.ExtraBold, fontSize = 16.sp)
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(ScreenPadding),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        item { PageTitle("POS Billing", "Choose products first, then save and print the bill.") }
+        item {
+            SoftCard(Modifier.fillMaxWidth(), contentPadding = 10.dp) {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    SearchBox(search, { search = it }, "Search product, barcode or SKU")
+                    BarcodeScanButton(Modifier.fillMaxWidth(), onScan = { search = it }, onError = vm::showMessage)
                 }
-                if (vm.cart.isNotEmpty()) UiText(vm.cart.takeLast(2).joinToString(" · ") { it.product.name }, translate = false, color = MutedInk, fontSize = 11.sp, maxLines = 2, modifier = Modifier.weight(1f))
             }
         }
-        Spacer(Modifier.height(8.dp))
-        AdaptiveRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            OutlineButton("Clear Cart", vm::clearCart, Modifier.weight(0.75f), Icons.Outlined.DeleteOutline)
-            PrimaryButton("Review & Save Bill", { vm.navigate(AppScreen.CART_PAYMENT) }, Modifier.weight(1.25f), Icons.Outlined.ReceiptLong)
+        item { SectionLabel("Products · ${visible.size} available") }
+        if (visible.isEmpty()) {
+            item { ListEmpty("No matching product", "Sync inventory or search by product name, model or SKU.") }
+        } else {
+            items(visible, key = { it.id }) { product ->
+                ProductPosRow(product, onAdd = { vm.addToCart(product) })
+            }
+        }
+        item {
+            SoftCard(modifier = Modifier.fillMaxWidth(), contentPadding = 12.dp) {
+                Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
+                    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            UiText("Current bill · ${vm.cart.sumOf { it.quantity }} item(s)", color = Ink, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                            UiText(vm.formatMoney(vm.cartTotal()), color = BrandBlue, fontWeight = FontWeight.ExtraBold, fontSize = 19.sp)
+                        }
+                        if (vm.cart.isNotEmpty()) UiText(vm.cart.takeLast(2).joinToString(" · ") { it.product.name }, translate = false, color = MutedInk, fontSize = 11.sp, maxLines = 2, modifier = Modifier.weight(1f), textAlign = TextAlign.End)
+                    }
+                    AdaptiveRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlineButton("Clear", vm::clearCart, Modifier.weight(.7f), Icons.Outlined.DeleteOutline)
+                        PrimaryButton("Save & Pay", { vm.navigate(AppScreen.CART_PAYMENT) }, Modifier.weight(1.3f), Icons.Outlined.ReceiptLong)
+                    }
+                }
+            }
         }
     }
 }
