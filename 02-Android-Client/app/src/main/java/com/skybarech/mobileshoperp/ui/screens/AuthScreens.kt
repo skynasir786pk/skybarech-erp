@@ -2,6 +2,9 @@ package com.skybarech.mobileshoperp.ui.screens
 
 import com.skybarech.mobileshoperp.ui.i18n.*
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.tween
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
@@ -19,6 +22,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.foundation.clickable
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -80,6 +85,8 @@ fun SplashScreen(vm: AppViewModel) {
 @Composable
 fun OnboardingScreen(vm: AppViewModel) {
     val context = LocalContext.current
+    val motion = rememberInfiniteTransition(label = "onboarding motion")
+    val floatScale by motion.animateFloat(0.96f, 1.04f, infiniteRepeatable(tween(1800), RepeatMode.Reverse), label = "glow pulse")
     var step by rememberSaveable { mutableStateOf(0) }
     val titles = listOf("Welcome & Language", "Activate Your Shop", "Fresh Shop Protection", "Device Security", "Cloud Sync Setup", "Ready to Grow")
     val bodies = listOf(
@@ -91,13 +98,15 @@ fun OnboardingScreen(vm: AppViewModel) {
         "Next steps: Shop Profile → Products & Stock → First Sale. You can revisit these tools from the dashboard anytime."
     )
     val icons = listOf(Icons.Outlined.Language, Icons.Outlined.VerifiedUser, Icons.Outlined.Shield, Icons.Outlined.Fingerprint, Icons.Outlined.CloudSync, Icons.Outlined.CheckCircle)
+    AuroraBackdrop {
+    Box(Modifier.fillMaxSize().graphicsLayer { scaleX = floatScale; scaleY = floatScale }.background(Brush.radialGradient(listOf(Color(0x226A00FF), Color.Transparent))))
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState()).padding(22.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         BrandMark(72.dp, light = false)
         Spacer(Modifier.height(12.dp))
         UiText("SkyBarech ERP", color = Ink, fontWeight = FontWeight.ExtraBold, fontSize = 25.sp)
         UiText("Set up your secure business workspace", color = MutedInk, fontSize = 13.sp, textAlign = TextAlign.Center)
         Spacer(Modifier.height(22.dp))
-        SoftCard(Modifier.fillMaxWidth(), contentPadding = 20.dp) {
+        SoftCard(Modifier.fillMaxWidth().shadow(20.dp, RoundedCornerShape(26.dp)), contentPadding = 20.dp) {
             Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Box(Modifier.size(68.dp).clip(RoundedCornerShape(22.dp)).background(BrandBlueSoft), contentAlignment = Alignment.Center) { Icon(icons[step], null, tint = BrandBlue, modifier = Modifier.size(36.dp)) }
                 UiText("${step + 1} of ${titles.size}", color = BrandBlue, fontSize = 11.sp, fontWeight = FontWeight.Bold)
@@ -114,9 +123,22 @@ fun OnboardingScreen(vm: AppViewModel) {
         Spacer(Modifier.height(18.dp))
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             if (step > 0) OutlineButton("Back", { step -= 1 }, Modifier.weight(1f), Icons.Outlined.ArrowBack)
-            PrimaryButton(if (step == titles.lastIndex) "Start Secure Setup" else "Continue", { if (step == titles.lastIndex) { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) } else step += 1 }, Modifier.weight(1.5f), Icons.Outlined.ArrowForward)
+            OnboardingGradientButton(if (step == titles.lastIndex) "Start Secure Setup" else "Continue", { if (step == titles.lastIndex) { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) } else step += 1 }, Modifier.weight(1.5f))
         }
         TextButton(onClick = { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) }) { UiText("Skip instructions", color = MutedInk, fontSize = 12.sp) }
+    }
+    }
+}
+
+@Composable
+private fun OnboardingGradientButton(label: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Box(modifier.fillMaxWidth().height(52.dp).shadow(14.dp, RoundedCornerShape(12.dp), clip = false).clip(RoundedCornerShape(12.dp)).background(Brush.linearGradient(listOf(Color(0xFF0CE39A), Color(0xFF69007F), Color(0xFFFC0987)))).clickable(onClick = onClick), contentAlignment = Alignment.Center) {
+        Box(Modifier.fillMaxSize().padding(1.dp).clip(RoundedCornerShape(11.dp)).background(Color(0xFF272727)), contentAlignment = Alignment.Center) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                UiText(label, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                Icon(Icons.Outlined.ArrowForward, contentDescription = null, tint = Color.White, modifier = Modifier.size(18.dp))
+            }
+        }
     }
 }
 
