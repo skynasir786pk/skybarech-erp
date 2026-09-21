@@ -118,10 +118,11 @@ private fun DashboardActions(vm: AppViewModel) {
     )
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val columns = when { maxWidth >= 900.dp -> 6; maxWidth >= 640.dp -> 4; maxWidth >= 340.dp -> 2; else -> 2 }
-        val width = (maxWidth - 10.dp * (columns - 1)) / columns
-        FlowRow(Modifier.fillMaxWidth(), maxItemsInEachRow = columns, horizontalArrangement = Arrangement.spacedBy(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            shortcuts.forEach { shortcut ->
-                Surface(onClick = { vm.navigate(shortcut.screen) }, modifier = Modifier.width(width),
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            shortcuts.chunked(columns).forEach { rowItems ->
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    rowItems.forEach { shortcut ->
+                        Surface(onClick = { vm.navigate(shortcut.screen) }, modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(18.dp), color = CardSurface, border = androidx.compose.foundation.BorderStroke(1.dp, CardStroke)) {
                     Column(Modifier.padding(horizontal = 8.dp, vertical = 14.dp).heightIn(min = 108.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(10.dp)) {
                         Box(Modifier.size(60.dp).clip(RoundedCornerShape(18.dp))
@@ -132,6 +133,9 @@ private fun DashboardActions(vm: AppViewModel) {
                         UiText(shortcut.label, color = Ink, fontWeight = FontWeight.SemiBold, fontSize = 12.sp, lineHeight = 17.sp,
                             textAlign = TextAlign.Center, minLines = 2, maxLines = 3, overflow = TextOverflow.Ellipsis)
                     }
+                }
+                    }
+                    repeat(columns - rowItems.size) { Spacer(Modifier.weight(1f)) }
                 }
             }
         }
