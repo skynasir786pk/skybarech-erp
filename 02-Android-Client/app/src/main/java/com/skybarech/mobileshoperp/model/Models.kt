@@ -2,6 +2,7 @@ package com.skybarech.mobileshoperp.model
 
 enum class AppScreen(val title: String) {
     SPLASH(""),
+    ONBOARDING("Welcome to SkyBarech ERP"),
     ACTIVATION("Activate Account"),
     LOGIN("Login"),
     CHANGE_PASSWORD("Change Password"),

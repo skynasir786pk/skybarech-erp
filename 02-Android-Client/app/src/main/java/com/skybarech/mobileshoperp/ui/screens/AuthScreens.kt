@@ -56,7 +56,7 @@ fun AuroraBackdrop(content: @Composable BoxScope.() -> Unit) {
 fun SplashScreen(vm: AppViewModel) {
     var started by remember { mutableStateOf(false) }
     val progress by animateFloatAsState(if (started) 1f else 0f, tween(1200), label="splash progress")
-    LaunchedEffect(Unit) { started = true; delay(1400); if (!vm.resumeSavedSession()) vm.navigateRoot(AppScreen.LOGIN) }
+    LaunchedEffect(Unit) { started = true; delay(1400); if (!vm.resumeSavedSession()) vm.navigateRoot(if (vm.shouldShowOnboarding()) AppScreen.ONBOARDING else AppScreen.LOGIN) }
     AuroraBackdrop {
         Column(Modifier.align(Alignment.Center).padding(28.dp).graphicsLayer { alpha = .3f + progress * .7f; scaleX = .94f + progress * .06f; scaleY = scaleX }, horizontalAlignment = Alignment.CenterHorizontally) {
             BrandMark(108.dp, light=true)
@@ -74,6 +74,49 @@ fun SplashScreen(vm: AppViewModel) {
             Spacer(Modifier.height(24.dp))
             UiText("Version 1.3.20", color=Color(0xFF91A7C8), fontSize=10.sp)
         }
+    }
+}
+
+@Composable
+fun OnboardingScreen(vm: AppViewModel) {
+    val context = LocalContext.current
+    var step by rememberSaveable { mutableStateOf(0) }
+    val titles = listOf("Welcome & Language", "Activate Your Shop", "Fresh Shop Protection", "Device Security", "Cloud Sync Setup", "Ready to Grow")
+    val bodies = listOf(
+        "Choose English or اردو. SkyBarech ERP keeps your shop tools simple and connected.",
+        "Use your registered mobile number and create the secure 4-digit shop PIN. The same PIN works on Desktop and Android.",
+        "Every new shop starts with zero records. Your Shop-ID keeps products, sales, customers and staff isolated from every other shop.",
+        "After your first successful PIN login, enable fingerprint for quick secure access. Your PIN always remains available as fallback.",
+        "Verify the HTTPS connection, restore only your verified shop data, and continue safely in offline mode when needed.",
+        "Next steps: Shop Profile → Products & Stock → First Sale. You can revisit these tools from the dashboard anytime."
+    )
+    val icons = listOf(Icons.Outlined.Language, Icons.Outlined.VerifiedUser, Icons.Outlined.Shield, Icons.Outlined.Fingerprint, Icons.Outlined.CloudSync, Icons.Outlined.CheckCircle)
+    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState()).padding(22.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        BrandMark(72.dp, light = false)
+        Spacer(Modifier.height(12.dp))
+        UiText("SkyBarech ERP", color = Ink, fontWeight = FontWeight.ExtraBold, fontSize = 25.sp)
+        UiText("Set up your secure business workspace", color = MutedInk, fontSize = 13.sp, textAlign = TextAlign.Center)
+        Spacer(Modifier.height(22.dp))
+        SoftCard(Modifier.fillMaxWidth(), contentPadding = 20.dp) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Box(Modifier.size(68.dp).clip(RoundedCornerShape(22.dp)).background(BrandBlueSoft), contentAlignment = Alignment.Center) { Icon(icons[step], null, tint = BrandBlue, modifier = Modifier.size(36.dp)) }
+                UiText("${step + 1} of ${titles.size}", color = BrandBlue, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                UiText(titles[step], color = Ink, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold, textAlign = TextAlign.Center)
+                UiText(bodies[step], color = MutedInk, fontSize = 14.sp, lineHeight = 21.sp, textAlign = TextAlign.Center)
+                if (step == 0) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        FilterChip(selected = UiLanguage.code == "en", onClick = { UiLanguage.set(context, "en") }, label = { UiText("English") })
+                        FilterChip(selected = UiLanguage.code == "ur", onClick = { UiLanguage.set(context, "ur") }, label = { UiText("اردو", translate = false) })
+                    }
+                }
+            }
+        }
+        Spacer(Modifier.height(18.dp))
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            if (step > 0) OutlineButton("Back", { step -= 1 }, Modifier.weight(1f), Icons.Outlined.ArrowBack)
+            PrimaryButton(if (step == titles.lastIndex) "Start Secure Setup" else "Continue", { if (step == titles.lastIndex) { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) } else step += 1 }, Modifier.weight(1.5f), Icons.Outlined.ArrowForward)
+        }
+        TextButton(onClick = { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) }) { UiText("Skip instructions", color = MutedInk, fontSize = 12.sp) }
     }
 }
 

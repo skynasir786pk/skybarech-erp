@@ -36,11 +36,15 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     private val history = mutableStateListOf<AppScreen>()
 
     private val sessionStore = ShopSessionStore(application)
+    private val onboardingPrefs = application.getSharedPreferences("skybarech_onboarding", android.content.Context.MODE_PRIVATE)
     private val localDataStore = LocalDataStore(application)
     private val offlineRepository = OfflineRepository(application)
     private var session = sessionStore.read()
     private var pendingActivation: VerifiedActivation? = null
     val needsActivationPassword: Boolean get() = pendingActivation != null
+
+    fun shouldShowOnboarding(): Boolean = !onboardingPrefs.getBoolean("completed", false)
+    fun completeOnboarding() { onboardingPrefs.edit().putBoolean("completed", true).apply() }
 
     var activated by mutableStateOf(session.isActivated)
         private set

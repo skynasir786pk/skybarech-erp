@@ -68,13 +68,14 @@ private fun SkyBarechAppContent(vm: AppViewModel) {
         }
     }
 
-    val authScreens = setOf(AppScreen.SPLASH, AppScreen.ACTIVATION, AppScreen.LOGIN, AppScreen.CHANGE_PASSWORD)
+    val authScreens = setOf(AppScreen.SPLASH, AppScreen.ONBOARDING, AppScreen.ACTIVATION, AppScreen.LOGIN, AppScreen.CHANGE_PASSWORD)
     val showAuthShell = vm.screen in authScreens || (vm.screen == AppScreen.HELP && !vm.loggedIn)
     SideEffect { com.skybarech.mobileshoperp.ui.theme.UiAppearance.authLight = showAuthShell && vm.screen != AppScreen.SPLASH }
     if (showAuthShell) {
         AppBackground {
             when (vm.screen) {
                 AppScreen.SPLASH -> SplashScreen(vm)
+                AppScreen.ONBOARDING -> OnboardingScreen(vm)
                 AppScreen.ACTIVATION -> ActivationScreen(vm)
                 AppScreen.LOGIN -> LoginScreen(vm)
                 AppScreen.CHANGE_PASSWORD -> ChangePasswordScreen(vm)
