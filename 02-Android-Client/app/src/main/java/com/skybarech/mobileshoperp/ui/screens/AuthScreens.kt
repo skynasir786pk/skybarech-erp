@@ -254,20 +254,7 @@ fun LoginScreen(vm: AppViewModel) {
             .verticalScroll(rememberScrollState()).padding(vertical = 14.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             LanguageSelector(modifier = Modifier.align(Alignment.End))
             Spacer(Modifier.height(14.dp))
-            Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(28.dp), color = Color.White,
-                border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFD6E8FA)), shadowElevation = 14.dp) {
-                Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 18.dp), verticalAlignment = Alignment.CenterVertically) {
-                    BrandMark(58.dp, light = false)
-                    Spacer(Modifier.width(14.dp))
-                    Column(Modifier.weight(1f)) {
-                        UiText("SkyBarech ERP", color = Color(0xFF102858), fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
-                        UiText("Your connected shop workspace", color = Color(0xFF52709F), fontSize = 12.sp)
-                    }
-                    Surface(shape = RoundedCornerShape(12.dp), color = Color(0xFFE9F3FF)) {
-                        Icon(Icons.Outlined.VerifiedUser, contentDescription = null, tint = Color(0xFF1769DC), modifier = Modifier.padding(10.dp).size(22.dp))
-                    }
-                }
-            }
+            LoginIllustrationHeader()
             Spacer(Modifier.height(14.dp))
             Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(26.dp), color = CardSurface,
                 border = androidx.compose.foundation.BorderStroke(1.dp, CardStroke), shadowElevation = 6.dp) {
@@ -321,6 +308,40 @@ fun LoginScreen(vm: AppViewModel) {
         text = { UiText(if (vm.checkingConnection) "Checking server…" else vm.connectionReport) },
         confirmButton = { TextButton(onClick = { connectionDetails = false }) { UiText("Done") } },
         dismissButton = { TextButton(onClick = { vm.checkConnection() }, enabled = !vm.checkingConnection) { UiText("Retry check") } })
+}
+
+@Composable
+private fun LoginIllustrationHeader() {
+    Surface(Modifier.fillMaxWidth().height(190.dp), shape = RoundedCornerShape(28.dp), shadowElevation = 16.dp) {
+        Box(Modifier.fillMaxSize().background(Brush.linearGradient(listOf(Color(0xFFE9F8FF), Color(0xFFD9E8FF), Color(0xFFC9D8FF))))) {
+            Box(Modifier.size(180.dp).align(Alignment.TopEnd).offset(x = 42.dp, y = (-58).dp).clip(RoundedCornerShape(100.dp)).background(Color.White.copy(alpha = .30f)))
+            Box(Modifier.size(130.dp).align(Alignment.BottomStart).offset(x = (-35).dp, y = 50.dp).clip(RoundedCornerShape(100.dp)).background(Color(0xFF90CFFF).copy(alpha = .28f)))
+            Column(Modifier.align(Alignment.TopStart).padding(18.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    BrandMark(45.dp, light = false)
+                    Spacer(Modifier.width(10.dp))
+                    Column {
+                        UiText("SkyBarech ERP", color = Color(0xFF102858), fontSize = 19.sp, fontWeight = FontWeight.ExtraBold)
+                        UiText("Business management system", color = Color(0xFF52709F), fontSize = 10.sp)
+                    }
+                }
+                Spacer(Modifier.height(12.dp))
+                UiText("Secure cloud workspace", color = Color(0xFF1769DC), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                UiText("Simple · Connected · Ready to grow", color = Color(0xFF52709F), fontSize = 11.sp)
+            }
+            Surface(Modifier.align(Alignment.BottomEnd).offset(x = (-22).dp, y = (-18).dp).size(72.dp), shape = RoundedCornerShape(24.dp), color = Color.White.copy(alpha = .92f), shadowElevation = 8.dp) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(Icons.Outlined.CloudQueue, null, tint = Color(0xFF168FE8), modifier = Modifier.size(41.dp))
+                    Icon(Icons.Outlined.Lock, null, tint = Color(0xFF183A85), modifier = Modifier.size(17.dp).offset(y = 4.dp))
+                }
+            }
+            Row(Modifier.align(Alignment.BottomStart).padding(start = 24.dp, bottom = 18.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Icon(Icons.Outlined.Storefront, null, tint = Color(0xFF2D6CC9), modifier = Modifier.size(27.dp))
+                Icon(Icons.Outlined.LaptopMac, null, tint = Color(0xFF2D6CC9), modifier = Modifier.size(27.dp))
+                Icon(Icons.Outlined.PhoneAndroid, null, tint = Color(0xFF2D6CC9), modifier = Modifier.size(27.dp))
+            }
+        }
+    }
 }
 
 @Composable
