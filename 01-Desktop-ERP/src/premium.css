@@ -35,3 +35,18 @@ tbody tr:hover{background:#007aff08}.page-content{animation:panel-arrive .3s eas
 .sky-logo,.brand-mark{background:transparent!important;border:0!important;box-shadow:none!important}.sky-logo img,.brand-mark img{width:100%;height:100%;object-fit:contain}
 .premium-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}.pos-layout [data-action="pos-pay"]{background:linear-gradient(100deg,#008c59,#00ad79);color:#fff;border-color:transparent}.pos-layout .card{box-shadow:0 8px 24px #0027580d}.pos-product:hover{border-color:#79b8ff;background:#007aff08}
 @media(max-width:1000px){.premium-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Light Flutter-style authentication presentation: form first, illustration second. */
+.auth-layout{grid-template-columns:minmax(480px, .94fr) minmax(540px, 1.06fr);background:#f4f8ff}
+.auth-panel{order:1;background:radial-gradient(circle at 8% 12%,#dff3ff 0,transparent 30%),#f7fbff}
+.auth-side{order:2;padding:42px clamp(34px,4.7vw,78px);background:radial-gradient(circle at 75% 18%,#ffffff 0,transparent 24%),radial-gradient(circle at 14% 80%,#b8efff 0,transparent 30%),linear-gradient(145deg,#eef8ff,#dbeaff 52%,#c7d8ff);color:#102858;overflow:hidden}
+.auth-side .auth-brand .brand-name,.auth-side .auth-side-hero h1{color:#102858}
+.auth-side .brand-sub,.auth-side-hero p,.auth-side-foot{color:#52709f}
+.auth-side .auth-eyebrow{color:#1e67d8}.auth-side .auth-eyebrow span{background:#198cff;box-shadow:0 0 12px #53baff}
+.auth-side .auth-mini-dashboard{background:rgba(255,255,255,.72);border-color:#b9d9f5;box-shadow:0 20px 50px #5a85bd2b}
+.auth-side .auth-mini-dashboard span,.auth-side .auth-mini-dashboard small{color:#52709f}.auth-side .auth-mini-dashboard strong{color:#123b8d}
+.auth-side .auth-benefit{color:#365780}.auth-side .auth-benefit strong{color:#123b8d}.auth-side .auth-benefit .icon-shell{background:#fff;color:#146be6;border-color:#b8d8fb}
+.auth-side .auth-visual-grid{opacity:.3;background-image:linear-gradient(#4778b51c 1px,transparent 1px),linear-gradient(90deg,#4778b51c 1px,transparent 1px)}
+.auth-side .auth-orb-one{background:radial-gradient(circle at 35% 32%,#72dfff99,#4b7dff09 68%)}.auth-side .auth-orb-two{background:radial-gradient(circle at 35% 35%,#8f7dff66,#4b45ff02 70%)}
+.auth-side .auth-side-hero h1 span{color:#1769dc!important}
+@media(max-width:760px){.auth-layout{display:flex;flex-direction:column}.auth-side{order:1}.auth-panel{order:2}}

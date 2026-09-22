@@ -225,22 +225,22 @@ fun LoginScreen(vm: AppViewModel) {
     val fingerprint = BiometricUnlock.enabled(context, binding)
     var showBiometric by rememberSaveable { mutableStateOf(fingerprint) }
     if (fingerprint && showBiometric) {
-        AuroraBackdrop {
+        AppBackground {
             Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(28.dp), horizontalAlignment=Alignment.CenterHorizontally, verticalArrangement=Arrangement.Center) {
-                BrandMark(64.dp, light=true)
+                BrandHeader(compact = false)
                 Spacer(Modifier.height(48.dp))
-                Surface(shape=RoundedCornerShape(100.dp), color=Color(0xFF041D48), border=androidx.compose.foundation.BorderStroke(3.dp, Color(0xFF008CFF)), shadowElevation=20.dp) {
+                Surface(shape=RoundedCornerShape(100.dp), color=Color.White, border=androidx.compose.foundation.BorderStroke(3.dp, Color(0xFF008CFF)), shadowElevation=20.dp) {
                     IconButton(onClick={
                         BiometricUnlock.activity(context)?.let { activity -> BiometricUnlock.authenticate(activity, binding, false,
                             success={ vm.unlockWithBiometrics(binding) }, error={ vm.showMessage(it) }) }
-                    }, modifier=Modifier.size(152.dp)) { Icon(Icons.Outlined.Fingerprint, contentDescription=tr("Unlock with fingerprint"), tint=Color(0xFF4880FF), modifier=Modifier.size(94.dp)) }
+                }, modifier=Modifier.size(152.dp)) { Icon(Icons.Outlined.Fingerprint, contentDescription=tr("Unlock with fingerprint"), tint=Color(0xFF1769DC), modifier=Modifier.size(94.dp)) }
                 }
                 Spacer(Modifier.height(28.dp))
-                UiText("Use Fingerprint", color=Color.White, fontSize=24.sp, fontWeight=FontWeight.Bold)
-                UiText("Quick and secure login", color=Color(0xFFB9D3FF), modifier=Modifier.padding(top=10.dp,bottom=26.dp))
-                OutlinedButton(onClick={ showBiometric=false }, modifier=Modifier.fillMaxWidth()) { UiText("Use PIN instead",color=Color.White) }
+                UiText("Use Fingerprint", color=Ink, fontSize=24.sp, fontWeight=FontWeight.Bold)
+                UiText("Quick and secure login", color=MutedInk, modifier=Modifier.padding(top=10.dp,bottom=26.dp))
+                OutlinedButton(onClick={ showBiometric=false }, modifier=Modifier.fillMaxWidth()) { UiText("Use PIN instead",color=BrandBlue) }
                 Spacer(Modifier.height(60.dp))
-                UiText("Fast   •   Secure   •   Your shop",color=Color(0xFF8FC6FF),fontSize=12.sp)
+                UiText("Fast   •   Secure   •   Your shop",color=MutedInk,fontSize=12.sp)
             }
         }
         return
@@ -254,17 +254,17 @@ fun LoginScreen(vm: AppViewModel) {
             .verticalScroll(rememberScrollState()).padding(vertical = 14.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             LanguageSelector(modifier = Modifier.align(Alignment.End))
             Spacer(Modifier.height(14.dp))
-            Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(28.dp), color = BrandBlueDark,
-                shadowElevation = 14.dp) {
+            Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(28.dp), color = Color.White,
+                border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFD6E8FA)), shadowElevation = 14.dp) {
                 Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 18.dp), verticalAlignment = Alignment.CenterVertically) {
-                    BrandMark(58.dp, light = true)
+                    BrandMark(58.dp, light = false)
                     Spacer(Modifier.width(14.dp))
                     Column(Modifier.weight(1f)) {
-                        UiText("SkyBarech ERP", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
-                        UiText("Your connected shop workspace", color = Color.White.copy(alpha = .76f), fontSize = 12.sp)
+                        UiText("SkyBarech ERP", color = Color(0xFF102858), fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
+                        UiText("Your connected shop workspace", color = Color(0xFF52709F), fontSize = 12.sp)
                     }
-                    Surface(shape = RoundedCornerShape(12.dp), color = Color.White.copy(alpha = .12f)) {
-                        Icon(Icons.Outlined.VerifiedUser, contentDescription = null, tint = Color.White, modifier = Modifier.padding(10.dp).size(22.dp))
+                    Surface(shape = RoundedCornerShape(12.dp), color = Color(0xFFE9F3FF)) {
+                        Icon(Icons.Outlined.VerifiedUser, contentDescription = null, tint = Color(0xFF1769DC), modifier = Modifier.padding(10.dp).size(22.dp))
                     }
                 }
             }
