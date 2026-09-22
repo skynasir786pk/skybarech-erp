@@ -54,7 +54,7 @@ private fun SkyBarechAppContent(vm: AppViewModel) {
     val message = vm.snackbarMessage
     LaunchedEffect(message) {
         if (message != null) {
-            snackbarHostState.showSnackbar(tr(message))
+            snackbarHostState.showSnackbar(tr(message), duration = SnackbarDuration.Short)
             vm.consumeMessage()
         }
     }
@@ -83,7 +83,20 @@ private fun SkyBarechAppContent(vm: AppViewModel) {
                 AppScreen.HELP -> HelpCenterScreen(vm, Modifier.fillMaxSize())
                 else -> Unit
             }
-            SnackbarHost(hostState = snackbarHostState, modifier = Modifier.align(Alignment.TopCenter).statusBarsPadding().padding(16.dp))
+            SnackbarHost(
+                hostState = snackbarHostState,
+                modifier = Modifier.align(Alignment.TopCenter).statusBarsPadding().padding(horizontal = 12.dp, vertical = 6.dp),
+                snackbar = { data ->
+                    Snackbar(
+                        snackbarData = data,
+                        modifier = Modifier.widthIn(max = 360.dp).heightIn(min = 36.dp, max = 48.dp),
+                        shape = RoundedCornerShape(14.dp),
+                        containerColor = CardSurface,
+                        contentColor = BrandBlueDark,
+                        actionColor = BrandBlue
+                    )
+                }
+            )
         }
     } else {
         AppShell(vm = vm, snackbarHostState = snackbarHostState)
@@ -110,19 +123,26 @@ private fun AppShell(vm: AppViewModel, snackbarHostState: SnackbarHostState) {
                         showMenu = !showRail && !vm.canGoBack(),
                         onMenuClick = { if (!showRail) scope.launch { drawerState.open() } }
                     )
-                    Surface(color = BrandBlueSoft) {
-                        Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                            UiText(vm.storageStatus, Modifier.weight(1f), color = BrandBlueDark, fontSize = 12.sp, maxLines = 2)
-                            TextButton(onClick = { vm.syncNow() }, enabled = !vm.syncInProgress) { UiText("Cloud sync") }
-                        }
-                    }
                     Box(Modifier.weight(1f)) {
                         ScreenRouter(vm, Modifier.fillMaxSize())
                     }
                     if (!showRail) BottomNavigation(vm)
                 }
             }
-            SnackbarHost(hostState = snackbarHostState, modifier = Modifier.align(Alignment.TopCenter).statusBarsPadding().padding(top = 12.dp, start = 16.dp, end = 16.dp))
+            SnackbarHost(
+                hostState = snackbarHostState,
+                modifier = Modifier.align(Alignment.TopCenter).statusBarsPadding().padding(horizontal = 12.dp, vertical = 6.dp),
+                snackbar = { data ->
+                    Snackbar(
+                        snackbarData = data,
+                        modifier = Modifier.widthIn(max = 360.dp).heightIn(min = 36.dp, max = 48.dp),
+                        shape = RoundedCornerShape(14.dp),
+                        containerColor = CardSurface,
+                        contentColor = BrandBlueDark,
+                        actionColor = BrandBlue
+                    )
+                }
+            )
         }
 
         if (showRail) {
@@ -180,13 +200,6 @@ private fun AppTopBar(vm: AppViewModel, showMenu: Boolean, onMenuClick: () -> Un
                 }
             }
             LanguageSelector(light = true)
-            IconButton(onClick = { vm.syncNow() }, enabled = !vm.syncInProgress) {
-                if (vm.syncInProgress) {
-                    CircularProgressIndicator(modifier = Modifier.size(18.dp), color = Color.White, strokeWidth = 2.dp)
-                } else {
-                    Icon(Icons.Outlined.CloudSync, contentDescription = tr("Sync"), tint = Color.White)
-                }
-            }
             IconButton(onClick = { vm.navigateRoot(AppScreen.STOCK_ALERTS) }) {
                 BadgedBox(badge = { if (vm.lowStockCount() > 0) Badge { UiText(vm.lowStockCount().toString()) } }) {
                     Icon(Icons.Outlined.NotificationsNone, contentDescription = tr("Notifications"), tint = Color.White)

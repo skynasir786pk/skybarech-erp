@@ -353,14 +353,14 @@ fun MetricCard(
         color = accent,
         border = androidx.compose.foundation.BorderStroke(1.dp, CardStroke)
     ) {
-        Column(Modifier.background(Brush.linearGradient(listOf(accent, androidx.compose.ui.graphics.lerp(accent, Color.Black, .22f)))).padding(14.dp)) {
+        Column(Modifier.background(Brush.linearGradient(listOf(accent, androidx.compose.ui.graphics.lerp(accent, Color.Black, .22f)))).padding(horizontal = 10.dp, vertical = 9.dp)) {
             Box(
-                modifier = Modifier.size(30.dp).clip(RoundedCornerShape(9.dp)).background(Color.White.copy(alpha = .16f)),
+                modifier = Modifier.size(27.dp).clip(RoundedCornerShape(8.dp)).background(Color.White.copy(alpha = .16f)),
                 contentAlignment = Alignment.Center
-            ) { Icon(icon, contentDescription = null, tint = Color.White, modifier = Modifier.size(18.dp)) }
-            Spacer(Modifier.height(10.dp))
+            ) { Icon(icon, contentDescription = null, tint = Color.White, modifier = Modifier.size(16.dp)) }
+            Spacer(Modifier.height(6.dp))
             UiText(label, color = Color.White.copy(alpha = .9f), fontSize = 12.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
-            Spacer(Modifier.height(3.dp))
+            Spacer(Modifier.height(2.dp))
             UiText(value, color = Color.White, fontSize = 17.sp, fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis)
         }
     }

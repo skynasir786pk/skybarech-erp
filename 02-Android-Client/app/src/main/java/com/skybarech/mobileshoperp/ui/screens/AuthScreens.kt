@@ -148,10 +148,10 @@ fun WelcomeScreen(vm: AppViewModel) {
                 Box(Modifier.size(138.dp).clip(RoundedCornerShape(31.dp)).background(Color(0xFF071B42)), contentAlignment = Alignment.Center) { BrandMark(92.dp, light = true) }
             }
             Spacer(Modifier.height(28.dp))
-            UiText("Welcome back", color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.ExtraBold)
+            UiText(vm.welcomeTitle, color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.ExtraBold)
             UiText(vm.shopName.ifBlank { "SkyBarech ERP" }, translate = false, color = Color(0xFF9DD8FF), fontSize = 17.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(12.dp))
-            UiText("Your secure workspace is ready", color = Color(0xFFD7E6FF), fontSize = 13.sp)
+            UiText(vm.welcomeSubtitle, color = Color(0xFFD7E6FF), fontSize = 13.sp)
             Spacer(Modifier.height(26.dp))
             LinearProgressIndicator(progress = { if (visible) 1f else 0f }, modifier = Modifier.width(190.dp).clip(RoundedCornerShape(50)), color = Color(0xFF0CE39A), trackColor = Color.White.copy(alpha = .14f))
         }
@@ -261,7 +261,7 @@ fun LoginScreen(vm: AppViewModel) {
                 Column(Modifier.padding(horizontal = 20.dp, vertical = 22.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
-                            UiText("Welcome back", color = Ink, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
+            UiText(vm.welcomeTitle, color = Ink, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
                             UiText("SECURE SHOP LOGIN", color = BrandBlue, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                         }
                         Surface(shape = RoundedCornerShape(50), color = SuccessSoft) {

@@ -66,14 +66,18 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         private set
     var connectionReport by mutableStateOf("")
         private set
+    var welcomeTitle by mutableStateOf("Welcome back")
+        private set
+    var welcomeSubtitle by mutableStateOf("Your secure workspace is ready")
+        private set
     var checkingConnection by mutableStateOf(false)
         private set
     fun checkConnection() {
         if (checkingConnection) return
         checkingConnection = true
         viewModelScope.launch {
-            try { connectionReport = com.skybarech.mobileshoperp.data.offline.ApiEndpoint.checkConnection() }
-            catch (error: Exception) { connectionReport = error.message ?: "Connection check failed." }
+            try { connectionReport = safeConnectionMessage(com.skybarech.mobileshoperp.data.offline.ApiEndpoint.checkConnection()) }
+            catch (error: Exception) { connectionReport = safeConnectionMessage(error.message ?: "Connection check failed.") }
             finally { checkingConnection = false }
         }
     }
@@ -185,6 +189,11 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     fun showMessage(message: String) { snackbarMessage = message }
     fun consumeMessage() { snackbarMessage = null }
+
+    private fun safeConnectionMessage(value: String): String = value
+        .replace(Regex("https?://\\S+", RegexOption.IGNORE_CASE), "Secure server")
+        .replace(Regex("\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b"), "Secure server")
+        .replace(Regex("(?i)(host|server|api)\\s*[:=]\\s*\\S+"), "Secure server")
 
     fun activate(code: String, mobile: String, temporaryPassword: String, shopNameInput: String = "") {
         if (syncInProgress) return
@@ -492,8 +501,10 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                                 offerFingerprintAfterLogin()
                                 syncInProgress = false
                                 storageStatus = "Online sync connected"
-                                showMessage("Activation complete. Local-first sync ready hai.")
-                                navigateRoot(AppScreen.DASHBOARD)
+                                welcomeTitle = "Congratulations!"
+                                welcomeSubtitle = "Your shop is active and ready to grow."
+                                showMessage("Your shop is active. Welcome to SkyBarech ERP!")
+                                navigateRoot(AppScreen.WELCOME)
                             }
                             .onFailure { error ->
                                 syncInProgress = false
@@ -504,9 +515,11 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                     sessionStore.setPassword(fresh)
                     session = sessionStore.read()
                     sessionStore.setResumeSession(true)
-                    showMessage("PIN saved. Dashboard ready.")
+                    welcomeTitle = if (firstActivationPassword) "Congratulations!" else "Welcome back"
+                    welcomeSubtitle = if (firstActivationPassword) "Your shop is active and ready to grow." else "Your secure workspace is ready"
+                    showMessage(if (firstActivationPassword) "Your shop is active. Welcome to SkyBarech ERP!" else "PIN saved. Dashboard ready.")
                     loggedIn = true
-                    screen = AppScreen.DASHBOARD
+                    navigateRoot(AppScreen.WELCOME)
                 }
             }
         }
