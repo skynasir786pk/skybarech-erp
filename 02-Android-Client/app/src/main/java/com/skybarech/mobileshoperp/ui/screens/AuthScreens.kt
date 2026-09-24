@@ -41,6 +41,7 @@ import com.skybarech.mobileshoperp.ui.AppViewModel
 import com.skybarech.mobileshoperp.ui.components.*
 import com.skybarech.mobileshoperp.ui.theme.*
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun AuroraBackdrop(content: @Composable BoxScope.() -> Unit) {
@@ -87,8 +88,13 @@ fun SplashScreen(vm: AppViewModel) {
 fun OnboardingScreen(vm: AppViewModel) {
     val context = LocalContext.current
     val motion = rememberInfiniteTransition(label = "onboarding motion")
-    val floatScale by motion.animateFloat(0.96f, 1.04f, infiniteRepeatable(tween(1800), RepeatMode.Reverse), label = "glow pulse")
+    val floatScale by motion.animateFloat(0.94f, 1.06f, infiniteRepeatable(tween(1900), RepeatMode.Reverse), label = "glow pulse")
+    val floatY by motion.animateFloat(-5f, 5f, infiniteRepeatable(tween(2300), RepeatMode.Reverse), label = "hero float")
     var step by rememberSaveable { mutableStateOf(0) }
+    val stepScope = rememberCoroutineScope()
+    var stepContentVisible by remember { mutableStateOf(true) }
+    val stepAlpha by animateFloatAsState(if (stepContentVisible) 1f else 0f, tween(220), label = "instruction fade")
+    val stepOffset by animateFloatAsState(if (stepContentVisible) 0f else 14f, tween(220), label = "instruction slide")
     val titles = listOf("Welcome & Language", "Activate Your Shop", "Fresh Shop Protection", "Device Security", "Cloud Sync Setup", "Ready to Grow")
     val bodies = listOf(
         "Choose English or اردو. SkyBarech ERP keeps your shop tools simple and connected.",
@@ -99,40 +105,101 @@ fun OnboardingScreen(vm: AppViewModel) {
         "Next steps: Shop Profile → Products & Stock → First Sale. You can revisit these tools from the dashboard anytime."
     )
     val icons = listOf(Icons.Outlined.Language, Icons.Outlined.VerifiedUser, Icons.Outlined.Shield, Icons.Outlined.Fingerprint, Icons.Outlined.CloudSync, Icons.Outlined.CheckCircle)
-    AuroraBackdrop {
-    Box(Modifier.fillMaxSize().graphicsLayer { scaleX = floatScale; scaleY = floatScale }.background(Brush.radialGradient(listOf(Color(0x226A00FF), Color.Transparent))))
-    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState()).padding(22.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        BrandMark(72.dp, light = false)
-        Spacer(Modifier.height(12.dp))
-        UiText("SkyBarech ERP", color = Ink, fontWeight = FontWeight.ExtraBold, fontSize = 25.sp)
-        UiText("Set up your secure business workspace", color = MutedInk, fontSize = 13.sp, textAlign = TextAlign.Center)
-        Spacer(Modifier.height(22.dp))
-        SoftCard(Modifier.fillMaxWidth().shadow(20.dp, RoundedCornerShape(26.dp)), contentPadding = 20.dp) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Box(Modifier.size(68.dp).clip(RoundedCornerShape(22.dp)).background(BrandBlueSoft), contentAlignment = Alignment.Center) { Icon(icons[step], null, tint = BrandBlue, modifier = Modifier.size(36.dp)) }
-                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    titles.indices.forEach { index ->
-                        Box(Modifier.width(if (index == step) 28.dp else 8.dp).height(6.dp).clip(RoundedCornerShape(50)).background(if (index == step) BrandBlue else BrandBlueSoft))
+    val benefits = listOf(
+        listOf("English or Urdu", "Made for your shop"),
+        listOf("Registered mobile", "4-digit secure PIN"),
+        listOf("Zero demo records", "Private Shop-ID"),
+        listOf("Fingerprint unlock", "PIN always available"),
+        listOf("Verified cloud", "Safe offline work"),
+        listOf("Shop profile", "Stock, then first sale")
+    )
+    Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color(0xFFF4F9FF), Color(0xFFE7F1FF), Color(0xFFF8FBFF))))) {
+        Box(Modifier.size(260.dp).align(Alignment.TopEnd).offset(x = 116.dp, y = (-110).dp).clip(RoundedCornerShape(160.dp)).background(Color(0x5578B8FF)))
+        Box(Modifier.size(190.dp).align(Alignment.BottomStart).offset(x = (-100).dp, y = 30.dp).clip(RoundedCornerShape(120.dp)).background(Color(0x335F78FF)))
+        Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 14.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                BrandMark(42.dp, light = false)
+                Spacer(Modifier.width(10.dp))
+                Column(Modifier.weight(1f)) {
+                    UiText("SkyBarech ERP", color = Color(0xFF102858), fontWeight = FontWeight.ExtraBold, fontSize = 18.sp)
+                    UiText("YOUR SHOP, READY TO GROW", color = Color(0xFF6680A7), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+            Spacer(Modifier.height(16.dp))
+            Box(Modifier.fillMaxWidth().height(204.dp).shadow(16.dp, RoundedCornerShape(30.dp)).clip(RoundedCornerShape(30.dp)).background(Brush.linearGradient(listOf(Color(0xFF154BE4), Color(0xFF168FE8), Color(0xFF60D5E8))))) {
+                Box(Modifier.size(200.dp).align(Alignment.TopEnd).offset(x = 68.dp, y = (-74).dp).clip(RoundedCornerShape(120.dp)).background(Color.White.copy(alpha = .13f)))
+                Box(Modifier.size(142.dp).align(Alignment.BottomStart).offset(x = (-54).dp, y = 68.dp).clip(RoundedCornerShape(100.dp)).background(Color(0xFF92E8FF).copy(alpha = .22f)))
+                Box(Modifier.align(Alignment.Center).offset(y = floatY.dp).graphicsLayer { scaleX = floatScale; scaleY = floatScale }) {
+                    Surface(Modifier.size(106.dp).shadow(14.dp, RoundedCornerShape(32.dp)), shape = RoundedCornerShape(32.dp), color = Color.White.copy(alpha = .96f)) {
+                        Box(contentAlignment = Alignment.Center) {
+                            Icon(icons[step], null, tint = Color(0xFF1769DC), modifier = Modifier.size(54.dp))
+                            Box(Modifier.align(Alignment.BottomEnd).padding(8.dp).size(26.dp).clip(RoundedCornerShape(9.dp)).background(Color(0xFFE8F8F2)), contentAlignment = Alignment.Center) {
+                                Icon(if (step == 3) Icons.Outlined.Lock else Icons.Outlined.AutoAwesome, null, tint = Color(0xFF0A9E78), modifier = Modifier.size(16.dp))
+                            }
+                        }
                     }
                 }
-                UiText("STEP ${step + 1} OF ${titles.size}", color = BrandBlue, fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                UiText(titles[step], color = Ink, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold, textAlign = TextAlign.Center)
-                UiText(bodies[step], color = MutedInk, fontSize = 14.sp, lineHeight = 21.sp, textAlign = TextAlign.Center)
-                if (step == 0) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        FilterChip(selected = UiLanguage.code == "en", onClick = { UiLanguage.set(context, "en") }, label = { UiText("English") })
-                        FilterChip(selected = UiLanguage.code == "ur", onClick = { UiLanguage.set(context, "ur") }, label = { UiText("اردو", translate = false) })
+                Surface(Modifier.align(Alignment.TopStart).padding(16.dp), shape = RoundedCornerShape(50), color = Color.White.copy(alpha = .18f), border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = .3f))) {
+                    Row(Modifier.padding(horizontal = 11.dp, vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Outlined.AutoAwesome, null, tint = Color.White, modifier = Modifier.size(14.dp)); Spacer(Modifier.width(6.dp))
+                        UiText("SIMPLE SETUP", color = Color.White, fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
+                Surface(Modifier.align(Alignment.BottomEnd).padding(16.dp), shape = RoundedCornerShape(50), color = Color(0xFF07368F).copy(alpha = .55f)) {
+                    UiText("${step + 1} / ${titles.size}", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp))
+                }
+            }
+            Spacer(Modifier.height(18.dp))
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(5.dp)) {
+                titles.indices.forEach { index ->
+                    Box(Modifier.weight(1f).height(5.dp).clip(RoundedCornerShape(50)).background(if (index <= step) Color(0xFF1675EB) else Color(0xFFD5E3F6)))
+                }
+            }
+            Spacer(Modifier.height(15.dp))
+            SoftCard(Modifier.fillMaxWidth().shadow(12.dp, RoundedCornerShape(26.dp)), contentPadding = 20.dp) {
+                Column(Modifier.fillMaxWidth().graphicsLayer { alpha = stepAlpha; translationY = stepOffset }, horizontalAlignment = Alignment.Start) {
+                    UiText("STEP ${step + 1} OF ${titles.size}  ·  GET STARTED", color = Color(0xFF1675EB), fontSize = 10.sp, fontWeight = FontWeight.ExtraBold)
+                    Spacer(Modifier.height(7.dp))
+                    UiText(titles[step], color = Color(0xFF11264A), fontSize = 22.sp, fontWeight = FontWeight.ExtraBold)
+                    Spacer(Modifier.height(8.dp))
+                    UiText(bodies[step], color = Color(0xFF5B6F8E), fontSize = 14.sp, lineHeight = 21.sp)
+                    Spacer(Modifier.height(15.dp))
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        benefits[step].forEach { benefit ->
+                            Surface(Modifier.weight(1f), shape = RoundedCornerShape(13.dp), color = Color(0xFFF0F6FF), border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFDCEAFF))) {
+                                Row(Modifier.padding(horizontal = 9.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(Icons.Outlined.CheckCircle, null, tint = Color(0xFF159B78), modifier = Modifier.size(16.dp))
+                                    Spacer(Modifier.width(6.dp))
+                                    UiText(benefit, color = Color(0xFF345071), fontSize = 10.sp, fontWeight = FontWeight.SemiBold, maxLines = 2, lineHeight = 13.sp)
+                                }
+                            }
+                        }
+                    }
+                    if (step == 0) {
+                        Spacer(Modifier.height(14.dp))
+                        UiText("Choose your language", color = Color(0xFF657A99), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        Spacer(Modifier.height(4.dp))
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            FilterChip(selected = UiLanguage.code == "en", onClick = { UiLanguage.set(context, "en") }, label = { UiText("English") })
+                            FilterChip(selected = UiLanguage.code == "ur", onClick = { UiLanguage.set(context, "ur") }, label = { UiText("اردو", translate = false) })
+                        }
                     }
                 }
             }
+            Spacer(Modifier.height(16.dp))
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                if (step > 0) OutlinedButton(onClick = {
+                    stepScope.launch { stepContentVisible = false; delay(90); step -= 1; stepContentVisible = true }
+                }, modifier = Modifier.weight(.85f).height(54.dp), shape = RoundedCornerShape(16.dp)) {
+                    Icon(Icons.Outlined.ArrowBack, null, modifier = Modifier.size(18.dp)); Spacer(Modifier.width(6.dp)); UiText("Back")
+                }
+                OnboardingGradientButton(if (step == titles.lastIndex) "Activate My Shop" else "Continue", {
+                    if (step == titles.lastIndex) { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) }
+                    else stepScope.launch { stepContentVisible = false; delay(90); step += 1; stepContentVisible = true }
+                }, Modifier.weight(1.5f))
+            }
+            TextButton(onClick = { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) }) { UiText("Skip setup guide", color = Color(0xFF7083A0), fontSize = 12.sp) }
         }
-        Spacer(Modifier.height(18.dp))
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            if (step > 0) OutlineButton("Back", { step -= 1 }, Modifier.weight(1f), Icons.Outlined.ArrowBack)
-            OnboardingGradientButton(if (step == titles.lastIndex) "Start Secure Setup" else "Continue", { if (step == titles.lastIndex) { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) } else step += 1 }, Modifier.weight(1.5f))
-        }
-        TextButton(onClick = { vm.completeOnboarding(); vm.navigateRoot(AppScreen.ACTIVATION) }) { UiText("Skip instructions", color = MutedInk, fontSize = 12.sp) }
-    }
     }
 }
 
