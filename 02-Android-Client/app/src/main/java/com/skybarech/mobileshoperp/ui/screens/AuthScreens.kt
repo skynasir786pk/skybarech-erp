@@ -261,7 +261,7 @@ fun LoginScreen(vm: AppViewModel) {
                 Column(Modifier.padding(horizontal = 20.dp, vertical = 22.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
-            UiText(vm.welcomeTitle, color = Ink, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
+                            UiText("Welcome back", color = Ink, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
                             UiText("SECURE SHOP LOGIN", color = BrandBlue, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                         }
                         Surface(shape = RoundedCornerShape(50), color = SuccessSoft) {
