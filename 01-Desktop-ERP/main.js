@@ -104,6 +104,43 @@ function assertSameShop(shopId) {
   }
 }
 
+function issueShopSwitchToken(targetShopId) {
+  const switchToken = crypto.randomUUID();
+  const now = Date.now();
+  for (const [token, pending] of pendingActivationSwitches) {
+    if (pending.expiresAt <= now) pendingActivationSwitches.delete(token);
+  }
+  pendingActivationSwitches.set(switchToken, {
+    targetShopId: String(targetShopId),
+    expiresAt: now + (5 * 60 * 1000),
+  });
+  return switchToken;
+}
+
+async function backupAndSwitchLocalShop(targetShopId) {
+  syncService.stop();
+  try {
+    if (syncService.inFlight) await syncService.inFlight.catch(() => {});
+    const backup = localStore.shopSwitchBackup();
+    const backupDirectory = path.join(app.getPath('userData'), 'shop-switch-backups');
+    fs.mkdirSync(backupDirectory, { recursive: true });
+    const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const safeShopId = String(backup.shopId || 'shop').replace(/[^a-z0-9_-]/gi, '-').slice(0, 60);
+    const backupPath = path.join(backupDirectory, `${safeShopId}-${stamp}.json`);
+    fs.writeFileSync(backupPath, JSON.stringify(backup, null, 2), { encoding: 'utf8', mode: 0o600, flag: 'wx' });
+    localStore.resetForRemoteShop(targetShopId);
+    pendingActivationSwitches.clear();
+    return {
+      success: true,
+      shopId: String(targetShopId),
+      backupPath,
+      unsyncedChanges: backup.sync.pending + backup.sync.syncing + backup.sync.failed,
+    };
+  } finally {
+    syncService.start();
+  }
+}
+
 function validApiBase(value) {
   const base = String(value || '').trim().replace(/\/+$/, '');
   if (!/^https:\/\//i.test(base) || base.includes('YOUR-DOMAIN')) throw new Error('Valid Cloud HTTPS API URL is required.');
@@ -153,7 +190,22 @@ ipcMain.handle('auth:login', async (_event, input = {}) => {
       error.status = 403; error.code = 'owner_client_required'; throw error;
     }
     const bootstrap = await apiGet(apiBaseUrl, '/v1/bootstrap', result.tokens.access_token);
-    assertSameShop(bootstrap.shop?.id);
+    const conflict = localStore.describeShopConflict(bootstrap.shop?.id);
+    if (conflict?.unsyncedChanges) {
+      return {
+        success: false,
+        authoritative: false,
+        offline: false,
+        status: 409,
+        code: 'shop_mismatch',
+        message: 'A different local shop cache needs confirmation before this shop can be connected.',
+        deviceConflict: { ...conflict, switchToken: issueShopSwitchToken(bootstrap.shop.id) },
+        shop: bootstrap.shop || null,
+      };
+    }
+    // A fully synced/stale cache can be replaced safely. Keep a recovery backup
+    // and then attach this desktop to the same verified shop used by Android.
+    if (conflict) await backupAndSwitchLocalShop(bootstrap.shop.id);
     const savedId = localStore.loadSnapshot()?.snapshot?.shop?.id || localStore.loadSnapshot()?.snapshot?.session?.shop_id;
     const cacheReset = String(savedId || '') !== String(bootstrap.shop?.id);
     if (cacheReset) localStore.resetForRemoteShop(bootstrap.shop?.id);
@@ -210,11 +262,7 @@ ipcMain.handle('activation:verify', async (_event, input = {}) => {
   });
   const conflict = localStore.describeShopConflict(result.activation?.shop_id);
   if (conflict) {
-    const switchToken = crypto.randomUUID();
-    const now = Date.now();
-    for (const [token, pending] of pendingActivationSwitches) if (pending.expiresAt <= now) pendingActivationSwitches.delete(token);
-    pendingActivationSwitches.set(switchToken, { targetShopId: String(result.activation.shop_id), expiresAt: now + (5 * 60 * 1000) });
-    result.deviceConflict = { ...conflict, switchToken };
+    result.deviceConflict = { ...conflict, switchToken: issueShopSwitchToken(result.activation.shop_id) };
   }
   return result;
 });
@@ -228,22 +276,7 @@ ipcMain.handle('activation:switch-shop', async (_event, input = {}) => {
   }
   if (String(input.shopId || '') !== pending.targetShopId) throw new Error('Verified shop does not match the switch request.');
 
-  syncService.stop();
-  try {
-    if (syncService.inFlight) await syncService.inFlight.catch(() => {});
-    const backup = localStore.shopSwitchBackup();
-    const backupDirectory = path.join(app.getPath('userData'), 'shop-switch-backups');
-    fs.mkdirSync(backupDirectory, { recursive: true });
-    const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const safeShopId = String(backup.shopId || 'shop').replace(/[^a-z0-9_-]/gi, '-').slice(0, 60);
-    const backupPath = path.join(backupDirectory, `${safeShopId}-${stamp}.json`);
-    fs.writeFileSync(backupPath, JSON.stringify(backup, null, 2), { encoding: 'utf8', mode: 0o600, flag: 'wx' });
-    localStore.resetForRemoteShop(pending.targetShopId);
-    pendingActivationSwitches.clear();
-    return { success: true, shopId: pending.targetShopId, backupPath, unsyncedChanges: backup.sync.pending + backup.sync.syncing + backup.sync.failed };
-  } finally {
-    syncService.start();
-  }
+  return backupAndSwitchLocalShop(pending.targetShopId);
 });
 
 ipcMain.handle('activation:complete', async (_event, input = {}) => {

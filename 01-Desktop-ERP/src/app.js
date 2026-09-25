@@ -83,6 +83,7 @@
   try { setApiBaseUrl(localStorage.getItem('skybarech-api-base-url') || apiBaseUrl); } catch {}
   let pendingRemoteActivation = null;
   let pendingShopSwitch = null;
+  let pendingLoginShopSwitch = null;
 
   const makeId = (prefix = 'ID') => `${prefix}-${crypto.randomUUID()}`;
   const money = (value) => `${t('Rs.')} ${Number(value || 0).toLocaleString('en-PK')}`;
@@ -1609,6 +1610,38 @@
     refreshShopAdminControl();
   }
 
+  async function finishOnlineLogin(online, pin, backupNote = '') {
+    const synced = await window.skybarechDesktop.syncNow();
+    if (!synced?.success) {
+      notify('Shop data unavailable', synced?.error || 'Sign in again to reconnect sync.', 'error');
+      return false;
+    }
+    await hydrateFromDesktopStore(false);
+    const profile = normalizeShopProfile({...shopProfile(), ...online.shop,
+      shopName: online.shop?.name, ownerMobile: online.user?.mobile,
+      ownerName: online.shop?.owner_name || online.user?.full_name});
+    completeDesktopLogin(await withShopPassword(profile, pin), `Your Android shop data is loaded on Desktop.${backupNote}`);
+    return true;
+  }
+
+  function showLoginShopSwitchDialog(online, username, password) {
+    const conflict = online.deviceConflict;
+    pendingLoginShopSwitch = { online, username, password };
+    openModal('Connect this Desktop to your shop?', 'Your PIN is correct. An older local cache must be backed up before the Android shop can be loaded.', html`
+      <div class="confirm-box shop-switch-confirm">
+        <div class="confirm-icon">${icon('shield','icon-xl')}</div>
+        <strong>${esc(conflict.currentShopName)} → ${esc(online.shop?.name || 'Connected Android shop')}</strong>
+        <p>${esc(`${conflict.unsyncedChanges} waiting or failed local change(s) will be preserved in a recovery backup.`)}</p>
+        <div class="connection-summary">
+          <span>Old local shop</span><strong>${esc(conflict.currentShopId)}</strong>
+          <span>Cloud shop</span><strong>${esc(conflict.targetShopId)}</strong>
+          <span>Saved records</span><strong>${n(conflict.localRecords)}</strong>
+        </div>
+        <p class="field-hint">Your old Cloud shop is not deleted. After backup, this Desktop will load the same shop data used on Android.</p>
+        <div class="confirm-actions"><button class="btn btn-secondary" data-action="cancel-login-shop-switch">Cancel</button><button class="btn btn-primary" data-action="confirm-login-shop-switch">Back up & connect ${icon('arrowRight')}</button></div>
+      </div>`);
+  }
+
   async function submitLogin(form) {
     const data = Object.fromEntries(new FormData(form));
     if (!data.username || !data.password) return notify('Login required', 'Enter your owner mobile and PIN.', 'error');
@@ -1621,14 +1654,12 @@
     if (button) { button.disabled = true; button.textContent = t('Loading your shop…'); }
     try {
       const online = apiConfigured ? await window.skybarechDesktop.onlineLogin(apiBaseUrl, data.username, data.password) : null;
+      if (online?.deviceConflict) {
+        showLoginShopSwitchDialog(online, data.username, data.password);
+        return;
+      }
       if (online?.success) {
-        const synced = await window.skybarechDesktop.syncNow();
-        if (!synced?.success) return notify('Shop data unavailable', synced?.error || 'Sign in again to reconnect sync.', 'error');
-        await hydrateFromDesktopStore(false);
-        const profile = normalizeShopProfile({...shopProfile(), ...online.shop,
-          shopName: online.shop?.name, ownerMobile: online.user?.mobile,
-          ownerName: online.shop?.owner_name || online.user?.full_name});
-        return completeDesktopLogin(await withShopPassword(profile, data.password), 'Your shop data is loaded.');
+        return finishOnlineLogin(online, data.password);
       }
       if (online?.status || online?.authoritative) { if ([401,429].includes(online.status)) localPinBudget(true); return notify('Sign-in failed', online.message, 'error'); }
       // Offline fallback is only for the current, previously verified shop.
@@ -2093,6 +2124,29 @@
     if (action === 'support-auth') { openModal('Contact Support', 'SkyBarech Technology support', html`<div class="confirm-box"><div class="confirm-icon" style="background:var(--blue-3);color:var(--blue)">${icon('help','icon-xl')}</div><strong>Need help with activation?</strong><p>Call or WhatsApp the support team at 0333-7776614 and share your shop activation code.</p><div class="confirm-actions"><button class="btn btn-primary" data-action="close-modal">Done</button></div></div>`); return; }
     if (action === 'activate-shop-now') { const form = target.closest('form'); submitActivation(form); return; }
     if (action === 'cancel-shop-switch') { pendingShopSwitch = null; closeModal(); showActivationError('Shop switch cancelled', 'Your existing shop data is unchanged.', 'error'); return; }
+    if (action === 'cancel-login-shop-switch') { pendingLoginShopSwitch = null; closeModal(); notify('Connection cancelled', 'Your existing local data is unchanged.', 'error'); return; }
+    if (action === 'confirm-login-shop-switch') {
+      if (!pendingLoginShopSwitch) { closeModal(); return notify('Connection expired', 'Enter your mobile and PIN again.', 'error'); }
+      target.disabled = true;
+      target.textContent = t('Creating backup…');
+      try {
+        const pending = pendingLoginShopSwitch;
+        const conflict = pending.online.deviceConflict;
+        const result = await window.skybarechDesktop.switchActivationShop(conflict.targetShopId, conflict.switchToken);
+        pendingLoginShopSwitch = null;
+        closeModal();
+        localStorage.removeItem(STORAGE_KEY);
+        state = loadState();
+        const online = await window.skybarechDesktop.onlineLogin(apiBaseUrl, pending.username, pending.password);
+        if (!online?.success) throw new Error(online?.message || 'Could not connect this Desktop to your shop.');
+        return await finishOnlineLogin(online, pending.password, result?.backupPath ? ' The previous local cache was backed up safely.' : '');
+      } catch (error) {
+        target.disabled = false;
+        target.innerHTML = `${t('Back up & connect')} ${icon('arrowRight')}`;
+        notify('Shop connection failed', error.message || 'The old local data was not changed.', 'error');
+      }
+      return;
+    }
     if (action === 'confirm-shop-switch') {
       if (!pendingShopSwitch) { closeModal(); return showActivationError('Activation expired', 'Verify the activation again.'); }
       target.disabled = true;

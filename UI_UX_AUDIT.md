@@ -32,3 +32,7 @@ Existing camera scanning, Bluetooth printing, cloud synchronization and sale per
 ## Android installation limitation
 
 The GitHub workflow currently uses a runner-generated debug signing key. Certificate comparison confirms v1.3.25 and v1.3.26 differ; v1.3.26 cannot update that v1.3.25 installation in place. Preserve the installed app and its data. An in-place upgrade needs the original signing key; a new-install migration needs a verified backup/restore procedure. Establish a persistent signing key before distributing future updates. Do not recommend uninstalling a shop's working app to bypass this restriction.
+
+## Desktop v1.3.27 shop connection fix
+
+Online login no longer rejects a correctly authenticated Android shop with the generic “separate OS profile/device” error. If the conflicting desktop cache has no waiting/failed operations, the app creates a protected recovery backup, changes the local Shop-ID and pulls the verified Cloud shop automatically. If unsynced operations exist, it shows their count and requires “Back up & connect”; after the backup it repeats the already requested login and loads the Android shop. The old shop's Cloud data is never deleted.
