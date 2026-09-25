@@ -38,10 +38,13 @@ fun DashboardScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         item {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp))
+                .background(Brush.linearGradient(listOf(BrandBlueSoft, CardSurface)))
+                .padding(18.dp), verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
-                    UiText("Welcome back,", color = MutedInk, fontSize = 13.sp)
-                    UiText(vm.shopName, translate = false, color = Ink, fontWeight = FontWeight.ExtraBold, fontSize = 22.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    UiText("YOUR BUSINESS TODAY", color = BrandBlue, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    UiText("Welcome back", color = Ink, fontWeight = FontWeight.ExtraBold, fontSize = 24.sp)
+                    UiText("Manage. Sell. Grow.", color = MutedInk, fontSize = 12.sp, modifier = Modifier.padding(top = 4.dp))
                 }
                 BrandMark(44.dp, initials = vm.shopInitials)
             }
@@ -117,15 +120,15 @@ private fun DashboardActions(vm: AppViewModel) {
         DashboardShortcut("Stock Alerts", Icons.Filled.WarningAmber, AppScreen.STOCK_ALERTS, Color(0xFF9A492C))
     )
     BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val columns = when { maxWidth >= 900.dp -> 6; maxWidth >= 640.dp -> 4; maxWidth >= 340.dp -> 2; else -> 2 }
+        val columns = when { maxWidth >= 900.dp -> 6; maxWidth >= 640.dp -> 4; maxWidth >= 340.dp -> 3; else -> 2 }
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             shortcuts.chunked(columns).forEach { rowItems ->
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                     rowItems.forEach { shortcut ->
                         Surface(onClick = { vm.navigate(shortcut.screen) }, modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(18.dp), color = CardSurface, border = androidx.compose.foundation.BorderStroke(1.dp, CardStroke)) {
-                    Column(Modifier.padding(horizontal = 8.dp, vertical = 14.dp).heightIn(min = 108.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                        Box(Modifier.size(60.dp).clip(RoundedCornerShape(18.dp))
+                    Column(Modifier.padding(horizontal = 6.dp, vertical = 12.dp).heightIn(min = 80.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Box(Modifier.size(44.dp).clip(RoundedCornerShape(14.dp))
                             .background(Brush.linearGradient(listOf(shortcut.color, androidx.compose.ui.graphics.lerp(shortcut.color, Color.Black, .18f)))), contentAlignment = Alignment.Center) {
                             Box(Modifier.align(Alignment.TopEnd).offset(x = 10.dp, y = (-10).dp).size(40.dp).clip(RoundedCornerShape(20.dp)).background(Color.White.copy(alpha = .16f)))
                             Icon(shortcut.icon, contentDescription = null, tint = contrastingInk(shortcut.color), modifier = Modifier.size(32.dp))

@@ -7,25 +7,35 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 
 object UiAppearance {
-    private var localDark by mutableStateOf(true)
+    private var localDark by mutableStateOf(false)
     private var palette by mutableStateOf<Map<String, Color>?>(null)
     private var initialized = false
     private val listener = android.content.SharedPreferences.OnSharedPreferenceChangeListener { prefs, _ -> read(prefs) }
     var authLight by mutableStateOf(false)
     var dark: Boolean
-        get() = if (authLight) false else palette?.get("surface")?.let { it.luminance() <= .179f } ?: localDark
+        get() = !authLight && localDark
         set(value) { localDark = value }
     val managed: Boolean get() = !authLight && palette != null
-    fun color(key: String): Color? = if (authLight) null else palette?.get(key)
+    // A remotely supplied dark palette must not silently switch a light workspace.
+    fun color(key: String): Color? = if (authLight) null else palette?.get(key)?.takeIf {
+        when (key) {
+            "surface", "background" -> if (dark) it.luminance() < .179f else it.luminance() > .8f
+            "accent" -> if (dark) it.luminance() > .35f else it.luminance() < .35f
+            else -> true
+        }
+    }
     fun initialize(context: android.content.Context) {
         if (initialized) return
         initialized = true
         val prefs = context.applicationContext.getSharedPreferences("skybarech_appearance", android.content.Context.MODE_PRIVATE)
+        if (!prefs.getBoolean("light_design_1326", false)) {
+            prefs.edit().putBoolean("dark", false).putBoolean("light_design_1326", true).apply()
+        }
         read(prefs)
         prefs.registerOnSharedPreferenceChangeListener(listener)
     }
     private fun read(prefs: android.content.SharedPreferences) {
-        localDark = prefs.getBoolean("dark", true)
+        localDark = prefs.getBoolean("dark", false)
         palette = runCatching {
             val json = org.json.JSONObject(prefs.getString("remote", "{}").orEmpty())
             if (!json.optBoolean("enabled")) null

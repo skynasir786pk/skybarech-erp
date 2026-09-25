@@ -717,7 +717,7 @@
   }
 
   function renderAuth() {
-    document.documentElement.dataset.theme = state.theme;
+    document.documentElement.dataset.theme = 'light';
     const mode = state.authMode;
     const authContent = mode === 'activate' ? activationView() : mode === 'password' ? passwordView() : loginView();
     app.innerHTML = html`<main class="auth-layout">
@@ -734,10 +734,11 @@
             <div class="auth-eyebrow"><span></span> BUILT FOR MODERN RETAIL</div>
             <h1>One secure login.<br><span style="color:#bbd2ff">Your whole shop.</span></h1>
             <p>Sales, inventory, repairs and accounts stay connected across desktop and Android.</p>
-            <div class="auth-mini-dashboard">
-              <div><span>LIVE SHOP OVERVIEW</span><strong><i></i> Cloud ready</strong></div>
-              <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              <small><b></b> Secure local cache · Automatic Cloud sync</small>
+            <div class="auth-device-scene" aria-hidden="true">
+              <div class="auth-cloud">${icon('cloud')}<span>${icon('lock')}</span></div>
+              <div class="auth-shop"><div class="auth-shop-awning"></div><strong>YOUR SHOP</strong><div class="auth-shop-window"></div></div>
+              <div class="auth-laptop">${icon('laptop')}</div><div class="auth-phone">${icon('phone')}</div>
+              <div class="auth-device-caption">One shop. Every device.</div>
             </div>
           </div>
           <div class="auth-benefits">
@@ -745,7 +746,7 @@
             <div class="auth-benefit"><span class="icon-shell">${icon('cloud')}</span><span><strong>Always connected</strong><br>Desktop and Android sync</span></div>
             <div class="auth-benefit"><span class="icon-shell">${icon('chart')}</span><span><strong>Business ready</strong><br>Clear daily performance</span></div>
           </div>
-          <div class="auth-side-foot">SKYBARECH TECHNOLOGY · SECURE RETAIL PLATFORM</div>
+          <div class="auth-side-foot">Cloud Ready • Secure Login</div>
         </div>
       </section>
       <section class="auth-panel"><button class="language-switch auth-language" data-action="toggle-language" type="button" aria-label="Language">English / اردو</button>${authContent}</section>
@@ -780,7 +781,7 @@
         <p>${esc(t('Enter your owner account and shop PIN.'))}</p>
       </div>
       <div class="auth-fields">
-        <div class="field"><label>Owner Mobile / Username</label><div class="input-wrap auth-input">${icon('user')}<input class="input" name="username" autocomplete="username" value="${esc(state.loginDraftUsername || '')}" placeholder="03001234567"></div></div>
+        <div class="field"><label for="login-username">Owner Mobile / Username</label><div class="input-wrap auth-input">${icon('user')}<input id="login-username" class="input" name="username" autocomplete="username" value="${esc(state.loginDraftUsername || '')}" placeholder="03XX XXXXXXX"></div></div>
         ${pinCodeField('password','4-digit Shop PIN',4)}
         <div class="auth-actions"><span class="pin-only-note">4-digit PIN access</span><button class="text-link" type="button" data-action="support-auth">Forgot PIN?</button></div>
         <button class="btn btn-primary full auth-login-button" type="button" data-action="desktop-login"><span>Login to Dashboard</span>${icon('arrowRight')}</button>

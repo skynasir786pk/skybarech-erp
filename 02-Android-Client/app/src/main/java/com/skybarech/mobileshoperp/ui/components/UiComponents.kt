@@ -14,6 +14,9 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.foundation.text.KeyboardActions
@@ -229,10 +232,12 @@ fun PinCodeField(
             modifier = Modifier.fillMaxWidth().onFocusChanged { focused = it.isFocused },
             singleLine = true,
             textStyle = TextStyle(color = Color.Transparent, fontSize = 1.sp),
+            visualTransformation = PasswordVisualTransformation(),
             cursorBrush = SolidColor(Color.Transparent),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword, imeAction = imeAction),
             keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus(); onDone() }),
             decorationBox = { innerTextField ->
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
                 BoxWithConstraints(Modifier.fillMaxWidth()) {
                     val gap = if (maxWidth < 310.dp) 6.dp else 9.dp
                     val cell = ((maxWidth - gap * (length - 1)) / length.toFloat()).coerceAtMost(56.dp)
@@ -242,23 +247,23 @@ fun PinCodeField(
                             val active = focused && index == value.length.coerceAtMost(length - 1)
                             val borderColor = when {
                                 error != null -> Danger
-                                value.length == length -> Success
                                 active -> BrandBlue
                                 filled -> BrandBlue.copy(alpha = .55f)
                                 else -> CardStroke
                             }
                             Box(
                                 Modifier.size(cell).clip(RoundedCornerShape(14.dp))
-                                    .background(if (value.length == length) SuccessSoft else if (active) BrandBlueSoft else CardSurface)
+                                    .background(if (filled || active) BrandBlueSoft else CardSurface)
                                     .border(if (active) 2.dp else 1.dp, borderColor, RoundedCornerShape(14.dp)),
                                 contentAlignment = Alignment.Center
                             ) {
-                                if (filled) Text("•", color = if (value.length == length) Success else BrandBlueDark, fontSize = 29.sp, fontWeight = FontWeight.Black)
+                                if (filled) Text("•", color = BrandBlueDark, fontSize = 29.sp, fontWeight = FontWeight.Black)
                             }
                             if (index < length - 1) Spacer(Modifier.width(gap))
                         }
                     }
                     Box(Modifier.matchParentSize()) { innerTextField() }
+                }
                 }
             }
         )

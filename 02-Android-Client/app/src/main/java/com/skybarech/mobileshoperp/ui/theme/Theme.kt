@@ -6,6 +6,7 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.graphics.luminance
 
 private fun skyBarechScheme() = (if (UiAppearance.dark) darkColorScheme() else lightColorScheme()).copy(
     primary = BrandBlue,
@@ -27,7 +28,7 @@ private fun skyBarechScheme() = (if (UiAppearance.dark) darkColorScheme() else l
 @Composable
 fun SkyBarechTheme(content: @Composable () -> Unit) {
     val activity = androidx.compose.ui.platform.LocalContext.current as? android.app.Activity
-    val dark = UiAppearance.dark
+    val dark = AppCanvas.luminance() < .179f
     val canvas = AppCanvas.toArgb()
     androidx.compose.runtime.SideEffect {
         activity?.let {

@@ -35,6 +35,7 @@ import com.skybarech.mobileshoperp.ui.theme.CardStroke
 import com.skybarech.mobileshoperp.ui.theme.MutedInk
 import com.skybarech.mobileshoperp.ui.theme.CardSurface
 import com.skybarech.mobileshoperp.ui.theme.BrandBlueDark
+import com.skybarech.mobileshoperp.ui.theme.Ink
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
 
@@ -89,7 +90,7 @@ private fun SkyBarechAppContent(vm: AppViewModel) {
                 snackbar = { data ->
                     Snackbar(
                         snackbarData = data,
-                        modifier = Modifier.widthIn(max = 360.dp).heightIn(min = 36.dp, max = 48.dp),
+                        modifier = Modifier.widthIn(max = 360.dp).heightIn(min = 36.dp),
                         shape = RoundedCornerShape(14.dp),
                         containerColor = CardSurface,
                         contentColor = BrandBlueDark,
@@ -135,7 +136,7 @@ private fun AppShell(vm: AppViewModel, snackbarHostState: SnackbarHostState) {
                 snackbar = { data ->
                     Snackbar(
                         snackbarData = data,
-                        modifier = Modifier.widthIn(max = 360.dp).heightIn(min = 36.dp, max = 48.dp),
+                        modifier = Modifier.widthIn(max = 360.dp).heightIn(min = 36.dp),
                         shape = RoundedCornerShape(14.dp),
                         containerColor = CardSurface,
                         contentColor = BrandBlueDark,
@@ -168,7 +169,7 @@ private fun AppShell(vm: AppViewModel, snackbarHostState: SnackbarHostState) {
 
 @Composable
 private fun AppTopBar(vm: AppViewModel, showMenu: Boolean, onMenuClick: () -> Unit) {
-    Surface(color = Color(0xFF174BE0), shadowElevation = 6.dp) {
+    Surface(color = CardSurface, shadowElevation = 2.dp) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -190,19 +191,19 @@ private fun AppTopBar(vm: AppViewModel, showMenu: Boolean, onMenuClick: () -> Un
                         else -> Icons.Outlined.Home
                     },
                     contentDescription = tr("Navigation"),
-                    tint = Color.White
+                    tint = BrandBlue
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
-                UiText(vm.screen.title, color = Color.White, style = MaterialTheme.typography.titleSmall, maxLines = 1)
+                UiText(if (vm.screen == AppScreen.DASHBOARD) "SkyBarech ERP" else vm.screen.title, color = Ink, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, maxLines = 1)
                 if (!vm.canGoBack()) {
-                    UiText(vm.shopName.ifBlank { "SkyBarech Hisab Pro" }, translate = false, color = Color.White.copy(alpha = 0.82f), fontSize = 12.sp, maxLines = 1)
+                    UiText(vm.shopName.ifBlank { "Your business workspace" }, translate = false, color = MutedInk, fontSize = 11.sp, maxLines = 1)
                 }
             }
-            LanguageSelector(light = true)
+            LanguageSelector()
             IconButton(onClick = { vm.navigateRoot(AppScreen.STOCK_ALERTS) }) {
                 BadgedBox(badge = { if (vm.lowStockCount() > 0) Badge { UiText(vm.lowStockCount().toString()) } }) {
-                    Icon(Icons.Outlined.NotificationsNone, contentDescription = tr("Notifications"), tint = Color.White)
+                    Icon(Icons.Outlined.NotificationsNone, contentDescription = tr("Notifications"), tint = BrandBlue)
                 }
             }
         }
@@ -211,8 +212,8 @@ private fun AppTopBar(vm: AppViewModel, showMenu: Boolean, onMenuClick: () -> Un
 
 @Composable
 private fun BottomNavigation(vm: AppViewModel) {
-    val neon = Color(0xFF91B8FF)
-    val bar = Color(0xFF10264C)
+    val neon = BrandBlue
+    val bar = CardSurface
     val left = listOf(
         NavItem(AppScreen.DASHBOARD, "Home", Icons.Outlined.Home),
         NavItem(AppScreen.INVENTORY, "Inventory", Icons.Outlined.GridView)
@@ -222,11 +223,11 @@ private fun BottomNavigation(vm: AppViewModel) {
         NavItem(AppScreen.SETTINGS, "Profile", Icons.Outlined.Person)
     )
     Box(
-        modifier = Modifier.fillMaxWidth().height(106.dp).padding(horizontal = 8.dp),
+        modifier = Modifier.fillMaxWidth().height(82.dp).padding(horizontal = 8.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
         Surface(
-            modifier = Modifier.fillMaxWidth().height(80.dp).shadow(14.dp, RoundedCornerShape(30.dp)),
+            modifier = Modifier.fillMaxWidth().height(66.dp).shadow(4.dp, RoundedCornerShape(24.dp)),
             color = bar,
             shape = RoundedCornerShape(30.dp)
         ) {
@@ -238,14 +239,14 @@ private fun BottomNavigation(vm: AppViewModel) {
         }
         Surface(
             onClick = { vm.navigateRoot(AppScreen.POS) },
-            modifier = Modifier.align(Alignment.TopCenter).size(76.dp).shadow(12.dp, CircleShape),
+            modifier = Modifier.align(Alignment.TopCenter).size(60.dp).shadow(5.dp, CircleShape),
             shape = CircleShape,
             color = bar,
             border = BorderStroke(5.dp, Color(0xFFF4F6FA))
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Box(Modifier.size(43.dp).clip(CircleShape).background(neon), contentAlignment = Alignment.Center) {
-                    Icon(Icons.Outlined.Add, contentDescription = tr("New Sale"), tint = bar, modifier = Modifier.size(27.dp))
+                    Icon(Icons.Outlined.PointOfSale, contentDescription = tr("New Sale"), tint = MaterialTheme.colorScheme.onPrimary, modifier = Modifier.size(25.dp))
                 }
             }
         }
@@ -254,13 +255,13 @@ private fun BottomNavigation(vm: AppViewModel) {
 
 @Composable
 private fun BottomNavItem(item: NavItem, selected: Boolean, neon: Color, modifier: Modifier = Modifier, onClick: () -> Unit) {
-    val tint by animateColorAsState(if (selected) neon else Color(0xFFCED9EB), label = "nav-tint")
+    val tint by animateColorAsState(if (selected) neon else MutedInk, label = "nav-tint")
     val scale by animateFloatAsState(if (selected) 1.08f else 1f, label = "nav-scale")
     Surface(onClick = onClick, modifier = modifier.fillMaxHeight().padding(vertical = 10.dp), color = if (selected) neon.copy(alpha = .16f) else Color.Transparent, shape = RoundedCornerShape(18.dp)) {
         Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
             Icon(item.icon, contentDescription = tr(item.label), tint = tint, modifier = Modifier.size(25.dp).graphicsLayer { scaleX = scale; scaleY = scale })
             Spacer(Modifier.height(4.dp))
-            UiText(item.label, color = if (selected) neon else Color.White, fontSize = 12.sp, fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium, maxLines = 1)
+            UiText(item.label, color = tint, fontSize = 11.sp, fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium, maxLines = 1)
         }
     }
 }

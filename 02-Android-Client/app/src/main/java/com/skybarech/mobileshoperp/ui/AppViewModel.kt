@@ -595,7 +595,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             }
             cart[index] = existing.copy(quantity = existing.quantity + 1)
         } else cart.add(CartLine(product))
-        showMessage("${product.name} added to cart.")
+        // Product cards show the live quantity and selection state without interrupting billing.
     }
 
     fun changeCartQuantity(productId: String, delta: Int) {

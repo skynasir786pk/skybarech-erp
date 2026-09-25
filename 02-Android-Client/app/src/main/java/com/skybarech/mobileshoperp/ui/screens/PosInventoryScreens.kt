@@ -9,6 +9,14 @@ import android.print.PrintAttributes
 import android.print.PrintManager
 import android.webkit.WebView
 import androidx.compose.foundation.layout.*
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -100,8 +108,9 @@ private fun variantOptions(category: String) = when (category) {
 fun PosScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
     var search by rememberSaveable { mutableStateOf("") }
     val visible = vm.products.filter { it.name.contains(search, true) || it.sku.contains(search, true) || it.notes.contains(search, true) }
+    Column(modifier) {
     LazyColumn(
-        modifier = modifier,
+        modifier = Modifier.weight(1f),
         contentPadding = PaddingValues(ScreenPadding),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
@@ -119,47 +128,58 @@ fun PosScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
             item { ListEmpty("No matching product", "Sync inventory or search by product name, model or SKU.") }
         } else {
             items(visible, key = { it.id }) { product ->
-                ProductPosRow(product, onAdd = { vm.addToCart(product) })
+                ProductPosRow(product, onAdd = { vm.addToCart(product) }, quantity = vm.cart.find { it.product.id == product.id }?.quantity ?: 0)
             }
         }
-        item {
-            SoftCard(modifier = Modifier.fillMaxWidth(), contentPadding = 12.dp) {
+    }
+            SoftCard(modifier = Modifier.fillMaxWidth().padding(horizontal = ScreenPadding, vertical = 6.dp), contentPadding = 12.dp) {
                 Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
                     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
                             UiText("Current bill · ${vm.cart.sumOf { it.quantity }} item(s)", color = Ink, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                             UiText(vm.formatMoney(vm.cartTotal()), color = BrandBlue, fontWeight = FontWeight.ExtraBold, fontSize = 19.sp)
                         }
-                        if (vm.cart.isNotEmpty()) UiText(vm.cart.takeLast(2).joinToString(" · ") { it.product.name }, translate = false, color = MutedInk, fontSize = 11.sp, maxLines = 2, modifier = Modifier.weight(1f), textAlign = TextAlign.End)
+                        if (vm.cart.isNotEmpty()) UiText(vm.cart.last().product.name, translate = false, color = MutedInk, fontSize = 11.sp, maxLines = 2, modifier = Modifier.weight(1f), textAlign = TextAlign.End)
                     }
                     AdaptiveRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         OutlineButton("Clear", vm::clearCart, Modifier.weight(.7f), Icons.Outlined.DeleteOutline)
-                        PrimaryButton("Save & Pay", { vm.navigate(AppScreen.CART_PAYMENT) }, Modifier.weight(1.3f), Icons.Outlined.ReceiptLong)
+                        PrimaryButton("Save & Pay", { vm.navigate(AppScreen.CART_PAYMENT) }, Modifier.weight(1.3f), Icons.Outlined.ReceiptLong, enabled = vm.cart.isNotEmpty())
                     }
                 }
             }
-        }
     }
 }
 
 @Composable
-private fun ProductPosRow(product: Product, onAdd: () -> Unit) {
-    SoftCard(modifier = Modifier.fillMaxWidth(), contentPadding = 10.dp) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+private fun ProductPosRow(product: Product, onAdd: () -> Unit, quantity: Int = 0) {
+    val selected = quantity > 0
+    val canAdd = product.stock > quantity
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val fill by animateColorAsState(if (selected) BrandBlueSoft else CardSurface, tween(220), label = "product selection color")
+    val stroke by animateColorAsState(if (selected) BrandBlue else CardStroke, tween(220), label = "product selection border")
+    val scale by animateFloatAsState(if (pressed) .98f else 1f, tween(120), label = "product press")
+    Surface(onClick = onAdd, enabled = canAdd, interactionSource = interaction,
+        modifier = Modifier.fillMaxWidth().graphicsLayer { scaleX = scale; scaleY = scale },
+        shape = RoundedCornerShape(18.dp), color = fill, border = BorderStroke(if (selected) 1.5.dp else 1.dp, stroke)) {
+        Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
             ProductAvatar(product.name)
             Spacer(Modifier.width(10.dp))
             Column(Modifier.weight(1f)) {
-                UiText(product.name, translate = false, color = Ink, fontWeight = FontWeight.Bold, fontSize = 13.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                UiText(product.name, translate = false, color = Ink, fontWeight = FontWeight.Bold, fontSize = 14.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 UiText(listOf(product.category, product.variant, product.model, product.rack).filter { it.isNotBlank() }.joinToString(" · "), color = MutedInk, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 Spacer(Modifier.height(3.dp))
-                UiText("Rs. ${product.salePrice}", color = Ink, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                UiText("Rs. ${product.salePrice}", color = BrandBlue, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                if (selected) AnimatedContent(targetState = quantity, label = "cart quantity") { count ->
+                    UiText("$count in your bill", color = BrandBlueDark, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)
+                }
             }
             Column(horizontalAlignment = Alignment.End) {
                 StatusPill("Stock: ${product.stock}", if (product.stock <= 5) StatusTone.DANGER else StatusTone.NEUTRAL)
                 Spacer(Modifier.height(8.dp))
-                FilledTonalButton(onClick = onAdd, contentPadding = PaddingValues(horizontal = 10.dp, vertical = 0.dp), colors = ButtonDefaults.filledTonalButtonColors(containerColor = BrandBlue, contentColor = MaterialTheme.colorScheme.onPrimary)) {
-                    Icon(Icons.Outlined.Add, contentDescription = null, modifier = Modifier.size(16.dp))
-                    UiText(" Add", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                FilledTonalButton(onClick = onAdd, enabled = canAdd, contentPadding = PaddingValues(horizontal = 10.dp, vertical = 0.dp), colors = ButtonDefaults.filledTonalButtonColors(containerColor = BrandBlue, contentColor = MaterialTheme.colorScheme.onPrimary)) {
+                    Icon(if (selected) Icons.Outlined.Check else Icons.Outlined.Add, contentDescription = null, modifier = Modifier.size(16.dp))
+                    UiText(if (product.stock <= 0) "Sold out" else if (!canAdd) "All added" else if (selected) " Add more" else " Add", fontSize = 12.sp, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -181,7 +201,7 @@ fun ProductSearchScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
         SectionLabel("Search Results")
         Spacer(Modifier.height(9.dp))
         LazyColumn(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(9.dp)) {
-            items(visible, key = { it.id }) { product -> ProductPosRow(product, { vm.addToCart(product) }) }
+            items(visible, key = { it.id }) { product -> ProductPosRow(product, { vm.addToCart(product) }, vm.cart.find { it.product.id == product.id }?.quantity ?: 0) }
             if (visible.isEmpty()) item { ListEmpty("No products found", "Try scanning a SKU or use another keyword.") }
         }
         Spacer(Modifier.height(10.dp))

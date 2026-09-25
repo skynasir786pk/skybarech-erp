@@ -37,7 +37,7 @@ tbody tr:hover{background:#007aff08}.page-content{animation:panel-arrive .3s eas
 @media(max-width:1000px){.premium-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* Light Flutter-style authentication presentation: form first, illustration second. */
-.auth-layout{grid-template-columns:minmax(480px, .94fr) minmax(540px, 1.06fr);background:#f4f8ff}
+.auth-layout{grid-template-columns:minmax(0,45fr) minmax(0,55fr);background:#f4f8ff}
 .auth-panel{order:1;background:radial-gradient(circle at 8% 12%,#dff3ff 0,transparent 30%),#f7fbff}
 .auth-side{order:2;padding:42px clamp(34px,4.7vw,78px);background:radial-gradient(circle at 75% 18%,#ffffff 0,transparent 24%),radial-gradient(circle at 14% 80%,#b8efff 0,transparent 30%),linear-gradient(145deg,#eef8ff,#dbeaff 52%,#c7d8ff);color:#102858;overflow:hidden}
 .auth-side .auth-brand .brand-name,.auth-side .auth-side-hero h1{color:#102858}
@@ -49,4 +49,41 @@ tbody tr:hover{background:#007aff08}.page-content{animation:panel-arrive .3s eas
 .auth-side .auth-visual-grid{opacity:.3;background-image:linear-gradient(#4778b51c 1px,transparent 1px),linear-gradient(90deg,#4778b51c 1px,transparent 1px)}
 .auth-side .auth-orb-one{background:radial-gradient(circle at 35% 32%,#72dfff99,#4b7dff09 68%)}.auth-side .auth-orb-two{background:radial-gradient(circle at 35% 35%,#8f7dff66,#4b45ff02 70%)}
 .auth-side .auth-side-hero h1 span{color:#1769dc!important}
-@media(max-width:760px){.auth-layout{display:flex;flex-direction:column}.auth-side{order:1}.auth-panel{order:2}}
+/* Authentication owns its palette, even when a shop supplies workspace colors. */
+.auth-layout{--surface:#fff;--surface-soft:#f3f7ff;--canvas:#f4f8ff;--ink:#102858;--muted:#526889;--blue:#0969ed;--line:#d8e4f5;color-scheme:light}
+.auth-layout .auth-panel{margin:0;min-height:100dvh;padding:64px clamp(20px,3vw,48px) 24px;align-content:center;overflow:visible}
+.auth-layout .auth-card{width:min(440px,100%);padding:24px;border-radius:26px;box-shadow:0 16px 48px #28509112;background:#fff}
+.auth-card-brand{padding-bottom:14px;margin-bottom:16px;flex-wrap:wrap}
+.auth-card-brand em{letter-spacing:0;font-size:8px}
+.auth-card-head{margin-bottom:16px}.auth-card h2{font-size:30px}.auth-fields{gap:12px}
+.auth-layout .auth-input .input{background:#f3f7ff;border-color:#d8e4f5;min-height:50px}
+.auth-layout .auth-actions{flex-direction:row;align-items:center;flex-wrap:wrap;gap:8px}
+.auth-layout .pin-code-boxes{grid-template-columns:repeat(4,56px);gap:10px;justify-content:center}
+.auth-layout .pin-code-box{height:56px;min-height:56px;max-height:56px;aspect-ratio:1}
+.auth-layout .pin-code-shell.complete .pin-code-box.filled{border-color:#8cb2ff;background:#eef4ff;color:#12357f}
+.auth-layout .auth-side{display:flex;padding:32px clamp(24px,4vw,64px);align-items:center}
+.auth-layout .auth-side-content{min-height:0;width:100%;gap:24px}
+.auth-layout .auth-side-hero{margin:0;max-width:520px}
+.auth-layout .auth-side-hero h1{font-size:clamp(28px,3vw,44px);margin-bottom:12px}
+.auth-layout .auth-side-hero p{color:#526889;font-size:14px;line-height:1.6}
+.auth-layout .auth-benefits{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.auth-layout .auth-benefit{flex-direction:column;align-items:flex-start;font-size:11px;line-height:1.5;gap:8px}
+.auth-layout .auth-benefit strong{font-size:12px}
+.auth-layout .auth-side-foot{border-top:1px solid #bad5f2;padding-top:16px;font-size:12px;letter-spacing:.5px}
+.auth-layout .auth-side:after{display:none}
+.auth-device-scene{position:relative;height:218px;max-width:450px;margin:18px auto 0;border-radius:32px;background:radial-gradient(ellipse at 50% 80%,#8cbdff55,transparent 67%)}
+.auth-cloud{position:absolute;left:42%;top:0;color:#1489ef;animation:device-float 4s ease-in-out infinite alternate}
+.auth-cloud>svg{width:92px;height:70px;filter:drop-shadow(0 8px 8px #3881cf33)}
+.auth-cloud span{position:absolute;left:35px;top:29px;color:#1454b6}.auth-cloud span svg{width:24px;height:24px}
+.auth-shop{position:absolute;left:30%;top:85px;width:146px;height:98px;border:1px solid #96bce9;border-radius:12px;background:linear-gradient(145deg,#fff,#dceaff);box-shadow:0 12px 24px #406cad22;text-align:center;padding-top:30px;transform:rotate(-3deg)}
+.auth-shop:before{content:"";position:absolute;height:32px;left:50%;top:-34px;border-left:2px dashed #5facf8}
+.auth-shop strong{font-size:11px;color:#2460bb;letter-spacing:1px}.auth-shop-awning{position:absolute;inset:-8px -8px auto;height:27px;background:repeating-linear-gradient(90deg,#267bf1 0 22px,#b0d9ff 22px 44px);border-radius:10px 10px 12px 12px;box-shadow:0 4px 0 #195eb02b}
+.auth-shop-window{width:85px;height:30px;margin:8px auto;background:linear-gradient(125deg,#7ab8f7,#d7f5ff);border:3px solid white;border-radius:4px}
+.auth-laptop,.auth-phone{position:absolute;top:113px;display:grid;place-items:center;color:#2064ca;background:#f7fcff;border:1px solid #b1cff0;border-radius:16px;box-shadow:0 12px 20px #406cad22}
+.auth-laptop{left:3%;width:106px;height:75px;transform:rotate(-8deg)}.auth-laptop svg{width:78px;height:56px}
+.auth-phone{right:7%;width:56px;height:86px;transform:rotate(9deg)}.auth-phone svg{width:40px;height:64px}
+.auth-device-caption{position:absolute;bottom:0;width:100%;text-align:center;font-size:11px;color:#526889}
+@keyframes device-float{to{transform:translateY(5px)}}
+@media(min-width:961px) and (max-height:760px){.auth-layout .auth-side-content{gap:16px}.auth-device-scene{height:194px;margin-top:10px}.auth-device-caption{display:none}.auth-layout .auth-side-hero h1{font-size:32px}.auth-layout .auth-side{padding-block:24px}}
+@media(max-width:960px){.auth-layout{display:block}.auth-layout .auth-side{display:none}.auth-layout .auth-panel{padding:64px 20px 24px}.auth-layout .auth-card{width:min(440px,100%)}}
+@media(max-width:380px){.auth-layout .auth-panel{padding-inline:12px}.auth-layout .auth-card{padding:18px}.auth-card-brand em{display:none}.auth-layout .pin-code-boxes{grid-template-columns:repeat(4,minmax(0,56px));gap:8px}.auth-layout .pin-code-box{height:auto;min-height:48px}}
