@@ -18,7 +18,9 @@
 - JavaScript syntax check passed.
 - Eight existing desktop PIN regressions passed, including leading-zero PIN and stale password-mode state.
 - All five Android source XML resources parsed successfully.
-- Initial Android v1.3.26 Gradle assembleDebug succeeded on GitHub run 36182483357. Final artifact build includes subsequent translation/system-bar changes.
+- Final Android v1.3.26 Gradle assembleDebug succeeded on GitHub run 36183935959 (commit 43d8b00), including translation/system-bar changes.
+- Windows x64 NSIS installer built successfully as SkyBarech-ERP-Setup-1.3.26.exe.
+- Packaging audit found Desktop build/icon.ico was excluded by the global build-folder ignore rule. Explicit exceptions now retain the required icon files in Git and source archives.
 - Browser and native visual inspection both blocked by the computer-use runtime error: `failed to write kernel assets: The system cannot find the path specified. (os error 3)`.
 
 ## Device acceptance still needed

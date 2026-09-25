@@ -1,6 +1,10 @@
 .gradle/
 **/.gradle/
 **/build/
+!01-Desktop-ERP/build/
+01-Desktop-ERP/build/*
+!01-Desktop-ERP/build/icon.ico
+!01-Desktop-ERP/build/icon.svg
 **/dist/
 **/node_modules/
 **/local.properties
