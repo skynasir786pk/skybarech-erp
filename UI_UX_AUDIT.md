@@ -28,3 +28,7 @@
 No physical-device, screenshot or printer verification is claimed. Check Android at 360×640 and 412×915, English/Urdu, keyboard open and enlarged text. Confirm login controls remain reachable; no horizontally clipped fields; selected product quantity increments once; checkout remains reachable with a long catalog; rapid Next/Back and fingerprint welcome flow behave correctly. Check desktop at 1366×768, 1024×768 and enlarged display scaling.
 
 Existing camera scanning, Bluetooth printing, cloud synchronization and sale persistence were not changed by this presentation update. They still require real-device/integration verification. Other modules received shared light theme/navigation styling; this is not a full functional audit of every ERP workflow.
+
+## Android installation limitation
+
+The GitHub workflow currently uses a runner-generated debug signing key. Certificate comparison confirms v1.3.25 and v1.3.26 differ; v1.3.26 cannot update that v1.3.25 installation in place. Preserve the installed app and its data. An in-place upgrade needs the original signing key; a new-install migration needs a verified backup/restore procedure. Establish a persistent signing key before distributing future updates. Do not recommend uninstalling a shop's working app to bypass this restriction.
