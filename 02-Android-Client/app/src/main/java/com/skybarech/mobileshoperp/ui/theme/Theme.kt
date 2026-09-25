@@ -28,8 +28,8 @@ private fun skyBarechScheme() = (if (UiAppearance.dark) darkColorScheme() else l
 @Composable
 fun SkyBarechTheme(content: @Composable () -> Unit) {
     val activity = androidx.compose.ui.platform.LocalContext.current as? android.app.Activity
-    val dark = AppCanvas.luminance() < .179f
-    val canvas = AppCanvas.toArgb()
+    val dark = UiAppearance.darkBrandBackdrop || AppCanvas.luminance() < .179f
+    val canvas = (if (UiAppearance.darkBrandBackdrop) Color(0xFF00071F) else AppCanvas).toArgb()
     androidx.compose.runtime.SideEffect {
         activity?.let {
             if (android.os.Build.VERSION.SDK_INT < 35) {

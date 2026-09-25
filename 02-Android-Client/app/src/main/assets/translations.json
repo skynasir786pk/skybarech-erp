@@ -6173,5 +6173,15 @@
   "Use password": {"en":"Use password","ur":"پاس ورڈ استعمال کریں"},
   "Use PIN": {"en":"Use PIN","ur":"پن استعمال کریں"},
   "Enter your password.": {"en":"Enter your password.","ur":"اپنا پاس ورڈ درج کریں۔"},
-  "Protected Cloud connection": {"en":"Protected Cloud connection","ur":"محفوظ کلاؤڈ کنکشن"}
+  "Protected Cloud connection": {"en":"Protected Cloud connection","ur":"محفوظ کلاؤڈ کنکشن"},
+  "Connection help": {"en":"Connection help","ur":"کنکشن کی مدد"},
+  "Your business, together": {"en":"Your business, together","ur":"آپ کا کاروبار، ایک جگہ"},
+  "Simple. Secure. Ready to grow.": {"en":"Simple. Secure. Ready to grow.","ur":"آسان، محفوظ، ترقی کے لیے تیار"},
+  "YOUR BUSINESS TODAY": {"en":"YOUR BUSINESS TODAY","ur":"آج کا کاروبار"},
+  "Manage. Sell. Grow.": {"en":"Manage. Sell. Grow.","ur":"انتظام کریں، فروخت کریں، ترقی کریں"},
+  "{0} in your bill": {"en":"{0} in your bill","ur":"بل میں {0} شامل ہیں"},
+  "Add more": {"en":"Add more","ur":"مزید شامل کریں"},
+  "All added": {"en":"All added","ur":"سب شامل ہیں"},
+  "Sold out": {"en":"Sold out","ur":"اسٹاک ختم"},
+  "New shop? Activate account": {"en":"New shop? Activate account","ur":"نئی دکان؟ اکاؤنٹ فعال کریں"}
 }

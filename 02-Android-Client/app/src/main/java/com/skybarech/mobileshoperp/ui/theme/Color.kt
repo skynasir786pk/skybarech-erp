@@ -12,6 +12,7 @@ object UiAppearance {
     private var initialized = false
     private val listener = android.content.SharedPreferences.OnSharedPreferenceChangeListener { prefs, _ -> read(prefs) }
     var authLight by mutableStateOf(false)
+    var darkBrandBackdrop by mutableStateOf(false)
     var dark: Boolean
         get() = !authLight && localDark
         set(value) { localDark = value }
