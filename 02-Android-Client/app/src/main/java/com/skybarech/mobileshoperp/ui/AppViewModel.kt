@@ -214,19 +214,12 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                     .onSuccess { verified ->
                         if (session.shopId.isNotBlank() && session.shopId != verified.shopId) {
                             syncInProgress = false
-                            showMessage("Use a separate device/profile for another shop; existing local data is protected.")
+                            confirmShopSwitch(verified.shopName) {
+                                prepareVerifiedActivation(verified)
+                            }
                             return@onSuccess
                         }
-                        pendingActivation = verified
-                        activated = true
-                        shopName = verified.shopName
-                        shopInitials = makeInitials(verified.shopName)
-                        subscriptionPlan = "Online"
-                        subscriptionStatus = "active"
-                        expiryLabel = "Cloud Linked"
-                        syncInProgress = false
-                        showMessage("Activation verified. Ab apna 4-digit PIN banayein.")
-                        screen = AppScreen.CHANGE_PASSWORD
+                        prepareVerifiedActivation(verified)
                     }
                     .onFailure { error ->
                         syncInProgress = false
@@ -337,39 +330,12 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                 .onSuccess { remote ->
                     if (session.shopId.isNotBlank() && session.shopId != remote.shopId) {
                         syncInProgress = false
-                        showMessage("This installation belongs to another shop. Use a separate Android profile/device to protect unsynced records.")
+                        confirmShopSwitch(remote.shopName) {
+                            completeRemoteLogin(remote, identity, password, localCredentialValid)
+                        }
                         return@onSuccess
                     }
-                    val joiningNewShop = session.shopId.isBlank() || session.shopId != remote.shopId
-                    if (joiningNewShop) {
-                        offlineRepository.resetForRemoteShop()
-                        replaceData(LocalData())
-                        localDataStore.save(LocalData())
-                    }
-                    session = ShopSessionStore.Session(
-                        shopId = remote.shopId.ifBlank { session.shopId.ifBlank { "online-shop" } },
-                        shopName = remote.shopName,
-                        ownerMobile = remote.ownerMobile.ifBlank { identity },
-                        plan = remote.plan,
-                        status = remote.status,
-                        expiryLabel = remote.expiryLabel,
-                        passwordHash = session.passwordHash, passwordSalt = session.passwordSalt
-                    )
-                    sessionStore.save(session)
-                    if (!localCredentialValid) sessionStore.setPassword(password)
-                    session = sessionStore.read()
-                    UiAppearance.saveRemote(getApplication<Application>(), remote.appearance)
-                    activated = true
-                    shopName = session.shopName
-                    shopInitials = makeInitials(session.shopName)
-                    subscriptionPlan = session.plan
-                    subscriptionStatus = session.status
-                    expiryLabel = session.expiryLabel
-                    offlineRepository.configureSession(remote.tokens.accessToken, remote.tokens.refreshToken)
-                    syncInProgress = false
-                    SyncScheduler.runOnce(getApplication<Application>())
-                    finishOwnerLogin(online = true)
-                    offerFingerprintAfterLogin()
+                    completeRemoteLogin(remote, identity, password, localCredentialValid)
                 }
                 .onFailure { error ->
                     syncInProgress = false
@@ -388,6 +354,93 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                     }
                 }
         }
+    }
+
+    /** Lets an owner deliberately move this app installation to another authorised shop.
+     * The repository refuses the move when offline writes have not been synced, so a shop's
+     * records can never be silently discarded or mixed with the next shop. */
+    private fun confirmShopSwitch(targetShopName: String, continueAfterSwitch: suspend () -> Unit) {
+        confirmAction = ConfirmAction(
+            title = "Switch this device to $targetShopName?",
+            literalTitle = true,
+            body = "This phone can use one shop at a time. The current shop's local cache and sign-in will be removed from this phone. Cloud-synced records remain safe. If you have offline work, export or sync it first.",
+            confirm = { resetDeviceForAnotherShop(continueAfterSwitch) }
+        )
+    }
+
+    private fun resetDeviceForAnotherShop(continueAfterSwitch: suspend () -> Unit) {
+        if (syncInProgress) return
+        syncInProgress = true
+        viewModelScope.launch {
+            runCatching {
+                offlineRepository.resetForRemoteShop()
+                replaceData(LocalData())
+                localDataStore.save(LocalData())
+                cart.clear()
+                BiometricUnlock.disable(getApplication<Application>())
+                sessionStore.clear()
+                session = ShopSessionStore.Session()
+                loggedIn = false
+                activated = false
+            }.onSuccess {
+                syncInProgress = false
+                continueAfterSwitch()
+            }.onFailure { error ->
+                syncInProgress = false
+                showMessage(error.message ?: "Shop switch could not be completed. Sync or export your offline work first.")
+            }
+        }
+    }
+
+    private fun prepareVerifiedActivation(verified: com.skybarech.mobileshoperp.data.offline.VerifiedActivation) {
+        pendingActivation = verified
+        activated = true
+        shopName = verified.shopName
+        shopInitials = makeInitials(verified.shopName)
+        subscriptionPlan = "Online"
+        subscriptionStatus = "active"
+        expiryLabel = "Cloud Linked"
+        syncInProgress = false
+        showMessage("Activation verified. Ab apna 4-digit PIN banayein.")
+        screen = AppScreen.CHANGE_PASSWORD
+    }
+
+    private suspend fun completeRemoteLogin(
+        remote: com.skybarech.mobileshoperp.data.offline.RemoteLoginSession,
+        identity: String,
+        password: String,
+        localCredentialValid: Boolean
+    ) {
+        val joiningNewShop = session.shopId.isBlank() || session.shopId != remote.shopId
+        if (joiningNewShop) {
+            offlineRepository.resetForRemoteShop()
+            replaceData(LocalData())
+            localDataStore.save(LocalData())
+        }
+        session = ShopSessionStore.Session(
+            shopId = remote.shopId.ifBlank { session.shopId.ifBlank { "online-shop" } },
+            shopName = remote.shopName,
+            ownerMobile = remote.ownerMobile.ifBlank { identity },
+            plan = remote.plan,
+            status = remote.status,
+            expiryLabel = remote.expiryLabel,
+            passwordHash = session.passwordHash, passwordSalt = session.passwordSalt
+        )
+        sessionStore.save(session)
+        if (!localCredentialValid) sessionStore.setPassword(password)
+        session = sessionStore.read()
+        UiAppearance.saveRemote(getApplication<Application>(), remote.appearance)
+        activated = true
+        shopName = session.shopName
+        shopInitials = makeInitials(session.shopName)
+        subscriptionPlan = session.plan
+        subscriptionStatus = session.status
+        expiryLabel = session.expiryLabel
+        offlineRepository.configureSession(remote.tokens.accessToken, remote.tokens.refreshToken)
+        syncInProgress = false
+        SyncScheduler.runOnce(getApplication<Application>())
+        finishOwnerLogin(online = true)
+        offerFingerprintAfterLogin()
     }
 
     private fun sameMobileIdentity(first: String, second: String): Boolean {
