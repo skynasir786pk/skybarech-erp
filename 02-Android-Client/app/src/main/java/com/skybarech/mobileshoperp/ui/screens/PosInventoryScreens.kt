@@ -295,9 +295,9 @@ fun InvoiceScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
                         BrandMark(48.dp, initials = vm.shopInitials)
                         Spacer(Modifier.height(7.dp))
                         UiText(vm.shopName, translate = false, color = Ink, fontWeight = FontWeight.ExtraBold)
-                        UiText(vm.ownerMobile, translate = false, color = MutedInk, fontSize = 12.sp)
                         if (vm.shopAddress.isNotBlank()) UiText(vm.shopAddress, translate = false, color = MutedInk, fontSize = 12.sp)
-                        Spacer(Modifier.height(14.dp))
+                        UiText(vm.ownerMobile, translate = false, color = BrandBlue, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                        Spacer(Modifier.height(10.dp))
                         HorizontalDivider(color = CardStroke)
                         Spacer(Modifier.height(9.dp))
                         ReceiptLine("Invoice #", vm.lastInvoiceNumber)
@@ -307,7 +307,7 @@ fun InvoiceScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
                         Spacer(Modifier.height(9.dp))
                         HorizontalDivider(color = CardStroke)
                         Spacer(Modifier.height(9.dp))
-                        cart.forEach { line ->
+                        cart.take(8).forEach { line ->
                             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
                                 Column(Modifier.weight(1f)) {
                                     UiText(line.product.name, translate = false, color = Ink, fontSize = 12.sp, fontWeight = FontWeight.Bold)
@@ -317,6 +317,7 @@ fun InvoiceScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
                             }
                             Spacer(Modifier.height(8.dp))
                         }
+                        if (cart.size > 8) UiText("+ ${cart.size - 8} more items — see full invoice in app", color = MutedInk, fontSize = 11.sp)
                         if (cart.isEmpty()) {
                             UiText("No active cart. Go back to POS Billing to create an invoice.", color = MutedInk, fontSize = 12.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
                         } else {
@@ -366,17 +367,19 @@ fun InvoiceScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
 }
 
 fun printInvoice(context: Context, invoiceNo: String, receipt: String) {
-    val displayReceipt = receipt.lineSequence().mapIndexed { index, line ->
-        if (index == 0) line else {
-            val label = line.substringBefore(":", "")
-            if (label in setOf("Invoice", "Date", "Customer", "Supplier", "Payment", "Total", "Amount", "Fee", "Reference", "Quantity", "Unit cost", "Received", "Method", "Plan")) tr(label) + ":" + line.substringAfter(":")
-            else if (line in setOf("PAID RECEIPT", "PAYMENT PREVIEW", "Thank you", "Thank you for your purchase!", "Installment payment")) tr(line)
-            else line
+    fun safeHtml(value: String) = value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    val rawLines = receipt.lineSequence().toList()
+    val shopTitle = safeHtml(rawLines.getOrNull(0).orEmpty())
+    val shopAddress = safeHtml(rawLines.getOrNull(1).orEmpty())
+    val shopPhone = safeHtml(rawLines.getOrNull(2).orEmpty())
+    val receiptBody = rawLines.drop(3).map { line ->
+        val label = line.substringBefore(":", "")
+        when {
+            label in setOf("Invoice", "Date", "Customer", "Supplier", "Payment", "Total", "Amount", "Fee", "Reference", "Quantity", "Unit cost", "Received", "Method", "Plan") -> tr(label) + ":" + safeHtml(line.substringAfter(":"))
+            line in setOf("PAID RECEIPT", "PAYMENT PREVIEW", "Thank you", "Thank you for your purchase!", "Installment payment") -> tr(line)
+            else -> safeHtml(line)
         }
-    }.joinToString("\n")
-    val receiptLines = displayReceipt.lineSequence().toList()
-    val shopTitle = receiptLines.firstOrNull().orEmpty().replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    val receiptBody = receiptLines.drop(1).joinToString("\n").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>")
+    }.joinToString("<br>")
     val webView = WebView(context)
     webView.settings.javaScriptEnabled = false
     webView.webViewClient = object : android.webkit.WebViewClient() {
@@ -386,7 +389,8 @@ fun printInvoice(context: Context, invoiceNo: String, receipt: String) {
         }
     }
     val direction = if (UiLanguage.code == "ur") "rtl" else "ltr"
-    webView.loadDataWithBaseURL("file:///android_asset/", "<html lang='${UiLanguage.code}' dir='$direction'><head><meta charset='UTF-8'><style>@font-face{font-family:Urdu;src:url('NotoNaskhArabic.ttf')}@page{size:80mm auto;margin:3mm}body{font-family:Urdu,Arial,sans-serif;width:72mm;font-size:11px;line-height:1.55;color:#101828;overflow-wrap:anywhere}.receipt{border:1px solid #d9e8fb;border-radius:8px;padding:10px;background:linear-gradient(180deg,#eef7ff,#fff 74px)}.brand{width:28px;height:28px;line-height:28px;margin:0 auto 4px;border-radius:9px;background:linear-gradient(135deg,#008cff,#583cff);color:#fff;font:bold 15px Arial;text-align:center}.shop{font:bold 16px Arial;text-align:center;letter-spacing:.4px;color:#063b7b;border-block:1px solid #1d66ad;padding:3px 0;margin-bottom:6px}.rule{border:0;border-top:1px dashed #78a9d8;margin:8px 0}.foot{text-align:center;color:#42607d;font-size:9px;margin-top:9px}</style></head><body><section class='receipt'><div class='brand'>S</div><div class='shop'>$shopTitle</div><hr class='rule'><div>$receiptBody</div><hr class='rule'><div class='foot'>Thank you for choosing us<br>Powered by SkyBarech ERP</div></section></body></html>", "text/html", "UTF-8", null)
+    val logo = "<svg viewBox='0 0 72 72' aria-label='SkyBarech logo'><path fill='#009FFF' d='M44 5 60 17 48 28 39 21 26 32 36 40 24 51 13 41Q6 34 13 26L35 7Q39 3 44 5Z'/><path fill='#5A36FF' d='m48 23 11 10q8 8 0 16L37 67q-5 4-10 0L12 56l12-11 10 8 13-12-11-8Z'/></svg>"
+    webView.loadDataWithBaseURL("file:///android_asset/", "<html lang='${UiLanguage.code}' dir='$direction'><head><meta charset='UTF-8'><style>@font-face{font-family:Urdu;src:url('NotoNaskhArabic.ttf')}@page{size:80mm auto;margin:2.5mm}body{font-family:Urdu,Arial,sans-serif;width:72mm;font-size:9px;line-height:1.28;color:#101828;overflow-wrap:anywhere}.receipt{border:1px solid #b9d7f5;border-radius:9px;padding:9px 10px;background:linear-gradient(180deg,#eaf6ff 0,#fff 72px)}.brand{width:30px;height:30px;margin:0 auto 3px}.brand svg{width:100%;height:100%;display:block}.shop{font:bold 14px Arial;text-align:center;letter-spacing:.35px;color:#073b78;border-block:1px solid #0b5da8;padding:2px 0;margin:0}.contact{text-align:center;color:#334155;font-size:8px;line-height:1.2;margin:3px 0}.phone{color:#0b5da8;font-weight:bold}.tag{display:table;margin:4px auto 0;padding:2px 8px;border-radius:99px;background:#0b5da8;color:#fff;font:bold 7px Arial;letter-spacing:.6px}.rule{border:0;border-top:1px dashed #94bfe6;margin:5px 0}.body{font-size:8px;line-height:1.25}.foot{text-align:center;color:#466987;font-size:7px;line-height:1.2;margin-top:5px}.foot b{display:block;color:#073b78;font-size:8px;margin-bottom:1px}</style></head><body><section class='receipt'><div class='brand'>$logo</div><div class='shop'>$shopTitle</div><div class='contact'>$shopAddress<br><span class='phone'>$shopPhone</span></div><div class='tag'>SALE INVOICE</div><hr class='rule'><div class='body'>$receiptBody</div><hr class='rule'><div class='foot'><b>Thank you for shopping with us</b>Powered by SkyBarech ERP</div></section></body></html>", "text/html", "UTF-8", null)
 }
 
 @Composable

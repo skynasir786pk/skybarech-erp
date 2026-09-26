@@ -153,7 +153,7 @@ class DesktopSyncService {
     const response = await fetch(url, {
     signal: AbortSignal.timeout(30000),
       method: 'POST',
-        headers: { Authorization: `Bearer ${settings.accessToken}`, 'Content-Type': 'application/json', 'X-Client-Version': 'desktop-1.3.28', 'X-Device-ID': settings.deviceId },
+        headers: { Authorization: `Bearer ${settings.accessToken}`, 'Content-Type': 'application/json', 'X-Client-Version': 'desktop-1.3.29', 'X-Device-ID': settings.deviceId },
       body: JSON.stringify(body),
     });
     const data = await response.json().catch(() => ({}));
@@ -166,7 +166,7 @@ class DesktopSyncService {
   async pull(url, settings) {
     const response = await fetch(url, {
     signal: AbortSignal.timeout(30000),
-      headers: { Authorization: `Bearer ${settings.accessToken}`, Accept: 'application/json', 'X-Client-Version': 'desktop-1.3.28', 'X-Device-ID': settings.deviceId },
+      headers: { Authorization: `Bearer ${settings.accessToken}`, Accept: 'application/json', 'X-Client-Version': 'desktop-1.3.29', 'X-Device-ID': settings.deviceId },
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok || data.success === false) {
@@ -179,7 +179,7 @@ class DesktopSyncService {
     const response = await fetch(url, {
     signal: AbortSignal.timeout(30000),
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Client-Version': 'desktop-1.3.28' },
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Client-Version': 'desktop-1.3.29' },
       body: JSON.stringify(body),
     });
     const data = await response.json().catch(() => ({}));

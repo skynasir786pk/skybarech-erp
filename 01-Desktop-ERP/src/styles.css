@@ -1261,3 +1261,56 @@ html[lang=ur] .brand-name,html[lang=ur] .auth-card-brand strong{font-family:Aria
 .pin-code-hint { color:#7c89a5; font-size:10px; line-height:1.4; }
 .auth-security-line { padding-top:2px; }
 @media(max-width:420px){.pin-code-boxes{gap:6px}.pin-code-box{border-radius:11px;font-size:24px}.auth-card{padding-inline:17px}.auth-actions{align-items:flex-start;flex-direction:column}.auth-actions .text-link{align-self:flex-end}}
+
+/* v1.3.29 unified compact thermal receipt and visible desktop account controls. */
+.invoice-paper.thermal-design,
+.invoice-paper.repair-receipt {
+  width:min(292px,100%) !important;
+  padding:9px 10px 10px !important;
+  border:1px solid #b9d7f5 !important;
+  border-radius:10px !important;
+  background:linear-gradient(180deg,#eaf6ff 0,#fff 72px) !important;
+  box-shadow:0 12px 28px rgba(9,62,122,.14) !important;
+}
+.invoice-paper .designed-receipt-header {padding:1px 2px 5px !important;}
+.invoice-paper .receipt-logo {width:31px !important;height:31px !important;margin:0 auto 3px !important;}
+.invoice-paper .shop-name-frame {margin:0 auto 3px !important;padding:2px 0 !important;border-color:#0b5da8 !important;}
+.invoice-paper .shop-name-frame span {font-size:13px !important;line-height:1.08 !important;letter-spacing:.35px !important;color:#073b78 !important;transform:none !important;}
+.invoice-paper .receipt-contact {display:grid;gap:1px;justify-items:center;}
+.invoice-paper .receipt-address {margin:0 !important;max-width:64mm !important;font-size:7.7px !important;line-height:1.17 !important;color:#334155 !important;}
+.invoice-paper .receipt-phone {margin:0 !important;font-size:8px !important;line-height:1.15 !important;color:#0b5da8 !important;}
+.invoice-paper .receipt-title {margin:4px auto 0 !important;padding:2px 8px !important;border:0 !important;border-radius:999px !important;background:#0b5da8 !important;color:#fff !important;font-size:7.6px !important;letter-spacing:.65px !important;}
+.invoice-paper .receipt-subtitle {margin-top:1px !important;font-size:6.7px !important;color:#64748b !important;}
+.invoice-paper .invoice-divider {margin:5px 0 !important;border-color:#94bfe6 !important;}
+.invoice-paper .receipt-meta {gap:2px !important;font-size:7.9px !important;}
+.invoice-paper .receipt-meta-compact {grid-template-columns:1fr 1fr;column-gap:10px;}
+.invoice-paper .receipt-meta-compact .receipt-customer {grid-column:1/-1;}
+.invoice-paper .invoice-items-head,.invoice-paper .invoice-line {gap:7px !important;font-size:8px !important;margin:3px 0 !important;line-height:1.18 !important;}
+.invoice-paper .invoice-items-head {font-size:7.2px !important;color:#315a81 !important;}
+.invoice-paper .invoice-line b {max-width:92px !important;}
+.invoice-paper .invoice-total {margin-top:4px !important;padding:4px 5px !important;border-radius:6px !important;background:#e8f4ff !important;color:#063b78 !important;font-size:10px !important;}
+.receipt-more-items {margin:3px 0;padding:3px 5px;border-radius:5px;background:#f1f7fd;color:#466987;font-size:7px;font-weight:700;text-align:center;}
+.invoice-paper .receipt-footer {margin-top:5px !important;font-size:7px !important;line-height:1.2 !important;}
+.invoice-paper .receipt-footer strong {font-size:8px !important;margin-bottom:1px !important;color:#073b78 !important;}
+.invoice-paper .signature-line {margin-top:9px !important;font-size:7px !important;}
+
+/* Account, settings and theme buttons must retain contrast in every workspace theme. */
+.topbar-right .sidebar-user {width:38px !important;height:38px !important;padding:2px !important;border:1px solid var(--line) !important;border-radius:12px !important;background:var(--surface) !important;color:var(--ink) !important;display:grid !important;place-items:center !important;}
+.topbar-right .sidebar-user:hover {background:var(--blue-3) !important;border-color:var(--blue) !important;color:var(--blue) !important;}
+.topbar-right .btn-secondary,.topbar-right .btn-ghost,.topbar-right .language-switch {color:var(--ink) !important;background:var(--surface) !important;border-color:var(--line) !important;}
+.topbar-right .btn-secondary:hover,.topbar-right .btn-ghost:hover,.topbar-right .language-switch:hover {background:var(--blue-3) !important;border-color:var(--blue) !important;color:var(--blue) !important;}
+.modal .btn-secondary {color:var(--ink) !important;background:var(--surface-soft) !important;border-color:var(--line) !important;}
+.modal .btn-secondary:hover {color:var(--blue) !important;background:var(--blue-3) !important;border-color:var(--blue) !important;}
+.sidebar .sidebar-user:hover {background:rgba(255,255,255,.13) !important;color:#fff !important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.13);}
+.sidebar .nav-item {border:1px solid transparent;}
+.sidebar .nav-item:hover {border-color:rgba(132,190,255,.24);transform:translateX(2px);}
+.sidebar .nav-item.active {background:linear-gradient(90deg,rgba(26,115,255,.55),rgba(61,126,255,.16)) !important;border-color:rgba(148,199,255,.26);box-shadow:0 8px 20px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.12) !important;}
+@media print {
+  .invoice-paper.thermal-design,.invoice-paper.repair-receipt {width:72mm !important;padding:2.4mm 2.6mm !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;background:#fff !important;}
+  .invoice-paper .receipt-logo {width:7mm !important;height:7mm !important;margin-bottom:.8mm !important;}
+  .invoice-paper .shop-name-frame span {font-size:11pt !important;line-height:1.05 !important;}
+  .invoice-paper .receipt-address {font-size:7.6pt !important;line-height:1.14 !important;}
+  .invoice-paper .receipt-phone {font-size:7.8pt !important;}
+  .invoice-paper .invoice-items-head,.invoice-paper .invoice-line,.invoice-paper .receipt-meta {font-size:7.8pt !important;}
+  .invoice-paper .invoice-total {font-size:9.5pt !important;}
+}

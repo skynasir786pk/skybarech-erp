@@ -1,0 +1,7 @@
+SkyBarech ERP v1.3.29
+
+- Premium compact 80mm receipts on Desktop and Android print preview.
+- Receipt order is now logo, shop name, address, phone, invoice information and totals.
+- Product names are compacted and receipts show the first eight items plus an overflow summary.
+- Desktop account/settings hover states and theme buttons have high-contrast colors.
+- Sidebar has improved premium active, hover and account styling.

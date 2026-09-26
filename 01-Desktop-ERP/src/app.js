@@ -346,7 +346,7 @@
     return lines;
   }
   function formatReceiptAddress(value = '') {
-    return chunkReceiptLine(value, 34).map(x => esc(x)).join(htmlText('<br>'));
+    return chunkReceiptLine(value, 36).slice(0, 2).map(x => esc(x)).join(htmlText('<br>'));
   }
   function formatReceiptPhones(value = '') {
     return chunkReceiptLine(value, 30).slice(0, 2).map(x => esc(x)).join(htmlText('<br>'));
@@ -357,7 +357,15 @@
     const address = shopAddressText(shop);
     const logoUrl = shop.logo || makeShopLogoDataUrl(shop.shopName);
     const logo = html`<div class="receipt-logo"><img src="${esc(logoUrl)}" alt="${esc(shop.shopName)} logo"></div>`;
-    return html`<div class="receipt-header designed-receipt-header">${logo}<div class="shop-name-frame"><span>${esc(shopDisplayName())}</span></div>${address ? html`<div class="receipt-address">${formatReceiptAddress(address)}</div>` : ''}${phones ? html`<div class="receipt-phone">${formatReceiptPhones(phones)}</div>` : ''}${title ? html`<div class="receipt-title">${esc(t(title))}</div>` : ''}${subtitle ? html`<div class="receipt-subtitle">${esc(t(subtitle))}</div>` : ''}</div><div class="invoice-divider receipt-divider"></div>`;
+    return html`<div class="receipt-header designed-receipt-header">${logo}<div class="shop-name-frame"><span>${esc(shopDisplayName())}</span></div><div class="receipt-contact">${address ? html`<div class="receipt-address">${formatReceiptAddress(address)}</div>` : ''}${phones ? html`<div class="receipt-phone">${formatReceiptPhones(phones)}</div>` : ''}</div>${title ? html`<div class="receipt-title">${esc(t(title))}</div>` : ''}${subtitle ? html`<div class="receipt-subtitle">${esc(t(subtitle))}</div>` : ''}</div><div class="invoice-divider receipt-divider"></div>`;
+  }
+  function compactReceiptItemName(value = '', limit = 32) {
+    const name = cleanText(value).replace(/\s+/g, ' ');
+    return name.length > limit ? `${name.slice(0, Math.max(1, limit - 1)).trim()}…` : name;
+  }
+  function compactInvoiceItems(items = [], maxItems = 8) {
+    const rows = Array.isArray(items) ? items : [];
+    return { visible: rows.slice(0, maxItems), hidden: Math.max(0, rows.length - maxItems) };
   }
   function shopLogoMarkup(extra = '') {
     const shop = shopProfile();
@@ -1570,7 +1578,8 @@
 
   function invoiceModal(invoice) {
     if (!invoice) return;
-    openModal('Thermal Invoice (80mm)', 'Preview, print or share the completed sale receipt.', html`<div class="invoice-paper thermal-design">${receiptHeader('SALE INVOICE', 'Customer Copy')}<div class="receipt-meta"><div><span>Invoice</span><b>${esc(invoice.id)}</b></div><div><span>Date</span><b>${prettyDate(invoice.date)}</b></div><div><span>Customer</span><b>${esc(invoice.customer)}</b></div></div><div class="invoice-divider"></div><div class="invoice-items-head"><span>Item</span><span>Amount</span></div>${invoice.items.map(i=>html`<div class="invoice-line"><span>${esc(i.name)} ×${i.qty}</span><b>${money(i.price * i.qty)}</b></div>`).join('')}<div class="invoice-divider"></div><div class="invoice-line"><span>Payment</span><b>${esc(invoice.payment)}</b></div><div class="invoice-line invoice-total"><span>Total</span><b>${money(invoice.total)}</b></div><div class="invoice-divider"></div><div class="receipt-footer"><strong>Thank you</strong><span>Exchange / warranty according to shop policy.</span></div></div><div class="form-actions"><button class="btn btn-secondary" data-action="print-invoice">${icon('printer')} Print (80mm)</button><button class="btn btn-secondary" data-action="share-invoice">${icon('share')} Share</button><button class="btn btn-primary" data-action="close-modal">Done</button></div>`);
+    const items = compactInvoiceItems(invoice.items);
+    openModal('Thermal Invoice (80mm)', 'Compact premium customer receipt.', html`<div class="invoice-paper thermal-design">${receiptHeader('SALE INVOICE', 'Customer Copy')}<div class="receipt-meta receipt-meta-compact"><div><span>Invoice</span><b>${esc(invoice.id)}</b></div><div><span>Date</span><b>${prettyDate(invoice.date)}</b></div><div class="receipt-customer"><span>Customer</span><b>${esc(compactReceiptItemName(invoice.customer || 'Walk-in Customer', 25))}</b></div></div><div class="invoice-divider"></div><div class="invoice-items-head"><span>Item / Qty</span><span>Amount</span></div>${items.visible.map(i=>html`<div class="invoice-line"><span>${esc(compactReceiptItemName(i.name))} ×${i.qty}</span><b>${money(i.price * i.qty)}</b></div>`).join('')}${items.hidden ? html`<div class="receipt-more-items">+ ${items.hidden} more item${items.hidden === 1 ? '' : 's'} — see app invoice</div>` : ''}<div class="invoice-divider"></div><div class="invoice-line"><span>Payment</span><b>${esc(invoice.payment)}</b></div><div class="invoice-line invoice-total"><span>Total</span><b>${money(invoice.total)}</b></div><div class="invoice-divider"></div><div class="receipt-footer"><strong>Thank you for shopping with us</strong><span>Exchange / warranty according to shop policy.</span></div></div><div class="form-actions"><button class="btn btn-secondary" data-action="print-invoice">${icon('printer')} Print (80mm)</button><button class="btn btn-secondary" data-action="share-invoice">${icon('share')} Share</button><button class="btn btn-primary" data-action="close-modal">Done</button></div>`);
   }
 
 

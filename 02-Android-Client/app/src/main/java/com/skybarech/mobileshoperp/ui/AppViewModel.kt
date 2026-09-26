@@ -574,7 +574,12 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         appendLine("${tr("Date")}: $lastInvoiceDate")
         appendLine(tr(if (invoiceCompleted) "PAID RECEIPT" else "PAYMENT PREVIEW"))
         appendLine("--------------------------------")
-        invoiceLines().forEach { appendLine("${it.product.name}  ${it.quantity} x ${formatMoney(it.product.salePrice)}") }
+        invoiceLines().take(8).forEach { line ->
+            val title = line.product.name.replace(Regex("\\s+"), " ").trim().let { if (it.length > 30) "${it.take(29).trim()}…" else it }
+            appendLine("$title  ${line.quantity} x ${formatMoney(line.product.salePrice)}")
+        }
+        val hiddenItems = (invoiceLines().size - 8).coerceAtLeast(0)
+        if (hiddenItems > 0) appendLine("+ $hiddenItems more item${if (hiddenItems == 1) "" else "s"} — see app invoice")
         appendLine("--------------------------------")
         appendLine("${tr("Total")}: ${formatMoney(invoiceTotal())}")
         appendLine("${tr("Payment")}: $lastPaymentMethod")
