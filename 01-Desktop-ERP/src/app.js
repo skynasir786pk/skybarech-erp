@@ -88,7 +88,16 @@
   const makeId = (prefix = 'ID') => `${prefix}-${crypto.randomUUID()}`;
   const money = (value) => `${t('Rs.')} ${Number(value || 0).toLocaleString('en-PK')}`;
   const n = (value) => Number(value || 0).toLocaleString('en-PK');
-  const today = () => new Date().toISOString().slice(0, 10);
+  const localDateKey = (value = new Date()) => {
+    const date = value instanceof Date ? value : new Date(value);
+    if (Number.isNaN(date.getTime())) return String(value || '').slice(0, 10);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+  const recordDateKey = (record = {}) => String(record.date || record.time || record.timeLabel || '').slice(0, 10);
+  const today = () => localDateKey();
   const prettyDate = (value) => {
     if (!value) return '—';
     const date = new Date(String(value).includes('T') ? value : `${value}T12:00:00`);
@@ -239,6 +248,15 @@
   const ACCESSORY_COLORS = ['Black','White','Blue','Red','Transparent','Mix','Other'];
   const ACCESSORY_QUALITIES = ['Original','Master Copy','A Quality','Local','China'];
   const ACCESSORY_WARRANTIES = ['No Warranty','7 Days','15 Days','1 Month','3 Months','6 Months'];
+  const LAPTOP_BRANDS = ['HP','Dell','Lenovo','Apple','Acer','Asus','Microsoft','MSI','Samsung','Razer','Toshiba','Other'];
+  const LAPTOP_MODELS = {
+    HP: ['EliteBook','ProBook','Pavilion','Envy','Spectre','Victus','Omen','ZBook'],
+    Dell: ['Latitude','Inspiron','Vostro','XPS','Precision','G Series','Alienware'],
+    Lenovo: ['ThinkPad','IdeaPad','ThinkBook','Yoga','Legion','LOQ'],
+    Apple: ['MacBook Air','MacBook Pro'], Acer: ['Aspire','Swift','TravelMate','Nitro','Predator'],
+    Asus: ['VivoBook','ZenBook','ExpertBook','TUF','ROG'], Microsoft: ['Surface Laptop','Surface Book','Surface Pro'],
+    MSI: ['Modern','Prestige','Katana','Stealth','Raider'], Samsung: ['Galaxy Book'], Razer: ['Blade'], Toshiba: ['Dynabook'], Other: []
+  };
 
   const MOBILE_MODEL_LIBRARY = {
     iPhone: ['iPhone 6','iPhone 6 Plus','iPhone 7','iPhone 7 Plus','iPhone 8','iPhone 8 Plus','iPhone X','iPhone XR','iPhone XS','iPhone XS Max','iPhone 11','iPhone 11 Pro','iPhone 11 Pro Max','iPhone 12','iPhone 12 Mini','iPhone 12 Pro','iPhone 12 Pro Max','iPhone 13','iPhone 13 Mini','iPhone 13 Pro','iPhone 13 Pro Max','iPhone 14','iPhone 14 Plus','iPhone 14 Pro','iPhone 14 Pro Max','iPhone 15','iPhone 15 Plus','iPhone 15 Pro','iPhone 15 Pro Max'],
@@ -969,7 +987,7 @@
       </section>
       <div class="dashboard-grid client-dashboard">
         <div class="metric-grid premium-metrics">
-          ${metricCard('Today Sales', money(state.invoices.filter(i=>i.date?.slice(0,10)===today()).reduce((t,i)=>t+Number(i.total||0),0)), 'wallet', 'Recorded today', 'up')}
+          ${metricCard('Today Sales', money(state.invoices.filter(i=>recordDateKey(i)===today()).reduce((t,i)=>t+Number(i.total||0),0)), 'wallet', 'Android and desktop sales today', 'up')}
           ${metricCard('Recorded Invoices', n(state.invoices.length), 'chart', 'On this device', 'up')}
           ${metricCard('Total Stock', n(stock), 'box', `${lowStock} items low in stock`, lowStock ? 'down' : 'up')}
           ${metricCard('Low Stock', n(lowStock), 'box', 'Reorder alerts', 'down')}
@@ -1017,7 +1035,7 @@
   }
 
   function lineChart() {
-    const points = Array.from({length:7}, (_, i) => { const d = new Date(); d.setDate(d.getDate() - 6 + i); const key = d.toISOString().slice(0,10); return {label:d.toLocaleDateString('en-GB',{weekday:'short'}),total:state.invoices.filter(row=>String(row.date||'').slice(0,10)===key).reduce((t,row)=>t+Number(row.total||0),0)}; });
+    const points = Array.from({length:7}, (_, i) => { const d = new Date(); d.setDate(d.getDate() - 6 + i); const key = localDateKey(d); return {label:d.toLocaleDateString('en-GB',{weekday:'short'}),total:state.invoices.filter(row=>recordDateKey(row)===key).reduce((t,row)=>t+Number(row.total||0),0)}; });
     const max = Math.max(1,...points.map(p=>p.total));
     const coordinates = points.map((p,i)=>`${30+i*120},${220-p.total/max*180}`).join(' ');
     return html`<svg class="line-chart" viewBox="0 0 800 260" role="img" aria-label="Recorded sales in last seven days: ${esc(points.map(p=>`${t(p.label)} ${money(p.total)}`).join(', '))}"><path d="M30 40H750M30 130H750M30 220H750" stroke="var(--line)" fill="none"/><polyline points="${coordinates}" stroke="var(--blue)" stroke-width="4" fill="none"/>${points.map((p,i)=>html`<text x="${30+i*120}" y="252" text-anchor="middle" fill="var(--muted)" font-size="14">${t(p.label)}</text>`).join('')}</svg>`;
@@ -1152,7 +1170,7 @@
     const search = (state.laptopSearch || '').trim().toLowerCase();
     const laptops = state.products
       .filter(p => p.category === 'Laptop')
-      .filter(p => !search || `${p.name} ${p.brand} ${p.model} ${p.ram} ${p.storage} ${p.sku}`.toLowerCase().includes(search))
+      .filter(p => !search || `${p.name} ${p.brand} ${p.model} ${p.processor} ${p.generation} ${p.ram} ${p.storage} ${p.storageType} ${p.graphics} ${p.sku}`.toLowerCase().includes(search))
       .sort((a, b) => a.name.localeCompare(b.name));
     const units = laptops.reduce((sum, p) => sum + Number(p.stock || 0), 0);
     const value = laptops.reduce((sum, p) => sum + Number(p.stock || 0) * Number(p.price || 0), 0);
@@ -1175,7 +1193,7 @@
   }
 
   function laptopTableRow(p) {
-    return html`<tr><td><div class="product-cell laptop-product">${productThumb(p)}<div><strong>${esc(p.name)}</strong><div class="cell-muted">${esc(p.brand)} · ${esc(p.model)}</div></div></div></td><td><strong>${esc(p.ram)}</strong><div class="cell-muted">${esc(p.storage)} Storage</div></td><td><strong>${n(p.stock)}</strong>${p.stock <= 7 ? html`<div class="cell-muted" style="color:var(--danger)">Low Stock</div>` : ''}</td><td class="amount">${money(p.cost)}</td><td class="amount">${money(p.price)}</td><td><code style="font-size:10px;color:var(--muted)">${esc(p.sku)}</code></td><td><div class="table-actions"><button class="icon-action" data-action="edit-product" data-id="${p.id}" title="Edit Laptop">${icon('edit')}</button><button class="icon-action" data-action="delete-product" data-id="${p.id}" title="Delete">${icon('trash')}</button></div></td></tr>`;
+    return html`<tr><td><div class="product-cell laptop-product">${productThumb(p)}<div><strong>${esc(p.name)}</strong><div class="cell-muted">${esc(p.brand)} · ${esc(p.model)}</div></div></div></td><td><strong>${esc([p.processor, p.generation].filter(Boolean).join(' · ') || p.variant || 'Specs not set')}</strong><div class="cell-muted">${esc([p.ram, p.storage, p.storageType, p.graphics, p.screenSize].filter(Boolean).join(' · '))}</div><div class="cell-muted">${esc(p.quality || '')}${p.batteryHealth ? ` · Battery ${esc(p.batteryHealth)}` : ''}</div></td><td><strong>${n(p.stock)}</strong>${p.stock <= (p.minStock || 1) ? html`<div class="cell-muted" style="color:var(--danger)">Low Stock</div>` : ''}</td><td class="amount">${money(p.cost)}</td><td class="amount">${money(p.price)}</td><td><code style="font-size:10px;color:var(--muted)">${esc(p.sku)}</code></td><td><div class="table-actions"><button class="icon-action" data-action="edit-product" data-id="${p.id}" title="Edit Laptop">${icon('edit')}</button><button class="icon-action" data-action="delete-product" data-id="${p.id}" title="Delete">${icon('trash')}</button></div></td></tr>`;
   }
 
   function noRows(colspan, text) { return html`<tr><td colspan="${colspan}"><div class="empty">${icon('search','icon-xl')}<strong>${t(text)}</strong></div></td></tr>`; }
@@ -1507,7 +1525,7 @@
       return;
     }
     const categoryOptions = isLaptop ? ['Laptop'] : ['Smartphone','Tablet'];
-    openModal(title, subtitle, html`<form data-form="product" novalidate><input type="hidden" name="id" value="${esc(product?.id || '')}"><input type="hidden" name="shop_id" value="${esc(product?.shop_id || currentShopId())}"><input type="hidden" name="image" value="${esc(p.image || '')}" data-product-image-value><div class="product-image-panel"><div class="product-image-preview ${p.image ? 'has-image' : ''}" data-product-image-preview>${p.image ? html`<img src="${esc(p.image)}" alt="${esc(p.name || 'Product')}">` : html`<span>${icon(isLaptop ? 'laptop' : 'box','icon-xl')}</span><strong>No picture</strong>`}</div><div><label class="btn btn-secondary file-btn">${icon('upload')} Choose Product Picture<input type="file" accept="image/*" data-product-image-file></label><p class="field-hint">Image will be auto-compressed for local storage.</p><button class="btn btn-ghost btn-small" type="button" data-action="remove-product-image" ${p.image ? '' : 'disabled'}>${icon('trash')} Remove Picture</button></div></div><div class="form-grid"><div class="field"><label>Product Name <span class="required">*</span></label><input class="input" name="name" value="${esc(p.name)}" required></div><div class="field"><label>Category <span class="required">*</span></label><select class="select" name="category">${categoryOptions.map(x => html`<option ${p.category===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field">${mobileBrandSelect(p.brand || 'Samsung')}</div><div class="field">${modelSyncBox(String(p.brand || 'Samsung'), p.model)}</div><div class="field"><label>RAM</label><select class="select" name="ram">${['—','4GB','6GB','8GB','12GB','16GB','32GB'].map(x=>html`<option ${x===p.ram?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Storage</label><select class="select" name="storage">${['—','64GB','128GB','256GB','512GB','1TB','2TB'].map(x=>html`<option ${x===p.storage?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Purchase Price <span class="required">*</span></label><input class="input" name="cost" type="number" min="0" value="${esc(p.cost)}" required></div><div class="field"><label>Sale Price <span class="required">*</span></label><input class="input" name="price" type="number" min="0" value="${esc(p.price)}" required></div><div class="field"><label>Stock Quantity <span class="required">*</span></label><input class="input" name="stock" type="number" min="0" value="${esc(p.stock)}" required></div><div class="field"><label>Barcode / SKU</label><input class="input" name="sku" value="${esc(p.sku)}" placeholder="Auto generate if blank"></div></div><div class="form-actions"><button class="btn btn-secondary" type="button" data-action="close-modal">Cancel</button><button class="btn btn-primary" type="submit">${t(product ? 'Save Changes' : 'Save Product')} ${icon('arrowRight')}</button></div></form>`, true);
+    openModal(title, subtitle, html`<form data-form="product" novalidate><input type="hidden" name="id" value="${esc(product?.id || '')}"><input type="hidden" name="shop_id" value="${esc(product?.shop_id || currentShopId())}"><input type="hidden" name="image" value="${esc(p.image || '')}" data-product-image-value><div class="product-image-panel"><div class="product-image-preview ${p.image ? 'has-image' : ''}" data-product-image-preview>${p.image ? html`<img src="${esc(p.image)}" alt="${esc(p.name || 'Product')}">` : html`<span>${icon(isLaptop ? 'laptop' : 'box','icon-xl')}</span><strong>No picture</strong>`}</div><div><label class="btn btn-secondary file-btn">${icon('upload')} Choose Product Picture<input type="file" accept="image/*" data-product-image-file></label><p class="field-hint">Image will be auto-compressed for local storage.</p><button class="btn btn-ghost btn-small" type="button" data-action="remove-product-image" ${p.image ? '' : 'disabled'}>${icon('trash')} Remove Picture</button></div></div><div class="form-grid"><div class="field"><label>Product Name <span class="required">*</span></label><input class="input" name="name" value="${esc(p.name)}" required></div><div class="field"><label>Category <span class="required">*</span></label><select class="select" name="category">${categoryOptions.map(x => html`<option ${p.category===x?'selected':''}>${x}</option>`).join('')}</select></div>${isLaptop ? laptopFields(p) : html`<div class="field">${mobileBrandSelect(p.brand || 'Samsung')}</div><div class="field">${modelSyncBox(String(p.brand || 'Samsung'), p.model)}</div><div class="field"><label>RAM</label><select class="select" name="ram">${['—','4GB','6GB','8GB','12GB','16GB','32GB'].map(x=>html`<option ${x===p.ram?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Storage</label><select class="select" name="storage">${['—','64GB','128GB','256GB','512GB','1TB','2TB'].map(x=>html`<option ${x===p.storage?'selected':''}>${x}</option>`).join('')}</select></div>`}<div class="field"><label>Purchase Price <span class="required">*</span></label><input class="input" name="cost" type="number" min="0" value="${esc(p.cost)}" required></div><div class="field"><label>Sale Price <span class="required">*</span></label><input class="input" name="price" type="number" min="0" value="${esc(p.price)}" required></div><div class="field"><label>Stock Quantity <span class="required">*</span></label><input class="input" name="stock" type="number" min="0" value="${esc(p.stock)}" required></div><div class="field"><label>Barcode / SKU</label><input class="input" name="sku" value="${esc(p.sku)}" placeholder="Auto generate if blank"></div><div class="field"><label>Rack / Shelf</label><input class="input" name="rack" value="${esc(p.rack || '')}" placeholder="L-1"></div><div class="field"><label>Warranty</label><select class="select" name="warranty">${['No Warranty','7 Days','15 Days','1 Month','3 Months','6 Months','1 Year'].map(x=>html`<option ${String(p.warranty || 'No Warranty')===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="field form-span-2"><label>Notes</label><textarea class="textarea" name="notes" placeholder="Supplier, charger, battery or warranty notes">${esc(p.notes || '')}</textarea></div></div><div class="form-actions"><button class="btn btn-secondary" type="button" data-action="close-modal">Cancel</button><button class="btn btn-primary" type="submit">${t(product ? 'Save Changes' : 'Save Product')} ${icon('arrowRight')}</button></div></form>`, true);
   }
 
   function customerModal() {
@@ -1608,6 +1626,21 @@
     renderApp();
     notify(`Welcome back, ${shopOwnerName()}`, message || `${shopDisplayName()} dashboard is ready.`);
     refreshShopAdminControl();
+  }
+  function laptopFields(p) {
+    const models = LAPTOP_MODELS[p.brand] || [];
+    return html`<div class="field"><label>Laptop Brand <span class="required">*</span></label><select class="select" name="brand" required>${LAPTOP_BRANDS.map(x=>html`<option ${String(p.brand || 'HP')===x?'selected':''}>${x}</option>`).join('')}</select></div>
+      <div class="field"><label>Series / Model <span class="required">*</span></label><input class="input" name="model" list="laptop-models" value="${esc(p.model || '')}" placeholder="EliteBook 840 G8" required><datalist id="laptop-models">${models.map(x=>html`<option value="${esc(x)}"></option>`).join('')}</datalist></div>
+      <div class="field"><label>Processor</label><input class="input" name="processor" value="${esc(p.processor || '')}" placeholder="Intel Core i5-1135G7"></div>
+      <div class="field"><label>Generation</label><select class="select" name="generation">${['—','6th Gen','7th Gen','8th Gen','9th Gen','10th Gen','11th Gen','12th Gen','13th Gen','14th Gen','Ryzen 3000','Ryzen 4000','Ryzen 5000','Ryzen 6000','Ryzen 7000','Apple M1','Apple M2','Apple M3','Apple M4'].map(x=>html`<option ${String(p.generation || '—')===x?'selected':''}>${x}</option>`).join('')}</select></div>
+      <div class="field"><label>RAM</label><select class="select" name="ram">${['4GB','8GB','16GB','32GB','64GB'].map(x=>html`<option ${String(p.ram || '16GB')===x?'selected':''}>${x}</option>`).join('')}</select></div>
+      <div class="field"><label>Storage</label><div class="input-wrap"><select class="select" name="storageType">${['SSD','NVMe SSD','HDD','eMMC'].map(x=>html`<option ${String(p.storageType || 'SSD')===x?'selected':''}>${x}</option>`).join('')}</select><select class="select" name="storage">${['128GB','256GB','512GB','1TB','2TB'].map(x=>html`<option ${String(p.storage || '512GB')===x?'selected':''}>${x}</option>`).join('')}</select></div></div>
+      <div class="field"><label>Graphics</label><input class="input" name="graphics" value="${esc(p.graphics || '')}" placeholder="Intel Iris Xe / NVIDIA GTX"></div>
+      <div class="field"><label>Screen Size</label><select class="select" name="screenSize">${['12.5 inch','13.3 inch','14 inch','15.6 inch','16 inch','17.3 inch'].map(x=>html`<option ${String(p.screenSize || '14 inch')===x?'selected':''}>${x}</option>`).join('')}</select></div>
+      <div class="field"><label>Operating System</label><select class="select" name="operatingSystem">${['Windows 11','Windows 10','macOS','Linux','No OS'].map(x=>html`<option ${String(p.operatingSystem || 'Windows 11')===x?'selected':''}>${x}</option>`).join('')}</select></div>
+      <div class="field"><label>Condition</label><select class="select" name="quality">${['New','Used','Open Box','Refurbished'].map(x=>html`<option ${String(p.quality || 'Used')===x?'selected':''}>${x}</option>`).join('')}</select></div>
+      <div class="field"><label>Battery Health</label><input class="input" name="batteryHealth" value="${esc(p.batteryHealth || '')}" placeholder="85% / Good"></div>
+      <div class="field"><label>Serial Number</label><input class="input" name="serialNumber" value="${esc(p.serialNumber || '')}" placeholder="Laptop serial number"></div>`;
   }
 
   async function finishOnlineLogin(online, pin, backupNote = '') {
@@ -1863,6 +1896,14 @@
       name: d.name,
       brand: d.brand || (isAcc ? 'Other' : ''),
       model: d.model || '',
+      processor: d.processor || '',
+      generation: d.generation || '',
+      storageType: d.storageType || '',
+      graphics: d.graphics || '',
+      screenSize: d.screenSize || '',
+      operatingSystem: d.operatingSystem || '',
+      batteryHealth: d.batteryHealth || '',
+      serialNumber: d.serialNumber || '',
       compatibleModels: d.compatibleModels || '',
       category,
       variant,
@@ -2011,7 +2052,7 @@
   }
 
   function openCashSessionModal() {
-    const sales = state.invoices.filter(i => i.date === today()).reduce((sum, i) => sum + Number(i.total || 0), 0);
+    const sales = state.invoices.filter(i => recordDateKey(i) === today()).reduce((sum, i) => sum + Number(i.total || 0), 0);
     const expenses = (state.expenses || []).filter(e => e.date === today()).reduce((sum, e) => sum + Number(e.amount || 0), 0);
     openModal('Cash Closing', 'Close daily counter cash.', html`<form data-form="cash-session" novalidate><div class="form-grid"><div class="field"><label>Opened By</label><input class="input" name="openedBy" value="${esc(shopOwnerName())}"></div><div class="field"><label>Opening Cash <span class="required">*</span></label><input class="input" name="opening" type="number" min="0" value="0" required></div><div class="field"><label>Sales Cash</label><input class="input" name="sales" type="number" min="0" value="${sales}"></div><div class="field"><label>Expenses</label><input class="input" name="expenses" type="number" min="0" value="${expenses}"></div><div class="field"><label>Closing Cash</label><input class="input" name="closing" type="number" min="0" value="${sales - expenses}"></div><div class="field"><label>Date</label><input class="input" name="date" type="date" value="${today()}"></div></div><div class="form-actions"><button class="btn btn-secondary" type="button" data-action="close-modal">Cancel</button><button class="btn btn-primary" type="submit">Save Closing ${icon('arrowRight')}</button></div></form>`);
   }

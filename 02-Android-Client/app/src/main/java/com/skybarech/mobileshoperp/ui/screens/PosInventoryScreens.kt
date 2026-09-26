@@ -454,7 +454,7 @@ fun LaptopScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
     var search by rememberSaveable { mutableStateOf("") }
     val laptops = vm.products.filter { product ->
         product.category == "Laptop" &&
-            (product.name.contains(search, true) || product.brand.contains(search, true) || product.model.contains(search, true) || product.variant.contains(search, true) || product.sku.contains(search, true) || product.rack.contains(search, true))
+            (product.name.contains(search, true) || product.brand.contains(search, true) || product.model.contains(search, true) || product.processor.contains(search, true) || product.generation.contains(search, true) || product.ram.contains(search, true) || product.storage.contains(search, true) || product.variant.contains(search, true) || product.sku.contains(search, true) || product.rack.contains(search, true))
     }
     Column(modifier = modifier.padding(ScreenPadding)) {
         PageTitle("Laptop", "Laptop stock, purchase price, sale price, specs and rack details.")
@@ -467,7 +467,7 @@ fun LaptopScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
         }
         Spacer(Modifier.height(10.dp))
         LazyColumn(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(9.dp)) {
-            items(laptops, key = { it.id }) { product -> InventoryRow(product, onClick = { vm.navigate(AppScreen.ADD_LAPTOP) }) }
+            items(laptops, key = { it.id }) { product -> LaptopInventoryRow(product, onClick = { vm.navigate(AppScreen.ADD_LAPTOP) }) }
             if (laptops.isEmpty()) item { ListEmpty("No laptops", "Add laptop stock separately here, so it does not mix with mobile inventory.", "Add Laptop") { vm.navigate(AppScreen.ADD_LAPTOP) } }
         }
         Spacer(Modifier.height(10.dp))
@@ -477,13 +477,44 @@ fun LaptopScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
 }
 
 @Composable
+private fun LaptopInventoryRow(product: Product, onClick: () -> Unit) {
+    SoftCard(modifier = Modifier.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            ProductAvatar(product.name)
+            Spacer(Modifier.width(10.dp))
+            Column(Modifier.weight(1f)) {
+                UiText(product.name, translate = false, color = Ink, fontWeight = FontWeight.Bold, fontSize = 14.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                UiText(listOf(product.brand, product.model).filter { it.isNotBlank() }.joinToString(" · "), translate = false, color = BrandBlue, fontSize = 12.sp)
+                UiText(listOf(product.processor, product.generation, product.ram, listOf(product.storage, product.storageType).filter { it.isNotBlank() }.joinToString(" ")).filter { it.isNotBlank() }.joinToString(" · ").ifBlank { product.variant }, translate = false, color = MutedInk, fontSize = 11.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                UiText(listOf(product.graphics, product.screenSize, product.quality).filter { it.isNotBlank() }.joinToString(" · "), translate = false, color = MutedInk, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            }
+            Column(horizontalAlignment = Alignment.End) {
+                StatusPill(if (product.stock <= product.minStock) "Low Stock" else "In Stock", if (product.stock <= product.minStock) StatusTone.DANGER else StatusTone.SUCCESS)
+                UiText("${product.stock} pcs", translate = false, color = MutedInk, fontSize = 11.sp)
+                UiText("Rs. ${product.salePrice}", translate = false, color = Ink, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                TextButton(onClick = onClick, contentPadding = PaddingValues(0.dp)) { UiText("Edit", fontSize = 12.sp) }
+            }
+        }
+    }
+}
+
+@Composable
 fun AddLaptopScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
-    val brands = listOf("HP", "Dell", "Lenovo", "Apple", "Acer", "Asus", "Microsoft", "Other")
+    val brands = listOf("HP", "Dell", "Lenovo", "Apple", "Acer", "Asus", "Microsoft", "MSI", "Samsung", "Razer", "Toshiba", "Other")
     val conditions = listOf("New", "Used", "Open Box", "Refurbished")
     var name by rememberSaveable { mutableStateOf("") }
     var brand by rememberSaveable { mutableStateOf("HP") }
     var model by rememberSaveable { mutableStateOf("") }
-    var specs by rememberSaveable { mutableStateOf("") }
+    var processor by rememberSaveable { mutableStateOf("") }
+    var generation by rememberSaveable { mutableStateOf("11th Gen") }
+    var ram by rememberSaveable { mutableStateOf("8GB") }
+    var storage by rememberSaveable { mutableStateOf("256GB") }
+    var storageType by rememberSaveable { mutableStateOf("SSD") }
+    var graphics by rememberSaveable { mutableStateOf("") }
+    var screenSize by rememberSaveable { mutableStateOf("14 inch") }
+    var operatingSystem by rememberSaveable { mutableStateOf("Windows 11") }
+    var batteryHealth by rememberSaveable { mutableStateOf("") }
+    var serialNumber by rememberSaveable { mutableStateOf("") }
     var condition by rememberSaveable { mutableStateOf("Used") }
     var purchase by rememberSaveable { mutableStateOf("") }
     var sale by rememberSaveable { mutableStateOf("") }
@@ -500,8 +531,27 @@ fun AddLaptopScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
                 AppDropdown("Brand", brand, brands, { brand = it }, Modifier.weight(1f))
                 AppTextField("Model", model, { model = it }, Modifier.weight(1f), placeholder = "840 G5")
             } }
-            item { AppTextField("Specs", specs, { specs = it }, placeholder = "Core i5 / 8GB / 256GB SSD") }
-            item { AppDropdown("Condition", condition, conditions, { condition = it }) }
+            item { AdaptiveRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                AppTextField("Processor", processor, { processor = it }, Modifier.weight(1f), placeholder = "Core i5-1135G7")
+                AppDropdown("Generation", generation, listOf("6th Gen", "7th Gen", "8th Gen", "9th Gen", "10th Gen", "11th Gen", "12th Gen", "13th Gen", "14th Gen", "Ryzen 5000", "Ryzen 7000", "Apple M1", "Apple M2", "Apple M3", "Apple M4"), { generation = it }, Modifier.weight(1f))
+            } }
+            item { AdaptiveRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                AppDropdown("RAM", ram, listOf("4GB", "8GB", "16GB", "32GB", "64GB"), { ram = it }, Modifier.weight(1f))
+                AppDropdown("Storage", storage, listOf("128GB", "256GB", "512GB", "1TB", "2TB"), { storage = it }, Modifier.weight(1f))
+            } }
+            item { AdaptiveRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                AppDropdown("Storage Type", storageType, listOf("SSD", "NVMe SSD", "HDD", "eMMC"), { storageType = it }, Modifier.weight(1f))
+                AppDropdown("Screen", screenSize, listOf("12.5 inch", "13.3 inch", "14 inch", "15.6 inch", "16 inch", "17.3 inch"), { screenSize = it }, Modifier.weight(1f))
+            } }
+            item { AppTextField("Graphics", graphics, { graphics = it }, placeholder = "Intel Iris Xe / NVIDIA GTX") }
+            item { AdaptiveRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                AppDropdown("Operating System", operatingSystem, listOf("Windows 11", "Windows 10", "macOS", "Linux", "No OS"), { operatingSystem = it }, Modifier.weight(1f))
+                AppDropdown("Condition", condition, conditions, { condition = it }, Modifier.weight(1f))
+            } }
+            item { AdaptiveRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                AppTextField("Battery Health", batteryHealth, { batteryHealth = it }, Modifier.weight(1f), placeholder = "85% / Good")
+                AppTextField("Serial Number", serialNumber, { serialNumber = it }, Modifier.weight(1f), placeholder = "Serial no.")
+            } }
             item { AdaptiveRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 AppTextField("Purchase *", purchase, { purchase = it }, Modifier.weight(1f), placeholder = "Rs. 0")
                 AppTextField("Sale *", sale, { sale = it }, Modifier.weight(1f), placeholder = "Rs. 0")
@@ -518,7 +568,15 @@ fun AddLaptopScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
         }
         PrimaryButton("Save Laptop", {
             val finalName = name.ifBlank { "$brand $model".trim() }
-            vm.addProduct(finalName, "Laptop", brand, model, "", specs.ifBlank { condition }, "", condition, purchase, sale, "", stock, minStock, rack, sku, "No Warranty", notes)
+            vm.addProduct(
+                name = finalName, category = "Laptop", brand = brand, model = model, compatibleModels = "",
+                variant = listOf(processor, generation, ram, "$storage $storageType").filter { it.isNotBlank() }.joinToString(" / "),
+                color = "", quality = condition, purchase = purchase, sale = sale, wholesale = "", stock = stock,
+                minStock = minStock, rack = rack, sku = sku, warranty = "No Warranty", notes = notes,
+                ram = ram, storage = storage, storageType = storageType, processor = processor, generation = generation,
+                graphics = graphics, screenSize = screenSize, operatingSystem = operatingSystem,
+                batteryHealth = batteryHealth, serialNumber = serialNumber
+            )
         }, Modifier.fillMaxWidth(), Icons.Outlined.CheckCircle)
         Spacer(Modifier.height(10.dp))
     }

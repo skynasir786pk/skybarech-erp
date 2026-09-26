@@ -58,7 +58,17 @@ data class Product(
     val minStock: Int = 0,
     val rack: String = "",
     val warranty: String = "No Warranty",
-    val notes: String = ""
+    val notes: String = "",
+    val ram: String = "",
+    val storage: String = "",
+    val storageType: String = "",
+    val processor: String = "",
+    val generation: String = "",
+    val graphics: String = "",
+    val screenSize: String = "",
+    val operatingSystem: String = "",
+    val batteryHealth: String = "",
+    val serialNumber: String = ""
 )
 
 data class CartLine(

@@ -1,0 +1,8 @@
+SkyBarech ERP v1.3.28
+
+- Android sales synced to Desktop now appear in Today Sales using the shop's local calendar date.
+- The seven-day sales chart and cash closing use the same local-date logic.
+- Desktop Laptop stock now has dedicated laptop brands and fields for processor, generation, RAM, storage type, graphics, screen, OS, condition, battery health and serial number.
+- Android Laptop entry and stock cards now show laptop-specific specifications.
+- Saving an Android laptop now returns to Laptop stock instead of Mobile Accessories.
+- Laptop specifications are retained during Android/Desktop cloud sync.

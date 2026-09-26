@@ -221,7 +221,11 @@ private fun JSONArray?.toProducts() = objects().map {
         minStock = it.optInt("minStock"),
         rack = it.optString("rack"),
         warranty = it.optString("warranty", "No Warranty"),
-        notes = it.optString("notes")
+        notes = it.optString("notes"),
+        ram = it.optString("ram"), storage = it.optString("storage"), storageType = it.optString("storageType"),
+        processor = it.optString("processor"), generation = it.optString("generation"), graphics = it.optString("graphics"),
+        screenSize = it.optString("screenSize"), operatingSystem = it.optString("operatingSystem"),
+        batteryHealth = it.optString("batteryHealth"), serialNumber = it.optString("serialNumber")
     )
 }
 
@@ -313,6 +317,8 @@ private fun Product.toJson() = JSONObject()
     .put("salePrice", salePrice).put("purchasePrice", purchasePrice).put("stock", stock).put("category", category).put("sku", sku)
     .put("shopId", shopId).put("compatibleModels", compatibleModels).put("color", color).put("quality", quality)
     .put("wholesalePrice", wholesalePrice).put("minStock", minStock).put("rack", rack).put("warranty", warranty).put("notes", notes)
+    .put("ram", ram).put("storage", storage).put("storageType", storageType).put("processor", processor).put("generation", generation)
+    .put("graphics", graphics).put("screenSize", screenSize).put("operatingSystem", operatingSystem).put("batteryHealth", batteryHealth).put("serialNumber", serialNumber)
 
 private fun RepairJob.toJson() = JSONObject()
     .put("id", id).put("customer", customer).put("phone", phone).put("device", device).put("issue", issue)

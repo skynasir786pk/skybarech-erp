@@ -682,7 +682,17 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         rack: String,
         sku: String,
         warranty: String,
-        notes: String
+        notes: String,
+        ram: String = "",
+        storage: String = "",
+        storageType: String = "",
+        processor: String = "",
+        generation: String = "",
+        graphics: String = "",
+        screenSize: String = "",
+        operatingSystem: String = "",
+        batteryHealth: String = "",
+        serialNumber: String = ""
     ) {
         val purchaseValue = purchase.trim().replace(",", "").toIntOrNull()
         val saleValue = sale.trim().replace(",", "").toIntOrNull()
@@ -713,13 +723,29 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                     minStock = minStockValue,
                     rack = rack,
                     warranty = warranty,
-                    notes = notes
+                    notes = notes,
+                    ram = ram,
+                    storage = storage,
+                    storageType = storageType,
+                    processor = processor,
+                    generation = generation,
+                    graphics = graphics,
+                    screenSize = screenSize,
+                    operatingSystem = operatingSystem,
+                    batteryHealth = batteryHealth,
+                    serialNumber = serialNumber
                 )
                 products.add(0, product)
                 sync("products", product.id, product.toMap())
                 syncDashboardSummary()
-                showMessage("$name added to Mobile Accessories.")
-                navigate(AppScreen.MOBILE_ACCESSORIES)
+                val destination = when {
+                    category == "Laptop" -> AppScreen.LAPTOP
+                    category in setOf("Display / LCD", "Touch Panel", "Battery", "Charging Board", "Charging Strip", "Speaker / Ringer", "Mic", "Camera", "Back Camera", "Front Camera", "Fingerprint", "Power Button Flex", "Volume Button Flex", "SIM Jacket", "Back Cover", "Frame / Body", "Panel", "IC / Board Part", "Connector", "Repair Part", "Other Part") -> AppScreen.MOBILE_SPARE_PARTS
+                    category in setOf("Cover", "Glass / Protector", "Charger", "Cable", "Handsfree", "Earbuds", "Power Bank", "Mobile Holder", "Smart Watch", "Speaker", "OTG / Connector", "Memory Card", "Other", "Accessory") -> AppScreen.MOBILE_ACCESSORIES
+                    else -> AppScreen.INVENTORY
+                }
+                showMessage("$name saved in ${if (category == "Laptop") "Laptop" else category} stock.")
+                navigate(destination)
             }
         }
     }
@@ -1045,7 +1071,11 @@ private fun Product.toMap() = mapOf(
     "category" to category, "sku" to sku, "shopId" to shopId,
     "compatibleModels" to compatibleModels, "color" to color, "quality" to quality,
     "wholesalePrice" to wholesalePrice, "minStock" to minStock, "rack" to rack,
-    "warranty" to warranty, "notes" to notes
+    "warranty" to warranty, "notes" to notes,
+    "ram" to ram, "storage" to storage, "storageType" to storageType,
+    "processor" to processor, "generation" to generation, "graphics" to graphics,
+    "screenSize" to screenSize, "operatingSystem" to operatingSystem,
+    "batteryHealth" to batteryHealth, "serialNumber" to serialNumber
 )
 
 private fun RepairJob.toMap() = mapOf(
