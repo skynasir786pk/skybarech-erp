@@ -219,42 +219,22 @@ private fun AppTopBar(vm: AppViewModel, showMenu: Boolean, onMenuClick: () -> Un
 
 @Composable
 private fun BottomNavigation(vm: AppViewModel) {
-    val neon = BrandBlue
-    val bar = CardSurface
-    val left = listOf(
+    val items = listOf(
         NavItem(AppScreen.DASHBOARD, "Home", Icons.Outlined.Home),
-        NavItem(AppScreen.INVENTORY, "Inventory", Icons.Outlined.GridView)
-    )
-    val right = listOf(
+        NavItem(AppScreen.INVENTORY, "Stock", Icons.Outlined.GridView),
+        NavItem(AppScreen.POS, "POS", Icons.Outlined.PointOfSale),
         NavItem(AppScreen.STOCK_ALERTS, "Alerts", Icons.Outlined.Notifications),
         NavItem(AppScreen.SETTINGS, "Profile", Icons.Outlined.Person)
     )
-    Box(
-        modifier = Modifier.fillMaxWidth().height(82.dp).padding(horizontal = 8.dp),
-        contentAlignment = Alignment.BottomCenter
+    Surface(
+        modifier = Modifier.fillMaxWidth().height(76.dp).padding(horizontal = 9.dp, vertical = 6.dp).shadow(9.dp, RoundedCornerShape(25.dp)),
+        color = CardSurface,
+        shape = RoundedCornerShape(25.dp),
+        border = BorderStroke(1.dp, CardStroke)
     ) {
-        Surface(
-            modifier = Modifier.fillMaxWidth().height(66.dp).shadow(4.dp, RoundedCornerShape(24.dp)),
-            color = bar,
-            shape = RoundedCornerShape(30.dp)
-        ) {
-            Row(Modifier.fillMaxSize().padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                left.forEach { item -> BottomNavItem(item, vm.screen == item.screen, neon, Modifier.weight(1f)) { vm.navigateRoot(item.screen) } }
-                Spacer(Modifier.weight(0.9f))
-                right.forEach { item -> BottomNavItem(item, vm.screen == item.screen, neon, Modifier.weight(1f)) { vm.navigateRoot(item.screen) } }
-            }
-        }
-        Surface(
-            onClick = { vm.navigateRoot(AppScreen.POS) },
-            modifier = Modifier.align(Alignment.TopCenter).size(60.dp).shadow(5.dp, CircleShape),
-            shape = CircleShape,
-            color = bar,
-            border = BorderStroke(5.dp, Color(0xFFF4F6FA))
-        ) {
-            Box(contentAlignment = Alignment.Center) {
-                Box(Modifier.size(43.dp).clip(CircleShape).background(neon), contentAlignment = Alignment.Center) {
-                    Icon(Icons.Outlined.PointOfSale, contentDescription = tr("New Sale"), tint = MaterialTheme.colorScheme.onPrimary, modifier = Modifier.size(25.dp))
-                }
+        Row(Modifier.fillMaxSize().padding(horizontal = 5.dp), verticalAlignment = Alignment.CenterVertically) {
+            items.forEach { item ->
+                BottomNavItem(item, vm.screen == item.screen, BrandBlue, Modifier.weight(1f)) { vm.navigateRoot(item.screen) }
             }
         }
     }
@@ -263,12 +243,19 @@ private fun BottomNavigation(vm: AppViewModel) {
 @Composable
 private fun BottomNavItem(item: NavItem, selected: Boolean, neon: Color, modifier: Modifier = Modifier, onClick: () -> Unit) {
     val tint by animateColorAsState(if (selected) neon else MutedInk, label = "nav-tint")
-    val scale by animateFloatAsState(if (selected) 1.08f else 1f, label = "nav-scale")
-    Surface(onClick = onClick, modifier = modifier.fillMaxHeight().padding(vertical = 10.dp), color = if (selected) neon.copy(alpha = .16f) else Color.Transparent, shape = RoundedCornerShape(18.dp)) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-            Icon(item.icon, contentDescription = tr(item.label), tint = tint, modifier = Modifier.size(25.dp).graphicsLayer { scaleX = scale; scaleY = scale })
-            Spacer(Modifier.height(4.dp))
-            UiText(item.label, color = tint, fontSize = 11.sp, fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium, maxLines = 1)
+    val container by animateColorAsState(if (selected) BrandBlueSoft else Color.Transparent, label = "nav-container")
+    val scale by animateFloatAsState(if (selected) 1.10f else 1f, label = "nav-scale")
+    val lift by animateFloatAsState(if (selected) -6f else 0f, label = "nav-lift")
+    Surface(onClick = onClick, modifier = modifier.fillMaxHeight().padding(horizontal = 2.dp, vertical = 7.dp), color = container, shape = RoundedCornerShape(17.dp)) {
+        Column(modifier = Modifier.graphicsLayer { scaleX = scale; scaleY = scale; translationY = lift }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+            Box(contentAlignment = Alignment.Center) {
+                if (selected) Box(Modifier.size(34.dp).clip(CircleShape).background(neon.copy(alpha = .12f)))
+                Icon(item.icon, contentDescription = tr(item.label), tint = tint, modifier = Modifier.size(if (selected) 23.dp else 22.dp))
+            }
+            Spacer(Modifier.height(2.dp))
+            UiText(item.label, color = tint, fontSize = 9.sp, fontWeight = if (selected) FontWeight.ExtraBold else FontWeight.Medium, maxLines = 1)
+            Spacer(Modifier.height(2.dp))
+            Box(Modifier.width(if (selected) 15.dp else 4.dp).height(3.dp).clip(CircleShape).background(if (selected) neon else Color.Transparent))
         }
     }
 }

@@ -88,8 +88,13 @@ fun SplashScreen(vm: AppViewModel) {
     }
     AuroraBackdrop {
         Column(Modifier.align(Alignment.Center).padding(28.dp).graphicsLayer { alpha = .3f + progress * .7f; scaleX = .94f + progress * .06f; scaleY = scaleX }, horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(Modifier.size(142.dp).clip(RoundedCornerShape(48.dp)).background(Brush.radialGradient(listOf(Color.White, Color(0xFFD9F4FF), Color(0xFFBFE6FF).copy(alpha = .48f)))).shadow(24.dp, RoundedCornerShape(48.dp), ambientColor = Color(0xFF2B7FFF), spotColor = Color(0xFF2B7FFF)), contentAlignment = Alignment.Center) {
-                Box(Modifier.graphicsLayer { scaleX = logoPulse; scaleY = logoPulse; rotationZ = logoTurn }) { BrandMark(104.dp) }
+            Box(Modifier.size(184.dp), contentAlignment = Alignment.Center) {
+                Canvas(Modifier.fillMaxSize().graphicsLayer { rotationZ = logoTurn }) {
+                    drawCircle(Color(0xFF39BFF2).copy(alpha = .28f), radius = size.minDimension * .46f, style = androidx.compose.ui.graphics.drawscope.Stroke(2.5f))
+                    drawCircle(Color(0xFF6D5DF5).copy(alpha = .16f), radius = size.minDimension * .36f, style = androidx.compose.ui.graphics.drawscope.Stroke(5f))
+                    drawCircle(Color(0xFF1880EC).copy(alpha = .75f), radius = 5f, center = Offset(size.width * .93f, size.height * .5f))
+                }
+                Box(Modifier.size(132.dp).shadow(24.dp, RoundedCornerShape(44.dp), ambientColor = Color(0xFF2B7FFF), spotColor = Color(0xFF2B7FFF)).clip(RoundedCornerShape(44.dp)).background(Brush.radialGradient(listOf(Color.White, Color(0xFFE2F5FF), Color(0xFFCBE9FF)))).graphicsLayer { scaleX = logoPulse; scaleY = logoPulse }, contentAlignment = Alignment.Center) { BrandMark(96.dp) }
             }
             Spacer(Modifier.height(20.dp))
             UiText("SkyBarech ERP", color=Ink, fontSize=31.sp, fontWeight=FontWeight.ExtraBold)
@@ -103,6 +108,44 @@ fun SplashScreen(vm: AppViewModel) {
             UiText("Opening your workspace…", color=MutedInk, fontSize=12.sp)
             Spacer(Modifier.height(24.dp))
             UiText("Version ${com.skybarech.mobileshoperp.BuildConfig.VERSION_NAME}", color=MutedInk, fontSize=10.sp)
+        }
+    }
+}
+
+@Composable
+private fun AuthHero(
+    title: String,
+    subtitle: String,
+    badge: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector
+) {
+    Surface(
+        modifier = Modifier.fillMaxWidth().shadow(14.dp, RoundedCornerShape(28.dp)),
+        shape = RoundedCornerShape(28.dp),
+        color = Color.White,
+        border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFCDE8FF))
+    ) {
+        Box(Modifier.fillMaxWidth().height(174.dp).background(Brush.linearGradient(listOf(Color(0xFFF9FDFF), Color(0xFFE8F7FF), Color(0xFFF0EDFF))))) {
+            Canvas(Modifier.fillMaxSize()) {
+                drawCircle(Color(0xFF33C2F1).copy(alpha = .17f), radius = size.minDimension * .50f, center = Offset(size.width * .92f, size.height * .25f))
+                drawCircle(Color(0xFF725FF4).copy(alpha = .10f), radius = size.minDimension * .42f, center = Offset(size.width * .78f, size.height * 1.02f))
+            }
+            Row(Modifier.fillMaxWidth().padding(horizontal = 17.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
+                BrandMark(42.dp)
+                Spacer(Modifier.width(10.dp))
+                Column(Modifier.weight(1f)) {
+                    UiText("SkyBarech ERP", color = Ink, fontSize = 18.sp, fontWeight = FontWeight.ExtraBold)
+                    UiText(badge, color = BrandBlue, fontSize = 9.sp, fontWeight = FontWeight.ExtraBold)
+                }
+                Box(Modifier.size(48.dp).clip(RoundedCornerShape(16.dp)).background(Color.White).shadow(8.dp, RoundedCornerShape(16.dp)), contentAlignment = Alignment.Center) {
+                    Icon(icon, contentDescription = null, tint = BrandBlue, modifier = Modifier.size(26.dp))
+                }
+            }
+            Column(Modifier.align(Alignment.BottomStart).padding(start = 18.dp, end = 92.dp, bottom = 17.dp)) {
+                UiText(title, color = Ink, fontSize = 25.sp, fontWeight = FontWeight.ExtraBold)
+                UiText(subtitle, color = MutedInk, fontSize = 12.sp, lineHeight = 17.sp, maxLines = 2)
+            }
+            Icon(Icons.Outlined.Storefront, contentDescription = null, tint = BrandBlue.copy(alpha = .15f), modifier = Modifier.align(Alignment.BottomEnd).padding(15.dp).size(68.dp))
         }
     }
 }
@@ -282,19 +325,7 @@ fun ActivationScreen(vm: AppViewModel) {
             UiText("Activate Account", color = Ink, fontWeight = FontWeight.Bold, fontSize = 18.sp)
         }
         Spacer(Modifier.height(24.dp))
-        Surface(modifier = Modifier.fillMaxWidth().shadow(16.dp, RoundedCornerShape(28.dp)), shape = RoundedCornerShape(28.dp), color = Color(0xFFEAF7FF), border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFBEE8FF))) {
-            Box(Modifier.fillMaxWidth().background(Brush.linearGradient(listOf(Color(0xFFF8FDFF), Color(0xFFE5F6FF), Color(0xFFF0EDFF))))) {
-            Column(Modifier.fillMaxWidth().padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                Box(Modifier.fillMaxWidth().height(90.dp), contentAlignment = Alignment.Center) {
-                    Box(Modifier.size(70.dp).clip(RoundedCornerShape(24.dp)).background(Color.White).shadow(10.dp, RoundedCornerShape(24.dp), ambientColor = BrandBlue, spotColor = BrandBlue), contentAlignment = Alignment.Center) {
-                        Icon(Icons.Outlined.VerifiedUser, contentDescription = null, tint = BrandBlue, modifier = Modifier.size(38.dp))
-                    }
-                }
-                UiText("Activate your shop", color = Ink, fontWeight = FontWeight.ExtraBold, fontSize = 20.sp)
-                UiText("One secure shop. Android and Desktop together.", color = MutedInk, fontSize = 12.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(start = 24.dp, top = 5.dp, end = 24.dp, bottom = 20.dp))
-            }
-            }
-        }
+        AuthHero("Activate Your Shop", "Verify the shop once, then use it securely across Android and Desktop.", "VERIFIED SHOP SETUP", Icons.Outlined.VerifiedUser)
         Spacer(Modifier.height(18.dp))
         Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(24.dp), color = CardSurface, border = androidx.compose.foundation.BorderStroke(1.dp, CardStroke), shadowElevation = 4.dp) {
             Column(Modifier.padding(17.dp)) {
@@ -356,28 +387,13 @@ fun LoginScreen(vm: AppViewModel) {
     AppBackground {
     BoxWithConstraints(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().imePadding().padding(horizontal = 20.dp)) {
         // Keep the normal portrait login within the viewport; scrolling remains available for the keyboard and large fonts.
-        val roomy = maxHeight >= 720.dp
         Column(Modifier.align(Alignment.Center).graphicsLayer { alpha = reveal; translationY = (1f - reveal) * 16f }.widthIn(max = 420.dp).fillMaxWidth()
             .verticalScroll(rememberScrollState()).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(Modifier.fillMaxWidth().height(if (roomy) 164.dp else 128.dp).clip(RoundedCornerShape(25.dp)).background(Brush.linearGradient(listOf(Color(0xFFF9FDFF), Color(0xFFE6F7FF), Color(0xFFF0EDFF)))).shadow(11.dp, RoundedCornerShape(25.dp))) {
-                Box(Modifier.align(Alignment.BottomEnd).size(170.dp).graphicsLayer { alpha = .42f; rotationZ = -18f }.clip(RoundedCornerShape(56.dp)).background(Color(0xFFB9E8FF)))
-                Icon(Icons.Outlined.CloudSync, contentDescription = null, tint = BrandBlue.copy(alpha = .16f), modifier = Modifier.align(Alignment.BottomEnd).padding(12.dp).size(if (roomy) 84.dp else 64.dp))
-                Row(Modifier.fillMaxWidth().padding(horizontal = 17.dp, vertical = 15.dp), verticalAlignment = Alignment.Top) {
-                    BrandMark(46.dp)
-                    Spacer(Modifier.width(11.dp))
-                    Column(Modifier.weight(1f)) {
-                        UiText("SkyBarech ERP", color = Ink, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
-                        UiText("SECURE SHOP ACCESS", color = BrandBlue, fontSize = 9.sp, fontWeight = FontWeight.Bold)
-                    }
-                    LanguageSelector()
-                    IconButton(onClick = { connectionDetails = true; vm.checkConnection() }) { Icon(Icons.Outlined.HelpOutline, contentDescription = tr("Connection help"), tint = BrandBlue, modifier = Modifier.size(21.dp)) }
-                }
-                Column(Modifier.align(Alignment.BottomStart).padding(horizontal = 18.dp, vertical = 16.dp)) {
-                    UiText("Welcome back", color = Ink, fontSize = if (roomy) 27.sp else 22.sp, fontWeight = FontWeight.ExtraBold)
-                    UiText("Simple. Secure. Always with you.", color = MutedInk, fontSize = 12.sp)
-                }
+            AuthHero("Welcome Back", "Your products, sales and accounts are ready when you are.", "SECURE SHOP LOGIN", Icons.Outlined.CloudSync)
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
+                LanguageSelector()
+                IconButton(onClick = { connectionDetails = true; vm.checkConnection() }) { Icon(Icons.Outlined.HelpOutline, contentDescription = tr("Connection help"), tint = BrandBlue, modifier = Modifier.size(21.dp)) }
             }
-            Spacer(Modifier.height(12.dp))
             Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(26.dp), color = CardSurface,
                 border = androidx.compose.foundation.BorderStroke(1.dp, CardStroke), shadowElevation = 3.dp) {
                 Column(Modifier.padding(horizontal = 18.dp, vertical = 16.dp)) {

@@ -733,12 +733,14 @@
 
   function renderSplash() {
     document.documentElement.dataset.theme = 'light';
-    app.innerHTML = html`<main class="splash">
-      <div class="splash-content">
-        ${brandMarkup(true)}
-        <h1>SkyBarech <span>Desktop ERP</span></h1>
-        <p>Powering Your Shop. Growing Your Business.</p>
-        <div class="splash-ring" aria-label="Loading"></div>
+    app.innerHTML = html`<main class="splash splash-v3">
+      <div class="splash-v3-orbit" aria-hidden="true"></div>
+      <div class="splash-content splash-v3-content">
+        <div class="splash-v3-logo">${brandMarkup(true)}</div>
+        <h1>SkyBarech <span>ERP</span></h1>
+        <p>One shop. Every device. Always in sync.</p>
+        <div class="splash-v3-progress"><i></i></div>
+        <small>Preparing your secure workspace</small>
       </div>
     </main>`;
   }
@@ -747,36 +749,33 @@
     document.documentElement.dataset.theme = 'light';
     const mode = state.authMode;
     const authContent = mode === 'activate' ? activationView() : mode === 'password' ? passwordView() : loginView();
-    app.innerHTML = html`<main class="auth-layout">
-      <section class="auth-side">
-        <div class="auth-visual-grid" aria-hidden="true"></div>
-        <div class="auth-orb auth-orb-one" aria-hidden="true"></div>
-        <div class="auth-orb auth-orb-two" aria-hidden="true"></div>
+    app.innerHTML = html`<main class="auth-layout auth-v3">
+      <section class="auth-panel auth-v3-panel"><button class="language-switch auth-language" data-action="toggle-language" type="button" aria-label="Language">English / اردو</button>${authContent}</section>
+      <section class="auth-side auth-v3-showcase">
         <div class="auth-side-content">
           <div class="auth-brand">
             ${brandMarkup()}
-            <div class="brand-copy"><div class="brand-name">SkyBarech</div><div class="brand-sub">Desktop ERP · Secure workspace</div></div>
+            <div class="brand-copy"><div class="brand-name">SkyBarech ERP</div><div class="brand-sub">SMART RETAIL WORKSPACE</div></div>
           </div>
           <div class="auth-side-hero">
-            <div class="auth-eyebrow"><span></span> BUILT FOR MODERN RETAIL</div>
-            <h1>One secure login.<br><span style="color:#bbd2ff">Your whole shop.</span></h1>
-            <p>Sales, inventory, repairs and accounts stay connected across desktop and Android.</p>
+            <div class="auth-eyebrow"><span></span> SIMPLE · SECURE · CONNECTED</div>
+            <h1>Your complete shop,<br><span>beautifully connected.</span></h1>
+            <p>Manage billing, stock, repairs and accounts from one clear workspace across Windows and Android.</p>
             <div class="auth-device-scene" aria-hidden="true">
               <div class="auth-cloud">${icon('cloud')}<span>${icon('lock')}</span></div>
-              <div class="auth-shop"><div class="auth-shop-awning"></div><strong>YOUR SHOP</strong><div class="auth-shop-window"></div></div>
+              <div class="auth-shop"><div class="auth-shop-awning"></div><strong>${esc(shopDisplayName())}</strong><div class="auth-shop-window"></div></div>
               <div class="auth-laptop">${icon('laptop')}</div><div class="auth-phone">${icon('phone')}</div>
-              <div class="auth-device-caption">One shop. Every device.</div>
+              <div class="auth-device-caption">LIVE BUSINESS CONNECTION</div>
             </div>
           </div>
           <div class="auth-benefits">
-            <div class="auth-benefit"><span class="icon-shell">${icon('shield')}</span><span><strong>Shop isolated</strong><br>Every account stays separate</span></div>
-            <div class="auth-benefit"><span class="icon-shell">${icon('cloud')}</span><span><strong>Always connected</strong><br>Desktop and Android sync</span></div>
-            <div class="auth-benefit"><span class="icon-shell">${icon('chart')}</span><span><strong>Business ready</strong><br>Clear daily performance</span></div>
+            <div class="auth-benefit"><span class="icon-shell">${icon('shield')}</span><span><strong>Secure</strong><br>Protected shop access</span></div>
+            <div class="auth-benefit"><span class="icon-shell">${icon('cloud')}</span><span><strong>Cloud ready</strong><br>Desktop + Android</span></div>
+            <div class="auth-benefit"><span class="icon-shell">${icon('chart')}</span><span><strong>Built to grow</strong><br>Clear business control</span></div>
           </div>
-          <div class="auth-side-foot">Cloud Ready • Secure Login</div>
+          <div class="auth-side-foot">SkyBarech ERP · Business without limits</div>
         </div>
       </section>
-      <section class="auth-panel"><button class="language-switch auth-language" data-action="toggle-language" type="button" aria-label="Language">English / اردو</button>${authContent}</section>
     </main>`;
   }
 
@@ -802,7 +801,7 @@
 
   function loginView() {
     
-    return html`<form class="auth-card" data-form="login" novalidate>
+    return html`<form class="auth-card auth-card-v3" data-form="login" novalidate>
       <div class="auth-card-brand">${brandMarkup()}<div><strong>SkyBarech ERP</strong><span>Connected retail workspace</span></div><em><i></i> SECURE LOGIN</em></div>
       <div class="auth-shop-banner">${icon('supplier')}<div><span>SHOP WORKSPACE</span><strong>${esc(shopDisplayName())}</strong></div><b>${icon('shield')} Verified</b></div>
       <div class="auth-card-head">
@@ -823,7 +822,8 @@
   }
 
   function activationView() {
-    return html`<form class="auth-card auth-activation-card" data-form="activate" novalidate>
+    return html`<form class="auth-card auth-card-v3 auth-activation-card" data-form="activate" novalidate>
+      <div class="auth-card-brand">${brandMarkup()}<div><strong>SkyBarech ERP</strong><span>New shop registration</span></div><em><i></i> VERIFIED SETUP</em></div>
       <div class="auth-card-head">
         <div class="micro">${icon('shield')} FIRST TIME SETUP</div>
         <h2>Activate your shop</h2>
@@ -833,10 +833,9 @@
         <div class="field"><label>Shop Name <span style="color:var(--muted);font-weight:500">(optional)</span></label><div class="input-wrap">${icon('phone')}<input class="input" name="shopName" placeholder="e.g. Ali Mobile Accessories"></div></div>
         <div class="field"><label>Activation Code <span class="required">*</span></label><div class="input-wrap activation-code-input">${icon('shield')}<input class="input" name="code" placeholder="e.g. SB-2026-ACTIVE" required></div><small class="field-hint">Use the code supplied by Super Admin.</small></div>
         <div class="field"><label>Owner Mobile <span class="required">*</span></label><div class="input-wrap">${icon('user')}<input class="input" name="mobile" placeholder="03XX-XXXXXXX" required></div></div>
-        <div class="field"><label>Temporary PIN <span class="required">*</span></label><div class="input-wrap">${icon('lock')}<input class="input" type="password" name="password" placeholder="Enter temporary PIN" inputmode="numeric" minlength="4" maxlength="4" pattern="[0-9]{4}" required><button type="button" class="right-action" data-action="toggle-password">${icon('eye')}</button></div></div>
-        <div class="field"><label>Shop Logo <span style="color:var(--muted);font-weight:500">(optional)</span></label><button class="upload-slot" type="button" data-action="upload-local">${icon('upload')} Upload logo PNG / JPG (Max 2MB)</button></div>
+        ${pinCodeField('password','Temporary 4-digit PIN',4,'one-time-code')}
         <button class="btn btn-primary full" type="button" data-action="activate-shop-now">Activate Account ${icon('arrowRight')}</button><div class="activation-error-box" data-activation-error hidden></div>
-        <div class="auth-link-note"><strong>Direct activation code</strong><span>JSON import is optional. Enter the shop name to create a local profile.</span></div>
+        <div class="auth-link-note"><strong>Secure activation</strong><span>Your verified shop opens with separate products, sales and accounts.</span></div>
         <div class="auth-bottom"><button type="button" class="btn btn-secondary" style="flex:1" data-action="import-activation-file">${icon('upload')} Import Link File</button><button type="button" class="btn btn-secondary" style="flex:1" data-action="paste-skylink">Paste SkyLink</button></div>
       </div>
       <div class="auth-bottom"><button type="button" class="btn btn-secondary" style="flex:1" data-action="open-auth" data-mode="login">${icon('arrowLeft')} Back to Login</button><button type="button" class="btn btn-secondary" style="flex:1" data-action="support-auth">${icon('help')} Support</button></div>
