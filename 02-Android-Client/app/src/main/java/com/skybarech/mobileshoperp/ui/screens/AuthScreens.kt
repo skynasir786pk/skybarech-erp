@@ -119,70 +119,51 @@ fun OnboardingScreen(vm: AppViewModel) {
         listOf("Verified cloud", "Safe offline work"),
         listOf("Shop profile", "Stock, then first sale")
     )
-    Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color(0xFFF8FBFF), Color(0xFFEAF5FF), Color(0xFFF7FAFF))))) {
-        Box(Modifier.size(260.dp).align(Alignment.TopEnd).offset(x = 116.dp, y = (-110).dp).clip(RoundedCornerShape(160.dp)).background(Color(0x5578B8FF)))
-        Box(Modifier.size(190.dp).align(Alignment.BottomStart).offset(x = (-100).dp, y = 30.dp).clip(RoundedCornerShape(120.dp)).background(Color(0x335F78FF)))
+    Box(Modifier.fillMaxSize()) {
+        Image(painterResource(R.drawable.onboarding_liquid_store), contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+        Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color(0xFF031A4B).copy(alpha = .10f), Color(0xFF001C55).copy(alpha = .48f), Color(0xFF001333).copy(alpha = .15f)))))
         Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 14.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                BrandMark(42.dp, light = false)
+                BrandMark(42.dp, light = true)
                 Spacer(Modifier.width(10.dp))
                 Column(Modifier.weight(1f)) {
-                    UiText("SkyBarech ERP", color = Color(0xFF102858), fontWeight = FontWeight.ExtraBold, fontSize = 18.sp)
-                    UiText("YOUR SHOP, READY TO GROW", color = Color(0xFF6680A7), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                    UiText("SkyBarech ERP", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 18.sp)
+                    UiText("YOUR SHOP, READY TO GROW", color = Color(0xFFC8E7FF), fontSize = 9.sp, fontWeight = FontWeight.Bold)
                 }
             }
-            Spacer(Modifier.height(16.dp))
-            Box(Modifier.fillMaxWidth().height(224.dp).shadow(18.dp, RoundedCornerShape(30.dp)).clip(RoundedCornerShape(30.dp))) {
-                LiquidCartoonIllustration(step, floatScale, floatY, Modifier.matchParentSize())
-                Surface(Modifier.align(Alignment.Center).offset(y = floatY.dp).graphicsLayer { scaleX = floatScale; scaleY = floatScale }, shape = RoundedCornerShape(28.dp), color = Color.White.copy(alpha = .94f), shadowElevation = 12.dp) {
-                    Box(Modifier.size(96.dp), contentAlignment = Alignment.Center) {
-                        Crossfade(targetState = step, animationSpec = tween(300), label = "setup illustration") { page -> Icon(icons[page], null, tint = Color(0xFF1769DC), modifier = Modifier.size(48.dp)) }
-                        Icon(Icons.Outlined.AutoAwesome, null, tint = Color(0xFF08B98A), modifier = Modifier.align(Alignment.BottomEnd).padding(8.dp).size(18.dp))
-                    }
-                }
-                Surface(Modifier.align(Alignment.TopStart).padding(16.dp), shape = RoundedCornerShape(50), color = Color.White.copy(alpha = .18f), border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = .3f))) {
-                    Row(Modifier.padding(horizontal = 11.dp, vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Icon(Icons.Outlined.AutoAwesome, null, tint = Color.White, modifier = Modifier.size(14.dp)); Spacer(Modifier.width(6.dp))
-                        UiText("SIMPLE SETUP", color = Color.White, fontSize = 9.sp, fontWeight = FontWeight.Bold)
-                    }
-                }
-                Surface(Modifier.align(Alignment.BottomEnd).padding(16.dp), shape = RoundedCornerShape(50), color = Color(0xFF07368F).copy(alpha = .55f)) {
-                    UiText("${step + 1} / ${titles.size}", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp))
-                }
-            }
-            Spacer(Modifier.height(18.dp))
+            Spacer(Modifier.height(42.dp))
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                 titles.indices.forEach { index ->
-                    Box(Modifier.weight(1f).height(5.dp).clip(RoundedCornerShape(50)).background(if (index <= step) Color(0xFF1675EB) else Color(0xFFD5E3F6)))
+                    Box(Modifier.weight(1f).height(5.dp).clip(RoundedCornerShape(50)).background(if (index <= step) Color(0xFF67E5FF) else Color.White.copy(alpha = .30f)))
                 }
             }
-            Spacer(Modifier.height(15.dp))
-            SoftCard(Modifier.fillMaxWidth().shadow(12.dp, RoundedCornerShape(26.dp)), contentPadding = 20.dp) {
+            Spacer(Modifier.height(32.dp))
+            Box(Modifier.fillMaxWidth()) {
                 AnimatedContent(targetState = step, transitionSpec = {
                     (fadeIn(tween(280, delayMillis = 100)) + slideInHorizontally { if (targetState > initialState) it / 8 else -it / 8 }) togetherWith
                         (fadeOut(tween(140)) + slideOutHorizontally { if (targetState > initialState) -it / 10 else it / 10 })
                 }, label = "setup instruction transition") { page ->
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.Start) {
-                    UiText("STEP ${page + 1} OF ${titles.size}  ·  GET STARTED", color = Color(0xFF1675EB), fontSize = 10.sp, fontWeight = FontWeight.ExtraBold)
-                    Spacer(Modifier.height(7.dp))
-                    UiText(titles[page], color = Color(0xFF11264A), fontSize = 22.sp, fontWeight = FontWeight.ExtraBold)
+                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Icon(icons[page], null, tint = Color(0xFF83EDFF), modifier = Modifier.size(54.dp).graphicsLayer { scaleX = floatScale; scaleY = floatScale; translationY = floatY })
+                    Spacer(Modifier.height(16.dp))
+                    UiText("STEP ${page + 1} OF ${titles.size}  ·  GET STARTED", color = Color(0xFF92EAFF), fontSize = 10.sp, fontWeight = FontWeight.ExtraBold)
                     Spacer(Modifier.height(8.dp))
-                    UiText(bodies[page], color = Color(0xFF5B6F8E), fontSize = 14.sp, lineHeight = 21.sp)
+                    UiText(titles[page], color = Color.White, fontSize = 27.sp, fontWeight = FontWeight.ExtraBold, textAlign = TextAlign.Center)
+                    Spacer(Modifier.height(8.dp))
+                    UiText(bodies[page], color = Color(0xFFE3F4FF), fontSize = 14.sp, lineHeight = 21.sp, textAlign = TextAlign.Center)
                     Spacer(Modifier.height(15.dp))
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                         benefits[page].forEach { benefit ->
-                            Surface(Modifier.weight(1f), shape = RoundedCornerShape(13.dp), color = Color(0xFFF0F6FF), border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFDCEAFF))) {
-                                Row(Modifier.padding(horizontal = 9.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
                                     Icon(Icons.Outlined.CheckCircle, null, tint = Color(0xFF159B78), modifier = Modifier.size(16.dp))
                                     Spacer(Modifier.width(6.dp))
-                                    UiText(benefit, color = Color(0xFF345071), fontSize = 10.sp, fontWeight = FontWeight.SemiBold, maxLines = 2, lineHeight = 13.sp)
+                                    UiText(benefit, color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
                                 }
-                            }
                         }
                     }
                     if (page == 0) {
                         Spacer(Modifier.height(14.dp))
-                        UiText("Choose your language", color = Color(0xFF657A99), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        UiText("Choose your language", color = Color(0xFFD9F2FF), fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         Spacer(Modifier.height(4.dp))
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             FilterChip(selected = UiLanguage.code == "en", onClick = { UiLanguage.set(context, "en") }, label = { UiText("English") })
