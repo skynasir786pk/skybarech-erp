@@ -513,3 +513,5 @@ button:disabled { opacity: .6; cursor: wait; }
 @media(max-width:360px){.metric-grid{grid-template-columns:1fr}.topbar-actions .outline-button,.topbar-actions .primary-button{padding-inline:10px;font-size:12px}}
 
 .admin-view{background:var(--canvas)}.metric-card small{color:#08764e}.metric-card.danger small{color:#b52b39}.pipe-row i{min-width:0}
+.activation-date-note{align-self:end;min-height:46px;padding:10px 12px;border:1px solid #cfe1ff;border-radius:10px;background:#f2f7ff;color:#49617f;font-size:12px;line-height:1.45}
+input[data-expiry-date][readonly]{background:#f3f7fc;color:#31527d;cursor:not-allowed}

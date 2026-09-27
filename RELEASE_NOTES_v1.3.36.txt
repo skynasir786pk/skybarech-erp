@@ -1,0 +1,16 @@
+SkyBarech ERP v1.3.36
+
+- Renamed the dedicated stock areas to Mobile Accessories and Laptops.
+- Repair jobs now use brand and problem dropdowns, a manual/suggested model field, and an always-available thermal receipt.
+- Mobile-purchase IMEIs are visible and searchable in POS, carried into invoices, and removed from available stock when sold.
+- Walk-in Customer is always available in POS and direct mobile purchases.
+- Reports support Daily, Weekly, Monthly and Yearly periods with 80mm thermal summaries for sales, stock, expenses and repairs.
+- New invoice numbers and printed invoices are shorter; thermal receipts show saved IMEIs.
+- Super Admin supports monthly, yearly, lifetime and custom activation durations with automatic expiry dates.
+- Uploaded shop logos use a fixed contained layout in the sidebar and a larger automatic size on thermal receipts.
+
+Validation
+- Desktop JavaScript syntax checks passed.
+- Super Admin JavaScript syntax checks passed.
+- Desktop PIN, shop-switch and Android-sale sync regression tests passed.
+- Windows NSIS installer build completed successfully.

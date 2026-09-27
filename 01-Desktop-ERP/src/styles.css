@@ -1412,3 +1412,19 @@ html[lang=ur] .brand-name,html[lang=ur] .auth-card-brand strong{font-family:Aria
 @keyframes splash-v3-progress { from { transform:translateX(-110%); } to { transform:translateX(245%); } } @keyframes splash-v3-logo { to { transform:translateY(-8px) scale(1.035); } } @keyframes splash-v3-breathe { to { transform:scale(1.055); opacity:.72; } }
 @media(max-width:1000px) { .auth-v3 { grid-template-columns:minmax(390px,46fr) minmax(450px,54fr); }.auth-v3 .auth-v3-showcase { padding-inline:30px; }.auth-v3 .auth-benefits { grid-template-columns:1fr; }.auth-v3 .auth-benefit { padding:7px 9px; }.auth-v3 .auth-side-hero h1 { font-size:39px; } }
 @media(max-width:760px) { .auth-v3 { display:block; min-height:100dvh; }.auth-v3 .auth-v3-showcase { display:none; }.auth-v3 .auth-v3-panel { min-height:100dvh; padding:66px 14px 22px; }.auth-v3 .auth-card-v3 { max-height:none; padding:22px 18px; border-radius:24px; }.auth-v3 .auth-language { top:13px; right:14px; } }
+
+/* v1.3.36 final overrides: preserve uploaded logos and improve compact thermal output. */
+.avatar.shop-avatar,.avatar.shop-avatar.brand-logo { background:#fff !important; overflow:hidden; }
+.avatar.shop-avatar img,.avatar.shop-avatar.brand-logo img { width:100% !important; height:100% !important; padding:3px; object-fit:contain !important; object-position:center !important; }
+.pos-imei,.cart-imei { display:block; margin-top:3px; color:var(--blue); font-size:10px; line-height:1.25; overflow-wrap:anywhere; }
+.report-print-panel { margin:16px 0; }
+.report-print-actions { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.invoice-item-compact>span { display:grid; gap:1px; }
+.invoice-item-compact small { color:#315a81; font-size:6.8px; line-height:1.1; overflow-wrap:anywhere; }
+.invoice-paper .receipt-logo { width:42px !important; height:42px !important; margin:0 auto 4px !important; }
+.invoice-paper .receipt-logo img { width:100% !important; height:100% !important; max-width:42px !important; max-height:42px !important; object-fit:contain !important; }
+@media(max-width:800px) { .report-print-actions { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media print {
+  .invoice-paper .receipt-logo { width:10mm !important; height:10mm !important; margin-bottom:1mm !important; }
+  .invoice-paper .receipt-logo img { max-width:10mm !important; max-height:10mm !important; }
+}

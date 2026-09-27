@@ -363,7 +363,7 @@
     const name = cleanText(value).replace(/\s+/g, ' ');
     return name.length > limit ? `${name.slice(0, Math.max(1, limit - 1)).trim()}…` : name;
   }
-  function compactInvoiceItems(items = [], maxItems = 8) {
+  function compactInvoiceItems(items = [], maxItems = 5) {
     const rows = Array.isArray(items) ? items : [];
     return { visible: rows.slice(0, maxItems), hidden: Math.max(0, rows.length - maxItems) };
   }
@@ -863,7 +863,7 @@
 
   const navGroups = [
     { label: 'Workspace', items: [
-      ['dashboard', 'Dashboard', 'dashboard'], ['pos', 'POS Billing', 'pos'], ['inventory', 'Inventory', 'box'], ['accessories', 'Mobile Accessories', 'phone'], ['spareParts', 'Spare Parts', 'wrench'], ['laptops', 'Laptop', 'laptop']
+      ['dashboard', 'Dashboard', 'dashboard'], ['pos', 'POS Billing', 'pos'], ['inventory', 'Inventory', 'box'], ['accessories', 'Mobile Accessories', 'phone'], ['spareParts', 'Spare Parts', 'wrench'], ['laptops', 'Laptops', 'laptop']
     ] },
     { label: 'Operations', items: [
       ['purchase', 'Mobile Purchase', 'purchase'], ['sale', 'Mobile Sale', 'sale'], ['repairs', 'Repair Jobs', 'wrench'], ['customers', 'Customers', 'users'], ['suppliers', 'Suppliers', 'supplier']
@@ -879,7 +879,7 @@
     inventory: ['Inventory', 'Manage products, stock, prices and barcodes'],
     accessories: ['Mobile Accessories', 'Separate accessory stock, prices, barcodes and quick actions'],
     spareParts: ['Mobile Spare Parts', 'Repair parts stock, rack, supplier cost, sale price and low stock alerts'],
-    laptops: ['Laptop', 'Separate laptop stock, specs, prices and quick actions'],
+    laptops: ['Laptops', 'Laptop stock, specifications, prices and quick actions'],
     purchase: ['Mobile Purchase', 'Record stock purchases with complete device details'],
     sale: ['Mobile Sale', 'Create an invoice for direct sales or installments'],
     repairs: ['Repair Jobs', 'Track repair workflow, technician and delivery status'],
@@ -1072,16 +1072,18 @@
           <div class="cart-items">${cart.length ? cart.map(cartRow).join('') : html`<div class="empty">${icon('pos','icon-xl')}<strong>Cart is empty</strong><span>Choose products from the search panel.</span></div>`}</div>
           <div class="cart-summary"><div class="summary-row"><span>Subtotal</span><strong>${money(subtotal)}</strong></div><div class="summary-row"><span>Discount</span><strong style="color:var(--success)">- ${money(discount)}</strong></div><div class="summary-row"><span>Tax (optional)</span><strong>${money(0)}</strong></div><div class="summary-row total"><span>Total Payable</span><strong>${money(total)}</strong></div></div>
         </section>
-        <section class="card card-pad"><div class="section-title"><div><h3>Payment Details</h3><p>Select payment method</p></div></div><div class="payment-methods">${['Cash','EasyPaisa In','EasyPaisa Out','JazzCash In','JazzCash Out','Bank Transfer','Credit Card','Installment'].map(method => html`<button class="method-btn ${state.posPayment === method ? 'active' : ''}" data-action="set-pos-payment" data-method="${method}">${icon(method === 'Cash' ? 'money' : method === 'Installment' ? 'calendar' : method === 'EasyPaisa' ? 'wallet' : 'receipt')}<span>${t(method)}</span></button>`).join('')}</div><div class="field" style="margin-top:16px"><label>Customer <span style="color:var(--muted);font-weight:500">(optional)</span></label><select class="select" id="pos-customer"><option>Walk-in Customer</option>${state.customers.map(c => html`<option>${esc(c.name)}</option>`).join('')}</select></div><div class="field" style="margin-top:12px"><label>Paid Amount</label><input class="input" id="paid-amount" type="number" value="${total}" min="0"></div><button class="btn btn-primary full" style="margin-top:16px" data-action="pos-pay" ${cart.length ? '' : 'disabled'}>Collect Payment ${icon('arrowRight')}</button></section>
+        <section class="card card-pad"><div class="section-title"><div><h3>Payment Details</h3><p>Select payment method</p></div></div><div class="payment-methods">${['Cash','EasyPaisa In','EasyPaisa Out','JazzCash In','JazzCash Out','Bank Transfer','Credit Card','Installment'].map(method => html`<button class="method-btn ${state.posPayment === method ? 'active' : ''}" data-action="set-pos-payment" data-method="${method}">${icon(method === 'Cash' ? 'money' : method === 'Installment' ? 'calendar' : method === 'EasyPaisa' ? 'wallet' : 'receipt')}<span>${t(method)}</span></button>`).join('')}</div><div class="field" style="margin-top:16px"><label>Customer <span style="color:var(--muted);font-weight:500">(optional)</span></label><select class="select" id="pos-customer"><option value="Walk-in Customer">Walk-in Customer</option>${state.customers.filter(c => c.name !== 'Walk-in Customer').map(c => html`<option value="${esc(c.name)}">${esc(c.name)}</option>`).join('')}</select><small class="field-hint">Walk-in Customer is always available for quick billing.</small></div><div class="field" style="margin-top:12px"><label>Paid Amount</label><input class="input" id="paid-amount" type="number" value="${total}" min="0"></div><button class="btn btn-primary full" style="margin-top:16px" data-action="pos-pay" ${cart.length ? '' : 'disabled'}>Collect Payment ${icon('arrowRight')}</button></section>
       </div>`;
   }
 
   function posProduct(p) {
-    return html`<div class="pos-product">${productThumb(p)}<div class="pos-product-info"><strong>${esc(p.name)}</strong><span>${esc(p.ram)}/${esc(p.storage)} · Stock: ${p.stock}</span><div class="pos-product-price">${money(p.price)}</div></div><button class="btn btn-primary btn-small" data-action="add-cart" data-id="${p.id}">${icon('plus')} Add</button></div>`;
+    const imeis = Array.isArray(p.imeis) ? p.imeis.filter(Boolean) : [p.imei1, p.imei2].filter(Boolean);
+    return html`<div class="pos-product">${productThumb(p)}<div class="pos-product-info"><strong>${esc(p.name)}</strong><span>${esc(p.ram)}/${esc(p.storage)} · Stock: ${p.stock}</span>${imeis.length ? html`<span class="pos-imei">IMEI: ${esc(imeis.slice(0, 2).join(' · '))}${imeis.length > 2 ? ` +${imeis.length - 2}` : ''}</span>` : ''}<div class="pos-product-price">${money(p.price)}</div></div><button class="btn btn-primary btn-small" data-action="add-cart" data-id="${p.id}">${icon('plus')} Add</button></div>`;
   }
 
   function cartRow(item) {
-    return html`<div class="cart-row"><div><strong>${esc(item.name)}</strong><span>${money(item.price)} each</span></div><div class="qty-control"><button data-action="cart-qty" data-id="${item.id}" data-delta="-1">−</button><span>${item.qty}</span><button data-action="cart-qty" data-id="${item.id}" data-delta="1">+</button></div><strong class="amount">${money(item.price * item.qty)}</strong><button class="icon-action" data-action="cart-remove" data-id="${item.id}" title="Remove">${icon('trash')}</button></div>`;
+    const imeis = (Array.isArray(item.imeis) ? item.imeis : [item.imei1, item.imei2]).filter(Boolean).slice(0, item.qty);
+    return html`<div class="cart-row"><div><strong>${esc(item.name)}</strong><span>${money(item.price)} each</span>${imeis.length ? html`<span class="cart-imei">IMEI: ${esc(imeis.join(', '))}</span>` : ''}</div><div class="qty-control"><button data-action="cart-qty" data-id="${item.id}" data-delta="-1">−</button><span>${item.qty}</span><button data-action="cart-qty" data-id="${item.id}" data-delta="1">+</button></div><strong class="amount">${money(item.price * item.qty)}</strong><button class="icon-action" data-action="cart-remove" data-id="${item.id}" title="Remove">${icon('trash')}</button></div>`;
   }
 
   function renderInventory() {
@@ -1125,7 +1127,7 @@
     const low = accessories.filter(p => Number(p.stock || 0) <= 7).length;
     return html`${renderPageHead(html`<button class="btn btn-secondary" data-action="navigate" data-page="inventory">${icon('box')} Mobile Inventory</button><button class="btn btn-primary" data-action="add-accessory-modal">${icon('plus')} Add Accessory</button>`)}
       <section class="laptop-hero">
-        <div><span class="client-pill">ACCESSORY STOCK DESK</span><h2>Separate mobile accessories tab.</h2><p>Manage chargers, handsfree, tempered glass, covers, cables and AirPods cases separately from mobile inventory.</p></div>
+        <div><span class="client-pill">ACCESSORY STOCK</span><h2>Mobile Accessories</h2><p>Manage chargers, handsfree, tempered glass, covers, cables and AirPods cases.</p></div>
         <div class="laptop-hero-icon">${icon('phone','icon-xl')}</div>
       </section>
       <div class="metric-grid laptop-metrics">
@@ -1187,7 +1189,7 @@
     const low = laptops.filter(p => Number(p.stock || 0) <= 7).length;
     return html`${renderPageHead(html`<button class="btn btn-secondary" data-action="navigate" data-page="inventory">${icon('box')} All Inventory</button><button class="btn btn-primary" data-action="add-laptop-modal">${icon('plus')} Add Laptop</button>`)}
       <section class="laptop-hero">
-        <div><span class="client-pill">LAPTOP STOCK DESK</span><h2>Laptop stock for premium clients.</h2><p>Track HP, Dell, Lenovo, Apple, Asus and used/import laptops separately with specs, stock, cost, sale price and SKU.</p></div>
+        <div><span class="client-pill">LAPTOP STOCK</span><h2>Laptops</h2><p>Track HP, Dell, Lenovo, Apple, Asus and used/import laptops with specs, stock, cost, sale price and SKU.</p></div>
         <div class="laptop-hero-icon">${icon('laptop','icon-xl')}</div>
       </section>
       <div class="metric-grid laptop-metrics">
@@ -1214,7 +1216,7 @@
       <form class="card form-panel" data-form="purchase" novalidate>
         <div class="form-section"><h3>Device Details</h3><div class="form-grid three"><div class="field"><label>Brand <span class="required">*</span></label><select class="select" name="brand" data-mobile-brand required><option value="">Select brand</option>${purchaseBrands.map(b => html`<option>${b}</option>`).join('')}</select></div><div class="field"><label>Model <span class="required">*</span></label><div class="model-sync-box" data-model-sync-box><div class="model-sync-head"><span>Saved/online-safe models</span><button class="mini-btn" type="button" data-action="sync-mobile-models">${icon('cloud')} Sync</button></div><input class="input" name="model" list="purchase-model-list" data-mobile-model-input placeholder="Select/type model" required><datalist id="purchase-model-list" data-mobile-model-list></datalist><small class="muted">Type the model manually if it is not listed.</small></div></div><div class="field"><label>Category</label><select class="select" name="category"><option>Smartphone</option><option>Laptop</option><option>Tablet</option></select></div><div class="field"><label>RAM <span class="required">*</span></label><select class="select" name="ram" required><option>4GB</option><option selected>8GB</option><option>12GB</option><option>16GB</option></select></div><div class="field"><label>Storage <span class="required">*</span></label><select class="select" name="storage" required><option>64GB</option><option>128GB</option><option selected>256GB</option><option>512GB</option></select></div><div class="field"><label>Stock Quantity <span class="required">*</span></label><input class="input" name="stock" type="number" min="1" value="1" required><small class="muted">Stock quantity will match the IMEI count.</small></div></div></div>
         <div class="form-section"><h3>IMEI / Barcode Scan</h3><div class="imei-scan-panel" data-purchase-imei-panel><div class="field"><label>Scan or Manual IMEI</label><div class="input-wrap">${icon('scan')}<input class="input" data-purchase-imei-input placeholder="Scan with a barcode scanner or type the IMEI manually" inputmode="numeric"></div><small class="muted">Press Enter from the scanner to add IMEI automatically.</small></div><div class="imei-actions"><button class="btn btn-secondary" type="button" data-action="purchase-scan-imei">${icon('barcode')} Scan Barcode</button><button class="btn btn-primary" type="button" data-action="purchase-add-imei">${icon('plus')} Add IMEI</button></div><input type="hidden" name="imeiList" data-purchase-imei-list-value><div class="imei-chip-list" data-purchase-imei-list><span class="empty-mini">No IMEI added yet.</span></div></div></div>
-        <div class="form-section"><h3>Purchase Details</h3><div class="form-grid three"><div class="field"><label>Supplier <span class="required">*</span></label><select class="select" name="supplier" required>${state.suppliers.map(s => html`<option>${esc(s.name)}</option>`).join('')}</select></div><div class="field"><label>Purchase Price <span class="required">*</span></label><input class="input" name="cost" type="number" min="0" placeholder="78000" required></div><div class="field"><label>Expected Sale Price <span class="required">*</span></label><input class="input" name="price" type="number" min="0" placeholder="92000" required></div><div class="field"><label>Barcode / SKU</label><input class="input" name="sku" placeholder="Auto generated if blank"></div><div class="field"><label>IMEI 1 / Serial</label><input class="input" name="imei1" placeholder="Auto filled from first IMEI"></div><div class="field"><label>IMEI 2</label><input class="input" name="imei2" placeholder="Auto filled from second IMEI"></div></div></div>
+        <div class="form-section"><h3>Purchase Details</h3><div class="form-grid three"><div class="field"><label>Purchase From <span class="required">*</span></label><select class="select" name="supplier" required><option value="Walk-in Customer">Walk-in Customer</option>${state.suppliers.filter(s => s.name !== 'Walk-in Customer').map(s => html`<option value="${esc(s.name)}">${esc(s.name)}</option>`).join('')}</select><small class="field-hint">Select Walk-in Customer for a direct device purchase.</small></div><div class="field"><label>Purchase Price <span class="required">*</span></label><input class="input" name="cost" type="number" min="0" placeholder="78000" required></div><div class="field"><label>Expected Sale Price <span class="required">*</span></label><input class="input" name="price" type="number" min="0" placeholder="92000" required></div><div class="field"><label>Barcode / SKU</label><input class="input" name="sku" placeholder="Auto generated if blank"></div><div class="field"><label>IMEI 1 / Serial</label><input class="input" name="imei1" placeholder="Auto filled from first IMEI"></div><div class="field"><label>IMEI 2</label><input class="input" name="imei2" placeholder="Auto filled from second IMEI"></div></div></div>
         <div class="form-section"><h3>Documents</h3><div class="form-grid three"><div class="field"><label>CNIC (Optional)</label><input class="input" name="cnic" placeholder="35202-1234567-1"></div>${documentUploadSlot('cnicFront', 'CNIC Front')}${documentUploadSlot('cnicBack', 'CNIC Back')}${documentUploadSlot('purchaseInvoice', 'Purchase Invoice')}</div></div>
         <div class="form-actions"><button class="btn btn-secondary" type="reset">Clear Form</button><button class="btn btn-primary" type="submit">Save Purchase ${icon('arrowRight')}</button></div>
       </form>`;
@@ -1237,8 +1239,7 @@
   }
 
   function repairRow(r) {
-    const canPrint = ['Ready', 'Job Done', 'Delivered'].includes(r.status);
-    return html`<article class="repair-row"><span class="repair-id">${esc(r.id)}</span><div><strong>${esc(r.customer)} · ${esc(r.device)}</strong><p>${esc(r.issue)} · ${prettyDate(r.date)} · ${esc(r.technician)}</p></div>${badge(r.status)}<div class="repair-actions"><span class="amount">${money(r.cost)}</span>${canPrint ? html`<button class="icon-action" data-action="repair-receipt" data-id="${r.id}" title="Print job receipt">${icon('printer')}</button>` : ''}<button class="icon-action" data-action="repair-details" data-id="${r.id}" title="Open repair">${icon('chevronRight')}</button></div></article>`;
+    return html`<article class="repair-row"><span class="repair-id">${esc(r.id)}</span><div><strong>${esc(r.customer)} · ${esc(r.device)}</strong><p>${esc(r.issue)} · ${prettyDate(r.date)} · ${esc(r.technician || 'Unassigned')}</p></div>${badge(r.status)}<div class="repair-actions"><span class="amount">${money(r.cost)}</span><button class="icon-action" data-action="repair-receipt" data-id="${r.id}" title="Print job receipt">${icon('printer')}</button><button class="icon-action" data-action="repair-details" data-id="${r.id}" title="Open repair">${icon('chevronRight')}</button></div></article>`;
   }
 
   function renderCustomers() {
@@ -1343,14 +1344,50 @@
   }
 
   function reportSales() {
-    const now = new Date(); const year = now.getFullYear(); const month = now.getMonth();
-    const start = state.reportRange === 'This Year' ? new Date(year, 0, 1) : state.reportRange === 'Last Month' ? new Date(year, month - 1, 1) : new Date(year, month, 1);
-    const end = state.reportRange === 'Last Month' ? new Date(year, month, 1) : new Date(year, month + 1, 1);
-    return state.invoices.filter(sale => { const date = new Date(sale.date || sale.time || ''); return date >= start && date < end; });
+    return state.invoices.filter(recordInReportRange);
+  }
+  function normalizedReportRange() {
+    return ({ 'This Month':'Monthly', 'Last Month':'Monthly', 'This Year':'Yearly' })[state.reportRange] || state.reportRange || 'Monthly';
+  }
+  function reportDateBounds() {
+    const now = new Date();
+    const end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    const range = normalizedReportRange();
+    const start = range === 'Daily' ? new Date(now.getFullYear(), now.getMonth(), now.getDate())
+      : range === 'Weekly' ? new Date(now.getFullYear(), now.getMonth(), now.getDate() - 6)
+      : range === 'Yearly' ? new Date(now.getFullYear(), 0, 1)
+      : new Date(now.getFullYear(), now.getMonth(), 1);
+    return { start, end };
+  }
+  function recordInReportRange(record) {
+    const { start, end } = reportDateBounds();
+    const date = new Date(record?.date || record?.time || record?.createdAt || '');
+    return Number.isFinite(date.getTime()) && date >= start && date < end;
   }
   function renderReports() {
     const sales = reportSales();
-    return html`${renderPageHead(html`<select class="select" aria-label="Report period" data-report-range>${['This Month','Last Month','This Year'].map(range => html`<option value="${range}" ${state.reportRange === range ? 'selected' : ''}>${t(range)}</option>`).join('')}</select><button class="btn btn-secondary" data-action="download-report">${icon('download')} Export CSV</button>`)}<p class="audit-scope">Sales use the selected period. Other totals cover records currently on this device; sync before comparing devices. Legacy undated sales are excluded from period totals.</p><div class="report-grid">${reportCard('Period Sales', money(sales.reduce((t,s)=>t+Number(s.total||0),0)), 'wallet')}${reportCard('Period Invoices', n(sales.length), 'receipt')}${reportCard('Stock Units', n(state.products.reduce((t,p)=>t+Number(p.stock||0),0)), 'box')}${reportCard('Recorded Expenses', money((state.expenses||[]).reduce((t,e)=>t+Number(e.amount||0),0)), 'receipt')}</div><section class="card table-card"><div class="card-pad"><h3>Sales in selected period</h3></div><div class="table-wrap"><table><thead><tr><th>Invoice</th><th>Date</th><th>Customer</th><th>Total</th><th>Payment</th></tr></thead><tbody>${sales.map(sale => html`<tr><td>${esc(sale.id)}</td><td>${prettyDate(sale.date || sale.time)}</td><td>${esc(sale.customer)}</td><td>${money(sale.total)}</td><td>${esc(t(sale.payment))}</td></tr>`).join('') || htmlText('<tr><td colspan="5">No sales in this period.</td></tr>')}</tbody></table></div></section>`;
+    const expenses = (state.expenses || []).filter(recordInReportRange);
+    const repairs = (state.repairs || []).filter(recordInReportRange);
+    const period = normalizedReportRange();
+    return html`${renderPageHead(html`<select class="select" aria-label="Report period" data-report-range>${['Daily','Weekly','Monthly','Yearly'].map(range => html`<option value="${range}" ${period === range ? 'selected' : ''}>${t(range)}</option>`).join('')}</select><button class="btn btn-secondary" data-action="download-report">${icon('download')} Export CSV</button>`)}<p class="audit-scope">All report totals below use the selected ${esc(period.toLowerCase())} period. Sync before comparing devices.</p><div class="report-grid">${reportCard('Period Sales', money(sales.reduce((t,s)=>t+Number(s.total||0),0)), 'wallet')}${reportCard('Period Invoices', n(sales.length), 'receipt')}${reportCard('Stock Units', n(state.products.reduce((t,p)=>t+Number(p.stock||0),0)), 'box')}${reportCard('Period Expenses', money(expenses.reduce((t,e)=>t+Number(e.amount||0),0)), 'receipt')}</div><section class="card card-pad report-print-panel"><div class="section-title"><div><h3>Thermal Reports</h3><p>Print a compact 80mm summary for every report.</p></div></div><div class="report-print-actions"><button class="btn btn-secondary" data-action="print-report-summary" data-report="sales">${icon('printer')} Sales</button><button class="btn btn-secondary" data-action="print-report-summary" data-report="stock">${icon('printer')} Stock</button><button class="btn btn-secondary" data-action="print-report-summary" data-report="expenses">${icon('printer')} Expenses</button><button class="btn btn-secondary" data-action="print-report-summary" data-report="repairs">${icon('printer')} Repairs</button></div></section><section class="card table-card"><div class="card-pad"><h3>Sales in selected period</h3></div><div class="table-wrap"><table><thead><tr><th>Invoice</th><th>Date</th><th>Customer</th><th>Total</th><th>Payment</th><th>Thermal</th></tr></thead><tbody>${sales.map(sale => html`<tr><td>${esc(sale.id)}</td><td>${prettyDate(sale.date || sale.time)}</td><td>${esc(sale.customer)}</td><td>${money(sale.total)}</td><td>${esc(t(sale.payment))}</td><td><button class="icon-action" data-action="invoice-preview" data-id="${esc(sale.id)}" title="Thermal invoice">${icon('printer')}</button></td></tr>`).join('') || htmlText('<tr><td colspan="6">No sales in this period.</td></tr>')}</tbody></table></div></section>`;
+  }
+
+  function reportReceiptModal(type) {
+    const period = normalizedReportRange();
+    const sales = reportSales();
+    const expenses = (state.expenses || []).filter(recordInReportRange);
+    const repairs = (state.repairs || []).filter(recordInReportRange);
+    const stockUnits = state.products.reduce((sum, product) => sum + Number(product.stock || 0), 0);
+    const stockValue = state.products.reduce((sum, product) => sum + Number(product.stock || 0) * Number(product.cost || 0), 0);
+    const details = type === 'stock'
+      ? [['Products', state.products.length], ['Stock Units', stockUnits], ['Stock Cost Value', money(stockValue)], ['Low Stock', state.products.filter(product => Number(product.stock || 0) <= Number(product.minStock || 7)).length]]
+      : type === 'expenses'
+        ? [['Entries', expenses.length], ['Total Expenses', money(expenses.reduce((sum, row) => sum + Number(row.amount || 0), 0))], ['Period', period]]
+        : type === 'repairs'
+          ? [['Repair Jobs', repairs.length], ['Repair Value', money(repairs.reduce((sum, row) => sum + Number(row.cost || 0), 0))], ['Completed', repairs.filter(row => ['Job Done','Delivered'].includes(row.status)).length], ['Pending', repairs.filter(row => !['Job Done','Delivered'].includes(row.status)).length]]
+          : [['Invoices', sales.length], ['Gross Sales', money(sales.reduce((sum, row) => sum + Number(row.total || 0), 0))], ['Period', period]];
+    const title = `${type.charAt(0).toUpperCase()}${type.slice(1)} Report`;
+    openModal(`${title} (80mm)`, `${period} compact thermal summary.`, html`<div class="invoice-paper thermal-design report-receipt">${receiptHeader(title.toUpperCase(), period)}${details.map(([label,value]) => html`<div class="invoice-line"><span>${esc(label)}</span><b>${esc(value)}</b></div>`).join('')}<div class="invoice-divider"></div><div class="receipt-footer"><strong>Generated ${esc(prettyDate(today()))}</strong><span>SkyBarech ERP report summary</span></div></div><div class="form-actions"><button class="btn btn-secondary" data-action="print-report-receipt">${icon('printer')} Print (80mm)</button><button class="btn btn-primary" data-action="close-modal">Done</button></div>`);
   }
 
   function reportCard(label, value, iconName) {
@@ -1548,7 +1585,10 @@
 
   function repairModal(repair = null) {
     const r = repair || { customer:'', phone:'', device:'', issue:'', cost:'', technician:'', date:today(), status:'Pending' };
-    openModal(repair ? 'Repair Job Details' : 'Add Repair Job', repair ? 'Update the repair status, cost or technician assignment.' : 'Record a device repair with estimate and expected delivery.', html`<form data-form="repair" novalidate><input type="hidden" name="id" value="${esc(repair?.id || '')}"><div class="form-grid"><div class="field"><label>Customer Name <span class="required">*</span></label><input class="input" name="customer" value="${esc(r.customer)}" required></div><div class="field"><label>Mobile Number <span class="required">*</span></label><input class="input" name="phone" value="${esc(r.phone)}" required></div><div class="field"><label>Device / Model <span class="required">*</span></label><input class="input" name="device" value="${esc(r.device)}" required></div><div class="field"><label>Problem Type <span class="required">*</span></label><input class="input" name="issue" value="${esc(r.issue)}" required placeholder="e.g. Display Issue"></div><div class="field"><label>Estimated Cost <span class="required">*</span></label><input class="input" name="cost" type="number" min="0" value="${esc(r.cost)}" required></div><div class="field"><label>Technician</label><input class="input" name="technician" value="${esc(r.technician || '')}" placeholder="Technician name (optional)"></div><div class="field"><label>Expected Delivery</label><input class="input" name="date" type="date" value="${esc(r.date)}"></div><div class="field"><label>Status</label><select class="select" name="status">${['Pending','In Progress','Ready','Job Done','Delivered'].map(x=>html`<option ${x===r.status?'selected':''}>${x}</option>`).join('')}</select><small class="field-hint">Thermal receipt is available when the job is marked Done or Delivered.</small></div></div><div class="form-actions">${repair && ['Ready','Job Done','Delivered'].includes(r.status) ? html`<button class="btn btn-secondary" type="button" data-action="repair-receipt" data-id="${esc(r.id)}">${icon('printer')} Print Job Receipt</button>` : ''}<button class="btn btn-secondary" type="button" data-action="close-modal">Cancel</button><button class="btn btn-primary" type="submit">${t(repair ? 'Update Repair Job' : 'Save Repair Job')} ${icon('arrowRight')}</button></div></form>`);
+    const detectedBrand = r.brand || ACCESSORY_BRANDS.find(brand => String(r.device || '').toLowerCase().startsWith(brand.toLowerCase())) || 'Samsung';
+    const detectedModel = r.model || String(r.device || '').replace(new RegExp(`^${detectedBrand}\\s*`, 'i'), '');
+    const repairIssues = ['Display / LCD','Touch Panel','Battery','Charging Port','Charging Board','Speaker / Ringer','Microphone','Front Camera','Back Camera','Fingerprint','Power Button','Volume Button','Network / Signal','Water Damage','Software / Flashing','Back Panel / Body','Motherboard / IC','Other Problem'];
+    openModal(repair ? 'Repair Job Details' : 'Add Repair Job', repair ? 'Update the repair status, device, problem or technician assignment.' : 'Record a device repair with structured brand, model and problem details.', html`<form data-form="repair" novalidate><input type="hidden" name="id" value="${esc(repair?.id || '')}"><div class="form-grid"><div class="field"><label>Customer Name <span class="required">*</span></label><input class="input" name="customer" value="${esc(r.customer)}" required></div><div class="field"><label>Mobile Number <span class="required">*</span></label><input class="input" name="phone" value="${esc(r.phone)}" required></div><div class="field"><label>Brand <span class="required">*</span></label><select class="select" name="brand" data-mobile-brand required>${ACCESSORY_BRANDS.map(x=>html`<option ${x===detectedBrand?'selected':''}>${x}</option>`).join('')}</select></div><div class="field">${modelSyncBox(detectedBrand, detectedModel)}</div><div class="field"><label>Problem Type <span class="required">*</span></label><select class="select" name="issue" required>${repairIssues.map(x=>html`<option ${x===r.issue?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Estimated Cost <span class="required">*</span></label><input class="input" name="cost" type="number" min="0" value="${esc(r.cost)}" required></div><div class="field"><label>Technician</label><input class="input" name="technician" value="${esc(r.technician || '')}" placeholder="Technician name (optional)"></div><div class="field"><label>Expected Delivery</label><input class="input" name="date" type="date" value="${esc(r.date)}"></div><div class="field"><label>Status</label><select class="select" name="status">${['Pending','In Progress','Ready','Job Done','Delivered'].map(x=>html`<option ${x===r.status?'selected':''}>${x}</option>`).join('')}</select><small class="field-hint">Thermal job receipt is available at every repair stage.</small></div></div><div class="form-actions">${repair ? html`<button class="btn btn-secondary" type="button" data-action="repair-receipt" data-id="${esc(r.id)}">${icon('printer')} Print Job Receipt</button>` : ''}<button class="btn btn-secondary" type="button" data-action="close-modal">Cancel</button><button class="btn btn-primary" type="submit">${t(repair ? 'Update Repair Job' : 'Save Repair Job')} ${icon('arrowRight')}</button></div></form>`);
   }
 
   function installmentModal() {
@@ -1581,7 +1621,7 @@
   function invoiceModal(invoice) {
     if (!invoice) return;
     const items = compactInvoiceItems(invoice.items);
-    openModal('Thermal Invoice (80mm)', 'Compact premium customer receipt.', html`<div class="invoice-paper thermal-design">${receiptHeader('SALE INVOICE', 'Customer Copy')}<div class="receipt-meta receipt-meta-compact"><div><span>Invoice</span><b>${esc(invoice.id)}</b></div><div><span>Date</span><b>${prettyDate(invoice.date)}</b></div><div class="receipt-customer"><span>Customer</span><b>${esc(compactReceiptItemName(invoice.customer || 'Walk-in Customer', 25))}</b></div></div><div class="invoice-divider"></div><div class="invoice-items-head"><span>Item / Qty</span><span>Amount</span></div>${items.visible.map(i=>html`<div class="invoice-line"><span>${esc(compactReceiptItemName(i.name))} ×${i.qty}</span><b>${money(i.price * i.qty)}</b></div>`).join('')}${items.hidden ? html`<div class="receipt-more-items">+ ${items.hidden} more item${items.hidden === 1 ? '' : 's'} — see app invoice</div>` : ''}<div class="invoice-divider"></div><div class="invoice-line"><span>Payment</span><b>${esc(invoice.payment)}</b></div><div class="invoice-line invoice-total"><span>Total</span><b>${money(invoice.total)}</b></div><div class="invoice-divider"></div><div class="receipt-footer"><strong>Thank you for shopping with us</strong><span>Exchange / warranty according to shop policy.</span></div></div><div class="form-actions"><button class="btn btn-secondary" data-action="print-invoice">${icon('printer')} Print (80mm)</button><button class="btn btn-secondary" data-action="share-invoice">${icon('share')} Share</button><button class="btn btn-primary" data-action="close-modal">Done</button></div>`);
+    openModal('Thermal Invoice (80mm)', 'Compact premium customer receipt.', html`<div class="invoice-paper thermal-design">${receiptHeader('SALE INVOICE', 'Customer Copy')}<div class="receipt-meta receipt-meta-compact"><div><span>Invoice</span><b>${esc(invoice.id)}</b></div><div><span>Date</span><b>${prettyDate(invoice.date)}</b></div><div class="receipt-customer"><span>Customer</span><b>${esc(compactReceiptItemName(invoice.customer || 'Walk-in Customer', 25))}</b></div></div><div class="invoice-divider"></div><div class="invoice-items-head"><span>Item / Qty</span><span>Amount</span></div>${items.visible.map(i=>html`<div class="invoice-line invoice-item-compact"><span>${esc(compactReceiptItemName(i.name, 26))} ×${i.qty}${Array.isArray(i.imeis) && i.imeis.length ? html`<small>IMEI ${esc(i.imeis.join(', '))}</small>` : ''}</span><b>${money(i.price * i.qty)}</b></div>`).join('')}${items.hidden ? html`<div class="receipt-more-items">+ ${items.hidden} more item${items.hidden === 1 ? '' : 's'} — see app invoice</div>` : ''}<div class="invoice-divider"></div><div class="invoice-line"><span>Payment</span><b>${esc(invoice.payment)}</b></div><div class="invoice-line invoice-total"><span>Total</span><b>${money(invoice.total)}</b></div><div class="invoice-divider"></div><div class="receipt-footer"><strong>Thank you for shopping with us</strong><span>Exchange / warranty according to shop policy.</span></div></div><div class="form-actions"><button class="btn btn-secondary" data-action="print-invoice">${icon('printer')} Print (80mm)</button><button class="btn btn-secondary" data-action="share-invoice">${icon('share')} Share</button><button class="btn btn-primary" data-action="close-modal">Done</button></div>`);
   }
 
 
@@ -1988,9 +2028,18 @@
     if (!product) return notify('Choose a product', 'Select an available product before generating invoice.', 'error');
     const price = Number(d.salePrice || product.price), discount = Number(d.discount || 0);
     if (product.stock < 1) return notify('Out of stock', 'This product has no available stock.', 'error');
-    product.stock -= 1;
     const customerName = d.customer || 'Walk-in Customer';
-    const inv = { id:makeId('INV'), customer:customerName, total:Math.max(0,price-discount), payment:d.payment, date:today(), items:[{name:product.name,qty:1,price}] };
+    const enteredImei = String(d.imei || '').replace(/\D/g, '');
+    const availableImeis = (Array.isArray(product.imeis) ? product.imeis : [product.imei1, product.imei2]).filter(Boolean);
+    const soldImei = enteredImei || availableImeis[0] || '';
+    if (soldImei && availableImeis.length && !availableImeis.includes(soldImei)) return notify('IMEI not available', 'Choose an IMEI saved with this product.', 'error');
+    product.stock -= 1;
+    if (soldImei) {
+      product.imeis = availableImeis.filter(code => code !== soldImei);
+      product.imei1 = product.imeis[0] || '';
+      product.imei2 = product.imeis[1] || '';
+    }
+    const inv = { id:shortInvoiceId(), customer:customerName, total:Math.max(0,price-discount), payment:d.payment, date:today(), items:[{name:product.name,qty:1,price,imeis:soldImei ? [soldImei] : []}] };
     const customerRecord = state.customers.find(c => c.name === customerName);
     if (customerRecord && customerName !== 'Walk-in Customer') customerRecord.purchases = Number(customerRecord.purchases || 0) + 1;
     state.invoices.unshift(inv);
@@ -1999,8 +2048,8 @@
 
   function submitRepair(form) {
     const d = Object.fromEntries(new FormData(form));
-    if (!d.customer || !d.phone || !d.device || !d.issue || !d.cost) return notify('Required details missing', 'Complete the customer, device, issue and estimated cost.', 'error');
-    const job = { id:d.id || `RJ-${Date.now().toString().slice(-8)}`, customer:d.customer, phone:d.phone, device:d.device, issue:d.issue, cost:Number(d.cost), technician:d.technician, date:d.date || today(), status:d.status };
+    if (!d.customer || !d.phone || !d.brand || !d.model || !d.issue || !d.cost) return notify('Required details missing', 'Complete the customer, brand, model, issue and estimated cost.', 'error');
+    const job = { id:d.id || `RJ-${Date.now().toString().slice(-8)}`, customer:d.customer, phone:d.phone, brand:d.brand, model:d.model, device:`${d.brand} ${d.model}`.trim(), issue:d.issue, cost:Number(d.cost), technician:d.technician, date:d.date || today(), status:d.status };
     if (d.id) state.repairs = state.repairs.map(r=>r.id===d.id?job:r);
     else state.repairs.unshift(job);
     persist(); closeModal(); renderApp(); notify(d.id ? 'Repair updated' : 'Repair job created', `${job.id} is now ${job.status}.`);
@@ -2396,6 +2445,8 @@
       return openModal('Add User', 'Create a real Cloud staff login linked to one branch.', html`<form data-form="user"><div class="form-grid"><div class="field"><label>Full Name</label><input class="input" name="name" required></div><div class="field"><label>Role</label><select class="select" name="role"><option value="cashier">Cashier</option><option value="branch_manager">Branch Manager</option><option value="technician">Technician</option><option value="accountant">Accountant</option></select></div><div class="field"><label>Branch</label><select class="select" name="branchId" required><option value="">Select branch</option>${branches.map((branch) => html`<option value="${esc(branch.id)}">${esc(branch.name)}</option>`).join('')}</select></div><div class="field"><label>Mobile Number</label><input class="input" name="phone" required></div><div class="field"><label>Email (optional)</label><input class="input" name="email" type="email"></div><div class="field"><label>4-digit PIN</label><input class="input" name="password" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" required></div></div><div class="form-actions"><button class="btn btn-secondary" type="button" data-action="close-modal">Cancel</button><button class="btn btn-primary" type="submit">Add User</button></div></form>`);
     }
     if (action === 'download-report') return downloadReport();
+    if (action === 'print-report-summary') return reportReceiptModal(target.dataset.report || 'sales');
+    if (action === 'print-report-receipt') { window.print(); notify('Print window opened', `${normalizedReportRange()} report is ready for an 80mm thermal printer.`); return; }
     if (action === 'open-report') return openReport(target.dataset.report);
     if (action === 'view-all-sales') { state.activePage = 'pos'; renderApp(); return; }
     if (action === 'view-all-requests') return notify('Support history', 'All saved requests are shown on this page.');
@@ -2442,7 +2493,7 @@
     if (event.target.matches('[data-pos-search]')) {
       const term = event.target.value.toLowerCase();
       const list = document.getElementById('pos-product-list');
-      if (list) list.innerHTML = state.products.filter(p => p.stock > 0 && `${p.name} ${p.brand} ${p.model} ${p.sku}`.toLowerCase().includes(term)).map(posProduct).join('') || html`<div class="empty">${icon('search','icon-xl')}<strong>No matching product found</strong></div>`;
+      if (list) list.innerHTML = state.products.filter(p => p.stock > 0 && `${p.name} ${p.brand} ${p.model} ${p.sku} ${(p.imeis || []).join(' ')} ${p.imei1 || ''} ${p.imei2 || ''}`.toLowerCase().includes(term)).map(posProduct).join('') || html`<div class="empty">${icon('search','icon-xl')}<strong>No matching product found</strong></div>`;
     }
     if (event.target.matches('[data-global-search]')) {
       const q = event.target.value.trim();
@@ -2552,7 +2603,7 @@
       }
     }
     if (event.target.matches('[data-inventory-category]')) { state.inventoryCategory = event.target.value; state.inventoryPage = 1; renderApp(); }
-    if (event.target.matches('[data-report-range]')) { state.reportRange = event.target.value; notify('Report range updated', `Showing data for ${state.reportRange}.`); }
+    if (event.target.matches('[data-report-range]')) { state.reportRange = event.target.value; persist(); renderApp(); notify('Report range updated', `Showing data for ${state.reportRange}.`); }
   });
 
   document.addEventListener('focusin', (event) => { if (event.target.matches('.pin-code-input')) refreshPinCodeInput(event.target); });
@@ -2656,16 +2707,32 @@
     const paid = Number(paidEl?.value || total);
     if (!Number.isFinite(paid) || paid < total) return notify('Payment incomplete', 'Enter the complete payable amount. Create scheduled dues from Installments.', 'error');
     const customer = document.getElementById('pos-customer')?.value || 'Walk-in Customer';
+    const invoiceItems = [];
     for (const item of cart) {
       const product = state.products.find(p=>p.id===item.id);
-      if (product) product.stock = Math.max(0, product.stock - item.qty);
+      const availableImeis = product ? (Array.isArray(product.imeis) ? product.imeis : [product.imei1, product.imei2]).filter(Boolean) : [];
+      const soldImeis = availableImeis.slice(0, item.qty);
+      invoiceItems.push({name:item.name,qty:item.qty,price:item.price,imeis:soldImeis});
+      if (product) {
+        product.stock = Math.max(0, product.stock - item.qty);
+        product.imeis = availableImeis.slice(soldImeis.length);
+        product.imei1 = product.imeis[0] || '';
+        product.imei2 = product.imeis[1] || '';
+      }
     }
-    const inv = { id:makeId('INV'), customer, total, payment:state.posPayment, date:today(), items:cart.map(x=>({name:x.name,qty:x.qty,price:x.price})) };
+    const inv = { id:shortInvoiceId(), customer, total, payment:state.posPayment, date:today(), items:invoiceItems };
     state.invoices.unshift(inv); state.posCart=[]; persist(); renderApp(); invoiceModal(inv); notify('Payment collected', `${money(total)} sale has been completed.`);
   }
 
   function csv(header, rows) {
     return [header, ...rows].map(row => row.map(value => `"${String(value).replace(/"/g,'""')}"`).join(',')).join('\n');
+  }
+
+  function shortInvoiceId() {
+    const prefix = cleanText(shopProfile().invoicePrefix || 'INV').replace(/[^A-Za-z0-9]/g, '').slice(0, 5).toUpperCase() || 'INV';
+    let id = '';
+    do { id = `${prefix}-${String(Date.now()).slice(-6)}${Math.floor(Math.random() * 10)}`; } while (state.invoices.some(invoice => invoice.id === id));
+    return id;
   }
 
   function downloadReport() {

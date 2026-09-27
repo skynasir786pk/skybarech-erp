@@ -473,24 +473,43 @@ function render() {
 }
 function shopForm(shop = null) {
   const s = shop || {};
+  const duration = s.plan === "Lifetime" ? "lifetime" : (shop ? "custom" : "monthly");
   return `<form id="shopForm" class="modal-form" novalidate data-id="${escapeHtml(s.id || "")}">
     <div class="two-col"><label>Shop Name<input name="shopName" required placeholder="e.g. Al Raza Mobiles" value="${escapeHtml(s.shopName || "")}" /></label><label>Owner Name<input name="ownerName" required placeholder="Owner full name" value="${escapeHtml(s.ownerName || "")}" /></label></div>
     <div class="two-col"><label>Owner Mobile<input name="ownerMobile" required placeholder="03001234567" value="${escapeHtml(s.ownerMobile || "")}" /></label><label>City<input name="city" placeholder="Quetta" value="${escapeHtml(s.city || "")}" /></label></div>
     <label>Address<input name="address" placeholder="Shop address" value="${escapeHtml(s.address || "")}" /></label>
-    <div class="two-col"><label>Package<select name="plan"><option ${s.plan === "Local" ? "selected" : ""}>Local</option><option ${s.plan === "Trial" ? "selected" : ""}>Trial</option><option ${s.plan === "Starter" ? "selected" : ""}>Starter</option><option ${!s.plan || s.plan === "Premium" ? "selected" : ""}>Premium</option><option ${s.plan === "Pro" ? "selected" : ""}>Pro</option></select></label><label>Monthly Fee<input name="monthlyFee" type="number" min="0" value="${escapeHtml(s.monthlyFee || 0)}" /></label></div>
-    <div class="two-col"><label>Expiry Date<input name="expiryDate" type="date" value="${escapeHtml(s.expiryDate || "")}" /></label><label>Status<select name="status"><option value="active" ${s.status === "active" ? "selected" : ""}>Active</option><option value="trial" ${s.status === "trial" ? "selected" : ""}>Trial</option><option value="suspended" ${s.status === "suspended" ? "selected" : ""}>Suspended</option><option value="blocked" ${s.status === "blocked" ? "selected" : ""}>Blocked</option></select></label></div>
+    <div class="two-col"><label>Package<select name="plan"><option ${s.plan === "Local" ? "selected" : ""}>Local</option><option ${s.plan === "Trial" ? "selected" : ""}>Trial</option><option ${s.plan === "Starter" ? "selected" : ""}>Starter</option><option ${!s.plan || s.plan === "Premium" ? "selected" : ""}>Premium</option><option ${s.plan === "Pro" ? "selected" : ""}>Pro</option><option ${s.plan === "Lifetime" ? "selected" : ""}>Lifetime</option></select></label><label>Package Fee<input name="monthlyFee" type="number" min="0" value="${escapeHtml(s.monthlyFee || 0)}" /></label></div>
+    <div class="two-col"><label>Activation Duration<select name="subscriptionDuration" data-subscription-duration><option value="monthly" ${duration === "monthly" ? "selected" : ""}>1 Month</option><option value="yearly" ${duration === "yearly" ? "selected" : ""}>1 Year</option><option value="lifetime" ${duration === "lifetime" ? "selected" : ""}>Lifetime</option><option value="custom" ${duration === "custom" ? "selected" : ""}>Custom Date</option></select></label><label>Expiry Date<input name="expiryDate" type="date" data-expiry-date value="${escapeHtml(s.expiryDate || "")}" /></label></div>
+    <div class="two-col"><label>Status<select name="status"><option value="active" ${s.status === "active" ? "selected" : ""}>Active</option><option value="trial" ${s.status === "trial" ? "selected" : ""}>Trial</option><option value="suspended" ${s.status === "suspended" ? "selected" : ""}>Suspended</option><option value="blocked" ${s.status === "blocked" ? "selected" : ""}>Blocked</option></select></label><div class="activation-date-note">Selecting Month or Year calculates the expiry automatically. Lifetime has no expiry.</div></div>
     ${shop ? "" : `<div class="two-col"><label>Activation Code (optional)<input name="activationCode" placeholder="Auto-generated if blank" /></label><label>Temp PIN (optional)<input name="temporaryPassword" type="password" autocomplete="new-password" placeholder="Auto-generated securely" /></label></div>`}
     <label>Notes<textarea name="notes" placeholder="Internal note">${escapeHtml(s.notes || "")}</textarea></label>
     <button class="primary-button large" type="submit"><span>${shop ? "Save shop changes" : "Create online shop"}</span><span>→</span></button>
   </form>`;
 }
 function bindShopForm() {
-  $("#shopForm").addEventListener("submit", async (event) => {
+  const shopFormElement = $("#shopForm");
+  const durationSelect = shopFormElement.querySelector("[data-subscription-duration]");
+  const expiryInput = shopFormElement.querySelector("[data-expiry-date]");
+  const applyDuration = () => {
+    const duration = durationSelect.value;
+    expiryInput.readOnly = duration !== "custom";
+    if (duration === "custom") return;
+    if (duration === "lifetime") { expiryInput.value = ""; return; }
+    const date = new Date();
+    if (duration === "yearly") date.setFullYear(date.getFullYear() + 1);
+    else date.setMonth(date.getMonth() + 1);
+    expiryInput.value = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+  };
+  durationSelect.addEventListener("change", applyDuration);
+  if (!expiryInput.value || durationSelect.value !== "custom") applyDuration();
+  shopFormElement.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     const input = Object.fromEntries(new FormData(form).entries());
     if (!input.shopName.trim() || !input.ownerName.trim() || !input.ownerMobile.trim()) { toast("Shop name, owner and mobile are required.", "error"); return; }
     const existing = state.shops.find((item) => item.id === form.dataset.id);
+    if (input.subscriptionDuration === "lifetime") input.plan = "Lifetime";
+    delete input.subscriptionDuration;
     const payload = { ...input, id: existing?.id, monthlyFee: Number(input.monthlyFee || 0) };
     const button = form.querySelector("button[type='submit']");
     button.disabled = true;
