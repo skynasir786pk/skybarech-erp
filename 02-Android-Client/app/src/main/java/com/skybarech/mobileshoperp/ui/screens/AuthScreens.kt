@@ -17,6 +17,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -34,6 +35,9 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -115,7 +119,7 @@ fun OnboardingScreen(vm: AppViewModel) {
         listOf("Verified cloud", "Safe offline work"),
         listOf("Shop profile", "Stock, then first sale")
     )
-    Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color(0xFFF4F9FF), Color(0xFFE7F1FF), Color(0xFFF8FBFF))))) {
+    Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color(0xFFF8FBFF), Color(0xFFEAF5FF), Color(0xFFF7FAFF))))) {
         Box(Modifier.size(260.dp).align(Alignment.TopEnd).offset(x = 116.dp, y = (-110).dp).clip(RoundedCornerShape(160.dp)).background(Color(0x5578B8FF)))
         Box(Modifier.size(190.dp).align(Alignment.BottomStart).offset(x = (-100).dp, y = 30.dp).clip(RoundedCornerShape(120.dp)).background(Color(0x335F78FF)))
         Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 14.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -128,19 +132,12 @@ fun OnboardingScreen(vm: AppViewModel) {
                 }
             }
             Spacer(Modifier.height(16.dp))
-            Box(Modifier.fillMaxWidth().height(204.dp).shadow(16.dp, RoundedCornerShape(30.dp)).clip(RoundedCornerShape(30.dp)).background(Brush.linearGradient(listOf(Color(0xFF154BE4), Color(0xFF168FE8), Color(0xFF60D5E8))))) {
-                Box(Modifier.size(200.dp).align(Alignment.TopEnd).offset(x = 68.dp, y = (-74).dp).clip(RoundedCornerShape(120.dp)).background(Color.White.copy(alpha = .13f)))
-                Box(Modifier.size(142.dp).align(Alignment.BottomStart).offset(x = (-54).dp, y = 68.dp).clip(RoundedCornerShape(100.dp)).background(Color(0xFF92E8FF).copy(alpha = .22f)))
-                Box(Modifier.align(Alignment.Center).offset(y = floatY.dp).graphicsLayer { scaleX = floatScale; scaleY = floatScale }) {
-                    Surface(Modifier.size(106.dp).shadow(14.dp, RoundedCornerShape(32.dp)), shape = RoundedCornerShape(32.dp), color = Color.White.copy(alpha = .96f)) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Crossfade(targetState = step, animationSpec = tween(300), label = "setup illustration") { page ->
-                                Icon(icons[page], null, tint = Color(0xFF1769DC), modifier = Modifier.size(54.dp))
-                            }
-                            Box(Modifier.align(Alignment.BottomEnd).padding(8.dp).size(26.dp).clip(RoundedCornerShape(9.dp)).background(Color(0xFFE8F8F2)), contentAlignment = Alignment.Center) {
-                                Icon(if (step == 3) Icons.Outlined.Lock else Icons.Outlined.AutoAwesome, null, tint = Color(0xFF0A9E78), modifier = Modifier.size(16.dp))
-                            }
-                        }
+            Box(Modifier.fillMaxWidth().height(224.dp).shadow(18.dp, RoundedCornerShape(30.dp)).clip(RoundedCornerShape(30.dp))) {
+                LiquidCartoonIllustration(step, floatScale, floatY, Modifier.matchParentSize())
+                Surface(Modifier.align(Alignment.Center).offset(y = floatY.dp).graphicsLayer { scaleX = floatScale; scaleY = floatScale }, shape = RoundedCornerShape(28.dp), color = Color.White.copy(alpha = .94f), shadowElevation = 12.dp) {
+                    Box(Modifier.size(96.dp), contentAlignment = Alignment.Center) {
+                        Crossfade(targetState = step, animationSpec = tween(300), label = "setup illustration") { page -> Icon(icons[page], null, tint = Color(0xFF1769DC), modifier = Modifier.size(48.dp)) }
+                        Icon(Icons.Outlined.AutoAwesome, null, tint = Color(0xFF08B98A), modifier = Modifier.align(Alignment.BottomEnd).padding(8.dp).size(18.dp))
                     }
                 }
                 Surface(Modifier.align(Alignment.TopStart).padding(16.dp), shape = RoundedCornerShape(50), color = Color.White.copy(alpha = .18f), border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = .3f))) {
@@ -212,6 +209,31 @@ fun OnboardingScreen(vm: AppViewModel) {
     }
 }
 
+/** Full-card onboarding art: a friendly shop, laptop and phone sit above flowing cloud waves. */
+@Composable
+private fun LiquidCartoonIllustration(step: Int, scale: Float, y: Float, modifier: Modifier = Modifier) {
+    Canvas(modifier) {
+        drawRoundRect(Brush.linearGradient(listOf(Color(0xFF0D3EBC), Color(0xFF168CEB), Color(0xFF55D9E8))), cornerRadius = CornerRadius(30.dp.toPx()))
+        drawCircle(Color.White.copy(alpha = .13f), radius = size.minDimension * .48f, center = Offset(size.width * .88f, size.height * .12f))
+        drawCircle(Color(0xFF88F1FF).copy(alpha = .20f), radius = size.minDimension * .38f, center = Offset(size.width * .06f, size.height * .90f))
+        val liquid = androidx.compose.ui.graphics.Path().apply {
+            moveTo(0f, size.height * .70f)
+            cubicTo(size.width * .22f, size.height * .49f, size.width * .52f, size.height * .96f, size.width, size.height * .62f)
+            lineTo(size.width, size.height); lineTo(0f, size.height); close()
+        }
+        drawPath(liquid, Brush.linearGradient(listOf(Color(0xFF001C72).copy(alpha = .75f), Color(0xFF026AF2).copy(alpha = .45f))))
+        // Cartoon shop façade
+        drawRoundRect(Color.White.copy(alpha = .94f), topLeft = Offset(size.width * .09f, size.height * .30f), size = Size(size.width * .23f, size.height * .27f), cornerRadius = CornerRadius(12.dp.toPx()))
+        drawRoundRect(Color(0xFF125CE4), topLeft = Offset(size.width * .075f, size.height * .25f), size = Size(size.width * .26f, size.height * .075f), cornerRadius = CornerRadius(8.dp.toPx()))
+        drawRoundRect(Color(0xFF87D9FF), topLeft = Offset(size.width * .16f, size.height * .40f), size = Size(size.width * .085f, size.height * .17f), cornerRadius = CornerRadius(5.dp.toPx()))
+        // Laptop and mobile device
+        drawRoundRect(Color(0xFF092B79), topLeft = Offset(size.width * .66f, size.height * .39f), size = Size(size.width * .19f, size.height * .14f), cornerRadius = CornerRadius(7.dp.toPx()))
+        drawRoundRect(Color(0xFF83E5FF), topLeft = Offset(size.width * .68f, size.height * .41f), size = Size(size.width * .15f, size.height * .09f), cornerRadius = CornerRadius(4.dp.toPx()))
+        drawRoundRect(Color(0xFF052460), topLeft = Offset(size.width * .76f, size.height * .24f), size = Size(size.width * .09f, size.height * .23f), cornerRadius = CornerRadius(9.dp.toPx()))
+        drawRoundRect(Color(0xFF7EEFFF), topLeft = Offset(size.width * .775f, size.height * .27f), size = Size(size.width * .06f, size.height * .16f), cornerRadius = CornerRadius(5.dp.toPx()))
+    }
+}
+
 @Composable
 fun WelcomeScreen(vm: AppViewModel) {
     var visible by remember { mutableStateOf(false) }
@@ -221,9 +243,14 @@ fun WelcomeScreen(vm: AppViewModel) {
     AuroraBackdrop {
         Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(28.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
             Box(Modifier.graphicsLayer { scaleX = scale; scaleY = scale; this.alpha = alpha }.shadow(28.dp, RoundedCornerShape(34.dp)).clip(RoundedCornerShape(34.dp)).background(Brush.linearGradient(listOf(Color(0xFF0CE39A), Color(0xFF3A2AA8), Color(0xFFFC0987)))).padding(3.dp)) {
-                Box(Modifier.size(138.dp).clip(RoundedCornerShape(31.dp)).background(Color(0xFF071B42)), contentAlignment = Alignment.Center) { BrandMark(92.dp, light = true) }
+                Box(Modifier.size(138.dp).clip(RoundedCornerShape(31.dp)).background(Color(0xFF071B42)), contentAlignment = Alignment.Center) {
+                    BrandMark(84.dp, light = true)
+                    Box(Modifier.align(Alignment.BottomEnd).padding(10.dp).size(36.dp).clip(RoundedCornerShape(18.dp)).background(Color(0xFF17D99A)), contentAlignment = Alignment.Center) { Icon(Icons.Outlined.Verified, null, tint = Color.White, modifier = Modifier.size(23.dp)) }
+                }
             }
             Spacer(Modifier.height(28.dp))
+            Surface(shape = RoundedCornerShape(50), color = Color(0xFF0CE39A).copy(alpha = .16f), border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF72F5C4).copy(alpha = .7f))) { UiText("SHOP ACTIVE NOW", color = Color(0xFF79F8C7), fontSize = 10.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)) }
+            Spacer(Modifier.height(12.dp))
             UiText(vm.welcomeTitle, color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.ExtraBold)
             UiText(vm.shopName.ifBlank { "SkyBarech ERP" }, translate = false, color = Color(0xFF9DD8FF), fontSize = 17.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(12.dp))
@@ -261,14 +288,15 @@ fun ActivationScreen(vm: AppViewModel) {
             UiText("Activate Account", color = Ink, fontWeight = FontWeight.Bold, fontSize = 18.sp)
         }
         Spacer(Modifier.height(24.dp))
-        SoftCard(modifier = Modifier.fillMaxWidth()) {
+        Surface(modifier = Modifier.fillMaxWidth().shadow(12.dp, RoundedCornerShape(26.dp)), shape = RoundedCornerShape(26.dp), color = Color(0xFF0E4FC7)) {
             Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                Box(Modifier.size(70.dp).clip(RoundedCornerShape(22.dp)).background(BrandBlueSoft), contentAlignment = Alignment.Center) {
-                    Icon(Icons.Outlined.VerifiedUser, contentDescription = null, tint = BrandBlue, modifier = Modifier.size(38.dp))
+                Box(Modifier.fillMaxWidth().padding(20.dp), contentAlignment = Alignment.Center) {
+                    Box(Modifier.size(70.dp).clip(RoundedCornerShape(22.dp)).background(Color.White.copy(alpha = .16f)), contentAlignment = Alignment.Center) {
+                        Icon(Icons.Outlined.VerifiedUser, contentDescription = null, tint = Color.White, modifier = Modifier.size(38.dp))
+                    }
                 }
-                Spacer(Modifier.height(14.dp))
-                UiText("Activate your shop account", color = Ink, fontWeight = FontWeight.Bold)
-                UiText("to get started", color = MutedInk, fontSize = 13.sp)
+                UiText("Activate your shop account", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 20.sp)
+                UiText("Secure your workspace in a few steps", color = Color(0xFFD9EDFF), fontSize = 13.sp, modifier = Modifier.padding(top = 5.dp, bottom = 20.dp))
             }
         }
         Spacer(Modifier.height(18.dp))
@@ -329,14 +357,19 @@ fun LoginScreen(vm: AppViewModel) {
         val roomy = maxHeight >= 720.dp
         Column(Modifier.align(Alignment.Center).graphicsLayer { alpha = reveal; translationY = (1f - reveal) * 16f }.widthIn(max = 420.dp).fillMaxWidth()
             .verticalScroll(rememberScrollState()).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                BrandMark(38.dp)
+            Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(19.dp), color = Color(0xFF0D4FC5), shadowElevation = 8.dp) {
+            Row(Modifier.fillMaxWidth().padding(horizontal = 13.dp, vertical = 11.dp), verticalAlignment = Alignment.CenterVertically) {
+                BrandMark(38.dp, light = true)
                 Spacer(Modifier.width(9.dp))
-                UiText("SkyBarech ERP", color = Ink, fontSize = 18.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.weight(1f))
+                Column(Modifier.weight(1f)) {
+                    UiText("SkyBarech ERP", color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.ExtraBold)
+                    UiText("YOUR SHOP · SECURE ACCESS", color = Color(0xFFC8E7FF), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                }
                 LanguageSelector()
                 IconButton(onClick = { connectionDetails = true; vm.checkConnection() }) {
-                    Icon(Icons.Outlined.HelpOutline, contentDescription = tr("Connection help"), tint = MutedInk, modifier = Modifier.size(21.dp))
+                    Icon(Icons.Outlined.HelpOutline, contentDescription = tr("Connection help"), tint = Color.White, modifier = Modifier.size(21.dp))
                 }
+            }
             }
             if (roomy) {
                 Surface(Modifier.fillMaxWidth().padding(vertical = 12.dp), shape = RoundedCornerShape(20.dp), color = BrandBlueSoft) {
@@ -357,8 +390,13 @@ fun LoginScreen(vm: AppViewModel) {
                         }
                         Icon(Icons.Outlined.Lock, contentDescription = null, tint = BrandBlue, modifier = Modifier.size(24.dp))
                     }
-                    UiText(if (vm.activated) vm.shopName else "Sign in to your shop account.", translate = !vm.activated,
-                        color = MutedInk, fontSize = 13.sp, maxLines = 2, modifier = Modifier.padding(top = 4.dp, bottom = 10.dp))
+                    if (vm.activated) Surface(shape = RoundedCornerShape(13.dp), color = BrandBlueSoft) {
+                        Row(Modifier.padding(horizontal = 10.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                            Icon(Icons.Outlined.Storefront, null, tint = BrandBlue, modifier = Modifier.size(16.dp)); Spacer(Modifier.width(7.dp))
+                            UiText(vm.shopName, translate = false, color = BrandBlueDark, fontSize = 12.sp, fontWeight = FontWeight.Bold, maxLines = 1)
+                        }
+                    } else UiText("Sign in to your shop account.", color = MutedInk, fontSize = 13.sp, maxLines = 2, modifier = Modifier.padding(top = 4.dp, bottom = 10.dp))
+                    Spacer(Modifier.height(10.dp))
                     AppTextField("Owner mobile / email", mobile, { mobile = it }, leadingIcon = Icons.Outlined.PersonOutline,
                         keyboardType = KeyboardType.Email, error = if (submitted && mobile.isBlank()) "Enter your mobile number or email." else null)
                     Spacer(Modifier.height(12.dp))

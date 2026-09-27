@@ -1249,6 +1249,10 @@ html[lang=ur] .brand-name,html[lang=ur] .auth-card-brand strong{font-family:Aria
 .login-pin-choice button { min-width:62px; padding:6px 9px; border:0; border-radius:8px; background:transparent; color:#77849e; font-size:10px; font-weight:800; cursor:pointer; }
 .login-pin-choice button.selected { background:#fff; color:#1459d6; box-shadow:0 3px 10px rgba(33,79,169,.13); }
 .pin-code-field { display:grid; gap:8px; }
+.pin-code-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; color:#24365e; font-size:12px; font-weight:800; }
+.pin-code-heading span { display:inline-flex; align-items:center; gap:7px; }
+.pin-code-heading .icon { width:16px; height:16px; padding:5px; box-sizing:content-box; color:#1762df; border-radius:9px; background:#eaf2ff; }
+.pin-code-heading b { color:#1762df; font-size:11px; }
 .pin-code-shell { position:relative; min-width:0; border-radius:16px; }
 .pin-code-input { position:absolute; z-index:2; inset:0; width:100%; height:100%; margin:0; padding:0; border:0; opacity:.01; cursor:text; color:transparent; caret-color:transparent; }
 .pin-code-input:focus-visible { outline:0; }
@@ -1256,9 +1260,18 @@ html[lang=ur] .brand-name,html[lang=ur] .auth-card-brand strong{font-family:Aria
 .pin-code-box { position:relative; display:grid; place-items:center; aspect-ratio:1/1; min-width:0; max-height:58px; border:1.5px solid #d6e0f3; border-radius:14px; background:#f8faff; color:#12357f; font-size:29px; font-weight:900; line-height:1; box-shadow:inset 0 1px 0 #fff; transition:border-color .18s,box-shadow .18s,transform .18s,background .18s; }
 .pin-code-box.active { border-color:#387cff; background:#fff; box-shadow:0 0 0 4px rgba(56,124,255,.10),0 8px 22px rgba(32,87,184,.10); transform:translateY(-1px); }
 .pin-code-box.filled { border-color:#8cb2ff; background:linear-gradient(180deg,#fff,#eef4ff); }
+.pin-code-box.filled { animation:pinCellPop .24s ease-out both; }
 .pin-code-shell.complete .pin-code-box.filled { border-color:#3bb77a; background:#f0fff7; color:#087a48; }
 .pin-code-box.pin-box-hidden { display:none; }
 .pin-code-hint { color:#7c89a5; font-size:10px; line-height:1.4; }
+@keyframes pinCellPop { 0%{transform:scale(.72)} 70%{transform:scale(1.09)} 100%{transform:scale(1)} }
+.auth-card .auth-input { border-radius:15px; background:linear-gradient(135deg,#f8fbff,#edf5ff); box-shadow:inset 0 1px 0 #fff,0 5px 15px rgba(50,100,180,.06); }
+.auth-card .auth-input:focus-within { box-shadow:0 0 0 4px rgba(37,112,255,.12),0 10px 24px rgba(37,112,255,.12); }
+.auth-activation-card .auth-card-head { padding:18px; margin:-4px -4px 6px; border-radius:18px; color:#fff; background:linear-gradient(135deg,#0d4ec8,#239be6 68%,#62dbe6); box-shadow:0 12px 28px rgba(17,90,210,.22); }
+.auth-activation-card .auth-card-head h2,.auth-activation-card .auth-card-head p,.auth-activation-card .auth-card-head .micro { color:#fff; }
+.auth-activation-card .auth-card-head p { color:#dcefff; }
+.activation-code-input { border:1.5px solid #77adff; border-radius:14px; background:linear-gradient(135deg,#edf5ff,#fff); box-shadow:0 8px 20px rgba(30,99,212,.09); }
+.activation-code-input:focus-within { border-color:#1467e9; box-shadow:0 0 0 4px rgba(20,103,233,.12),0 10px 24px rgba(20,103,233,.12); }
 .auth-security-line { padding-top:2px; }
 @media(max-width:420px){.pin-code-boxes{gap:6px}.pin-code-box{border-radius:11px;font-size:24px}.auth-card{padding-inline:17px}.auth-actions{align-items:flex-start;flex-direction:column}.auth-actions .text-link{align-self:flex-end}}
 

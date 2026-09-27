@@ -781,7 +781,7 @@
   }
 
   function pinCodeField(name, label, length = 4, autocomplete = 'current-password') {
-    return html`<div class="field pin-code-field"><label for="pin-${name}">${t(label)}</label><div class="pin-code-shell" data-pin-shell data-length="${length}"><input id="pin-${name}" class="pin-code-input" type="password" name="${name}" inputmode="numeric" autocomplete="${autocomplete}" maxlength="${length}" pattern="[0-9]{${length}}" aria-label="${t(label)}" enterkeyhint="done" required><div class="pin-code-boxes" aria-hidden="true">${Array.from({length:4},(_,index)=>html`<span class="pin-code-box ${index >= length ? 'pin-box-hidden' : ''}" data-pin-index="${index}"></span>`).join('')}</div></div><small class="pin-code-hint">${t(`Enter exactly ${length} digits`)}</small></div>`;
+    return html`<div class="field pin-code-field"><div class="pin-code-heading"><span>${icon('lock')} ${t(label)}</span><b data-pin-status>0 / ${length}</b></div><div class="pin-code-shell" data-pin-shell data-length="${length}"><input id="pin-${name}" class="pin-code-input" type="password" name="${name}" inputmode="numeric" autocomplete="${autocomplete}" maxlength="${length}" pattern="[0-9]{${length}}" aria-label="${t(label)}" enterkeyhint="done" required><div class="pin-code-boxes" aria-hidden="true">${Array.from({length:4},(_,index)=>html`<span class="pin-code-box ${index >= length ? 'pin-box-hidden' : ''}" data-pin-index="${index}"></span>`).join('')}</div></div><small class="pin-code-hint">${t(`Enter exactly ${length} digits`)}</small></div>`;
   }
 
   function refreshPinCodeInput(input) {
@@ -795,6 +795,8 @@
       box.classList.toggle('active', document.activeElement === input && index === Math.min(input.value.length, length - 1));
       box.textContent = index < input.value.length ? '•' : '';
     });
+    const status = shell?.closest('.pin-code-field')?.querySelector('[data-pin-status]');
+    if (status) status.textContent = `${input.value.length} / ${length}`;
     shell?.classList.toggle('complete', input.value.length === length);
   }
 
@@ -820,7 +822,7 @@
   }
 
   function activationView() {
-    return html`<form class="auth-card" data-form="activate" novalidate>
+    return html`<form class="auth-card auth-activation-card" data-form="activate" novalidate>
       <div class="auth-card-head">
         <div class="micro">${icon('shield')} FIRST TIME SETUP</div>
         <h2>Activate your shop</h2>
@@ -828,7 +830,7 @@
       </div>
       <div class="auth-fields">
         <div class="field"><label>Shop Name <span style="color:var(--muted);font-weight:500">(optional)</span></label><div class="input-wrap">${icon('phone')}<input class="input" name="shopName" placeholder="e.g. Ali Mobile Accessories"></div></div>
-        <div class="field"><label>Activation Code <span class="required">*</span></label><div class="input-wrap">${icon('shield')}<input class="input" name="code" placeholder="e.g. SB-2026-ACTIVE" required></div></div>
+        <div class="field"><label>Activation Code <span class="required">*</span></label><div class="input-wrap activation-code-input">${icon('shield')}<input class="input" name="code" placeholder="e.g. SB-2026-ACTIVE" required></div><small class="field-hint">Use the code supplied by Super Admin.</small></div>
         <div class="field"><label>Owner Mobile <span class="required">*</span></label><div class="input-wrap">${icon('user')}<input class="input" name="mobile" placeholder="03XX-XXXXXXX" required></div></div>
         <div class="field"><label>Temporary PIN <span class="required">*</span></label><div class="input-wrap">${icon('lock')}<input class="input" type="password" name="password" placeholder="Enter temporary PIN" inputmode="numeric" minlength="4" maxlength="4" pattern="[0-9]{4}" required><button type="button" class="right-action" data-action="toggle-password">${icon('eye')}</button></div></div>
         <div class="field"><label>Shop Logo <span style="color:var(--muted);font-weight:500">(optional)</span></label><button class="upload-slot" type="button" data-action="upload-local">${icon('upload')} Upload logo PNG / JPG (Max 2MB)</button></div>

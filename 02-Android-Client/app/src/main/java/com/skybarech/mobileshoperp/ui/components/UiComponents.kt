@@ -2,6 +2,8 @@ package com.skybarech.mobileshoperp.ui.components
 
 import com.skybarech.mobileshoperp.ui.i18n.*
 import androidx.compose.foundation.Canvas
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -28,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
@@ -224,7 +227,17 @@ fun PinCodeField(
     var focused by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
     Column(modifier.fillMaxWidth()) {
-        UiText(label, color = Ink, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            Box(Modifier.size(28.dp).clip(RoundedCornerShape(9.dp)).background(BrandBlueSoft), contentAlignment = Alignment.Center) {
+                Icon(Icons.Outlined.Lock, contentDescription = null, tint = BrandBlue, modifier = Modifier.size(16.dp))
+            }
+            Spacer(Modifier.width(8.dp))
+            Column(Modifier.weight(1f)) {
+                UiText(label, color = Ink, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                UiText("Secure 4-digit access", color = MutedInk, fontSize = 10.sp)
+            }
+            UiText("${value.length}/$length", color = if (value.length == length) Color(0xFF0A9E78) else BrandBlue, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+        }
         Spacer(Modifier.height(8.dp))
         BasicTextField(
             value = value,
@@ -245,6 +258,7 @@ fun PinCodeField(
                         repeat(length) { index ->
                             val filled = index < value.length
                             val active = focused && index == value.length.coerceAtMost(length - 1)
+                            val pop by animateFloatAsState(if (filled) 1f else .78f, tween(180, delayMillis = index * 35), label = "pin-pop-$index")
                             val borderColor = when {
                                 error != null -> Danger
                                 active -> BrandBlue
@@ -254,7 +268,8 @@ fun PinCodeField(
                             Box(
                                 Modifier.size(cell).clip(RoundedCornerShape(14.dp))
                                     .background(if (filled || active) BrandBlueSoft else CardSurface)
-                                    .border(if (active) 2.dp else 1.dp, borderColor, RoundedCornerShape(14.dp)),
+                                    .border(if (active) 2.dp else 1.dp, borderColor, RoundedCornerShape(14.dp))
+                                    .graphicsLayer { scaleX = pop; scaleY = pop },
                                 contentAlignment = Alignment.Center
                             ) {
                                 if (filled) Text("•", color = BrandBlueDark, fontSize = 29.sp, fontWeight = FontWeight.Black)
