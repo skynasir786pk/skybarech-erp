@@ -225,7 +225,9 @@ private fun JSONArray?.toProducts() = objects().map {
         ram = it.optString("ram"), storage = it.optString("storage"), storageType = it.optString("storageType"),
         processor = it.optString("processor"), generation = it.optString("generation"), graphics = it.optString("graphics"),
         screenSize = it.optString("screenSize"), operatingSystem = it.optString("operatingSystem"),
-        batteryHealth = it.optString("batteryHealth"), serialNumber = it.optString("serialNumber")
+        batteryHealth = it.optString("batteryHealth"), serialNumber = it.optString("serialNumber"),
+        imeis = it.optJSONArray("imeis")?.let { values -> (0 until values.length()).mapNotNull { index -> values.optString(index).takeIf(String::isNotBlank) } }
+            ?: Regex("\\d{10,18}").findAll(it.optString("notes")).map { match -> match.value }.toList()
     )
 }
 
@@ -319,6 +321,7 @@ private fun Product.toJson() = JSONObject()
     .put("wholesalePrice", wholesalePrice).put("minStock", minStock).put("rack", rack).put("warranty", warranty).put("notes", notes)
     .put("ram", ram).put("storage", storage).put("storageType", storageType).put("processor", processor).put("generation", generation)
     .put("graphics", graphics).put("screenSize", screenSize).put("operatingSystem", operatingSystem).put("batteryHealth", batteryHealth).put("serialNumber", serialNumber)
+    .put("imeis", JSONArray(imeis))
 
 private fun RepairJob.toJson() = JSONObject()
     .put("id", id).put("customer", customer).put("phone", phone).put("device", device).put("issue", issue)

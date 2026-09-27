@@ -141,6 +141,7 @@ fun MobileSaleScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
 
 @Composable
 fun RepairsScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
+    val context = androidx.compose.ui.platform.LocalContext.current
     var search by rememberSaveable { mutableStateOf("") }
     var filter by rememberSaveable { mutableStateOf("All") }
     val visible = vm.repairs.filter {
@@ -154,7 +155,7 @@ fun RepairsScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
         FilterRow(listOf("All") + RepairStatus.entries.map { it.label }, filter, { filter = it })
         Spacer(Modifier.height(11.dp))
         LazyColumn(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(9.dp)) {
-            items(visible, key = { it.id }) { job -> RepairRow(job) }
+            items(visible, key = { it.id }) { job -> RepairRow(job, vm, context) }
             if (visible.isEmpty()) item { ListEmpty("No repair jobs found", "Try another status or create a new repair job.", "Add Repair Job") { vm.navigate(AppScreen.ADD_REPAIR) } }
         }
         Spacer(Modifier.height(10.dp))
@@ -163,7 +164,7 @@ fun RepairsScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun RepairRow(job: RepairJob) {
+private fun RepairRow(job: RepairJob, vm: AppViewModel, context: android.content.Context) {
     SoftCard(modifier = Modifier.fillMaxWidth(), contentPadding = 12.dp) {
         Row(verticalAlignment = Alignment.Top) {
             Box(Modifier.size(40.dp), contentAlignment = Alignment.Center) { Icon(Icons.Outlined.Build, contentDescription = null, tint = BrandBlue) }
@@ -182,6 +183,11 @@ private fun RepairRow(job: RepairJob) {
                     UiText(job.date, color = MutedInk, fontSize = 12.sp)
                     Spacer(Modifier.weight(1f))
                     UiText("Rs. ${job.amount}", color = Ink, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                    Spacer(Modifier.width(7.dp))
+                    IconButton(onClick = {
+                        val receipt = "${vm.shopName}\n${vm.shopAddress}\n${vm.ownerMobile}\nRepair: ${job.id}\nDate: ${job.date}\nCustomer: ${job.customer}\nMobile: ${job.phone}\nDevice: ${job.device}\nProblem: ${job.issue}\nStatus: ${job.status.label}\nTotal: ${vm.formatMoney(job.amount)}\nThank you"
+                        printInvoice(context, job.id, receipt)
+                    }, modifier = Modifier.size(30.dp)) { Icon(Icons.Outlined.Print, contentDescription = tr("Print thermal receipt"), tint = BrandBlue, modifier = Modifier.size(18.dp)) }
                 }
             }
         }
@@ -205,7 +211,7 @@ fun AddRepairScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
     var phone by rememberSaveable { mutableStateOf("") }
     var brand by rememberSaveable { mutableStateOf("Samsung") }
     var model by rememberSaveable { mutableStateOf("") }
-    var issue by rememberSaveable { mutableStateOf("Display Issue") }
+    var issue by rememberSaveable { mutableStateOf("Display / LCD") }
     var cost by rememberSaveable { mutableStateOf("") }
     var status by rememberSaveable { mutableStateOf("Pending") }
     Column(modifier = modifier.imePadding().padding(horizontal = ScreenPadding)) {
@@ -215,7 +221,7 @@ fun AddRepairScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
             item { AppTextField("Customer Mobile *", phone, { phone = it }, leadingIcon = Icons.Outlined.PhoneAndroid) }
             item { AppDropdown("Brand *", brand, listOf("Samsung", "Apple", "Xiaomi", "Oppo", "Vivo", "Other"), { brand = it }) }
             item { AppTextField("Model *", model, { model = it }) }
-            item { AppDropdown("Problem Type *", issue, listOf("Display Issue", "Battery Drain", "Charging Port Issue", "Speaker Not Working", "Back Panel Damage", "Software Issue"), { issue = it }) }
+            item { AppDropdown("Problem Type *", issue, listOf("Display / LCD", "Touch Panel", "Battery", "Charging Port", "Charging Board", "Speaker / Ringer", "Microphone", "Front Camera", "Back Camera", "Fingerprint", "Power Button", "Volume Button", "Network / Signal", "Water Damage", "Software / Flashing", "Back Panel / Body", "Motherboard / IC", "Other Problem"), { issue = it }) }
             item { AppTextField("Estimated Cost *", cost, { cost = it }, leadingIcon = Icons.Outlined.Payments) }
             item { AppDropdown("Status *", status, RepairStatus.entries.map { it.label }, { status = it }) }
         }

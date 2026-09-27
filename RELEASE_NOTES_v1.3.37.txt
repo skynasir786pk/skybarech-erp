@@ -1,0 +1,11 @@
+SkyBarech ERP Android v1.3.37
+
+- Repair thermal receipt is available for every repair status.
+- Purchased mobile IMEIs are visible in POS search, product cards, cart invoices, and thermal receipts.
+- Walk-in Customer is available in POS and mobile purchase workflows.
+- Reports support Daily, Weekly, Monthly, and Yearly filters.
+- Sales, Stock, Expenses, and Repairs include 80mm thermal report printing.
+- Invoice IDs and thermal receipts are more compact.
+- Repair entry includes brand/problem dropdowns and manual model entry.
+- Android top bar and post-login palette use a clearer light layout.
+- Activation screen is compact and no longer requires page scrolling on standard phones.

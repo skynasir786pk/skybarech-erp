@@ -157,23 +157,55 @@ fun ReceivePaymentScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
 
 @Composable
 fun ReportsScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
-    var period by rememberSaveable { mutableStateOf("All recorded") }
-    val sales = when (period) { "Today" -> vm.salesForDays(1); "Last 7 days" -> vm.salesForDays(7); "Last 30 days" -> vm.salesForDays(30); else -> vm.sales.toList() }
+    val context = LocalContext.current
+    var period by rememberSaveable { mutableStateOf("Monthly") }
+    val now = java.time.LocalDate.now()
+    fun inPeriod(value: String): Boolean {
+        val date = runCatching { java.time.LocalDate.parse(value.take(10)) }.getOrNull() ?: return false
+        return when (period) {
+            "Daily" -> date == now
+            "Weekly" -> date >= now.minusDays(6) && date <= now
+            "Yearly" -> date.year == now.year
+            else -> date.year == now.year && date.month == now.month
+        }
+    }
+    val sales = vm.sales.filter { inPeriod(it.time) }
+    val periodExpenses = vm.expenses.filter { inPeriod(it.date) }
+    val periodRepairs = vm.repairs.filter { inPeriod(it.date) }
+    fun thermalReport(type: String): String {
+        val lines = when (type) {
+            "Stock" -> listOf("Products: ${vm.products.size}", "Stock Units: ${vm.products.sumOf { it.stock }}", "Low Stock: ${vm.lowStockCount()}")
+            "Expenses" -> listOf("Entries: ${periodExpenses.size}", "Total: ${vm.formatMoney(periodExpenses.sumOf { it.amount })}")
+            "Repairs" -> listOf("Repair Jobs: ${periodRepairs.size}", "Total: ${vm.formatMoney(periodRepairs.sumOf { it.amount })}", "Ready: ${periodRepairs.count { it.status == com.skybarech.mobileshoperp.model.RepairStatus.READY }}")
+            else -> listOf("Invoices: ${sales.size}", "Total: ${vm.formatMoney(sales.sumOf { it.total })}")
+        }
+        return listOf(vm.shopName, vm.shopAddress, vm.ownerMobile, "$type Report", "Period: $period", "Date: $now", "--------------------------------").plus(lines).plus("Thank you").joinToString("\n")
+    }
     LazyColumn(modifier = modifier, contentPadding = PaddingValues(ScreenPadding), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item { PageTitle("Reports", "Totals from records currently available on this device.") }
-        item { AppDropdown("Sales period", period, listOf("All recorded", "Today", "Last 7 days", "Last 30 days"), { period = it }) }
+        item { AppDropdown("Report period", period, listOf("Daily", "Weekly", "Monthly", "Yearly"), { period = it }) }
         item { AdaptiveRow {
             MetricCard("Recorded Sales", vm.formatMoney(sales.sumOf { it.total }), Icons.Outlined.Payments, modifier = Modifier.weight(1f))
             MetricCard("Invoices", sales.size.toString(), Icons.Outlined.ReceiptLong, modifier = Modifier.weight(1f))
         } }
-        item { UiText("Stock, expenses and dues below cover all locally recorded data. Older records without a valid date are included only in All recorded.", color = MutedInk, fontSize = 13.sp) }
+        item { UiText("Sales, expenses and repairs follow the selected period. Stock shows the current available quantity.", color = MutedInk, fontSize = 13.sp) }
         item { AdaptiveRow {
             MetricCard("Stock Units", vm.products.sumOf { it.stock }.toString(), Icons.Outlined.Inventory2, modifier = Modifier.weight(1f))
-            MetricCard("Recorded Expenses", vm.formatMoney(vm.expenses.sumOf { it.amount }), Icons.Outlined.ReceiptLong, modifier = Modifier.weight(1f))
+            MetricCard("Period Expenses", vm.formatMoney(periodExpenses.sumOf { it.amount }), Icons.Outlined.ReceiptLong, modifier = Modifier.weight(1f))
         } }
         item { AdaptiveRow {
-            MetricCard("Repairs", vm.repairs.size.toString(), Icons.Outlined.Build, modifier = Modifier.weight(1f))
+            MetricCard("Repairs", periodRepairs.size.toString(), Icons.Outlined.Build, modifier = Modifier.weight(1f))
             MetricCard("Scheduled Dues", vm.formatMoney(vm.outstandingInstallments()), Icons.Outlined.EventNote, modifier = Modifier.weight(1f))
+        } }
+        item { SoftCard(Modifier.fillMaxWidth()) {
+            SectionLabel("80mm Thermal Reports")
+            Spacer(Modifier.height(9.dp))
+            listOf("Sales", "Stock", "Expenses", "Repairs").chunked(2).forEach { row ->
+                AdaptiveRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    row.forEach { type -> OutlineButton(type, { printInvoice(context, "$type-$period", thermalReport(type)) }, Modifier.weight(1f), Icons.Outlined.Print) }
+                }
+                Spacer(Modifier.height(8.dp))
+            }
         } }
         item { SoftCard(Modifier.fillMaxWidth()) {
             SectionLabel("Subscription")

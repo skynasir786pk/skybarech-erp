@@ -7,7 +7,7 @@ enum class AppScreen(val title: String) {
     LOGIN("Login"),
     WELCOME("Welcome"),
     CHANGE_PASSWORD("Change Password"),
-    DASHBOARD("SkyBarech Mobile Shop ERP"),
+    DASHBOARD("Dashboard"),
     POS("POS Billing"),
     PRODUCT_SEARCH("Product Search"),
     CART_PAYMENT("Cart & Payment"),
@@ -68,7 +68,8 @@ data class Product(
     val screenSize: String = "",
     val operatingSystem: String = "",
     val batteryHealth: String = "",
-    val serialNumber: String = ""
+    val serialNumber: String = "",
+    val imeis: List<String> = emptyList()
 )
 
 data class CartLine(

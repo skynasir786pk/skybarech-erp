@@ -107,7 +107,7 @@ private fun variantOptions(category: String) = when (category) {
 @Composable
 fun PosScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
     var search by rememberSaveable { mutableStateOf("") }
-    val visible = vm.products.filter { it.name.contains(search, true) || it.sku.contains(search, true) || it.notes.contains(search, true) }
+    val visible = vm.products.filter { it.name.contains(search, true) || it.sku.contains(search, true) || it.notes.contains(search, true) || it.imeis.any { imei -> imei.contains(search) } }
     Column(modifier) {
     LazyColumn(
         modifier = Modifier.weight(1f),
@@ -168,6 +168,7 @@ private fun ProductPosRow(product: Product, onAdd: () -> Unit, quantity: Int = 0
             Column(Modifier.weight(1f)) {
                 UiText(product.name, translate = false, color = Ink, fontWeight = FontWeight.Bold, fontSize = 14.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 UiText(listOf(product.category, product.variant, product.model, product.rack).filter { it.isNotBlank() }.joinToString(" · "), color = MutedInk, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                if (product.imeis.isNotEmpty()) UiText("IMEI: ${product.imeis.take(2).joinToString(" · ")}${if (product.imeis.size > 2) " +${product.imeis.size - 2}" else ""}", translate = false, color = BrandBlueDark, fontSize = 10.sp, maxLines = 2)
                 Spacer(Modifier.height(3.dp))
                 UiText("Rs. ${product.salePrice}", color = BrandBlue, fontSize = 14.sp, fontWeight = FontWeight.Bold)
                 if (selected) AnimatedContent(targetState = quantity, label = "cart quantity") { count ->
@@ -220,6 +221,14 @@ fun CartPaymentScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
                     SectionLabel("Bill Summary")
                     Spacer(Modifier.height(9.dp))
                     BillSummary(vm)
+                }
+            }
+            item {
+                SoftCard(Modifier.fillMaxWidth()) {
+                    SectionLabel("Customer")
+                    Spacer(Modifier.height(8.dp))
+                    AppDropdown("Select Customer", vm.selectedSaleCustomer, listOf("Walk-in Customer") + vm.customers.map { it.name }.filter { it != "Walk-in Customer" }, vm::selectSaleCustomer)
+                    UiText("Walk-in Customer is always available for quick billing.", color = MutedInk, fontSize = 11.sp)
                 }
             }
             item {
@@ -302,22 +311,24 @@ fun InvoiceScreen(vm: AppViewModel, modifier: Modifier = Modifier) {
                         Spacer(Modifier.height(9.dp))
                         ReceiptLine("Invoice #", vm.lastInvoiceNumber)
                         ReceiptLine("Date", vm.lastInvoiceDate)
+                        ReceiptLine("Customer", vm.selectedSaleCustomer)
                         UiText(if (vm.invoiceCompleted) "Payment recorded" else "Review payment, then save invoice", color = if (vm.invoiceCompleted) Success else Warning, fontSize = 12.sp)
                         ReceiptLine("Cashier", "Owner")
                         Spacer(Modifier.height(9.dp))
                         HorizontalDivider(color = CardStroke)
                         Spacer(Modifier.height(9.dp))
-                        cart.take(8).forEach { line ->
+                        cart.take(5).forEach { line ->
                             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
                                 Column(Modifier.weight(1f)) {
                                     UiText(line.product.name, translate = false, color = Ink, fontSize = 12.sp, fontWeight = FontWeight.Bold)
                                     UiText(line.product.variant, color = MutedInk, fontSize = 12.sp)
+                                    if (line.product.imeis.isNotEmpty()) UiText("IMEI: ${line.product.imeis.take(line.quantity).joinToString()}", translate = false, color = BrandBlueDark, fontSize = 10.sp)
                                 }
                                 UiText("${line.quantity} × ${line.product.salePrice}", color = Ink, fontSize = 12.sp)
                             }
                             Spacer(Modifier.height(8.dp))
                         }
-                        if (cart.size > 8) UiText("+ ${cart.size - 8} more items — see full invoice in app", color = MutedInk, fontSize = 11.sp)
+                        if (cart.size > 5) UiText("+ ${cart.size - 5} more items — see full invoice in app", color = MutedInk, fontSize = 11.sp)
                         if (cart.isEmpty()) {
                             UiText("No active cart. Go back to POS Billing to create an invoice.", color = MutedInk, fontSize = 12.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
                         } else {
@@ -372,7 +383,9 @@ fun printInvoice(context: Context, invoiceNo: String, receipt: String) {
     val shopTitle = safeHtml(rawLines.getOrNull(0).orEmpty())
     val shopAddress = safeHtml(rawLines.getOrNull(1).orEmpty())
     val shopPhone = safeHtml(rawLines.getOrNull(2).orEmpty())
-    val receiptBody = rawLines.drop(3).map { line ->
+    val customTitle = rawLines.getOrNull(3).orEmpty().takeIf { it.endsWith("Report", true) || it.startsWith("Repair", true) || it.startsWith("Purchase", true) }
+    val receiptTag = safeHtml(customTitle ?: "SALE INVOICE")
+    val receiptBody = rawLines.drop(if (customTitle == null) 3 else 4).map { line ->
         val label = line.substringBefore(":", "")
         when {
             label in setOf("Invoice", "Date", "Customer", "Supplier", "Payment", "Total", "Amount", "Fee", "Reference", "Quantity", "Unit cost", "Received", "Method", "Plan") -> tr(label) + ":" + safeHtml(line.substringAfter(":"))
@@ -390,7 +403,7 @@ fun printInvoice(context: Context, invoiceNo: String, receipt: String) {
     }
     val direction = if (UiLanguage.code == "ur") "rtl" else "ltr"
     val logo = "<svg viewBox='0 0 72 72' aria-label='SkyBarech logo'><path fill='#009FFF' d='M44 5 60 17 48 28 39 21 26 32 36 40 24 51 13 41Q6 34 13 26L35 7Q39 3 44 5Z'/><path fill='#5A36FF' d='m48 23 11 10q8 8 0 16L37 67q-5 4-10 0L12 56l12-11 10 8 13-12-11-8Z'/></svg>"
-    webView.loadDataWithBaseURL("file:///android_asset/", "<html lang='${UiLanguage.code}' dir='$direction'><head><meta charset='UTF-8'><style>@font-face{font-family:Urdu;src:url('NotoNaskhArabic.ttf')}@page{size:80mm auto;margin:2.5mm}body{font-family:Urdu,Arial,sans-serif;width:72mm;font-size:9px;line-height:1.28;color:#101828;overflow-wrap:anywhere}.receipt{border:1px solid #b9d7f5;border-radius:9px;padding:9px 10px;background:linear-gradient(180deg,#eaf6ff 0,#fff 72px)}.brand{width:30px;height:30px;margin:0 auto 3px}.brand svg{width:100%;height:100%;display:block}.shop{font:bold 14px Arial;text-align:center;letter-spacing:.35px;color:#073b78;border-block:1px solid #0b5da8;padding:2px 0;margin:0}.contact{text-align:center;color:#334155;font-size:8px;line-height:1.2;margin:3px 0}.phone{color:#0b5da8;font-weight:bold}.tag{display:table;margin:4px auto 0;padding:2px 8px;border-radius:99px;background:#0b5da8;color:#fff;font:bold 7px Arial;letter-spacing:.6px}.rule{border:0;border-top:1px dashed #94bfe6;margin:5px 0}.body{font-size:8px;line-height:1.25}.foot{text-align:center;color:#466987;font-size:7px;line-height:1.2;margin-top:5px}.foot b{display:block;color:#073b78;font-size:8px;margin-bottom:1px}</style></head><body><section class='receipt'><div class='brand'>$logo</div><div class='shop'>$shopTitle</div><div class='contact'>$shopAddress<br><span class='phone'>$shopPhone</span></div><div class='tag'>SALE INVOICE</div><hr class='rule'><div class='body'>$receiptBody</div><hr class='rule'><div class='foot'><b>Thank you for shopping with us</b>Powered by SkyBarech ERP</div></section></body></html>", "text/html", "UTF-8", null)
+    webView.loadDataWithBaseURL("file:///android_asset/", "<html lang='${UiLanguage.code}' dir='$direction'><head><meta charset='UTF-8'><style>@font-face{font-family:Urdu;src:url('NotoNaskhArabic.ttf')}@page{size:80mm auto;margin:2.5mm}body{font-family:Urdu,Arial,sans-serif;width:72mm;font-size:9px;line-height:1.22;color:#101828;overflow-wrap:anywhere}.receipt{border:1px solid #b9d7f5;border-radius:9px;padding:8px 10px;background:linear-gradient(180deg,#eaf6ff 0,#fff 72px)}.brand{width:40px;height:40px;margin:0 auto 2px}.brand svg{width:100%;height:100%;display:block}.shop{font:bold 14px Arial;text-align:center;letter-spacing:.35px;color:#073b78;border-block:1px solid #0b5da8;padding:2px 0;margin:0}.contact{text-align:center;color:#334155;font-size:8px;line-height:1.15;margin:2px 0}.phone{color:#0b5da8;font-weight:bold}.tag{display:table;margin:3px auto 0;padding:2px 8px;border-radius:99px;background:#0b5da8;color:#fff;font:bold 7px Arial;letter-spacing:.6px}.rule{border:0;border-top:1px dashed #94bfe6;margin:4px 0}.body{font-size:8px;line-height:1.18}.foot{text-align:center;color:#466987;font-size:7px;line-height:1.15;margin-top:4px}.foot b{display:block;color:#073b78;font-size:8px;margin-bottom:1px}</style></head><body><section class='receipt'><div class='brand'>$logo</div><div class='shop'>$shopTitle</div><div class='contact'>$shopAddress<br><span class='phone'>$shopPhone</span></div><div class='tag'>$receiptTag</div><hr class='rule'><div class='body'>$receiptBody</div><hr class='rule'><div class='foot'><b>Thank you for shopping with us</b>Powered by SkyBarech ERP</div></section></body></html>", "text/html", "UTF-8", null)
 }
 
 @Composable

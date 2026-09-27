@@ -117,7 +117,8 @@ private fun AuthHero(
     title: String,
     subtitle: String,
     badge: String,
-    icon: androidx.compose.ui.graphics.vector.ImageVector
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    compact: Boolean = false
 ) {
     Surface(
         modifier = Modifier.fillMaxWidth().shadow(14.dp, RoundedCornerShape(28.dp)),
@@ -125,7 +126,7 @@ private fun AuthHero(
         color = Color.White,
         border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFCDE8FF))
     ) {
-        Box(Modifier.fillMaxWidth().height(174.dp).background(Brush.linearGradient(listOf(Color(0xFFF9FDFF), Color(0xFFE8F7FF), Color(0xFFF0EDFF))))) {
+        Box(Modifier.fillMaxWidth().height(if (compact) 112.dp else 174.dp).background(Brush.linearGradient(listOf(Color(0xFFF9FDFF), Color(0xFFE8F7FF), Color(0xFFF0EDFF))))) {
             Canvas(Modifier.fillMaxSize()) {
                 drawCircle(Color(0xFF33C2F1).copy(alpha = .17f), radius = size.minDimension * .50f, center = Offset(size.width * .92f, size.height * .25f))
                 drawCircle(Color(0xFF725FF4).copy(alpha = .10f), radius = size.minDimension * .42f, center = Offset(size.width * .78f, size.height * 1.02f))
@@ -141,9 +142,9 @@ private fun AuthHero(
                     Icon(icon, contentDescription = null, tint = BrandBlue, modifier = Modifier.size(26.dp))
                 }
             }
-            Column(Modifier.align(Alignment.BottomStart).padding(start = 18.dp, end = 92.dp, bottom = 17.dp)) {
-                UiText(title, color = Ink, fontSize = 25.sp, fontWeight = FontWeight.ExtraBold)
-                UiText(subtitle, color = MutedInk, fontSize = 12.sp, lineHeight = 17.sp, maxLines = 2)
+            Column(Modifier.align(Alignment.BottomStart).padding(start = 18.dp, end = 92.dp, bottom = if (compact) 9.dp else 17.dp)) {
+                UiText(title, color = Ink, fontSize = if (compact) 19.sp else 25.sp, fontWeight = FontWeight.ExtraBold)
+                UiText(subtitle, color = MutedInk, fontSize = if (compact) 10.sp else 12.sp, lineHeight = if (compact) 13.sp else 17.sp, maxLines = if (compact) 1 else 2)
             }
             Icon(Icons.Outlined.Storefront, contentDescription = null, tint = BrandBlue.copy(alpha = .15f), modifier = Modifier.align(Alignment.BottomEnd).padding(15.dp).size(68.dp))
         }
@@ -318,34 +319,32 @@ fun ActivationScreen(vm: AppViewModel) {
     var temporaryPassword by remember { mutableStateOf("") }
     AppBackground {
     Column(
-        modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().imePadding().verticalScroll(rememberScrollState()).padding(horizontal = 22.dp, vertical = 20.dp), horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().imePadding().padding(horizontal = 18.dp, vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
     ) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = { vm.navigateRoot(AppScreen.LOGIN) }) { Icon(Icons.Outlined.ArrowBack, contentDescription = tr("Back"), tint = Ink) }
             UiText("Activate Account", color = Ink, fontWeight = FontWeight.Bold, fontSize = 18.sp)
         }
-        Spacer(Modifier.height(24.dp))
-        AuthHero("Activate Your Shop", "Verify the shop once, then use it securely across Android and Desktop.", "VERIFIED SHOP SETUP", Icons.Outlined.VerifiedUser)
-        Spacer(Modifier.height(18.dp))
+        Spacer(Modifier.height(8.dp))
+        AuthHero("Activate Your Shop", "One secure activation for Android and Desktop.", "VERIFIED SHOP SETUP", Icons.Outlined.VerifiedUser, compact = true)
+        Spacer(Modifier.height(9.dp))
         Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(24.dp), color = CardSurface, border = androidx.compose.foundation.BorderStroke(1.dp, CardStroke), shadowElevation = 4.dp) {
-            Column(Modifier.padding(17.dp)) {
+            Column(Modifier.padding(14.dp)) {
                 UiText("Shop details", color = Ink, fontSize = 17.sp, fontWeight = FontWeight.ExtraBold)
-                UiText("Enter the credentials supplied for this shop.", color = MutedInk, fontSize = 12.sp, modifier = Modifier.padding(top = 3.dp, bottom = 14.dp))
+                UiText("Enter the credentials supplied for this shop.", color = MutedInk, fontSize = 11.sp, modifier = Modifier.padding(top = 2.dp, bottom = 8.dp))
                 AppTextField("Shop Name", shopName, { shopName = it }, leadingIcon = Icons.Outlined.Store, placeholder = "Ali Mobile Accessories")
-                Spacer(Modifier.height(12.dp))
+                Spacer(Modifier.height(8.dp))
                 AppTextField("Activation Code", code, { code = it }, leadingIcon = Icons.Outlined.Key, placeholder = "Your activation code")
-                Spacer(Modifier.height(12.dp))
+                Spacer(Modifier.height(8.dp))
                 AppTextField("Username / Owner Mobile", mobile, { mobile = it }, leadingIcon = Icons.Outlined.PersonOutline, placeholder = "03001234567")
-                Spacer(Modifier.height(12.dp))
+                Spacer(Modifier.height(8.dp))
                 PinCodeField("Temporary PIN", temporaryPassword, { temporaryPassword = it }, length = 4)
-                Spacer(Modifier.height(20.dp))
-                PrimaryButton(if (vm.syncInProgress) "Verifying…" else "Activate shop", { vm.activate(code, mobile, temporaryPassword, shopName) }, Modifier.fillMaxWidth(), enabled = !vm.syncInProgress)
                 Spacer(Modifier.height(10.dp))
-                OutlineButton("Support", { vm.navigateRoot(AppScreen.HELP) }, Modifier.fillMaxWidth(), Icons.Outlined.SupportAgent)
+                PrimaryButton(if (vm.syncInProgress) "Verifying…" else "Activate shop", { vm.activate(code, mobile, temporaryPassword, shopName) }, Modifier.fillMaxWidth(), enabled = !vm.syncInProgress)
+                TextButton({ vm.navigateRoot(AppScreen.HELP) }, Modifier.fillMaxWidth()) { Icon(Icons.Outlined.SupportAgent, null, tint = BrandBlue, modifier = Modifier.size(17.dp)); Spacer(Modifier.width(6.dp)); UiText("Need activation help?", color = BrandBlue, fontSize = 11.sp) }
             }
         }
-        Spacer(Modifier.height(16.dp))
-        UiText("After verification, choose a 4 digit PIN.", color = MutedInk, fontSize = 12.sp, textAlign = TextAlign.Center)
+        UiText("After verification, choose a 4 digit PIN.", color = MutedInk, fontSize = 10.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 5.dp))
     }
     }
 }

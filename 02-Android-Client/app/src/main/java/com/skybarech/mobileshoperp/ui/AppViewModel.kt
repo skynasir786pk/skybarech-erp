@@ -105,6 +105,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         private set
     var lastPaymentMethod by mutableStateOf("Cash")
         private set
+    var selectedSaleCustomer by mutableStateOf("Walk-in Customer")
+        private set
+    fun selectSaleCustomer(customer: String) { selectedSaleCustomer = customer.ifBlank { "Walk-in Customer" } }
 
     private val appearancePrefs = application.getSharedPreferences("skybarech_appearance", android.content.Context.MODE_PRIVATE)
     fun toggleTheme() {
@@ -627,11 +630,13 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         appendLine("${tr("Date")}: $lastInvoiceDate")
         appendLine(tr(if (invoiceCompleted) "PAID RECEIPT" else "PAYMENT PREVIEW"))
         appendLine("--------------------------------")
-        invoiceLines().take(8).forEach { line ->
-            val title = line.product.name.replace(Regex("\\s+"), " ").trim().let { if (it.length > 30) "${it.take(29).trim()}…" else it }
+        appendLine("${tr("Customer")}: $selectedSaleCustomer")
+        invoiceLines().take(5).forEach { line ->
+            val title = line.product.name.replace(Regex("\\s+"), " ").trim().let { if (it.length > 26) "${it.take(25).trim()}…" else it }
             appendLine("$title  ${line.quantity} x ${formatMoney(line.product.salePrice)}")
+            if (line.product.imeis.isNotEmpty()) appendLine("IMEI: ${line.product.imeis.take(line.quantity).joinToString()}")
         }
-        val hiddenItems = (invoiceLines().size - 8).coerceAtLeast(0)
+        val hiddenItems = (invoiceLines().size - 5).coerceAtLeast(0)
         if (hiddenItems > 0) appendLine("+ $hiddenItems more item${if (hiddenItems == 1) "" else "s"} — see app invoice")
         appendLine("--------------------------------")
         appendLine("${tr("Total")}: ${formatMoney(invoiceTotal())}")
@@ -693,7 +698,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         }
         invoiceCompleted = false
         savedInvoiceLines = emptyList()
-        lastInvoiceNumber = "INV-" + java.util.UUID.randomUUID().toString()
+        lastInvoiceNumber = "INV-" + System.currentTimeMillis().toString().takeLast(7)
         lastInvoiceDate = nowLabel()
         navigate(AppScreen.INVOICE)
     }
@@ -706,17 +711,21 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             return
         }
         val productLabel = cart.joinToString { it.product.name }
-        val sale = SaleRecord(lastInvoiceNumber, "Walk-in Customer", productLabel, cartTotal(), lastPaymentMethod, lastInvoiceDate)
+        val sale = SaleRecord(lastInvoiceNumber, selectedSaleCustomer, productLabel, cartTotal(), lastPaymentMethod, lastInvoiceDate)
         sales.add(0, sale)
+        val soldLines = cart.map { line -> line.copy(product = line.product.copy(imeis = line.product.imeis.take(line.quantity))) }
         cart.forEach { line ->
             val index = products.indexOfFirst { it.id == line.product.id }
             if (index >= 0) {
-                products[index] = products[index].copy(stock = (products[index].stock - line.quantity).coerceAtLeast(0))
+                products[index] = products[index].copy(
+                    stock = (products[index].stock - line.quantity).coerceAtLeast(0),
+                    imeis = products[index].imeis.drop(line.quantity)
+                )
                 sync("products", products[index].id, products[index].toMap())
             }
         }
         sync("sales", sale.id, sale.toMap())
-        savedInvoiceLines = cart.toList()
+        savedInvoiceLines = soldLines
         invoiceCompleted = true
         cart.clear()
         syncDashboardSummary()
@@ -869,7 +878,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             else -> {
                 val qty = imeis.size.coerceAtLeast(1)
                 val supplierContact = supplierMobile.takeIf { it.isNotBlank() }?.let { " · Mobile: $it" }.orEmpty()
-                val product = Product("p${System.currentTimeMillis()}", "$brand $model", brand, model, "New purchase", saleValue, purchaseValue, qty, sku = imeis.first(), notes = "IMEI: ${imeis.joinToString(", ")} · Supplier: $supplier$supplierContact")
+                val product = Product("p${System.currentTimeMillis()}", "$brand $model", brand, model, "New purchase", saleValue, purchaseValue, qty, sku = imeis.first(), notes = "IMEI: ${imeis.joinToString(", ")} · Supplier: $supplier$supplierContact", imeis = imeis)
                 products.add(0, product)
                 sync("products", product.id, product.toMap() + mapOf("supplier" to supplier, "supplierMobile" to supplierMobile, "imeis" to imeis, "purchaseType" to "mobile"))
                 syncDashboardSummary()
@@ -1133,7 +1142,7 @@ private fun Product.toMap() = mapOf(
     "ram" to ram, "storage" to storage, "storageType" to storageType,
     "processor" to processor, "generation" to generation, "graphics" to graphics,
     "screenSize" to screenSize, "operatingSystem" to operatingSystem,
-    "batteryHealth" to batteryHealth, "serialNumber" to serialNumber
+    "batteryHealth" to batteryHealth, "serialNumber" to serialNumber, "imeis" to imeis
 )
 
 private fun RepairJob.toMap() = mapOf(

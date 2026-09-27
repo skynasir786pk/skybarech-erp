@@ -74,6 +74,7 @@ private fun SkyBarechAppContent(vm: AppViewModel) {
     SideEffect {
         com.skybarech.mobileshoperp.ui.theme.UiAppearance.authLight = showAuthShell && vm.screen != AppScreen.SPLASH
         com.skybarech.mobileshoperp.ui.theme.UiAppearance.darkBrandBackdrop = vm.screen in setOf(AppScreen.SPLASH, AppScreen.WELCOME)
+        if (vm.loggedIn) com.skybarech.mobileshoperp.ui.theme.UiAppearance.dark = false
     }
     if (showAuthShell) {
         AppBackground {
@@ -172,7 +173,7 @@ private fun AppShell(vm: AppViewModel, snackbarHostState: SnackbarHostState) {
 
 @Composable
 private fun AppTopBar(vm: AppViewModel, showMenu: Boolean, onMenuClick: () -> Unit) {
-    Surface(color = CardSurface, shadowElevation = 2.dp) {
+    Surface(color = Color.White, shadowElevation = 2.dp) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -197,13 +198,13 @@ private fun AppTopBar(vm: AppViewModel, showMenu: Boolean, onMenuClick: () -> Un
                     tint = BrandBlue
                 )
             }
-            Surface(modifier = Modifier.weight(1f), shape = RoundedCornerShape(14.dp), color = BrandBlueSoft) {
+            Surface(modifier = Modifier.weight(1f), shape = RoundedCornerShape(14.dp), color = Color(0xFFF0F6FF)) {
                 Row(Modifier.padding(horizontal = 10.dp, vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Outlined.Storefront, contentDescription = null, tint = BrandBlue, modifier = Modifier.size(18.dp))
                     Spacer(Modifier.width(7.dp))
                     Column(Modifier.weight(1f)) {
-                        UiText(vm.shopName.ifBlank { "Your business workspace" }, translate = false, color = Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.ExtraBold, maxLines = 1)
-                        UiText(if (vm.screen == AppScreen.DASHBOARD) "SkyBarech ERP" else vm.screen.title, color = BrandBlue, fontSize = 10.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
+                        UiText(vm.shopName.ifBlank { "Your business workspace" }, translate = false, color = Color(0xFF10244D), style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.ExtraBold, maxLines = 1)
+                        UiText(if (vm.screen == AppScreen.DASHBOARD) "Dashboard" else vm.screen.title, color = Color(0xFF0F43D8), fontSize = 10.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
                     }
                 }
             }
