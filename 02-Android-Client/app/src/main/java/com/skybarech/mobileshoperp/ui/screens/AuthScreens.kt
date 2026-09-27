@@ -289,7 +289,7 @@ fun ActivationScreen(vm: AppViewModel) {
                     }
                 }
                 UiText("Activate your shop account", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 20.sp)
-                UiText("Your verified shop will appear across Android and Desktop.", color = Color(0xFFE2F5FF), fontSize = 12.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(horizontal = 24.dp, top = 5.dp, bottom = 20.dp))
+                UiText("Your verified shop will appear across Android and Desktop.", color = Color(0xFFE2F5FF), fontSize = 12.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(start = 24.dp, top = 5.dp, end = 24.dp, bottom = 20.dp))
             }
             }
         }
