@@ -99,9 +99,8 @@ fun BrandHeader(compact: Boolean = false, modifier: Modifier = Modifier) {
         BrandMark(if (compact) 40.dp else 52.dp)
         Spacer(Modifier.width(12.dp))
         Column {
-            UiText("SkyBarech", color = Ink, fontSize = if (compact) 19.sp else 25.sp, fontWeight = FontWeight.ExtraBold)
-            UiText("Mobile Shop ERP", color = BrandBlue, fontSize = if (compact) 15.sp else 20.sp, fontWeight = FontWeight.Bold)
-            if (!compact) UiText("by SkyBarech Technology", color = MutedInk, fontSize = 12.sp)
+            UiText("SkyBarech ERP", color = Ink, fontSize = if (compact) 19.sp else 25.sp, fontWeight = FontWeight.ExtraBold)
+            if (!compact) UiText("Secure business workspace", color = BrandBlue, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
         }
     }
 }

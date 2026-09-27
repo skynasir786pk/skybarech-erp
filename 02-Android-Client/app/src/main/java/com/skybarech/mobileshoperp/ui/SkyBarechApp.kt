@@ -197,10 +197,14 @@ private fun AppTopBar(vm: AppViewModel, showMenu: Boolean, onMenuClick: () -> Un
                     tint = BrandBlue
                 )
             }
-            Column(modifier = Modifier.weight(1f)) {
-                UiText(if (vm.screen == AppScreen.DASHBOARD) "SkyBarech ERP" else vm.screen.title, color = Ink, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, maxLines = 1)
-                if (!vm.canGoBack()) {
-                    UiText(vm.shopName.ifBlank { "Your business workspace" }, translate = false, color = MutedInk, fontSize = 11.sp, maxLines = 1)
+            Surface(modifier = Modifier.weight(1f), shape = RoundedCornerShape(14.dp), color = BrandBlueSoft) {
+                Row(Modifier.padding(horizontal = 10.dp, vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Outlined.Storefront, contentDescription = null, tint = BrandBlue, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(7.dp))
+                    Column(Modifier.weight(1f)) {
+                        UiText(vm.shopName.ifBlank { "Your business workspace" }, translate = false, color = Ink, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.ExtraBold, maxLines = 1)
+                        UiText(if (vm.screen == AppScreen.DASHBOARD) "SkyBarech ERP" else vm.screen.title, color = BrandBlue, fontSize = 10.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
+                    }
                 }
             }
             LanguageSelector()

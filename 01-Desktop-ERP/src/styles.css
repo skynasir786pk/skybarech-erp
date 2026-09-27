@@ -1327,3 +1327,21 @@ html[lang=ur] .brand-name,html[lang=ur] .auth-card-brand strong{font-family:Aria
   .invoice-paper .invoice-items-head,.invoice-paper .invoice-line,.invoice-paper .receipt-meta {font-size:7.8pt !important;}
   .invoice-paper .invoice-total {font-size:9.5pt !important;}
 }
+
+/* v1.3.33 login clarity and branded shop banner. */
+.auth-side { color:#fff !important; }
+.auth-side .brand-name,.auth-side .brand-sub,.auth-side h1 { color:#fff !important; text-shadow:0 2px 16px rgba(0,15,68,.25); }
+.auth-side-hero h1 span { color:#d8f7ff !important; }
+.auth-side-hero p,.auth-side-foot,.auth-benefit span:last-child { color:#e1efff !important; }
+.auth-side .auth-eyebrow,.auth-side .auth-benefit strong { color:#fff !important; }
+.auth-card { color:#17244a; }
+.auth-card-brand strong,.auth-card h2,.auth-card .field label { color:#102252 !important; }
+.auth-card-brand span,.auth-card p { color:#60739a !important; }
+.auth-shop-banner { display:flex; align-items:center; gap:10px; margin:-8px 0 20px; padding:11px 12px; border:1px solid #c8e6ff; border-radius:16px; background:linear-gradient(120deg,#edf8ff,#f4f1ff); color:#1260be; box-shadow:0 7px 18px rgba(28,104,196,.08); }
+.auth-shop-banner>.icon { width:21px; height:21px; padding:8px; border-radius:11px; background:#176cf0; color:#fff; }
+.auth-shop-banner>div { display:grid; gap:2px; min-width:0; flex:1; }
+.auth-shop-banner span { color:#6b7f9f; font-size:8px; font-weight:900; letter-spacing:.9px; }
+.auth-shop-banner strong { overflow:hidden; color:#13295b; font-size:12px; line-height:1.2; text-overflow:ellipsis; white-space:nowrap; }
+.auth-shop-banner b { display:inline-flex; align-items:center; gap:4px; color:#087c58; font-size:9px; white-space:nowrap; }
+.auth-shop-banner b .icon { width:13px; height:13px; }
+@media(max-width:760px) { .auth-shop-banner { margin-top:-5px; } }

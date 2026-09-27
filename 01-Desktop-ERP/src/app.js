@@ -755,7 +755,7 @@
         <div class="auth-side-content">
           <div class="auth-brand">
             ${brandMarkup()}
-            <div class="brand-copy"><div class="brand-name">SkyBarech</div><div class="brand-sub">Desktop ERP · Mobile Shop</div></div>
+            <div class="brand-copy"><div class="brand-name">SkyBarech</div><div class="brand-sub">Desktop ERP · Secure workspace</div></div>
           </div>
           <div class="auth-side-hero">
             <div class="auth-eyebrow"><span></span> BUILT FOR MODERN RETAIL</div>
@@ -804,6 +804,7 @@
     
     return html`<form class="auth-card" data-form="login" novalidate>
       <div class="auth-card-brand">${brandMarkup()}<div><strong>SkyBarech ERP</strong><span>Connected retail workspace</span></div><em><i></i> SECURE LOGIN</em></div>
+      <div class="auth-shop-banner">${icon('supplier')}<div><span>SHOP WORKSPACE</span><strong>${esc(shopDisplayName())}</strong></div><b>${icon('shield')} Verified</b></div>
       <div class="auth-card-head">
         <div class="micro">${icon('shield')} VERIFIED SHOP ACCESS</div>
         <h2>Welcome back<span>.</span></h2>
