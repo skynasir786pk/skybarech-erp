@@ -1,0 +1,7 @@
+SkyBarech ERP Android v1.3.41
+
+- True edge-to-edge Android layout with transparent system status and navigation bars.
+- Removes the remaining black system header area.
+- Forces readable dark system icons on the light interface.
+- Rebuilds bottom navigation as a premium floating rounded bar.
+- Active navigation item uses a clear blue selected state with white icon and label.

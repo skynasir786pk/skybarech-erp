@@ -223,28 +223,30 @@ private fun BottomNavigation(vm: AppViewModel) {
         NavItem(AppScreen.STOCK_ALERTS, "Alerts", Icons.Outlined.Notifications),
         NavItem(AppScreen.SETTINGS, "Profile", Icons.Outlined.Person)
     )
+    Box(Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 12.dp, end = 12.dp, bottom = 8.dp, top = 4.dp)) {
     Surface(
-        modifier = Modifier.fillMaxWidth().height(76.dp).padding(horizontal = 9.dp, vertical = 6.dp).shadow(9.dp, RoundedCornerShape(25.dp)),
-        color = CardSurface,
-        shape = RoundedCornerShape(25.dp),
-        border = BorderStroke(1.dp, CardStroke)
+        modifier = Modifier.fillMaxWidth().height(68.dp).shadow(18.dp, RoundedCornerShape(26.dp), ambientColor = Color(0xFF458DDF), spotColor = Color(0xFF458DDF)),
+        color = Color.White.copy(alpha = .97f),
+        shape = RoundedCornerShape(26.dp),
+        border = BorderStroke(1.dp, Color(0xFFD3E9FA))
     ) {
-        Row(Modifier.fillMaxSize().padding(horizontal = 5.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(Modifier.fillMaxSize().padding(horizontal = 5.dp, vertical = 5.dp), verticalAlignment = Alignment.CenterVertically) {
             items.forEach { item ->
                 BottomNavItem(item, vm.screen == item.screen, BrandBlue, Modifier.weight(1f)) { vm.navigateRoot(item.screen) }
             }
         }
     }
+    }
 }
 
 @Composable
 private fun BottomNavItem(item: NavItem, selected: Boolean, neon: Color, modifier: Modifier = Modifier, onClick: () -> Unit) {
-    val tint by animateColorAsState(if (selected) neon else MutedInk, label = "nav-tint")
-    val container by animateColorAsState(if (selected) BrandBlueSoft else Color.Transparent, label = "nav-container")
-    val scale by animateFloatAsState(if (selected) 1.10f else 1f, label = "nav-scale")
-    val lift by animateFloatAsState(if (selected) -6f else 0f, label = "nav-lift")
-    Surface(onClick = onClick, modifier = modifier.fillMaxHeight().padding(horizontal = 2.dp, vertical = 7.dp), color = container, shape = RoundedCornerShape(17.dp)) {
-        Column(modifier = Modifier.graphicsLayer { scaleX = scale; scaleY = scale; translationY = lift }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+    val tint by animateColorAsState(if (selected) Color.White else Color(0xFF66809F), label = "nav-tint")
+    val container by animateColorAsState(if (selected) Color(0xFF087FF0) else Color.Transparent, label = "nav-container")
+    val scale by animateFloatAsState(if (selected) 1.06f else 1f, label = "nav-scale")
+    val lift by animateFloatAsState(if (selected) -2f else 0f, label = "nav-lift")
+    Surface(onClick = onClick, modifier = modifier.fillMaxHeight().padding(horizontal = 2.dp, vertical = 2.dp).graphicsLayer { scaleX = scale; scaleY = scale; translationY = lift }, color = container, shape = RoundedCornerShape(19.dp)) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
             Box(contentAlignment = Alignment.Center) {
                 if (selected) Box(Modifier.size(34.dp).clip(CircleShape).background(neon.copy(alpha = .12f)))
                 Icon(item.icon, contentDescription = tr(item.label), tint = tint, modifier = Modifier.size(if (selected) 23.dp else 22.dp))
@@ -252,7 +254,7 @@ private fun BottomNavItem(item: NavItem, selected: Boolean, neon: Color, modifie
             Spacer(Modifier.height(2.dp))
             UiText(item.label, color = tint, fontSize = 9.sp, fontWeight = if (selected) FontWeight.ExtraBold else FontWeight.Medium, maxLines = 1)
             Spacer(Modifier.height(2.dp))
-            Box(Modifier.width(if (selected) 15.dp else 4.dp).height(3.dp).clip(CircleShape).background(if (selected) neon else Color.Transparent))
+            Box(Modifier.width(if (selected) 15.dp else 4.dp).height(3.dp).clip(CircleShape).background(if (selected) Color.White else Color.Transparent))
         }
     }
 }
