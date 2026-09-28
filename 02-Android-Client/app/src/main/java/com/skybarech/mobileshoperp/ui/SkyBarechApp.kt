@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -122,12 +123,12 @@ private fun AppShell(vm: AppViewModel, snackbarHostState: SnackbarHostState) {
                 if (showRail) {
                     SideRail(vm)
                 }
-                Column(Modifier.fillMaxSize()) {
-                    if (showRail) AppTopBar(vm = vm, showMenu = false, onMenuClick = {})
-                    Box(Modifier.weight(1f)) {
-                        ScreenRouter(vm, Modifier.fillMaxSize())
-                    }
-                    if (!showRail) BottomNavigation(vm)
+                if (showRail) Column(Modifier.fillMaxSize()) {
+                    AppTopBar(vm = vm, showMenu = false, onMenuClick = {})
+                    Box(Modifier.weight(1f)) { ScreenRouter(vm, Modifier.fillMaxSize()) }
+                } else Box(Modifier.fillMaxSize()) {
+                    ScreenRouter(vm, Modifier.fillMaxSize().padding(bottom = 100.dp))
+                    BottomNavigation(vm, Modifier.align(Alignment.BottomCenter))
                 }
             }
             SnackbarHost(
@@ -215,7 +216,7 @@ private fun AppTopBar(vm: AppViewModel, showMenu: Boolean, onMenuClick: () -> Un
 }
 
 @Composable
-private fun BottomNavigation(vm: AppViewModel) {
+private fun BottomNavigation(vm: AppViewModel, modifier: Modifier = Modifier) {
     val items = listOf(
         NavItem(AppScreen.DASHBOARD, "Home", Icons.Outlined.Home),
         NavItem(AppScreen.INVENTORY, "Stock", Icons.Outlined.GridView),
@@ -223,38 +224,44 @@ private fun BottomNavigation(vm: AppViewModel) {
         NavItem(AppScreen.STOCK_ALERTS, "Alerts", Icons.Outlined.Notifications),
         NavItem(AppScreen.SETTINGS, "Profile", Icons.Outlined.Person)
     )
-    Box(Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 10.dp, end = 10.dp, bottom = 5.dp, top = 3.dp)) {
-    Surface(
-        modifier = Modifier.fillMaxWidth().height(64.dp).shadow(12.dp, RoundedCornerShape(23.dp), ambientColor = Color(0xFF458DDF), spotColor = Color(0xFF458DDF)),
-        color = Color.White.copy(alpha = .97f),
-        shape = RoundedCornerShape(23.dp),
-        border = BorderStroke(1.dp, Color(0xFFD3E9FA))
-    ) {
-        Row(Modifier.fillMaxSize().padding(horizontal = 5.dp, vertical = 5.dp), verticalAlignment = Alignment.CenterVertically) {
-            items.forEach { item ->
-                BottomNavItem(item, vm.screen == item.screen, BrandBlue, Modifier.weight(1f)) { vm.navigateRoot(item.screen) }
+    val selectedScreen = when (vm.screen) {
+        AppScreen.INVENTORY, AppScreen.ADD_PRODUCT, AppScreen.MOBILE_ACCESSORIES, AppScreen.MOBILE_SPARE_PARTS, AppScreen.LAPTOP -> AppScreen.INVENTORY
+        AppScreen.POS -> AppScreen.POS
+        AppScreen.STOCK_ALERTS -> AppScreen.STOCK_ALERTS
+        AppScreen.SETTINGS, AppScreen.CHANGE_PASSWORD, AppScreen.STAFF_ACTIVITY -> AppScreen.SETTINGS
+        else -> AppScreen.DASHBOARD
+    }
+    val active = items.indexOfFirst { it.screen == selectedScreen }.coerceAtLeast(0)
+    val animatedIndex by animateFloatAsState(active.toFloat(), animationSpec = androidx.compose.animation.core.spring(dampingRatio = .62f, stiffness = 210f), label = "liquid-position")
+    BoxWithConstraints(modifier.fillMaxWidth().navigationBarsPadding().padding(horizontal = 12.dp, vertical = 6.dp).height(86.dp)) {
+        val itemWidth = maxWidth / items.size
+        Canvas(Modifier.fillMaxSize().shadow(16.dp, RoundedCornerShape(32.dp), ambientColor = Color(0xFF0B1730), spotColor = Color(0xFF0B1730))) {
+            val barTop = 20.dp.toPx()
+            drawRoundRect(Color(0xFF1B2A4A), topLeft = androidx.compose.ui.geometry.Offset(0f, barTop), size = androidx.compose.ui.geometry.Size(size.width, size.height - barTop), cornerRadius = androidx.compose.ui.geometry.CornerRadius(32.dp.toPx()))
+            val centerX = itemWidth.toPx() * (animatedIndex + .5f)
+            drawCircle(Color(0xFF1B2A4A), 32.dp.toPx(), androidx.compose.ui.geometry.Offset(centerX, 29.dp.toPx()))
+            drawCircle(Color(0xFFFF7A3D), 23.dp.toPx(), androidx.compose.ui.geometry.Offset(centerX, 29.dp.toPx()))
+        }
+        Row(Modifier.fillMaxSize()) {
+            items.forEachIndexed { index, item ->
+                LiquidNavItem(item, selected = index == active, badge = if (item.screen == AppScreen.STOCK_ALERTS) vm.lowStockCount() else 0, modifier = Modifier.weight(1f)) { vm.navigateRoot(item.screen) }
             }
         }
-    }
     }
 }
 
 @Composable
-private fun BottomNavItem(item: NavItem, selected: Boolean, neon: Color, modifier: Modifier = Modifier, onClick: () -> Unit) {
-    val tint by animateColorAsState(if (selected) Color.White else Color(0xFF66809F), label = "nav-tint")
-    val container by animateColorAsState(if (selected) Color(0xFF087FF0) else Color.Transparent, label = "nav-container")
-    val scale by animateFloatAsState(if (selected) 1.06f else 1f, label = "nav-scale")
-    val lift by animateFloatAsState(if (selected) -2f else 0f, label = "nav-lift")
-    Surface(onClick = onClick, modifier = modifier.fillMaxHeight().padding(horizontal = 2.dp, vertical = 2.dp).graphicsLayer { scaleX = scale; scaleY = scale; translationY = lift }, color = container, shape = RoundedCornerShape(19.dp)) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-            Box(contentAlignment = Alignment.Center) {
-                if (selected) Box(Modifier.size(34.dp).clip(CircleShape).background(neon.copy(alpha = .12f)))
-                Icon(item.icon, contentDescription = tr(item.label), tint = tint, modifier = Modifier.size(if (selected) 23.dp else 22.dp))
+private fun LiquidNavItem(item: NavItem, selected: Boolean, badge: Int, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    val lift by animateFloatAsState(if (selected) -22f else 0f, animationSpec = androidx.compose.animation.core.spring(dampingRatio = .60f), label = "liquid-lift")
+    Surface(onClick = onClick, modifier = modifier.fillMaxHeight(), color = Color.Transparent) {
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Column(Modifier.graphicsLayer { translationY = lift }, horizontalAlignment = Alignment.CenterHorizontally) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(item.icon, contentDescription = tr(item.label), tint = if (selected) Color.White else Color(0xFF9FB0D0), modifier = Modifier.size(24.dp))
+                    if (badge > 0 && !selected) Badge(Modifier.align(Alignment.TopEnd).offset(x = 8.dp, y = (-7).dp), containerColor = Color(0xFFFF7A3D)) { UiText(badge.coerceAtMost(99).toString(), color = Color.White, fontSize = 8.sp) }
+                }
+                if (selected) UiText(item.label, color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 25.dp))
             }
-            Spacer(Modifier.height(2.dp))
-            UiText(item.label, color = tint, fontSize = 9.sp, fontWeight = if (selected) FontWeight.ExtraBold else FontWeight.Medium, maxLines = 1)
-            Spacer(Modifier.height(2.dp))
-            Box(Modifier.width(if (selected) 15.dp else 4.dp).height(3.dp).clip(CircleShape).background(if (selected) Color.White else Color.Transparent))
         }
     }
 }

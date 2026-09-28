@@ -1,0 +1,7 @@
+SkyBarech ERP Android v1.3.43
+
+- Ports the supplied LiquidNav.jsx and LiquidNav.css design into the actual Jetpack Compose Android application.
+- Adds a dark liquid bar with an animated orange active tab bubble.
+- Home, Stock, POS, Alerts and Profile switch the corresponding Android pages.
+- Adds 100dp bottom content clearance so the fixed bar never covers page content.
+- Alerts shows the live low-stock badge.
