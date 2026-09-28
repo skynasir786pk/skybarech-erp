@@ -37,6 +37,8 @@ fun SkyBarechTheme(content: @Composable () -> Unit) {
             androidx.core.view.WindowCompat.getInsetsController(it.window, it.window.decorView).apply {
                 isAppearanceLightStatusBars = true
                 isAppearanceLightNavigationBars = true
+                hide(androidx.core.view.WindowInsetsCompat.Type.statusBars())
+                systemBarsBehavior = androidx.core.view.WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             }
         }
     }

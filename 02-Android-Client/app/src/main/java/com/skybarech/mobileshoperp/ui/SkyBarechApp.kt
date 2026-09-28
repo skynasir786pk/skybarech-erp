@@ -118,7 +118,7 @@ private fun AppShell(vm: AppViewModel, snackbarHostState: SnackbarHostState) {
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
         val scope = rememberCoroutineScope()
         val body: @Composable BoxScope.() -> Unit = {
-            Row(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding()) {
+            Row(Modifier.fillMaxSize().imePadding()) {
                 if (showRail) {
                     SideRail(vm)
                 }
@@ -223,11 +223,11 @@ private fun BottomNavigation(vm: AppViewModel) {
         NavItem(AppScreen.STOCK_ALERTS, "Alerts", Icons.Outlined.Notifications),
         NavItem(AppScreen.SETTINGS, "Profile", Icons.Outlined.Person)
     )
-    Box(Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 12.dp, end = 12.dp, bottom = 8.dp, top = 4.dp)) {
+    Box(Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 10.dp, end = 10.dp, bottom = 5.dp, top = 3.dp)) {
     Surface(
-        modifier = Modifier.fillMaxWidth().height(68.dp).shadow(18.dp, RoundedCornerShape(26.dp), ambientColor = Color(0xFF458DDF), spotColor = Color(0xFF458DDF)),
+        modifier = Modifier.fillMaxWidth().height(64.dp).shadow(12.dp, RoundedCornerShape(23.dp), ambientColor = Color(0xFF458DDF), spotColor = Color(0xFF458DDF)),
         color = Color.White.copy(alpha = .97f),
-        shape = RoundedCornerShape(26.dp),
+        shape = RoundedCornerShape(23.dp),
         border = BorderStroke(1.dp, Color(0xFFD3E9FA))
     ) {
         Row(Modifier.fillMaxSize().padding(horizontal = 5.dp, vertical = 5.dp), verticalAlignment = Alignment.CenterVertically) {

@@ -1,0 +1,7 @@
+SkyBarech ERP Android v1.3.42
+
+- Completely hides the Android status header instead of relying on OEM transparency.
+- Restores fullscreen mode whenever the app regains focus.
+- Removes duplicate safe-area padding that distorted the Android layout.
+- Tightens and balances the floating bottom navigation bar.
+- Keeps the system navigation gesture/buttons available with correct bottom spacing.
