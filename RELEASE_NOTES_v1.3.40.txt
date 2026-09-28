@@ -1,0 +1,7 @@
+SkyBarech ERP Android v1.3.40
+
+- Completely disables the native Android title/action bar and clears the activity title.
+- Removes dark branding from the system status/navigation area.
+- Makes typed values explicitly dark and visible in login and activation fields.
+- Shows each entered PIN digit clearly inside its PIN box on login and activation.
+- Opens the corrected login once after updating while preserving activation and shop data.

@@ -180,7 +180,7 @@ fun AppTextField(
     val fieldError = error ?: numberError
     OutlinedTextField(
         value = value,
-        textStyle = LocalTextStyle.current.copy(textDirection = if (keyType in setOf(KeyboardType.Number, KeyboardType.Phone, KeyboardType.Email, KeyboardType.Password, KeyboardType.NumberPassword)) androidx.compose.ui.text.style.TextDirection.Ltr else androidx.compose.ui.text.style.TextDirection.Content),
+        textStyle = LocalTextStyle.current.copy(color = Ink, textDirection = if (keyType in setOf(KeyboardType.Number, KeyboardType.Phone, KeyboardType.Email, KeyboardType.Password, KeyboardType.NumberPassword)) androidx.compose.ui.text.style.TextDirection.Ltr else androidx.compose.ui.text.style.TextDirection.Content),
         onValueChange = onValueChange,
         modifier = modifier.fillMaxWidth(),
         label = { UiText(label) },
@@ -271,7 +271,7 @@ fun PinCodeField(
                                     .graphicsLayer { scaleX = pop; scaleY = pop },
                                 contentAlignment = Alignment.Center
                             ) {
-                                if (filled) Text("•", color = BrandBlueDark, fontSize = 29.sp, fontWeight = FontWeight.Black)
+                                if (filled) Text(value[index].toString(), color = Color(0xFF073A85), fontSize = 22.sp, fontWeight = FontWeight.ExtraBold)
                             }
                             if (index < length - 1) Spacer(Modifier.width(gap))
                         }

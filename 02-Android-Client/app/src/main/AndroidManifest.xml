@@ -20,6 +20,7 @@
         android:theme="@style/Theme.SkyBarechMobileShopERP">
         <activity
             android:name=".MainActivity"
+            android:label=""
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"

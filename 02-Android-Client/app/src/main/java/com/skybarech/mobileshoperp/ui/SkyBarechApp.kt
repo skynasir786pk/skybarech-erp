@@ -73,7 +73,7 @@ private fun SkyBarechAppContent(vm: AppViewModel) {
     val showAuthShell = vm.screen in authScreens || (vm.screen == AppScreen.HELP && !vm.loggedIn)
     SideEffect {
         com.skybarech.mobileshoperp.ui.theme.UiAppearance.authLight = showAuthShell && vm.screen != AppScreen.SPLASH
-        com.skybarech.mobileshoperp.ui.theme.UiAppearance.darkBrandBackdrop = vm.screen in setOf(AppScreen.SPLASH, AppScreen.WELCOME)
+        com.skybarech.mobileshoperp.ui.theme.UiAppearance.darkBrandBackdrop = false
         if (vm.loggedIn) com.skybarech.mobileshoperp.ui.theme.UiAppearance.dark = false
     }
     if (showAuthShell) {

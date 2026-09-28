@@ -117,9 +117,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     }
     init {
         com.skybarech.mobileshoperp.ui.theme.UiAppearance.dark = appearancePrefs.getBoolean("dark", false)
-        if (!appearancePrefs.getBoolean("auth_redesign_139_seen", false)) {
+        if (!appearancePrefs.getBoolean("auth_visibility_140_seen", false)) {
             sessionStore.setResumeSession(false)
-            appearancePrefs.edit().putBoolean("auth_redesign_139_seen", true).apply()
+            appearancePrefs.edit().putBoolean("auth_visibility_140_seen", true).apply()
         }
         loadLocalData()
         SyncScheduler.schedule(application)
