@@ -1,0 +1,8 @@
+SkyBarech ERP Android v1.3.38
+
+- Rebuilt the Android splash screen from the supplied splash SVG reference.
+- Rebuilt the Android PIN login from the supplied login SVG reference.
+- Rebuilt shop activation from the supplied activation SVG reference.
+- Added the white and powder-blue wave visual system, SB identity, gradient actions, biometric and cloud controls.
+- Preserved secure 4-digit PIN authentication and existing activation/cloud behavior.
+- Kept login and activation within the standard portrait viewport without page scrolling.

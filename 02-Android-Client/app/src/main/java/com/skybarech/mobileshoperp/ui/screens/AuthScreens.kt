@@ -86,29 +86,13 @@ fun SplashScreen(vm: AppViewModel) {
             vm.navigateRoot(if (vm.activated) AppScreen.LOGIN else AppScreen.ACTIVATION)
         }
     }
-    AuroraBackdrop {
-        Column(Modifier.align(Alignment.Center).padding(28.dp).graphicsLayer { alpha = .3f + progress * .7f; scaleX = .94f + progress * .06f; scaleY = scaleX }, horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(Modifier.size(184.dp), contentAlignment = Alignment.Center) {
-                Canvas(Modifier.fillMaxSize().graphicsLayer { rotationZ = logoTurn }) {
-                    drawCircle(Color(0xFF39BFF2).copy(alpha = .28f), radius = size.minDimension * .46f, style = androidx.compose.ui.graphics.drawscope.Stroke(2.5f))
-                    drawCircle(Color(0xFF6D5DF5).copy(alpha = .16f), radius = size.minDimension * .36f, style = androidx.compose.ui.graphics.drawscope.Stroke(5f))
-                    drawCircle(Color(0xFF1880EC).copy(alpha = .75f), radius = 5f, center = Offset(size.width * .93f, size.height * .5f))
-                }
-                Box(Modifier.size(132.dp).shadow(24.dp, RoundedCornerShape(44.dp), ambientColor = Color(0xFF2B7FFF), spotColor = Color(0xFF2B7FFF)).clip(RoundedCornerShape(44.dp)).background(Brush.radialGradient(listOf(Color.White, Color(0xFFE2F5FF), Color(0xFFCBE9FF)))).graphicsLayer { scaleX = logoPulse; scaleY = logoPulse }, contentAlignment = Alignment.Center) { BrandMark(96.dp) }
-            }
-            Spacer(Modifier.height(20.dp))
-            UiText("SkyBarech ERP", color=Ink, fontSize=31.sp, fontWeight=FontWeight.ExtraBold)
-            Spacer(Modifier.height(18.dp))
-            UiText("Business without limits", color=BrandBlue, fontSize=14.sp, fontWeight=FontWeight.SemiBold)
-            UiText("Load  •  Connect  •  Grow", color=MutedInk, fontSize=12.sp)
+    Box(Modifier.fillMaxSize().background(Color.White)) {
+        Image(painterResource(R.drawable.splash_reference), contentDescription = null, contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize().graphicsLayer { alpha = .25f + progress * .75f; scaleX = .985f + progress * .015f; scaleY = scaleX })
+        Box(Modifier.align(Alignment.Center).offset(y = (-28).dp).size(230.dp).graphicsLayer { rotationZ = logoTurn; scaleX = logoPulse; scaleY = logoPulse }) {
+            Canvas(Modifier.fillMaxSize()) { drawCircle(Color(0xFF22BDF0).copy(alpha = .12f), radius = size.minDimension * .49f, style = androidx.compose.ui.graphics.drawscope.Stroke(3f)) }
         }
-        Column(Modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(32.dp), horizontalAlignment=Alignment.CenterHorizontally) {
-            LinearProgressIndicator(progress={ progress }, modifier=Modifier.width(200.dp).clip(RoundedCornerShape(8.dp)), color=BrandBlue, trackColor=Color(0xFFCDE7FF))
-            Spacer(Modifier.height(12.dp))
-            UiText("Opening your workspace…", color=MutedInk, fontSize=12.sp)
-            Spacer(Modifier.height(24.dp))
-            UiText("Version ${com.skybarech.mobileshoperp.BuildConfig.VERSION_NAME}", color=MutedInk, fontSize=10.sp)
-        }
+        LinearProgressIndicator(progress={ progress }, modifier=Modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(bottom = 42.dp).width(150.dp).height(4.dp).clip(RoundedCornerShape(8.dp)), color=Color(0xFF0B83F6), trackColor=Color(0xFFD9F1FF))
     }
 }
 
@@ -148,6 +132,43 @@ private fun AuthHero(
             }
             Icon(Icons.Outlined.Storefront, contentDescription = null, tint = BrandBlue.copy(alpha = .15f), modifier = Modifier.align(Alignment.BottomEnd).padding(15.dp).size(68.dp))
         }
+    }
+}
+
+@Composable
+private fun ReferenceAuthBackdrop(content: @Composable BoxScope.() -> Unit) {
+    Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color(0xFFF8FDFF), Color.White, Color(0xFFE9F8FF))))) {
+        Canvas(Modifier.fillMaxSize()) {
+            drawCircle(Color(0xFF75D7FA).copy(alpha = .20f), size.minDimension * .55f, Offset(size.width * -.05f, size.height * -.02f))
+            drawCircle(Color(0xFF2FBFFC).copy(alpha = .14f), size.minDimension * .62f, Offset(size.width * 1.02f, size.height * 1.02f))
+            repeat(4) { index ->
+                val path = androidx.compose.ui.graphics.Path().apply {
+                    moveTo(-size.width * .1f, size.height * (.88f + index * .018f))
+                    cubicTo(size.width * .28f, size.height * (.74f + index * .018f), size.width * .62f, size.height * (1.02f + index * .01f), size.width * 1.1f, size.height * (.84f + index * .02f))
+                }
+                drawPath(path, Color(0xFF24B8F1).copy(alpha = .12f - index * .018f), style = androidx.compose.ui.graphics.drawscope.Stroke(5f + index * 3f))
+            }
+        }
+        content()
+    }
+}
+
+@Composable
+private fun ReferenceBrandIdentity(compact: Boolean = false) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        BrandMark(if (compact) 68.dp else 88.dp)
+        Spacer(Modifier.height(if (compact) 5.dp else 8.dp))
+        UiText("SkyBarech ERP", color = Color(0xFF123B80), fontSize = if (compact) 25.sp else 31.sp, fontWeight = FontWeight.ExtraBold, translate = false)
+        UiText("Business Management System", color = Color(0xFF61656C), fontSize = if (compact) 11.sp else 13.sp, fontWeight = FontWeight.SemiBold, translate = false)
+    }
+}
+
+@Composable
+private fun ReferencePrimaryButton(label: String, enabled: Boolean = true, onClick: () -> Unit) {
+    Box(Modifier.fillMaxWidth().height(54.dp).shadow(12.dp, RoundedCornerShape(16.dp), spotColor = Color(0xFF168AF4)).clip(RoundedCornerShape(16.dp))
+        .background(if (enabled) Brush.horizontalGradient(listOf(Color(0xFF1559E8), Color(0xFF078CF7), Color(0xFF27C5E9))) else Brush.horizontalGradient(listOf(Color(0xFFB8C9DB), Color(0xFFCBD7E4))))
+        .clickable(enabled = enabled, onClick = onClick), contentAlignment = Alignment.Center) {
+        UiText(label, color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.ExtraBold)
     }
 }
 
@@ -317,34 +338,40 @@ fun ActivationScreen(vm: AppViewModel) {
     var code by rememberSaveable { mutableStateOf("") }
     var mobile by rememberSaveable { mutableStateOf("") }
     var temporaryPassword by remember { mutableStateOf("") }
-    AppBackground {
+    ReferenceAuthBackdrop {
     Column(
-        modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().imePadding().padding(horizontal = 18.dp, vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
+        modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().imePadding().padding(horizontal = 16.dp, vertical = 6.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
     ) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = { vm.navigateRoot(AppScreen.LOGIN) }) { Icon(Icons.Outlined.ArrowBack, contentDescription = tr("Back"), tint = Ink) }
-            UiText("Activate Account", color = Ink, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            UiText("Activate Account", color = Color(0xFF073A85), fontWeight = FontWeight.ExtraBold, fontSize = 19.sp)
         }
-        Spacer(Modifier.height(8.dp))
-        AuthHero("Activate Your Shop", "One secure activation for Android and Desktop.", "VERIFIED SHOP SETUP", Icons.Outlined.VerifiedUser, compact = true)
-        Spacer(Modifier.height(9.dp))
-        Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(24.dp), color = CardSurface, border = androidx.compose.foundation.BorderStroke(1.dp, CardStroke), shadowElevation = 4.dp) {
-            Column(Modifier.padding(14.dp)) {
-                UiText("Shop details", color = Ink, fontSize = 17.sp, fontWeight = FontWeight.ExtraBold)
-                UiText("Enter the credentials supplied for this shop.", color = MutedInk, fontSize = 11.sp, modifier = Modifier.padding(top = 2.dp, bottom = 8.dp))
-                AppTextField("Shop Name", shopName, { shopName = it }, leadingIcon = Icons.Outlined.Store, placeholder = "Ali Mobile Accessories")
-                Spacer(Modifier.height(8.dp))
-                AppTextField("Activation Code", code, { code = it }, leadingIcon = Icons.Outlined.Key, placeholder = "Your activation code")
-                Spacer(Modifier.height(8.dp))
-                AppTextField("Username / Owner Mobile", mobile, { mobile = it }, leadingIcon = Icons.Outlined.PersonOutline, placeholder = "03001234567")
-                Spacer(Modifier.height(8.dp))
-                PinCodeField("Temporary PIN", temporaryPassword, { temporaryPassword = it }, length = 4)
-                Spacer(Modifier.height(10.dp))
-                PrimaryButton(if (vm.syncInProgress) "Verifying…" else "Activate shop", { vm.activate(code, mobile, temporaryPassword, shopName) }, Modifier.fillMaxWidth(), enabled = !vm.syncInProgress)
-                TextButton({ vm.navigateRoot(AppScreen.HELP) }, Modifier.fillMaxWidth()) { Icon(Icons.Outlined.SupportAgent, null, tint = BrandBlue, modifier = Modifier.size(17.dp)); Spacer(Modifier.width(6.dp)); UiText("Need activation help?", color = BrandBlue, fontSize = 11.sp) }
+        Surface(Modifier.fillMaxWidth().height(165.dp), shape = RoundedCornerShape(25.dp), color = Color(0xFFEAF8FF), border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFC9EDFF)), shadowElevation = 5.dp) {
+            Box(Modifier.fillMaxSize().background(Brush.linearGradient(listOf(Color(0xFFF8FDFF), Color(0xFFDDF5FF))))) {
+                Column(Modifier.align(Alignment.CenterStart).padding(start = 20.dp), verticalArrangement = Arrangement.Center) {
+                    Row(verticalAlignment = Alignment.CenterVertically) { BrandMark(47.dp); Spacer(Modifier.width(8.dp)); UiText("SkyBarech ERP", translate = false, color = Color(0xFF063B88), fontSize = 21.sp, fontWeight = FontWeight.ExtraBold) }
+                    Spacer(Modifier.height(14.dp)); UiText("Verified Shop Setup", color = Color(0xFF0785F5), fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    UiText("Activate your shop", color = Color(0xFF073A85), fontWeight = FontWeight.ExtraBold, fontSize = 25.sp)
+                }
+                Box(Modifier.align(Alignment.CenterEnd).padding(end = 18.dp).size(86.dp).clip(RoundedCornerShape(28.dp)).background(Brush.radialGradient(listOf(Color.White, Color(0xFFBDEEFF)))), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Outlined.VerifiedUser, null, tint = Color(0xFF087FF0), modifier = Modifier.size(61.dp))
+                }
             }
         }
-        UiText("After verification, choose a 4 digit PIN.", color = MutedInk, fontSize = 10.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 5.dp))
+        Spacer(Modifier.height(8.dp))
+        Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(25.dp), color = Color.White.copy(alpha = .96f), border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFD8EAF6)), shadowElevation = 8.dp) {
+            Column(Modifier.padding(14.dp)) {
+                AppTextField("Shop Name", shopName, { shopName = it }, leadingIcon = Icons.Outlined.Store, placeholder = "Ali Mobile Accessories")
+                Spacer(Modifier.height(6.dp))
+                AppTextField("Activation Code", code, { code = it }, leadingIcon = Icons.Outlined.Key, placeholder = "Your activation code")
+                Spacer(Modifier.height(6.dp))
+                AppTextField("Username / Owner Mobile", mobile, { mobile = it }, leadingIcon = Icons.Outlined.PersonOutline, placeholder = "03001234567")
+                Spacer(Modifier.height(7.dp))
+                PinCodeField("Temporary PIN", temporaryPassword, { temporaryPassword = it }, length = 4)
+                Spacer(Modifier.height(7.dp))
+                ReferencePrimaryButton(if (vm.syncInProgress) "Verifying…" else "Activate Shop", enabled = !vm.syncInProgress) { vm.activate(code, mobile, temporaryPassword, shopName) }
+            }
+        }
     }
     }
 }
@@ -358,86 +385,49 @@ fun LoginScreen(vm: AppViewModel) {
     val context = LocalContext.current
     val binding = vm.biometricBinding
     val fingerprint = BiometricUnlock.enabled(context, binding)
-    var showBiometric by rememberSaveable { mutableStateOf(fingerprint) }
-    if (fingerprint && showBiometric) {
-        AppBackground {
-            Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState()).padding(28.dp), horizontalAlignment=Alignment.CenterHorizontally, verticalArrangement=Arrangement.Center) {
-                BrandHeader(compact = true)
-                Spacer(Modifier.height(24.dp))
-                Surface(shape=RoundedCornerShape(100.dp), color=Color.White, border=androidx.compose.foundation.BorderStroke(3.dp, Color(0xFF008CFF)), shadowElevation=20.dp) {
-                    IconButton(onClick={
-                        BiometricUnlock.activity(context)?.let { activity -> BiometricUnlock.authenticate(activity, binding, false,
-                            success={ vm.unlockWithBiometrics(binding) }, error={ vm.showMessage(it) }) }
-                }, modifier=Modifier.size(112.dp)) { Icon(Icons.Outlined.Fingerprint, contentDescription=tr("Unlock with fingerprint"), tint=Color(0xFF1769DC), modifier=Modifier.size(72.dp)) }
-                }
-                Spacer(Modifier.height(28.dp))
-                UiText("Use Fingerprint", color=Ink, fontSize=24.sp, fontWeight=FontWeight.Bold)
-                UiText("Quick and secure login", color=MutedInk, modifier=Modifier.padding(top=10.dp,bottom=26.dp))
-                OutlinedButton(onClick={ showBiometric=false }, modifier=Modifier.fillMaxWidth()) { UiText("Use PIN instead",color=BrandBlue) }
-                Spacer(Modifier.height(24.dp))
-                UiText("Fast   •   Secure   •   Your shop",color=MutedInk,fontSize=12.sp)
-            }
-        }
-        return
-    }
     var appeared by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { appeared = true }
     val reveal by animateFloatAsState(if (appeared) 1f else 0f, tween(500), label = "login reveal")
-    AppBackground {
-    BoxWithConstraints(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().imePadding().padding(horizontal = 20.dp)) {
-        // Keep the normal portrait login within the viewport; scrolling remains available for the keyboard and large fonts.
-        Column(Modifier.align(Alignment.Center).graphicsLayer { alpha = reveal; translationY = (1f - reveal) * 16f }.widthIn(max = 420.dp).fillMaxWidth()
-            .verticalScroll(rememberScrollState()).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            AuthHero("Welcome Back", "Your products, sales and accounts are ready when you are.", "SECURE SHOP LOGIN", Icons.Outlined.CloudSync)
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
-                LanguageSelector()
-                IconButton(onClick = { connectionDetails = true; vm.checkConnection() }) { Icon(Icons.Outlined.HelpOutline, contentDescription = tr("Connection help"), tint = BrandBlue, modifier = Modifier.size(21.dp)) }
-            }
-            Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(26.dp), color = CardSurface,
-                border = androidx.compose.foundation.BorderStroke(1.dp, CardStroke), shadowElevation = 3.dp) {
-                Column(Modifier.padding(horizontal = 18.dp, vertical = 16.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) {
-                            UiText("Sign in to your shop", color = Ink, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold)
-                            UiText("SECURE SHOP LOGIN", color = BrandBlue, fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                        }
-                        Icon(Icons.Outlined.Lock, contentDescription = null, tint = BrandBlue, modifier = Modifier.size(24.dp))
-                    }
-                    if (vm.activated) Surface(shape = RoundedCornerShape(13.dp), color = BrandBlueSoft) {
-                        Row(Modifier.padding(horizontal = 10.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Icon(Icons.Outlined.Storefront, null, tint = BrandBlue, modifier = Modifier.size(16.dp)); Spacer(Modifier.width(7.dp))
-                            UiText(vm.shopName, translate = false, color = BrandBlueDark, fontSize = 12.sp, fontWeight = FontWeight.Bold, maxLines = 1)
-                        }
-                    } else UiText("Sign in to your shop account.", color = MutedInk, fontSize = 13.sp, maxLines = 2, modifier = Modifier.padding(top = 4.dp, bottom = 10.dp))
-                    Spacer(Modifier.height(10.dp))
-                    AppTextField("Owner mobile / email", mobile, { mobile = it }, leadingIcon = Icons.Outlined.PersonOutline,
-                        keyboardType = KeyboardType.Email, error = if (submitted && mobile.isBlank()) "Enter your mobile number or email." else null)
-                    Spacer(Modifier.height(12.dp))
-                    PinCodeField("4-digit Shop PIN", pin, { pin = it }, length = 4,
-                        error = if (submitted && !com.skybarech.mobileshoperp.security.ShopPin.valid(pin)) "Enter exactly 4 digits" else null,
-                        onDone = { submitted = true; if (mobile.isNotBlank() && com.skybarech.mobileshoperp.security.ShopPin.valid(pin)) vm.login(mobile, pin) })
-                    TextButton(onClick = { vm.navigateRoot(AppScreen.HELP) }, modifier = Modifier.align(Alignment.End)) { UiText("Forgot PIN?", fontSize = 12.sp) }
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                    PrimaryButton(if (vm.syncInProgress) "Signing in…" else "Sign in", {
-                        submitted = true
-                        if (mobile.isNotBlank() && com.skybarech.mobileshoperp.security.ShopPin.valid(pin)) vm.login(mobile, pin)
-                    }, Modifier.weight(1f), enabled = !vm.syncInProgress)
-                    if (fingerprint) {
-                        OutlinedIconButton(onClick = {
-                            val activity = BiometricUnlock.activity(context)
-                            if (activity != null) BiometricUnlock.authenticate(activity, binding, false,
-                                success = { vm.unlockWithBiometrics(binding) }, error = { vm.showMessage(it) })
-                        }, enabled = !vm.syncInProgress, modifier = Modifier.size(52.dp), shape = RoundedCornerShape(14.dp)) {
-                            Icon(Icons.Outlined.Fingerprint, contentDescription = tr("Unlock with fingerprint"), modifier = Modifier.size(27.dp))
-                        }
-                    }
-                    }
-                    TextButton(onClick = { vm.navigateRoot(AppScreen.ACTIVATION) }, modifier = Modifier.fillMaxWidth()) { UiText("New shop? Activate account", fontSize = 12.sp) }
+    ReferenceAuthBackdrop {
+        Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().imePadding().padding(horizontal = 22.dp, vertical = 10.dp)
+            .graphicsLayer { alpha = reveal; translationY = (1f - reveal) * 16f }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+            ReferenceBrandIdentity()
+            Spacer(Modifier.height(15.dp))
+            LanguageSelector()
+            Spacer(Modifier.height(14.dp))
+            Column(Modifier.widthIn(max = 420.dp).fillMaxWidth()) {
+                AppTextField("Shop Mobile Number", mobile, { mobile = it }, leadingIcon = Icons.Outlined.PhoneAndroid,
+                    keyboardType = KeyboardType.Phone, placeholder = "03XX XXXXXXX", error = if (submitted && mobile.isBlank()) "Enter your mobile number." else null)
+                Spacer(Modifier.height(13.dp))
+                PinCodeField("4-digit Shop PIN", pin, { pin = it }, length = 4,
+                    error = if (submitted && !com.skybarech.mobileshoperp.security.ShopPin.valid(pin)) "Enter exactly 4 digits" else null,
+                    onDone = { submitted = true; if (mobile.isNotBlank() && com.skybarech.mobileshoperp.security.ShopPin.valid(pin)) vm.login(mobile, pin) })
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    var rememberShop by rememberSaveable { mutableStateOf(true) }
+                    Checkbox(rememberShop, { rememberShop = it }, colors = CheckboxDefaults.colors(checkedColor = Color(0xFF078AF6)))
+                    UiText("Remember Shop", color = Color(0xFF264E89), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                    Spacer(Modifier.weight(1f))
+                    TextButton(onClick = { vm.navigateRoot(AppScreen.HELP) }) { UiText("Forgot PIN?", color = Color(0xFF078AF6), fontSize = 12.sp) }
                 }
+                ReferencePrimaryButton(if (vm.syncInProgress) "Signing in…" else "Login", enabled = !vm.syncInProgress) {
+                    submitted = true
+                    if (mobile.isNotBlank() && com.skybarech.mobileshoperp.security.ShopPin.valid(pin)) vm.login(mobile, pin)
+                }
+                Spacer(Modifier.height(11.dp))
+                if (fingerprint) OutlinedButton(onClick = {
+                    BiometricUnlock.activity(context)?.let { activity -> BiometricUnlock.authenticate(activity, binding, false, success = { vm.unlockWithBiometrics(binding) }, error = { vm.showMessage(it) }) }
+                }, modifier = Modifier.fillMaxWidth().height(50.dp), shape = RoundedCornerShape(16.dp), border = androidx.compose.foundation.BorderStroke(1.3.dp, Color(0xFF078AF6))) {
+                    Icon(Icons.Outlined.Fingerprint, null, tint = Color(0xFF078AF6)); Spacer(Modifier.width(9.dp)); UiText("Fingerprint / Biometric Login", color = Color(0xFF078AF6), fontWeight = FontWeight.Bold)
+                }
+                Spacer(Modifier.height(9.dp))
+                OutlinedButton(onClick = { connectionDetails = true; vm.checkConnection() }, modifier = Modifier.fillMaxWidth().height(48.dp), shape = RoundedCornerShape(16.dp), border = androidx.compose.foundation.BorderStroke(1.2.dp, Color(0xFF23AFC9))) {
+                    Icon(Icons.Outlined.CloudDone, null, tint = Color(0xFF20A7C8)); Spacer(Modifier.width(9.dp)); UiText("Check Cloud", color = Color(0xFF078AF6), fontWeight = FontWeight.Bold)
+                }
+                TextButton(onClick = { vm.navigateRoot(AppScreen.ACTIVATION) }, modifier = Modifier.fillMaxWidth()) { UiText("New shop? Activate account", color = Color(0xFF078AF6), fontSize = 12.sp) }
             }
-            UiText("SkyBarech ERP · ${com.skybarech.mobileshoperp.BuildConfig.VERSION_NAME}", color = MutedInk, fontSize = 10.sp, modifier = Modifier.padding(top = 12.dp))
+            UiText("Secure  •  Reliable  •  Cloud Connected", color = Color(0xFF264E89), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+            UiText("v${com.skybarech.mobileshoperp.BuildConfig.VERSION_NAME}", color = MutedInk, fontSize = 9.sp, modifier = Modifier.padding(top = 4.dp))
         }
-    }
     }
     if (connectionDetails) AlertDialog(onDismissRequest = { connectionDetails = false }, title = { UiText("Cloud connection") },
         text = { UiText(if (vm.checkingConnection) "Checking server…" else vm.connectionReport) },
