@@ -1,0 +1,7 @@
+SkyBarech ERP Android v1.3.39
+
+- Removed the Android mobile top application header completely.
+- Removed the old “SkyBarech Mobile Shop ERP” application label.
+- Forced a white light status bar instead of the old dark header area.
+- Shows the rebuilt SVG-based splash and login once after updating while preserving shop activation and data.
+- Keeps the supplied light splash, login and activation designs from v1.3.38.

@@ -123,11 +123,7 @@ private fun AppShell(vm: AppViewModel, snackbarHostState: SnackbarHostState) {
                     SideRail(vm)
                 }
                 Column(Modifier.fillMaxSize()) {
-                    AppTopBar(
-                        vm = vm,
-                        showMenu = !showRail && !vm.canGoBack(),
-                        onMenuClick = { if (!showRail) scope.launch { drawerState.open() } }
-                    )
+                    if (showRail) AppTopBar(vm = vm, showMenu = false, onMenuClick = {})
                     Box(Modifier.weight(1f)) {
                         ScreenRouter(vm, Modifier.fillMaxSize())
                     }
