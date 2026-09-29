@@ -1,0 +1,7 @@
+SkyBarech ERP Android v1.3.45
+
+- Removed the black Android system header/navigation overlay with immersive edge-to-edge mode.
+- Kept the custom Liquid navigation bar fixed at the bottom with bounded touch targets.
+- Added 100dp bottom content space so the navigation bar cannot cover page content.
+- Forced the current light application canvas and white startup splash.
+- Kept login PIN and activation password fields visible across Compose recompositions.

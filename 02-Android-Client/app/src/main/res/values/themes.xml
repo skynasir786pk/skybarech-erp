@@ -13,7 +13,7 @@
         <item name="android:windowActionModeOverlay">true</item>
     </style>
     <style name="Theme.SkyBarech.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/brand_blue</item>
+        <item name="windowSplashScreenBackground">#FFFFFF</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_skybarech</item>
         <item name="postSplashScreenTheme">@style/Theme.SkyBarechMobileShopERP</item>
     </style>

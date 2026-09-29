@@ -337,7 +337,7 @@ fun ActivationScreen(vm: AppViewModel) {
     var shopName by rememberSaveable { mutableStateOf("") }
     var code by rememberSaveable { mutableStateOf("") }
     var mobile by rememberSaveable { mutableStateOf("") }
-    var temporaryPassword by remember { mutableStateOf("") }
+    var temporaryPassword by rememberSaveable { mutableStateOf("") }
     ReferenceAuthBackdrop {
     Column(
         modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().imePadding().padding(horizontal = 16.dp, vertical = 6.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
@@ -379,7 +379,7 @@ fun ActivationScreen(vm: AppViewModel) {
 @Composable
 fun LoginScreen(vm: AppViewModel) {
     var mobile by rememberSaveable { mutableStateOf(vm.ownerMobile) }
-    var pin by remember { mutableStateOf("") }
+    var pin by rememberSaveable { mutableStateOf("") }
     var submitted by remember { mutableStateOf(false) }
     var connectionDetails by remember { mutableStateOf(false) }
     val context = LocalContext.current

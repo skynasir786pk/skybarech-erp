@@ -57,7 +57,7 @@ fun AppBackground(content: @Composable BoxScope.() -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(AppCanvas)
+            .background(Color(0xFFF7FBFF))
     ) {
         Canvas(modifier = Modifier.fillMaxSize()) {
             drawCircle(color = BrandBlueSoft.copy(alpha = 0.50f), radius = size.minDimension * 0.72f, center = Offset(size.width * 1.10f, -size.height * 0.10f))
