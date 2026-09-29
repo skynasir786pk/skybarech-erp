@@ -13,8 +13,8 @@ android {
         applicationId = "com.skybarech.mobileshoperp"
         minSdk = 26
         targetSdk = 35
-        versionCode = 43
-        versionName = "1.3.43"
+        versionCode = 44
+        versionName = "1.3.44"
 
         buildConfigField(
             "String",

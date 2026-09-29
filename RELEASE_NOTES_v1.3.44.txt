@@ -1,0 +1,7 @@
+SkyBarech ERP Android v1.3.44
+
+- LiquidNav click targets are constrained to the actual bottom bar height; taps above it no longer switch pages.
+- LiquidNav is anchored to the bottom edge.
+- Android status and system navigation bars are immersive-hidden to remove the persistent black header/strip.
+- Fullscreen edge-to-edge content remains active.
+- Source package and installable APK are included in the release.

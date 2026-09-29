@@ -242,7 +242,7 @@ private fun BottomNavigation(vm: AppViewModel, modifier: Modifier = Modifier) {
             drawCircle(Color(0xFF1B2A4A), 32.dp.toPx(), androidx.compose.ui.geometry.Offset(centerX, 29.dp.toPx()))
             drawCircle(Color(0xFFFF7A3D), 23.dp.toPx(), androidx.compose.ui.geometry.Offset(centerX, 29.dp.toPx()))
         }
-        Row(Modifier.fillMaxSize()) {
+        Row(Modifier.fillMaxWidth().height(64.dp).align(Alignment.BottomCenter)) {
             items.forEachIndexed { index, item ->
                 LiquidNavItem(item, selected = index == active, badge = if (item.screen == AppScreen.STOCK_ALERTS) vm.lowStockCount() else 0, modifier = Modifier.weight(1f)) { vm.navigateRoot(item.screen) }
             }
